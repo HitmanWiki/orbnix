@@ -213,47 +213,58 @@ const SERVICES_LIST = [
   { name:"Web Design & Development", icon:"🌐", col:"#2563EB", bg:"#EFF6FF",
     price:"₹25,000", intl:"$500", time:"7–14 days",
     desc:"Custom-coded, mobile-first websites for every industry. React, Next.js, WordPress. Includes on-page SEO, Google Analytics, WhatsApp button, sitemap, and 30-day support. We build for clinics, schools, hotels, CA firms, architects, restaurants, real estate, factories, pharmacies, car dealers, gyms, logistics firms, and 50+ more Indian industries.",
-    tags:["React","Next.js","WordPress","Tailwind CSS","Mobile-First","SEO","WhatsApp","Razorpay"] },
+    tags:["React","Next.js","WordPress","Tailwind CSS","Mobile-First","SEO","WhatsApp","Razorpay"],
+    feats:["Mobile-first, responsive design on all devices","On-page SEO — title tags, schema markup, sitemap","WhatsApp click-to-chat button built in","Google Analytics & Search Console setup","30-day post-launch support included","You own 100% of the code and domain"] },
   { name:"E-Commerce & Online Stores", icon:"🛒", col:"#F97316", bg:"#FFF7ED",
-    price:"₹40,000", intl:"$800",time:"14–21 days",
+    price:"₹40,000", intl:"$800", time:"14–21 days",
     desc:"Shopify, WooCommerce, and fully custom online stores. Razorpay/UPI/COD checkout, GST invoice automation, WhatsApp order notifications, inventory management, and abandoned cart recovery. For D2C brands, B2B wholesalers, and retail chains.",
-    tags:["Shopify","WooCommerce","Razorpay","UPI","COD","GST Invoicing","WhatsApp Alerts","Inventory"] },
+    tags:["Shopify","WooCommerce","Razorpay","UPI","COD","GST Invoicing","WhatsApp Alerts","Inventory"],
+    feats:["Razorpay / UPI / COD payment integration","Automated GST invoice generation","WhatsApp order confirmation alerts","Product catalogue with variants & filters","Inventory management dashboard","Abandoned cart recovery emails"] },
   { name:"Mobile App Development", icon:"📱", col:"#7C3AED", bg:"#F5F3FF",
-    price:"₹80,000", intl:"$1,500",time:"4–10 weeks",
+    price:"₹80,000", intl:"$1,500", time:"4–10 weeks",
     desc:"Android and iOS apps using Flutter and React Native. Booking apps, delivery apps, service apps, customer portals. Firebase push notifications, GPS tracking, payment integration, and Play Store/App Store submission.",
-    tags:["Flutter","React Native","Android","iOS","Firebase","GPS","Push Notifications","App Store"] },
+    tags:["Flutter","React Native","Android","iOS","Firebase","GPS","Push Notifications","App Store"],
+    feats:["Single codebase for Android + iOS (Flutter)","Firebase push notifications","GPS & location tracking","Razorpay in-app payment","Play Store & App Store submission","Free 60-day bug-fix support"] },
   { name:"AI Chatbot & Agent Development", icon:"🤖", col:"#10B981", bg:"#ECFDF5",
-    price:"₹40,000", intl:"$800",time:"7–14 days",
+    price:"₹40,000", intl:"$800", time:"7–14 days",
     desc:"GPT-4o and Claude-powered AI chatbots and agents. Lead qualification, appointment booking, FAQ automation, order taking, and WhatsApp handoff. Trained on your business data. For clinics, e-commerce, real estate, and SaaS companies.",
-    tags:["GPT-4o","Claude API","WhatsApp API","Lead Gen","Appointment Bot","FAQ Automation"] },
+    tags:["GPT-4o","Claude API","WhatsApp API","Lead Gen","Appointment Bot","FAQ Automation"],
+    feats:["Trained on your business data & FAQs","Handles lead capture & qualification","Books appointments automatically","Escalates to WhatsApp for human handoff","Works 24/7 — no staff cost","Embeds on website + WhatsApp"] },
   { name:"UI/UX Design & Branding", icon:"🎨", col:"#EC4899", bg:"#FDF2F8",
-    price:"₹15,000", intl:"$300",time:"5–10 days",
+    price:"₹15,000", intl:"$300", time:"5–10 days",
     desc:"Figma wireframes, high-fidelity UI prototypes, mobile-first responsive design systems, landing page design, and complete brand identity (logo, colours, typography). For startups, product companies, and redesigns.",
-    tags:["Figma","UI Design","UX Research","Branding","Logo","Design System","Landing Page"] },
+    tags:["Figma","UI Design","UX Research","Branding","Logo","Design System","Landing Page"],
+    feats:["Figma wireframes + high-fidelity prototypes","Mobile-first responsive design system","Logo, colour palette & typography kit","Landing page design optimised for conversion","Handoff-ready files for any developer","Unlimited revisions until approved"] },
   { name:"Custom ERP, CRM & SaaS", icon:"⚙️", col:"#0EA5E9", bg:"#F0F9FF",
-    price:"₹1,50,000", intl:"$2,500",time:"8–16 weeks",
+    price:"₹1,50,000", intl:"$2,500", time:"8–16 weeks",
     desc:"Custom-built business software: inventory management, billing & accounting tools, HR & payroll, school ERP, hospital management, fleet tracking, vendor portals, and multi-tenant SaaS platforms. Built on React + Node.js + PostgreSQL.",
-    tags:["React","Node.js","PostgreSQL","Multi-tenant","ERP","CRM","Billing","SaaS"] },
+    tags:["React","Node.js","PostgreSQL","Multi-tenant","ERP","CRM","Billing","SaaS"],
+    feats:["Custom-built for your exact workflow","Role-based access control","Real-time dashboards & reports","Razorpay billing & subscription management","Cloud-hosted on AWS / Vercel","Full source code ownership"] },
   { name:"SEO & Digital Marketing", icon:"📈", col:"#F59E0B", bg:"#FEF3C7",
-    price:"₹12,000/mo", intl:"$250/mo",time:"Ongoing",
-    desc:"Technical SEO audits, local SEO for Indian businesses, Google Business Profile setup and optimisation, keyword research, content creation, backlink building, Google Search Console, and monthly ranking reports. We help businesses rank for '[service] [city]' searches.",
-    tags:["Technical SEO","Local SEO","Google Business Profile","Content","Backlinks","Google Ads"] },
+    price:"₹12,000/mo", intl:"$250/mo", time:"Ongoing",
+    desc:"Technical SEO audits, local SEO for Indian businesses, Google Business Profile setup and optimisation, keyword research, content creation, backlink building, Google Search Console, and monthly ranking reports.",
+    tags:["Technical SEO","Local SEO","Google Business Profile","Content","Backlinks","Google Ads"],
+    feats:["Full technical SEO audit every month","Local SEO for '[service] [city]' keywords","Google Business Profile management","2 SEO blog posts per month","Monthly rank tracking report","Google Ads management (optional add-on)"] },
   { name:"WhatsApp CRM & Automation", icon:"💬", col:"#25D366", bg:"#F0FDF4",
-    price:"₹8,000/mo", intl:"$150/mo",time:"3–7 days setup",
-    desc:"WhatsApp Business API integration via Meta official partner. Automated follow-up sequences, broadcast campaigns, chatbot + human handoff, lead pipeline management, payment links, and catalogue sharing on WhatsApp.",
-    tags:["WhatsApp Business API","Meta","Broadcast","Chatbot","Lead Pipeline","Payment Links"] },
+    price:"₹8,000/mo", intl:"$150/mo", time:"3–7 days setup",
+    desc:"WhatsApp Business API integration. Automated follow-up sequences, broadcast campaigns, chatbot + human handoff, lead pipeline management, and payment links on WhatsApp.",
+    tags:["WhatsApp Business API","Meta","Broadcast","Chatbot","Lead Pipeline","Payment Links"],
+    feats:["Official WhatsApp Business API setup","Automated follow-up sequences","Broadcast campaigns to contacts","Chatbot + human agent handoff","Payment collection via WhatsApp","Lead pipeline with tags & notes"] },
   { name:"No-Code & Quick Launch", icon:"⚡", col:"#7C3AED", bg:"#F5F3FF",
-    price:"₹12,000", intl:"$250",time:"3–7 days",
-    desc:"Fast websites using Webflow, Framer, Bubble, Notion Sites, or Carrd. Ideal for landing pages, event pages, portfolio sites, MVPs, and investor decks. Live in 3–7 days, no compromise on design quality.",
-    tags:["Webflow","Framer","Bubble","No-Code","Landing Page","MVP","Fast Delivery"] },
+    price:"₹12,000", intl:"$250", time:"3–7 days",
+    desc:"Fast websites using Webflow, Framer, Bubble, or Carrd. Ideal for landing pages, event pages, portfolio sites, and MVPs. Live in 3–7 days, no compromise on design quality.",
+    tags:["Webflow","Framer","Bubble","No-Code","Landing Page","MVP","Fast Delivery"],
+    feats:["Live in 3–7 days guaranteed","Webflow / Framer / Bubble / Carrd","SEO-ready from day one","Custom domain setup included","Mobile responsive out of the box","Easy to edit yourself after handover"] },
   { name:"IT Support & Maintenance AMC", icon:"🛠️", col:"#64748B", bg:"#F8FAFC",
-    price:"₹3,500/mo", intl:"$75/mo",time:"Same-day response",
-    desc:"Monthly AMC for your existing website or app: hosting management, SSL renewal, security patches, uptime monitoring, content updates, speed optimisation, bug fixes, and priority WhatsApp support.",
-    tags:["Hosting","SSL","Security","Uptime","Bug Fixes","Content Updates","Priority Support"] },
+    price:"₹3,500/mo", intl:"$75/mo", time:"Same-day response",
+    desc:"Monthly AMC for your existing website or app: hosting management, SSL renewal, security patches, uptime monitoring, content updates, speed optimisation, and bug fixes.",
+    tags:["Hosting","SSL","Security","Uptime","Bug Fixes","Content Updates","Priority Support"],
+    feats:["Hosting & SSL certificate management","Security patches & updates","Uptime monitoring with alerts","Up to 5 content changes per month","Page speed optimisation","Priority WhatsApp support"] },
   { name:"IT Consulting & Strategy", icon:"🧠", col:"#0F172A", bg:"#F1F5F9",
-    price:"₹5,000/hr", intl:"$75/hr",time:"Flexible",
-    desc:"Technology strategy for startups and SMEs: tech stack selection, architecture review, vendor evaluation, digital transformation roadmap, cost optimisation, team hiring guidance, and product roadmap planning.",
-    tags:["Strategy","Architecture","Tech Stack","Digital Transformation","CTO as a Service"] },
+    price:"₹5,000/hr", intl:"$75/hr", time:"Flexible",
+    desc:"Technology strategy for startups and SMEs: tech stack selection, architecture review, digital transformation roadmap, cost optimisation, and product roadmap planning.",
+    tags:["Strategy","Architecture","Tech Stack","Digital Transformation","CTO as a Service"],
+    feats:["Tech stack selection & architecture review","Digital transformation roadmap","Vendor & tool evaluation","Product roadmap planning","Team hiring & process guidance","CTO-as-a-Service for startups"] },
 ];
 
 const ABOUT_TEAM = [
@@ -424,7 +435,7 @@ function DemoRestaurant() {
         <div style={{maxWidth:480,margin:"2rem auto",padding:"0 1rem"}}>
           <div style={{background:"#fff",borderRadius:16,padding:"2rem",boxShadow:"0 4px 24px rgba(0,0,0,.08)",border:"1px solid #FED7AA"}}>
             <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.25rem",fontWeight:800,marginBottom:"1.25rem"}}>Reserve a Table</h3>
-            {[["Full Name","text","Rahul Sharma"],["Email","email","rahul@example.com"],["Phone","tel","+91 98765 43210"],["Date","date",""],["Guests","number","2"]].map(([l,t,ph])=>(
+            {[["Full Name","text","Rahul Sharma"],["Email","email","rahul@gmail.com"],["Phone","tel","+91 98765 43210"],["Date","date",""],["Guests","number","2"]].map(([l,t,ph])=>(
               <div key={l} style={{marginBottom:".85rem"}}>
                 <label style={{display:"block",fontSize:".75rem",fontWeight:600,color:C.t2,marginBottom:".25rem"}}>{l}</label>
                 <input type={t} placeholder={ph} style={{width:"100%",padding:".65rem .9rem",background:"#FFF7ED",border:"1.5px solid #FED7AA",borderRadius:9,fontSize:".875rem",outline:"none",fontFamily:"'Manrope',sans-serif"}}/>
@@ -558,7 +569,7 @@ function DemoAI() {
     if(m.includes("own")||m.includes("code")) return "🔒 Absolutely! 100% of the code and IP is yours from day one.\n\nYou get complete source code on delivery. No ongoing fees, no lock-in, forever.";
     if(m.includes("international")||m.includes("global")) return "🌍 Yes! ~40% of our clients are international.\n\nWe work with US, UK, UAE, Australia, Europe. Invoice in USD/GBP, sign NDAs, adjust to your timezone.";
     if(m.includes("ai")||m.includes("agent")||m.includes("replace")) return "🤖 AI agents handle 60–80% of routine queries automatically!\n\nOne client reduced support costs by 80% with our AI bot. Want details?";
-    return "Happy to help! 😊 The best next step is a free 30-min call — we'll give an honest recommendation.\n\n📞 WhatsApp: +91 90798 81416\n✉️ hello@orbnix.in";
+    return "Happy to help! 😊 The best next step is a free 30-min call — we'll give an honest recommendation.\n\n📞 WhatsApp: +91 98765 43210\n✉️ hello@orbnix.in";
   };
   const send=(text)=>{
     const q=text||input.trim();
@@ -882,7 +893,7 @@ function DemoRealEstate() {
               </div>
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
                 <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:p.color,fontSize:"1rem"}}>{p.price}</div>
-                <button onClick={e=>{e.stopPropagation();alert(`Contact for ${p.name}\n\nPrice: ${p.price}\nLocation: ${p.loc}\n\nWhatsApp: +91 90798 81416`);}} style={{background:p.color,color:"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Enquire</button>
+                <button onClick={e=>{e.stopPropagation();alert(`Contact for ${p.name}\n\nPrice: ${p.price}\nLocation: ${p.loc}\n\nWhatsApp: +91 98765 43210`);}} style={{background:p.color,color:"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Enquire</button>
               </div>
             </div>
           </div>
@@ -893,13 +904,13 @@ function DemoRealEstate() {
 }
 
 function DemoLMS() {
-  const [tab,setTab]=useState("courses");s
+  const [tab,setTab]=useState("courses");
   const [enrolled,setEnrolled]=useState([1,3]);
   const courses=[
     {id:1,title:"Complete React & Next.js Bootcamp",instructor:"Arjun Mehra",cat:"Web Dev",students:4820,rating:4.9,price:1299,mrp:4999,level:"Beginner",emoji:"⚛️",lessons:84,hours:32},
     {id:2,title:"Python for Data Science & AI",instructor:"Dr. Priya Sharma",cat:"Data Science",students:6240,rating:4.8,price:999,mrp:3999,level:"Intermediate",emoji:"🐍",lessons:62,hours:24},
     {id:3,title:"UI/UX Design Masterclass",instructor:"Rahul Kapoor",cat:"Design",students:3190,rating:4.9,price:1499,mrp:5499,level:"Beginner",emoji:"🎨",lessons:56,hours:20},
-    {id:4,title:"Digital Marketing & SEO 2026",instructor:"Neha Joshi",cat:"Marketing",students:2840,rating:4.7,price:799,mrp:2999,level:"Beginner",emoji:"📈",lessons:48,hours:18},
+    {id:4,title:"Digital Marketing & SEO 2025",instructor:"Neha Joshi",cat:"Marketing",students:2840,rating:4.7,price:799,mrp:2999,level:"Beginner",emoji:"📈",lessons:48,hours:18},
     {id:5,title:"Full Stack Node.js + MongoDB",instructor:"Vikram Singh",cat:"Web Dev",students:3640,rating:4.8,price:1199,mrp:4499,level:"Advanced",emoji:"🟢",lessons:72,hours:28},
     {id:6,title:"Flutter Mobile App Development",instructor:"Ananya Tech",cat:"Mobile",students:2280,rating:4.9,price:1399,mrp:5499,level:"Intermediate",emoji:"📱",lessons:68,hours:26},
   ];
@@ -1165,7 +1176,7 @@ function DemoSchool() {
         {tab==="home" && (
           <div>
             <div style={{background:"linear-gradient(135deg,#DBEAFE,#EFF6FF)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem"}}>
-              <div style={{fontWeight:800,fontSize:"1rem",color:"#1E3A8A",marginBottom:".3rem"}}>Admissions Open 2026–26 🎉</div>
+              <div style={{fontWeight:800,fontSize:"1rem",color:"#1E3A8A",marginBottom:".3rem"}}>Admissions Open 2025–26 🎉</div>
               <div style={{fontSize:".82rem",color:"#1D4ED8",marginBottom:"1rem"}}>Limited seats · CBSE Board · Smart classrooms · 100% Board results</div>
               <div style={{display:"flex",gap:".5rem",flexWrap:"wrap"}}>
                 <button onClick={()=>setTab("admissions")} style={{background:"#1E40AF",color:"#fff",border:"none",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Apply Now →</button>
@@ -1428,7 +1439,7 @@ function DemoCA() {
             </div>
             <div style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #BFDBFE"}}>
               <div style={{fontWeight:700,fontSize:".82rem",color:"#1E3A8A",marginBottom:".6rem"}}>📅 Important Upcoming Deadlines</div>
-              {[["Mar 31","ITR Filing for AY 2024-25 (Belated)","🔴"],["Apr 20","GSTR-3B for March 2026","🟡"],["May 31","TDS Return Q4 FY 2024-25","🟡"],["Jun 30","Advance Tax — 1st Instalment","🟢"]].map(([date,task,dot])=>(
+              {[["Mar 31","ITR Filing for AY 2024-25 (Belated)","🔴"],["Apr 20","GSTR-3B for March 2025","🟡"],["May 31","TDS Return Q4 FY 2024-25","🟡"],["Jun 30","Advance Tax — 1st Instalment","🟢"]].map(([date,task,dot])=>(
                 <div key={task} style={{display:"flex",gap:".75rem",alignItems:"center",padding:".4rem 0",borderBottom:"1px solid #EFF6FF",fontSize:".75rem"}}>
                   <span style={{fontSize:".9rem"}}>{dot}</span>
                   <span style={{color:"#2563EB",fontWeight:700,minWidth:45}}>{date}</span>
@@ -1599,7 +1610,7 @@ function DemoArchitect() {
             <div style={{fontWeight:800,fontSize:".95rem",color:"#4C1D95",marginBottom:".5rem"}}>Start Your Dream Project</div>
             <div style={{fontSize:".82rem",color:"#64748B",marginBottom:"1.5rem"}}>Free 1-hour consultation · 3D visualisation included · No obligation quote</div>
             <div style={{display:"flex",flexDirection:"column",gap:".75rem"}}>
-              {[["📞 Call Directly","+91 90798 81416","#4C1D95"],["💬 WhatsApp","Chat on WhatsApp","#25D366"],["📧 Email","studio@srivastavarch.in","#2563EB"]].map(([label,val,col])=>(
+              {[["📞 Call Directly","+91 98765 43210","#4C1D95"],["💬 WhatsApp","Chat on WhatsApp","#25D366"],["📧 Email","studio@srivastavarch.in","#2563EB"]].map(([label,val,col])=>(
                 <div key={label} style={{background:"#fff",borderRadius:11,padding:".85rem",border:`1.5px solid ${col}33`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   <span style={{fontSize:".82rem",fontWeight:700,color:"#0F172A"}}>{label}</span>
                   <span style={{fontSize:".78rem",color:col,fontWeight:600}}>{val}</span>
@@ -1691,7 +1702,7 @@ function DemoFactory() {
         {tab==="certifications" && (
           <div>
             <div style={{fontWeight:700,fontSize:".9rem",color:"#0F172A",marginBottom:"1rem"}}>🏆 Certifications & Compliance</div>
-            {[["ISO 9001:2015","Quality Management System — Bureau Veritas Certified","✅"],["ISO 14001:2015","Environmental Management — Valid till Dec 2026","✅"],["DGFT Registration","Export-Import Code (IEC) Active","✅"],["BIS Certification","Bureau of Indian Standards — 12 product categories","✅"],["CE Marking","European Conformity for export to EU markets","✅"],["REACH Compliance","Chemical safety for European Union exports","✅"]].map(([cert,desc,status])=>(
+            {[["ISO 9001:2015","Quality Management System — Bureau Veritas Certified","✅"],["ISO 14001:2015","Environmental Management — Valid till Dec 2025","✅"],["DGFT Registration","Export-Import Code (IEC) Active","✅"],["BIS Certification","Bureau of Indian Standards — 12 product categories","✅"],["CE Marking","European Conformity for export to EU markets","✅"],["REACH Compliance","Chemical safety for European Union exports","✅"]].map(([cert,desc,status])=>(
               <div key={cert} style={{background:"#fff",borderRadius:11,padding:"1rem",marginBottom:".6rem",border:"1px solid #E2E8F0",display:"flex",gap:".75rem",alignItems:"flex-start"}}>
                 <span style={{fontSize:"1.2rem"}}>{status}</span>
                 <div>
@@ -2263,7 +2274,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
           <div>
             <span style={{display:"inline-flex",alignItems:"center",gap:".5rem",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.85rem,3vw,2.5rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.75rem"}}>Let's Build <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Something Great</span></h2>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 98765 43210"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:13,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -2424,7 +2435,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
                   const isCall = l.includes("Call");
                   return (
                     <a key={l}
-                      href={isEmail?"mailto:hello@orbnix.in":isWA?"https://wa.me/919079881416":undefined}
+                      href={isEmail?"mailto:hello@orbnix.in":isWA?"https://wa.me/919876543210":undefined}
                       target={isWA?"_blank":undefined}
                       rel={isWA?"noopener noreferrer":undefined}
                       onClick={isPage?(e=>{e.preventDefault();setPage(isPage);}):undefined}
@@ -2438,7 +2449,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
             ))}
           </div>
           <div style={{borderTop:"1px solid rgba(255,255,255,.08)",paddingTop:"1.75rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
-            <p style={{fontSize:".78rem",color:"rgba(255,255,255,.35)"}}>© 2026 Orbnix. All rights reserved. · Best Web Development Agency in India · IT Company India · 100% Remote-Friendly</p>
+            <p style={{fontSize:".78rem",color:"rgba(255,255,255,.35)"}}>© 2025 Orbnix. All rights reserved. · Best Web Development Agency in India · IT Company India · 100% Remote-Friendly</p>
             <SocialFooterRow />
           </div>
         </div>
@@ -2509,7 +2520,7 @@ function FaqAccordion() {
         <div style={{fontWeight:700,color:C.t,marginBottom:".3rem",fontSize:".9rem"}}>Still have questions?</div>
         <div style={{color:C.t3,fontSize:".82rem",marginBottom:".85rem"}}>WhatsApp us or book a free 30-min call — no sales pressure, just honest answers.</div>
         <div style={{display:"flex",gap:".75rem",justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
           <a href="mailto:hello@orbnix.in" style={{background:C.blueLL,color:C.blue,padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>✉️ Email Us</a>
         </div>
       </div>
@@ -2644,11 +2655,11 @@ function Blog({ setPage, onCatClick }) {
   const openPost = (post) => { setActive(post.id); if(onCatClick) onCatClick(post.cat); };
   const posts=[
     { id:1,
-      title:"Best Web Development Company in India 2026 — How to Choose the Right One",
+      title:"Best Web Development Company in India 2025 — How to Choose the Right One",
       cat:"Web Development",
       metaDesc:"Searching for the best web development company in India? Orbnix builds custom websites from ₹25,000. React, Next.js, SEO-ready, 100% code ownership. Free quote in 24 hours.",
-      time:"7 min", date:"Dec 20, 2026", emoji:"🌐",
-      body:`India has thousands of web development companies — from solo freelancers on Fiverr to 500-person IT parks. Choosing the wrong one can cost you months of time and lakhs of rupees. Here's how to choose the right web development partner in India in 2026.
+      time:"7 min", date:"Dec 20, 2025", emoji:"🌐",
+      body:`India has thousands of web development companies — from solo freelancers on Fiverr to 500-person IT parks. Choosing the wrong one can cost you months of time and lakhs of rupees. Here's how to choose the right web development partner in India in 2025.
 
 This guide will help you make an informed decision, and yes — we'll also tell you what makes Orbnix different.
 
@@ -2690,12 +2701,12 @@ Choosing on price alone. A ₹8,000 website that doesn't rank on Google, doesn't
 
 Choose a partner who challenges your brief, not one who agrees with everything. If every idea you propose is "great" — they're not thinking.
 
-Book a free call with Orbnix or WhatsApp us at +91 90798 81416. We work 100% remotely with clients across India.`},
+Book a free call with Orbnix or WhatsApp us at +91 98765 43210. We work 100% remotely with clients across India.`},
     { id:2,
-      title:"How Much Does a Website Cost in India? (2026 Honest Breakdown)",
+      title:"How Much Does a Website Cost in India? (2025 Honest Breakdown)",
       cat:"Pricing",
-      metaDesc:"Complete breakdown of website development costs in India 2026. From ₹8,000 freelancer sites to ₹10L+ enterprise platforms. Transparent pricing from Orbnix.",
-      time:"6 min", date:"Dec 15, 2026", emoji:"💰",
+      metaDesc:"Complete breakdown of website development costs in India 2025. From ₹8,000 freelancer sites to ₹10L+ enterprise platforms. Transparent pricing from Orbnix.",
+      time:"6 min", date:"Dec 15, 2025", emoji:"💰",
       body:`This is the most-asked question we get every week at Orbnix. Here's an honest, no-fluff answer.
 
 The range: ₹8,000 to ₹15,00,000+
@@ -2742,10 +2753,10 @@ A poorly-built ₹12,000 site that doesn't load on mobile, doesn't rank on Googl
 
 Want a free quote for your project? WhatsApp us or fill out the contact form.`},
     { id:3,
-      title:"AI Agents for Small Businesses in India — A 2026 Practical Guide",
+      title:"AI Agents for Small Businesses in India — A 2025 Practical Guide",
       cat:"AI & Automation",
-      metaDesc:"Learn how AI agents can save Indian businesses 60-80% on support costs. Real examples from Mumbai, Delhi & Bengaluru businesses using WhatsApp AI bots in 2026.",
-      time:"8 min", date:"Dec 10, 2026", emoji:"🤖",
+      metaDesc:"Learn how AI agents can save Indian businesses 60-80% on support costs. Real examples from Mumbai, Delhi & Bengaluru businesses using WhatsApp AI bots in 2025.",
+      time:"8 min", date:"Dec 10, 2025", emoji:"🤖",
       body:`AI agents are one of the most transformational technologies available to Indian small businesses right now — and most business owners have no idea how to actually use them.
 
 This guide explains what AI agents are, what they can actually do for you, and what they cost.
@@ -2766,7 +2777,7 @@ Patients message on WhatsApp → bot checks doctor availability → books appoin
 3. E-Commerce Support Bot (Mumbai client)
 Answers order status queries, return requests, and product questions. Resolves 70% of queries without human involvement. Result: ₹2.5L/month savings in support costs.
 
-What AI agents can and cannot do in 2026:
+What AI agents can and cannot do in 2025:
 
 Can do:
 - Answer FAQ questions 24/7 in any language
@@ -2793,13 +2804,13 @@ You probably should if:
 - You're paying staff to answer the same questions repeatedly
 - You need 24/7 availability but can't afford round-the-clock staff
 
-Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 90798 81416.`},
+Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 98765 43210.`},
     { id:4,
-      title:"Mobile App Development Cost in India 2026 — Flutter vs React Native",
+      title:"Mobile App Development Cost in India 2025 — Flutter vs React Native",
       cat:"Mobile Apps",
-      metaDesc:"Complete guide to mobile app development costs in India 2026. Flutter vs React Native comparison. Real quotes from Orbnix — India's remote-first app development agency.",
-      time:"7 min", date:"Dec 5, 2026", emoji:"📱",
-      body:`Planning to build a mobile app in 2026? Here's everything you need to know about costs, technology choices, and timelines — specifically for Indian businesses.
+      metaDesc:"Complete guide to mobile app development costs in India 2025. Flutter vs React Native comparison. Real quotes from Orbnix — India's remote-first app development agency.",
+      time:"7 min", date:"Dec 5, 2025", emoji:"📱",
+      body:`Planning to build a mobile app in 2025? Here's everything you need to know about costs, technology choices, and timelines — specifically for Indian businesses.
 
 How much does it cost to build a mobile app in India?
 
@@ -2810,7 +2821,7 @@ Enterprise app with ML/AI: ₹8,00,000+
 
 At Orbnix, our mobile app packages start at ₹80,000 for Flutter/React Native apps.
 
-Flutter vs React Native in 2026 — Which should you choose?
+Flutter vs React Native in 2025 — Which should you choose?
 
 Flutter (by Google):
 Language: Dart
@@ -2851,15 +2862,15 @@ What you must demand from your app developer:
 
 Ready to discuss your app idea? Get a free quote from Orbnix.`},
     { id:5,
-      title:"SEO for Small Businesses in India — 2026 Complete Step-by-Step Guide",
+      title:"SEO for Small Businesses in India — 2025 Complete Step-by-Step Guide",
       cat:"Digital Marketing",
-      metaDesc:"Complete SEO guide for small businesses in India 2026. Learn how to rank on Google, get more leads, and grow organically. Free checklist included.",
-      time:"9 min", date:"Nov 28, 2026", emoji:"🔍",
+      metaDesc:"Complete SEO guide for small businesses in India 2025. Learn how to rank on Google, get more leads, and grow organically. Free checklist included.",
+      time:"9 min", date:"Nov 28, 2025", emoji:"🔍",
       body:`If your business isn't showing up on Google's first page, you are invisible. In India, where 93% of purchase decisions begin with a search, SEO is no longer optional — it's the highest-ROI marketing channel available to small businesses.
 
 This guide is written for Indian founders and business owners who want to rank higher, get more inbound leads, and grow without spending crores on ads.
 
-Why SEO is the best marketing investment for Indian businesses in 2026:
+Why SEO is the best marketing investment for Indian businesses in 2025:
 Paid ads stop the moment you stop paying. SEO compounds. A well-optimised page can bring you leads for 3–5 years from a single investment. For context, one of our clients gets 800+ organic visitors per month from a blog post we wrote 18 months ago.
 
 Step 1: Google Business Profile (free, highest impact for local businesses)
@@ -2881,7 +2892,7 @@ High-intent keyword patterns for Indian businesses:
 - "[service] cost in India"
 - "best [service] for small business India"
 - "[service] company in [your city]"
-- "[service] vs [alternative] India 2026"
+- "[service] vs [alternative] India 2025"
 - "affordable [service] India"
 
 Include target keywords naturally in your page title, H1 heading, first paragraph, meta description, and image alt text.
@@ -2895,7 +2906,7 @@ Core Web Vitals: Google uses LCP, FID, and CLS as ranking signals. Your develope
 Step 4: Content strategy that ranks
 Write blog posts answering the exact questions your customers ask before buying. Proven formats for India:
 - "How much does [service] cost in India?"
-- "Best [tool/service] for [audience] in India 2026"
+- "Best [tool/service] for [audience] in India 2025"
 - "[Option A] vs [Option B] — which is better for Indian businesses?"
 - "How to choose the right [service provider] in India"
 
@@ -2914,10 +2925,10 @@ Month 12+: High-intent keyword rankings generating daily inbound leads
 
 Orbnix provides SEO services for startups and SMEs across India starting at ₹12,000/month. First month includes a full technical audit, keyword research, and competitor analysis.`},
     { id:6,
-      title:"E-Commerce Website Cost in India 2026 — Shopify vs WooCommerce vs Custom",
+      title:"E-Commerce Website Cost in India 2025 — Shopify vs WooCommerce vs Custom",
       cat:"E-Commerce",
-      metaDesc:"Complete guide to e-commerce website cost in India 2026. Compare Shopify, WooCommerce and custom online store development. Transparent pricing from Orbnix, India's remote-first web development agency.",
-      time:"8 min", date:"Nov 20, 2026", emoji:"🛒",
+      metaDesc:"Complete guide to e-commerce website cost in India 2025. Compare Shopify, WooCommerce and custom online store development. Transparent pricing from Orbnix, India's remote-first web development agency.",
+      time:"8 min", date:"Nov 20, 2025", emoji:"🛒",
       body:`If you're planning to sell online in India, you have three main choices: Shopify, WooCommerce (WordPress), or a completely custom-built store. Here's an honest comparison.
 
 The bottom line upfront:
@@ -2971,12 +2982,12 @@ Orbnix e-commerce packages:
 
 All packages include: Payment gateway integration, mobile-optimised design, basic SEO, WhatsApp order notifications, and 30 days of post-launch support.
 
-Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 98765 43210.`},
     { id:7,
       title:"Why 70% of Indian Startups Choose the Wrong IT Agency (And How to Avoid It)",
       cat:"Business",
       metaDesc:"7 red flags to watch for when hiring an IT company in India. Real advice from Orbnix, India's remote-first web development agency with 50+ projects across India.",
-      time:"5 min", date:"Nov 10, 2026", emoji:"🚨",
+      time:"5 min", date:"Nov 10, 2025", emoji:"🚨",
       body:`After completing 50+ projects across India, we've seen the same mistakes over and over. Here are the biggest red flags to watch for when hiring an IT agency.
 
 Red Flag 1: No clear contract or IP clause
@@ -2990,7 +3001,7 @@ a) Cut corners on quality
 b) Add "change requests" that inflate the bill
 c) Abandon the project when they realise they can't deliver profitably
 
-A fair market rate for a 5-page custom website in India in 2026 is ₹20,000–₹40,000. Anyone quoting ₹5,000 is either a student or is lying to you.
+A fair market rate for a 5-page custom website in India in 2025 is ₹20,000–₹40,000. Anyone quoting ₹5,000 is either a student or is lying to you.
 
 Red Flag 3: No portfolio with live, working projects
 Ask for links to websites they've built that are currently live. If they can't provide at least 5 live examples, that's a major concern.
@@ -3016,11 +3027,11 @@ What to do instead:
 
 Orbnix ticks all these boxes. If you'd like a second opinion on a quote you've received, send it to hello@orbnix.in. We'll give you an honest assessment, free of charge.`},
     { id:8,
-      title:"SaaS Product Development in India — What It Actually Costs in 2026",
+      title:"SaaS Product Development in India — What It Actually Costs in 2025",
       cat:"Custom Software",
-      metaDesc:"Real breakdown of SaaS development costs in India 2026. How to build a SaaS product from ₹1.5L to ₹25L+. Includes Orbnix's process and tech stack.",
-      time:"8 min", date:"Oct 30, 2026", emoji:"⚙️",
-      body:`Building a SaaS product is one of the most exciting — and expensive — tech investments a founder can make. Here's an honest breakdown of what it actually costs in India in 2026.
+      metaDesc:"Real breakdown of SaaS development costs in India 2025. How to build a SaaS product from ₹1.5L to ₹25L+. Includes Orbnix's process and tech stack.",
+      time:"8 min", date:"Oct 30, 2025", emoji:"⚙️",
+      body:`Building a SaaS product is one of the most exciting — and expensive — tech investments a founder can make. Here's an honest breakdown of what it actually costs in India in 2025.
 
 First, what is SaaS?
 Software-as-a-Service means software delivered over the internet, typically with a subscription pricing model. Examples: Zoho, Freshdesk, Notion, any tool you pay ₹X/month to use.
@@ -3054,7 +3065,7 @@ What makes SaaS development expensive:
 4. Scalability — the system must handle 10 users and 10,000 users
 5. Security — VAPT testing, encryption, audit logs
 
-Orbnix's SaaS tech stack in 2026:
+Orbnix's SaaS tech stack in 2025:
 Frontend: Next.js (React), TypeScript, Tailwind CSS
 Backend: Node.js with Fastify, or Python with FastAPI
 Database: PostgreSQL (primary), Redis (caching), S3 (files)
@@ -3081,11 +3092,11 @@ Before you start building a SaaS product:
 
 Thinking about building a SaaS product? Start with a free discovery call at Orbnix. We'll help you scope your MVP and give you a realistic budget.`},
     { id:9,
-      title:"Flutter vs React Native in 2026 — Which Is Better for Indian Apps?",
+      title:"Flutter vs React Native in 2025 — Which Is Better for Indian Apps?",
       cat:"Mobile Apps",
-      metaDesc:"Flutter vs React Native: honest comparison for Indian app developers and startups in 2026. Performance, cost, hiring, community — everything you need to decide.",
-      time:"7 min", date:"Oct 15, 2026", emoji:"📱",
-      body:`If you're building a mobile app in India in 2026, you'll almost certainly choose between Flutter and React Native. Both are excellent cross-platform frameworks that let you build iOS and Android apps from a single codebase. Here's the honest comparison.
+      metaDesc:"Flutter vs React Native: honest comparison for Indian app developers and startups in 2025. Performance, cost, hiring, community — everything you need to decide.",
+      time:"7 min", date:"Oct 15, 2025", emoji:"📱",
+      body:`If you're building a mobile app in India in 2025, you'll almost certainly choose between Flutter and React Native. Both are excellent cross-platform frameworks that let you build iOS and Android apps from a single codebase. Here's the honest comparison.
 
 Our verdict upfront:
 For most Indian startups and SMEs: Flutter.
@@ -3121,12 +3132,12 @@ Cost is roughly equal. The difference is in developer availability: Flutter deve
 
 What Orbnix uses: We default to Flutter for all new mobile projects, with React Native when specifically requested or when code sharing with web is a priority. All our mobile apps support iOS 13+ and Android 6+.
 
-Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 90798 81416 for a free scope assessment.`},
+Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 98765 43210 for a free scope assessment.`},
     { id:10,
       title:"Google Core Web Vitals — Why Your Indian Business Website Is Failing (And How to Fix It)",
       cat:"Web Development",
-      metaDesc:"Core Web Vitals explained for Indian businesses 2026. Why LCP, FID, and CLS hurt your Google rankings and exactly how to fix them. Free checklist included.",
-      time:"6 min", date:"Oct 5, 2026", emoji:"⚡",
+      metaDesc:"Core Web Vitals explained for Indian businesses 2025. Why LCP, FID, and CLS hurt your Google rankings and exactly how to fix them. Free checklist included.",
+      time:"6 min", date:"Oct 5, 2025", emoji:"⚡",
       body:`Since 2021, Google has used Core Web Vitals as a direct ranking signal. Most Indian business websites fail these metrics badly — and their owners have no idea. Here's everything you need to know.
 
 What are Core Web Vitals?
@@ -3180,11 +3191,11 @@ A website rewritten on React + Next.js by Orbnix passes Core Web Vitals on day o
 
 Our websites consistently score 90+ on PageSpeed Insights. If yours doesn't, let's talk.`},
     { id:11,
-      title:"WhatsApp Marketing for Indian Businesses in 2026 — Complete Strategy Guide",
+      title:"WhatsApp Marketing for Indian Businesses in 2025 — Complete Strategy Guide",
       cat:"Digital Marketing",
-      metaDesc:"WhatsApp marketing strategy for Indian businesses 2026. How to set up WhatsApp Business API, run broadcasts, and automate follow-ups. Real examples and costs.",
-      time:"8 min", date:"Sep 25, 2026", emoji:"💬",
-      body:`India has 500+ million WhatsApp users. It's the single most effective marketing channel for Indian businesses — with 98% open rates vs 22% for email. Here's how to use it properly in 2026.
+      metaDesc:"WhatsApp marketing strategy for Indian businesses 2025. How to set up WhatsApp Business API, run broadcasts, and automate follow-ups. Real examples and costs.",
+      time:"8 min", date:"Sep 25, 2025", emoji:"💬",
+      body:`India has 500+ million WhatsApp users. It's the single most effective marketing channel for Indian businesses — with 98% open rates vs 22% for email. Here's how to use it properly in 2025.
 
 Why WhatsApp is India's #1 marketing channel:
 - 98% message open rate (vs 22% email, 5% social media)
@@ -3242,15 +3253,15 @@ Full WhatsApp Business API setup + CRM integration: ₹25,000 one-time
 Monthly broadcast management + automation: ₹8,000/month
 AI-powered WhatsApp bot (answers queries + qualifies leads): from ₹40,000
 
-Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 90798 81416.`},
+Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 98765 43210.`},
     { id:12,
-      title:"No-Code vs Custom Development — What's Right for Your Indian Startup in 2026?",
+      title:"No-Code vs Custom Development — What's Right for Your Indian Startup in 2025?",
       cat:"Web Development",
-      metaDesc:"No-code tools vs custom development for Indian startups 2026. When to use Webflow, Bubble, or Framer — and when you need custom code. Honest guide from Orbnix.",
-      time:"6 min", date:"Sep 15, 2026", emoji:"🔧",
+      metaDesc:"No-code tools vs custom development for Indian startups 2025. When to use Webflow, Bubble, or Framer — and when you need custom code. Honest guide from Orbnix.",
+      time:"6 min", date:"Sep 15, 2025", emoji:"🔧",
       body:`"Should I use Webflow or build it custom?" is one of the most common questions Indian founders ask us. The answer isn't as simple as "custom is always better." Here's how to think about it.
 
-The honest truth about no-code in 2026:
+The honest truth about no-code in 2025:
 No-code tools have become genuinely good. For the right use case, they can get you live in days rather than weeks — at a fraction of the cost. For the wrong use case, they'll hit a ceiling that costs you more to rebuild later than just building right the first time.
 
 When No-Code is the right answer:
@@ -3296,10 +3307,10 @@ Start no-code, plan to go custom. Launch on Webflow or Bubble to validate. Once 
 
 We offer both. Our No-Code Rapid Launch starts at ₹12,000 (live in 5–7 days). Our custom React websites start at ₹25,000. We'll tell you honestly which is right for where you are today.`},
     { id:13,
-      title:"Best Web Development Company in Mumbai — Top 5 Agencies Compared (2026)",
+      title:"Best Web Development Company in Mumbai — Top 5 Agencies Compared (2025)",
       cat:"Web Development",
       metaDesc:"Looking for a web development company in Mumbai? Compare the top 5 agencies by pricing, quality, and reviews. Orbnix offers custom websites from ₹25,000 with 100% code ownership.",
-      time:"6 min", date:"Sep 5, 2026", emoji:"🏙️",
+      time:"6 min", date:"Sep 5, 2025", emoji:"🏙️",
       body:`Mumbai is India's business capital — and finding the right web development company here is critical. With thousands of agencies in the city, from Andheri to BKC to Lower Parel, the choices are overwhelming and the quality wildly varies.
 
 This guide compares what you should look for when choosing a Mumbai web development partner, and where Orbnix fits in.
@@ -3333,12 +3344,12 @@ Typical outcomes for Mumbai clients:
 
 Our Mumbai-specific experience: We've delivered websites and apps for clients in South Mumbai, Bandra, Andheri, Powai, BKC, and Navi Mumbai.
 
-Ready to build with us? WhatsApp +91 90798 81416 or email hello@orbnix.in. Quote delivered in 24 hours.`},
+Ready to build with us? WhatsApp +91 98765 43210 or email hello@orbnix.in. Quote delivered in 24 hours.`},
     { id:14,
-      title:"Best Web Development Company in Bengaluru — What Startups Actually Need in 2026",
+      title:"Best Web Development Company in Bengaluru — What Startups Actually Need in 2025",
       cat:"Web Development",
-      metaDesc:"Searching for a web development company in Bengaluru? Here's what Bengaluru startups need from a tech partner in 2026 — with honest pricing and quality comparison.",
-      time:"5 min", date:"Aug 25, 2026", emoji:"🌆",
+      metaDesc:"Searching for a web development company in Bengaluru? Here's what Bengaluru startups need from a tech partner in 2025 — with honest pricing and quality comparison.",
+      time:"5 min", date:"Aug 25, 2025", emoji:"🌆",
       body:`Bengaluru is India's startup capital. If you're building here — in Koramangala, HSR Layout, Indiranagar, or anywhere in the Bengaluru tech ecosystem — your standards for tech partners are higher than average.
 
 This guide covers what Bengaluru startups and tech companies should expect from a web development partner, and why an increasing number of Bengaluru founders are choosing remote-first agencies over local ones.
@@ -3371,13 +3382,13 @@ Our services are especially popular with Bengaluru-based:
 - D2C brands scaling beyond ₹1Cr/month
 - B2B SaaS companies building their first public-facing product
 
-Book a free discovery call: hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Book a free discovery call: hello@orbnix.in or WhatsApp +91 98765 43210.`},
     { id:15,
-      title:"Web Development Costs in Delhi & NCR — Complete Guide for Businesses (2026)",
+      title:"Web Development Costs in Delhi & NCR — Complete Guide for Businesses (2025)",
       cat:"Web Development",
-      metaDesc:"How much does a website cost in Delhi NCR in 2026? Honest guide to web design pricing in Delhi, Gurgaon, and Noida — from freelancers to premium agencies.",
-      time:"6 min", date:"Aug 15, 2026", emoji:"🏛️",
-      body:`If you're a Delhi or NCR business looking to build a website or app, you've probably got quotes ranging from ₹8,000 to ₹3,00,000. Here's how to make sense of that range — and what you actually need to pay for quality in 2026.
+      metaDesc:"How much does a website cost in Delhi NCR in 2025? Honest guide to web design pricing in Delhi, Gurgaon, and Noida — from freelancers to premium agencies.",
+      time:"6 min", date:"Aug 15, 2025", emoji:"🏛️",
+      body:`If you're a Delhi or NCR business looking to build a website or app, you've probably got quotes ranging from ₹8,000 to ₹3,00,000. Here's how to make sense of that range — and what you actually need to pay for quality in 2025.
 
 The Delhi NCR web development market:
 
@@ -3414,16 +3425,16 @@ Our Delhi NCR client results:
 - Logistics company: 45% reduction in phone inquiries after self-service portal launch
 - Export business: International credibility improved, 3 new UK clients in first 60 days
 
-Get your free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get your free quote: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:7,
-      title:"Best Website for Clinics and Hospitals in India 2026 — Complete Guide",
+      title:"Best Website for Clinics and Hospitals in India 2025 — Complete Guide",
       cat:"Healthcare",
       metaDesc:"Does your clinic need a website? Orbnix builds doctor websites with online appointment booking, WhatsApp integration and Google ranking from ₹25,000. Free quote in 24 hrs.",
       time:"6 min", date:"Jan 5, 2026", emoji:"🏥",
       body:`If you run a clinic, hospital, or private practice in India, your patients are searching for you online right now — and if you don't have a proper website, they're booking with your competitor.
 
-This guide covers everything you need to know about getting a professional clinic website in India in 2026.
+This guide covers everything you need to know about getting a professional clinic website in India in 2025.
 
 Why Does Your Clinic Need a Website?
 
@@ -3464,7 +3475,7 @@ We have built websites for clinics across India — from solo practitioners in T
 
 All our clinic websites include: 100% mobile responsive, WhatsApp booking integration, Google Business Profile setup, local SEO, and 30-day post-launch support.
 
-Free consultation: hello@orbnix.in · WhatsApp +91 90798 81416s`},
+Free consultation: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:8,
       title:"School and College Website Design in India — What Parents Actually Look For",
@@ -3497,7 +3508,7 @@ What most school websites get wrong
 
 They are not mobile-friendly. More than 80% of school research in India happens on smartphones. If your website is not mobile-optimized, you are losing half your prospective parents.
 
-They are not updated. A school website showing "Admissions Open 2022-23" in 2026 destroys credibility instantly.
+They are not updated. A school website showing "Admissions Open 2022-23" in 2025 destroys credibility instantly.
 
 They have no enquiry tracking. Good school websites capture leads — name, class, contact number — and feed them into a follow-up system. Most school websites just have a contact email that nobody checks.
 
@@ -3509,7 +3520,7 @@ With fee payment, results portal, parent login: ₹80,000–1,50,000
 
 Orbnix builds school websites across India with online admissions, results display, fee structure pages, and Google-optimized SEO so parents in your city find you first.
 
-Get a free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a free quote: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:9,
       title:"Hotel Website That Reduces OTA Commission — Direct Booking Guide for Indian Hotels",
@@ -3554,10 +3565,10 @@ Resorts and destination properties: Full experience — rooms, dining, activitie
 
 Our hospitality client Royal Haveli in Jaipur moved 35% of bookings to direct in 4 months, saving ₹18 lakhs annually in OTA commissions.
 
-Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 90798 81416`},
+Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:10,
-      title:"Website for CA Firms and Chartered Accountants in India — Complete 2026 Guide",
+      title:"Website for CA Firms and Chartered Accountants in India — Complete 2025 Guide",
       cat:"Professional Services",
       metaDesc:"CA firm website from ₹20,000. Orbnix builds GST, ITR and audit service websites for chartered accountants across India. SEO-optimized to rank for local CA searches.",
       time:"5 min", date:"Jan 25, 2026", emoji:"⚖️",
@@ -3604,10 +3615,10 @@ Basic CA firm website (8-12 pages): ₹20,000–30,000
 With lead capture, WhatsApp integration, tax calendar: ₹30,000–45,000
 With client portal for document sharing: ₹50,000–80,000
 
-Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:11,
-      title:"Portfolio Website for Architects and Interior Designers in India — 2026 Guide",
+      title:"Portfolio Website for Architects and Interior Designers in India — 2025 Guide",
       cat:"Architecture",
       metaDesc:"Orbnix builds stunning architect portfolio websites with project galleries and client enquiry systems from ₹25,000. Rank on Google for architect searches in your city.",
       time:"5 min", date:"Feb 2, 2026", emoji:"✏️",
@@ -3686,10 +3697,10 @@ We have helped Indian manufacturers rank for their specific product keywords and
 
 Investment: ₹30,000–60,000 depending on product range and complexity. Always includes export SEO setup, Google-indexed product pages, and multi-currency enquiry handling.
 
-Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:13,
-      title:"Websites for Car Dealers, Pharmacies, Logistics & More — All Industries India 2026",
+      title:"Websites for Car Dealers, Pharmacies, Logistics & More — All Industries India 2025",
       cat:"Business",
       metaDesc:"Orbnix builds websites for car dealers, pharmacies, logistics companies, gyms, wedding planners, solar firms, insurance brokers, and 50+ industries across India. Free quote.",
       time:"6 min", date:"Mar 5, 2026", emoji:"🏢",
@@ -3727,7 +3738,7 @@ Donation portal with Razorpay/UPI integration, project impact showcase, FCRA/80G
 
 For any business category not listed here — we have likely already built something similar. Start with a free consultation and we will show you examples from your industry.
 
-Contact: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Contact: hello@orbnix.in · WhatsApp +91 98765 43210`},
   ];
   // Article schema — hook must be unconditional (Rules of Hooks)
   const activePost = active !== null ? posts.find(p=>p.id===active) : null;
@@ -3929,7 +3940,7 @@ function Contact() {
           <div>
             <span style={{display:"inline-flex",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,3.5vw,2.75rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.5rem"}}>Best Web Design & Development Company in India — <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Let's Build</span></h1>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 98765 43210"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -4234,7 +4245,7 @@ const SEO_META = {
   home: {
     title: "Orbnix — Website Design & Web Development Company India | React, Next.js, AI, Mobile Apps",
     description: "Orbnix builds high-performance websites, mobile apps, e-commerce stores, and AI chatbots for businesses across India. From clinics, schools and hotels to factories, CA firms and restaurants — we build for every industry. Starting ₹25,000. Free consultation in 24 hrs.",
-    keywords: "web development company India, website design company India, website development agency India, best web design company India, affordable website design India, professional website design India, web developer India, React developer India, Next.js developer India, full stack developer India, mobile app development India, Flutter app development India, e-commerce website development India, Shopify developer India, AI chatbot development India, AI agent development India, WhatsApp chatbot India, custom software development India, SEO services India, digital marketing agency India, UI UX design agency India, website design cost India, clinic website design India, hospital website development India, school website design India, hotel website development India, CA firm website design India, architect website India, factory website India, manufacturer website India, astrologer website India, restaurant website India, real estate website India, edtech website India, salon booking website India, pharmacy website India, car dealer website India, logistics company website India, gym website India, wedding planner website India, solar company website India, web development company Jaipur, IT company Jaipur, software company India, website design Mumbai, web development Bangalore, web development Delhi, affordable web developer India, freelance web developer India, React website development India, Next.js website India, MERN stack developer India, Node.js developer India, Razorpay integration India, WhatsApp API integration India, best web development company India 2026, chartered accountant website India, agriculture website India, agritech website India, NGO website India, finance company website India"
+    keywords: "web development company India, website design company India, website development agency India, best web design company India, affordable website design India, professional website design India, web developer India, React developer India, Next.js developer India, full stack developer India, mobile app development India, Flutter app development India, e-commerce website development India, Shopify developer India, AI chatbot development India, AI agent development India, WhatsApp chatbot India, custom software development India, SEO services India, digital marketing agency India, UI UX design agency India, website design cost India, clinic website design India, hospital website development India, school website design India, hotel website development India, CA firm website design India, architect website India, factory website India, manufacturer website India, astrologer website India, restaurant website India, real estate website India, edtech website India, salon booking website India, pharmacy website India, car dealer website India, logistics company website India, gym website India, wedding planner website India, solar company website India, web development company Jaipur, IT company Jaipur, software company India, website design Mumbai, web development Bangalore, web development Delhi, affordable web developer India, freelance web developer India, React website development India, Next.js website India, MERN stack developer India, Node.js developer India, Razorpay integration India, WhatsApp API integration India, best web development company India 2025, chartered accountant website India, agriculture website India, agritech website India, NGO website India, finance company website India"
   },
   about: {
     title: "About Orbnix — Remote-First Web Development Agency India | Our Team & Story",
@@ -4244,7 +4255,7 @@ const SEO_META = {
   work: {
     title: "Our Work — Web Development Portfolio India | Websites, Apps & AI Projects by Orbnix",
     description: "View Orbnix's portfolio of 80+ projects — restaurant websites, clinic booking systems, hotel direct booking, CA firm websites, school websites, e-commerce stores, AI chatbots, mobile apps, SaaS dashboards, and more. Real results, real ROI.",
-    keywords: "web development portfolio India, website design examples India, clinic website example, school website design India, hotel booking website India, CA firm website example, restaurant website India, e-commerce portfolio India, mobile app portfolio India, AI chatbot portfolio India, React portfolio India, best web design portfolio India 2026"
+    keywords: "web development portfolio India, website design examples India, clinic website example, school website design India, hotel booking website India, CA firm website example, restaurant website India, e-commerce portfolio India, mobile app portfolio India, AI chatbot portfolio India, React portfolio India, best web design portfolio India 2025"
   },
   services: {
     title: "Web Development Services India — Website, App, AI, E-Commerce, SEO | Orbnix",
@@ -4262,8 +4273,8 @@ const SEO_META = {
     keywords: "website design price India, web development cost India, how much does a website cost India, website design packages India, affordable website design India, website design starting 25000, mobile app cost India, AI development price India, e-commerce website cost India, web development charges India, website design fees India, IT company pricing India"
   },
   contact: {
-    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 90798 81416",
-    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 90798 81416 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
+    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 98765 43210",
+    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 98765 43210 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
     keywords: "contact web developer India, hire web developer India, get website quote India, free website consultation India, web development inquiry India, WhatsApp web developer India, hire React developer India, outsource web development India"
   }
 };
@@ -4330,7 +4341,7 @@ function SeoHead({ page, persona = "default" }) {
       "logo": "https://orbnix.in/logo.png",
       "image": "https://orbnix.in/og-cover.png",
       "email": "hello@orbnix.in",
-      "telephone": "+919079881416",
+      "telephone": "+919876543210",
       "areaServed": ["IN","US","GB","AE","AU"],
       "currenciesAccepted": "INR, USD",
       "paymentAccepted": "UPI, Bank Transfer, Razorpay, PayPal, Stripe",
@@ -4491,7 +4502,7 @@ const BOT_FLOWS = {
   human: {
     msg: "The Orbnix team typically replies within 2 hours ⚡\n\nBest ways to reach us:",
     opts: [
-      { label:"💬 WhatsApp +91 90798 81416", next:"wa" },
+      { label:"💬 WhatsApp +91 98765 43210", next:"wa" },
       { label:"✉️ Email hello@orbnix.in", next:"email" },
       { label:"📋 Fill contact form", next:"form" },
     ],
@@ -4526,7 +4537,7 @@ const BOT_FLOWS = {
       { label:"🔙 Back to start", next:"start" },
     ],
   },
-  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919079881416\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
+  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919876543210\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
   email: { msg: "Drop us a line at:\nhello@orbnix.in\n\nWe reply within 2 hours during business hours (10am–7pm IST).", opts:[{label:"🔙 Back",next:"start"}] },
   form: { msg: "Fill out our contact form on the Contact page for a detailed inquiry — we'll get back within 24 hours with a proper quote.", opts:[{label:"🔙 Back",next:"start"}] },
 };
