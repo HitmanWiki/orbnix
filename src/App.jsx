@@ -2424,7 +2424,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
                   const isCall = l.includes("Call");
                   return (
                     <a key={l}
-                      href={isEmail?"mailto:hello@orbnix.in":isWA?"https://wa.me/919876543210":undefined}
+                      href={isEmail?"mailto:hello@orbnix.in":isWA?"https://wa.me/919079881416":undefined}
                       target={isWA?"_blank":undefined}
                       rel={isWA?"noopener noreferrer":undefined}
                       onClick={isPage?(e=>{e.preventDefault();setPage(isPage);}):undefined}
@@ -2509,7 +2509,7 @@ function FaqAccordion() {
         <div style={{fontWeight:700,color:C.t,marginBottom:".3rem",fontSize:".9rem"}}>Still have questions?</div>
         <div style={{color:C.t3,fontSize:".82rem",marginBottom:".85rem"}}>WhatsApp us or book a free 30-min call — no sales pressure, just honest answers.</div>
         <div style={{display:"flex",gap:".75rem",justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
+          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
           <a href="mailto:hello@orbnix.in" style={{background:C.blueLL,color:C.blue,padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>✉️ Email Us</a>
         </div>
       </div>
@@ -4330,7 +4330,7 @@ function SeoHead({ page, persona = "default" }) {
       "logo": "https://orbnix.in/logo.png",
       "image": "https://orbnix.in/og-cover.png",
       "email": "hello@orbnix.in",
-      "telephone": "+919876543210",
+      "telephone": "+919079881416",
       "areaServed": ["IN","US","GB","AE","AU"],
       "currenciesAccepted": "INR, USD",
       "paymentAccepted": "UPI, Bank Transfer, Razorpay, PayPal, Stripe",
@@ -4526,7 +4526,7 @@ const BOT_FLOWS = {
       { label:"🔙 Back to start", next:"start" },
     ],
   },
-  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919876543210\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
+  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919079881416\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
   email: { msg: "Drop us a line at:\nhello@orbnix.in\n\nWe reply within 2 hours during business hours (10am–7pm IST).", opts:[{label:"🔙 Back",next:"start"}] },
   form: { msg: "Fill out our contact form on the Contact page for a detailed inquiry — we'll get back within 24 hours with a proper quote.", opts:[{label:"🔙 Back",next:"start"}] },
 };
