@@ -2575,7 +2575,47 @@ function ContactForm() {
         <label style={{display:"block",fontSize:".76rem",fontWeight:600,color:C.t2,marginBottom:".35rem"}}>Project Details *</label>
         <textarea value={form.message} onChange={e=>setForm({...form,message:e.target.value})} rows={4} placeholder="Describe your project — what you want to build, your goals, any existing tech..." style={{width:"100%",padding:".7rem .9rem",background:C.bg2,border:`1.5px solid ${C.border}`,borderRadius:9,color:C.t,fontFamily:"'Manrope',sans-serif",fontSize:".875rem",outline:"none",resize:"vertical"}} onFocus={e=>e.target.style.borderColor="#2563EB"} onBlur={e=>e.target.style.borderColor=C.border}/>
       </div>
-      <button onClick={()=>{if(!form.name||!form.email||!form.service)return alert("Please fill Name, Email and Service.");setSent(true);}} style={{width:"100%",padding:".95rem",background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:11,fontFamily:"'Manrope',sans-serif",fontSize:".92rem",fontWeight:700,cursor:"pointer",boxShadow:"0 4px 16px rgba(37,99,235,.3)"}}>
+      <button onClick={async()=>{
+        if(!form.name||!form.email||!form.service)return alert("Please fill Name, Email and Service.");
+        try{
+          const res=await fetch("https://api.web3forms.com/submit",{
+            method:"POST",
+            headers:{"Content-Type":"application/json","Accept":"application/json"},
+            body:JSON.stringify({
+              access_key:"3773362b-9f2a-4b54-98fd-d279bf21ff5f",
+              subject:`New Orbnix Enquiry — ${form.service} — ${form.name}`,
+              from_name:"Orbnix Website",
+              replyto:form.email,
+              name:form.name,
+              email:form.email,
+              phone:form.phone||"Not provided",
+              company:form.company||"Not provided",
+              service:form.service,
+              budget:form.budget||"Not specified",
+              timeline:form.timeline||"Not specified",
+              message:form.message,
+            })
+          });
+          const data=await res.json();
+          if(data.success){
+            // Auto-reply to client
+            await fetch("https://api.web3forms.com/submit",{
+              method:"POST",
+              headers:{"Content-Type":"application/json","Accept":"application/json"},
+              body:JSON.stringify({
+                access_key:"3773362b-9f2a-4b54-98fd-d279bf21ff5f",
+                subject:"We received your enquiry — Orbnix",
+                from_name:"Orbnix",
+                to:form.email,
+                replyto:"hello@orbnix.in",
+                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 90798 81416\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
+              })
+            });
+            setSent(true);
+          }
+          else{alert("Something went wrong. Please WhatsApp us at +91 90798 81416");}
+        }catch(e){alert("Network error. Please WhatsApp us at +91 90798 81416");}
+      }} style={{width:"100%",padding:".95rem",background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:11,fontFamily:"'Manrope',sans-serif",fontSize:".92rem",fontWeight:700,cursor:"pointer",boxShadow:"0 4px 16px rgba(37,99,235,.3)"}}>
         Send Message — It's Free →
       </button>
       <p style={{textAlign:"center",fontSize:".73rem",color:C.t4,marginTop:".65rem"}}>No spam · No obligation · Reply within 24 hours</p>
