@@ -893,7 +893,7 @@ function DemoRealEstate() {
 }
 
 function DemoLMS() {
-  const [tab,setTab]=useState("courses");
+  const [tab,setTab]=useState("courses");s
   const [enrolled,setEnrolled]=useState([1,3]);
   const courses=[
     {id:1,title:"Complete React & Next.js Bootcamp",instructor:"Arjun Mehra",cat:"Web Dev",students:4820,rating:4.9,price:1299,mrp:4999,level:"Beginner",emoji:"⚛️",lessons:84,hours:32},
