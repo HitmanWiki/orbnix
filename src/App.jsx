@@ -4400,7 +4400,7 @@ function SeoHead({ page, persona = "default" }) {
         {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobile App Development"},"price":"80000","priceCurrency":"INR"},
         {"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Agent Development"},"price":"40000","priceCurrency":"INR"}
       ]},
-      "sameAs": ["https://instagram.com/orbnix.in","https://linkedin.com/company/orbnix","https://twitter.com/orbnix_in","https://youtube.com/@OrbnixIndia","https://www.facebook.com/orbnix.in","https://www.google.com/maps"]
+      "sameAs": ["https://instagram.com/orbnix.in","https://linkedin.com/company/orbnix","https://x.com/orbnix","https://youtube.com/@OrbnixIndia","https://www.facebook.com/orbnix.in","https://www.google.com/maps"]
     });
   }, [page, persona]);
   return null;
@@ -4417,7 +4417,7 @@ const SOCIALS = [
   { id:"li",   label:"LinkedIn",  url:"https://linkedin.com/company/orbnix",        color:"#0A66C2", grad:"linear-gradient(135deg,#0A66C2,#00A0DC)", icon:(
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-5a2 2 0 110 4 2 2 0 010-4z"/></svg>
   )},
-  { id:"x",    label:"X (Twitter)",url:"https://twitter.com/orbnix_in",             color:"#000",    grad:"linear-gradient(135deg,#111,#333)", icon:(
+  { id:"x",    label:"X (Twitter)",url:"https://x.com/orbnix",             color:"#000",    grad:"linear-gradient(135deg,#111,#333)", icon:(
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
   )},
   { id:"fb",   label:"Facebook",  url:"https://www.facebook.com/orbnix.in",           color:"#1877F2", grad:"linear-gradient(135deg,#1877F2,#0C63D4)", icon:(
