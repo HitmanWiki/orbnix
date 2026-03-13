@@ -569,7 +569,7 @@ function DemoAI() {
     if(m.includes("own")||m.includes("code")) return "🔒 Absolutely! 100% of the code and IP is yours from day one.\n\nYou get complete source code on delivery. No ongoing fees, no lock-in, forever.";
     if(m.includes("international")||m.includes("global")) return "🌍 Yes! ~40% of our clients are international.\n\nWe work with US, UK, UAE, Australia, Europe. Invoice in USD/GBP, sign NDAs, adjust to your timezone.";
     if(m.includes("ai")||m.includes("agent")||m.includes("replace")) return "🤖 AI agents handle 60–80% of routine queries automatically!\n\nOne client reduced support costs by 80% with our AI bot. Want details?";
-    return "Happy to help! 😊 The best next step is a free 30-min call — we'll give an honest recommendation.\n\n📞 WhatsApp: +91 90798 81416\n✉️ hello@orbnix.in";
+    return "Happy to help! 😊 The best next step is a free 30-min call — we'll give an honest recommendation.\n\n📞 WhatsApp: +91 98765 43210\n✉️ hello@orbnix.in";
   };
   const send=(text)=>{
     const q=text||input.trim();
@@ -893,7 +893,7 @@ function DemoRealEstate() {
               </div>
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
                 <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:p.color,fontSize:"1rem"}}>{p.price}</div>
-                <button onClick={e=>{e.stopPropagation();alert(`Contact for ${p.name}\n\nPrice: ${p.price}\nLocation: ${p.loc}\n\nWhatsApp: +91 90798 81416`);}} style={{background:p.color,color:"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Enquire</button>
+                <button onClick={e=>{e.stopPropagation();alert(`Contact for ${p.name}\n\nPrice: ${p.price}\nLocation: ${p.loc}\n\nWhatsApp: +91 98765 43210`);}} style={{background:p.color,color:"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Enquire</button>
               </div>
             </div>
           </div>
@@ -1126,7 +1126,7 @@ function DemoClinic() {
             ) : (
               <div>
                 <div style={{fontWeight:800,fontSize:".95rem",color:"#065F46",marginBottom:"1.25rem"}}>📅 Book Appointment</div>
-                {[["Patient Name","name","text","Enter full name"],["Phone Number","phone","tel","+91 90798 81416"],["Preferred Date","date","date",""],["Preferred Time","time","time",""]].map(([label,key,type,ph])=>(
+                {[["Patient Name","name","text","Enter full name"],["Phone Number","phone","tel","+91 98765 43210"],["Preferred Date","date","date",""],["Preferred Time","time","time",""]].map(([label,key,type,ph])=>(
                   <div key={key} style={{marginBottom:".85rem"}}>
                     <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
                     <input type={type} placeholder={ph} value={appt[key]} onChange={e=>setAppt(a=>({...a,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #D1FAE5",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
@@ -1250,7 +1250,7 @@ function DemoSchool() {
             ) : (
               <div>
                 <div style={{fontWeight:800,fontSize:".95rem",color:"#1E3A8A",marginBottom:"1.25rem"}}>📝 Admission Enquiry Form</div>
-                {[["Student Name","name","text","Full name"],["Parent Phone","phone","tel","+91 90798 81416"]].map(([label,key,type,ph])=>(
+                {[["Student Name","name","text","Full name"],["Parent Phone","phone","tel","+91 98765 43210"]].map(([label,key,type,ph])=>(
                   <div key={key} style={{marginBottom:".85rem"}}>
                     <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
                     <input type={type} placeholder={ph} value={form[key]} onChange={e=>setForm(f=>({...f,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #BFDBFE",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
@@ -1497,7 +1497,7 @@ function DemoCA() {
             ) : (
               <div>
                 <div style={{fontWeight:800,fontSize:".95rem",color:"#1E3A8A",marginBottom:"1rem"}}>📞 Free Consultation</div>
-                {[["Your Name","name","text","Full name"],["Phone","phone","tel","+91 90798 81416"],["Service Needed","service","text","e.g. GST Filing, ITR"]].map(([label,key,type,ph])=>(
+                {[["Your Name","name","text","Full name"],["Phone","phone","tel","+91 98765 43210"],["Service Needed","service","text","e.g. GST Filing, ITR"]].map(([label,key,type,ph])=>(
                   <div key={key} style={{marginBottom:".75rem"}}>
                     <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
                     <input type={type} placeholder={ph} value={query[key]} onChange={e=>setQuery(q=>({...q,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #BFDBFE",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
@@ -1610,7 +1610,7 @@ function DemoArchitect() {
             <div style={{fontWeight:800,fontSize:".95rem",color:"#4C1D95",marginBottom:".5rem"}}>Start Your Dream Project</div>
             <div style={{fontSize:".82rem",color:"#64748B",marginBottom:"1.5rem"}}>Free 1-hour consultation · 3D visualisation included · No obligation quote</div>
             <div style={{display:"flex",flexDirection:"column",gap:".75rem"}}>
-              {[["📞 Call Directly","+91 90798 81416","#4C1D95"],["💬 WhatsApp","Chat on WhatsApp","#25D366"],["📧 Email","studio@srivastavarch.in","#2563EB"]].map(([label,val,col])=>(
+              {[["📞 Call Directly","+91 98765 43210","#4C1D95"],["💬 WhatsApp","Chat on WhatsApp","#25D366"],["📧 Email","studio@srivastavarch.in","#2563EB"]].map(([label,val,col])=>(
                 <div key={label} style={{background:"#fff",borderRadius:11,padding:".85rem",border:`1.5px solid ${col}33`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   <span style={{fontSize:".82rem",fontWeight:700,color:"#0F172A"}}>{label}</span>
                   <span style={{fontSize:".78rem",color:col,fontWeight:600}}>{val}</span>
@@ -1843,7 +1843,7 @@ function DemoAstrologer() {
                     {services.map(s=><option key={s.name}>{s.name} — {s.price}</option>)}
                   </select>
                 </div>
-                {[["Your Name","name","text","Full name"],["Phone","phone","tel","+91 90798 81416"],["Date of Birth","dob","date",""],["Time of Birth (if known)","time","time",""]].map(([label,key,type,ph])=>(
+                {[["Your Name","name","text","Full name"],["Phone","phone","tel","+91 98765 43210"],["Date of Birth","dob","date",""],["Time of Birth (if known)","time","time",""]].map(([label,key,type,ph])=>(
                   <div key={key} style={{marginBottom:".75rem"}}>
                     <div style={{fontSize:".75rem",fontWeight:600,color:"rgba(255,255,255,.75)",marginBottom:".3rem"}}>{label}</div>
                     <input type={type} placeholder={ph} value={booking[key]} onChange={e=>setBooking(b=>({...b,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid rgba(245,158,11,.4)",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",background:"rgba(255,255,255,.05)",color:"#fff",boxSizing:"border-box"}}/>
@@ -2274,7 +2274,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
           <div>
             <span style={{display:"inline-flex",alignItems:"center",gap:".5rem",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.85rem,3vw,2.5rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.75rem"}}>Let's Build <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Something Great</span></h2>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 98765 43210"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:13,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -2582,7 +2582,7 @@ function ContactForm() {
             method:"POST",
             headers:{"Content-Type":"application/json","Accept":"application/json"},
             body:JSON.stringify({
-              access_key:"3773362b-9f2a-4b54-98fd-d279bf21ff5f",
+              access_key:"YOUR_WEB3FORMS_KEY",
               subject:`New Orbnix Enquiry — ${form.service} — ${form.name}`,
               from_name:"Orbnix Website",
               replyto:form.email,
@@ -2603,7 +2603,7 @@ function ContactForm() {
               method:"POST",
               headers:{"Content-Type":"application/json","Accept":"application/json"},
               body:JSON.stringify({
-                access_key:"3773362b-9f2a-4b54-98fd-d279bf21ff5f",
+                access_key:"YOUR_WEB3FORMS_KEY",
                 subject:"We received your enquiry — Orbnix",
                 from_name:"Orbnix",
                 to:form.email,
@@ -2741,7 +2741,7 @@ Choosing on price alone. A ₹8,000 website that doesn't rank on Google, doesn't
 
 Choose a partner who challenges your brief, not one who agrees with everything. If every idea you propose is "great" — they're not thinking.
 
-Book a free call with Orbnix or WhatsApp us at +91 90798 81416. We work 100% remotely with clients across India.`},
+Book a free call with Orbnix or WhatsApp us at +91 98765 43210. We work 100% remotely with clients across India.`},
     { id:2,
       title:"How Much Does a Website Cost in India? (2025 Honest Breakdown)",
       cat:"Pricing",
@@ -2844,7 +2844,7 @@ You probably should if:
 - You're paying staff to answer the same questions repeatedly
 - You need 24/7 availability but can't afford round-the-clock staff
 
-Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 90798 81416.`},
+Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 98765 43210.`},
     { id:4,
       title:"Mobile App Development Cost in India 2025 — Flutter vs React Native",
       cat:"Mobile Apps",
@@ -3022,7 +3022,7 @@ Orbnix e-commerce packages:
 
 All packages include: Payment gateway integration, mobile-optimised design, basic SEO, WhatsApp order notifications, and 30 days of post-launch support.
 
-Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 98765 43210.`},
     { id:7,
       title:"Why 70% of Indian Startups Choose the Wrong IT Agency (And How to Avoid It)",
       cat:"Business",
@@ -3172,7 +3172,7 @@ Cost is roughly equal. The difference is in developer availability: Flutter deve
 
 What Orbnix uses: We default to Flutter for all new mobile projects, with React Native when specifically requested or when code sharing with web is a priority. All our mobile apps support iOS 13+ and Android 6+.
 
-Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 90798 81416 for a free scope assessment.`},
+Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 98765 43210 for a free scope assessment.`},
     { id:10,
       title:"Google Core Web Vitals — Why Your Indian Business Website Is Failing (And How to Fix It)",
       cat:"Web Development",
@@ -3293,7 +3293,7 @@ Full WhatsApp Business API setup + CRM integration: ₹25,000 one-time
 Monthly broadcast management + automation: ₹8,000/month
 AI-powered WhatsApp bot (answers queries + qualifies leads): from ₹40,000
 
-Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 90798 81416.`},
+Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 98765 43210.`},
     { id:12,
       title:"No-Code vs Custom Development — What's Right for Your Indian Startup in 2025?",
       cat:"Web Development",
@@ -3384,7 +3384,7 @@ Typical outcomes for Mumbai clients:
 
 Our Mumbai-specific experience: We've delivered websites and apps for clients in South Mumbai, Bandra, Andheri, Powai, BKC, and Navi Mumbai.
 
-Ready to build with us? WhatsApp +91 90798 81416 or email hello@orbnix.in. Quote delivered in 24 hours.`},
+Ready to build with us? WhatsApp +91 98765 43210 or email hello@orbnix.in. Quote delivered in 24 hours.`},
     { id:14,
       title:"Best Web Development Company in Bengaluru — What Startups Actually Need in 2025",
       cat:"Web Development",
@@ -3422,7 +3422,7 @@ Our services are especially popular with Bengaluru-based:
 - D2C brands scaling beyond ₹1Cr/month
 - B2B SaaS companies building their first public-facing product
 
-Book a free discovery call: hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Book a free discovery call: hello@orbnix.in or WhatsApp +91 98765 43210.`},
     { id:15,
       title:"Web Development Costs in Delhi & NCR — Complete Guide for Businesses (2025)",
       cat:"Web Development",
@@ -3465,7 +3465,7 @@ Our Delhi NCR client results:
 - Logistics company: 45% reduction in phone inquiries after self-service portal launch
 - Export business: International credibility improved, 3 new UK clients in first 60 days
 
-Get your free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get your free quote: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:7,
       title:"Best Website for Clinics and Hospitals in India 2025 — Complete Guide",
@@ -3515,7 +3515,7 @@ We have built websites for clinics across India — from solo practitioners in T
 
 All our clinic websites include: 100% mobile responsive, WhatsApp booking integration, Google Business Profile setup, local SEO, and 30-day post-launch support.
 
-Free consultation: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Free consultation: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:8,
       title:"School and College Website Design in India — What Parents Actually Look For",
@@ -3560,7 +3560,7 @@ With fee payment, results portal, parent login: ₹80,000–1,50,000
 
 Orbnix builds school websites across India with online admissions, results display, fee structure pages, and Google-optimized SEO so parents in your city find you first.
 
-Get a free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a free quote: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:9,
       title:"Hotel Website That Reduces OTA Commission — Direct Booking Guide for Indian Hotels",
@@ -3605,7 +3605,7 @@ Resorts and destination properties: Full experience — rooms, dining, activitie
 
 Our hospitality client Royal Haveli in Jaipur moved 35% of bookings to direct in 4 months, saving ₹18 lakhs annually in OTA commissions.
 
-Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 90798 81416`},
+Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:10,
       title:"Website for CA Firms and Chartered Accountants in India — Complete 2025 Guide",
@@ -3655,7 +3655,7 @@ Basic CA firm website (8-12 pages): ₹20,000–30,000
 With lead capture, WhatsApp integration, tax calendar: ₹30,000–45,000
 With client portal for document sharing: ₹50,000–80,000
 
-Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:11,
       title:"Portfolio Website for Architects and Interior Designers in India — 2025 Guide",
@@ -3737,7 +3737,7 @@ We have helped Indian manufacturers rank for their specific product keywords and
 
 Investment: ₹30,000–60,000 depending on product range and complexity. Always includes export SEO setup, Google-indexed product pages, and multi-currency enquiry handling.
 
-Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 98765 43210`},
 
     { id:13,
       title:"Websites for Car Dealers, Pharmacies, Logistics & More — All Industries India 2025",
@@ -3778,7 +3778,7 @@ Donation portal with Razorpay/UPI integration, project impact showcase, FCRA/80G
 
 For any business category not listed here — we have likely already built something similar. Start with a free consultation and we will show you examples from your industry.
 
-Contact: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Contact: hello@orbnix.in · WhatsApp +91 98765 43210`},
   ];
   // Article schema — hook must be unconditional (Rules of Hooks)
   const activePost = active !== null ? posts.find(p=>p.id===active) : null;
@@ -3786,7 +3786,7 @@ Contact: hello@orbnix.in · WhatsApp +91 90798 81416`},
     if (!activePost) return;
     let ld=document.querySelector('#orbnix-article-ld');
     if(!ld){ld=document.createElement('script');ld.id='orbnix-article-ld';ld.type='application/ld+json';document.head.appendChild(ld);}
-    ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":activePost.title,"description":activePost.metaDesc,"author":{"@type":"Organization","name":"Orbnix","url":"https://orbnix.in"},"publisher":{"@type":"Organization","name":"Orbnix","logo":{"@type":"ImageObject","url":"https://orbnix.in/logo.png"}},"datePublished":activePost.date,"dateModified":activePost.date,"mainEntityOfPage":{"@type":"WebPage","@id":`https://orbnix.in/blog/${activePost.id}`}});
+    ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":activePost.title,"description":activePost.metaDesc,"author":{"@type":"Organization","name":"Orbnix","url":"https://orbnix.in"},"publisher":{"@type":"Organization","name":"Orbnix","logo":{"@type":"ImageObject","url":"https://www.orbnix.in/logo.png"}},"datePublished":activePost.date,"dateModified":activePost.date,"mainEntityOfPage":{"@type":"WebPage","@id":`https://orbnix.in/blog/${activePost.id}`}});
     return()=>{const el=document.querySelector('#orbnix-article-ld');if(el)el.remove();};
   },[active]);
   if (active !== null) {
@@ -3980,7 +3980,7 @@ function Contact() {
           <div>
             <span style={{display:"inline-flex",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,3.5vw,2.75rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.5rem"}}>Best Web Design & Development Company in India — <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Let's Build</span></h1>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 98765 43210"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -4283,9 +4283,9 @@ function useCookiePersona(currentPage, demoClick, blogClick) {
 // ─── SEO META MANAGER ────────────────────────────────────────────────────────
 const SEO_META = {
   home: {
-    title: "Orbnix — Website Design & Web Development Company India | React, Next.js, AI, Mobile Apps",
-    description: "Orbnix builds high-performance websites, mobile apps, e-commerce stores, and AI chatbots for businesses across India. From clinics, schools and hotels to factories, CA firms and restaurants — we build for every industry. Starting ₹25,000. Free consultation in 24 hrs.",
-    keywords: "web development company India, website design company India, website development agency India, best web design company India, affordable website design India, professional website design India, web developer India, React developer India, Next.js developer India, full stack developer India, mobile app development India, Flutter app development India, e-commerce website development India, Shopify developer India, AI chatbot development India, AI agent development India, WhatsApp chatbot India, custom software development India, SEO services India, digital marketing agency India, UI UX design agency India, website design cost India, clinic website design India, hospital website development India, school website design India, hotel website development India, CA firm website design India, architect website India, factory website India, manufacturer website India, astrologer website India, restaurant website India, real estate website India, edtech website India, salon booking website India, pharmacy website India, car dealer website India, logistics company website India, gym website India, wedding planner website India, solar company website India, web development company Jaipur, IT company Jaipur, software company India, website design Mumbai, web development Bangalore, web development Delhi, affordable web developer India, freelance web developer India, React website development India, Next.js website India, MERN stack developer India, Node.js developer India, Razorpay integration India, WhatsApp API integration India, best web development company India 2025, chartered accountant website India, agriculture website India, agritech website India, NGO website India, finance company website India"
+    title: "Orbnix — Web Development Company Near You | Websites, Apps & AI Across India",
+    description: "Looking for a web development company near you? Orbnix builds websites, mobile apps, AI chatbots and e-commerce stores for businesses across India — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Jaipur and beyond. Starting ₹25,000. Free consultation.",
+    keywords: "web development company near me, web design company near me, IT company near me, tech company near me, website developer near me, app development company near me, web development company India, website design company India, website development agency India, best web design company India, affordable website design India, professional website design India, web developer India, React developer India, Next.js developer India, full stack developer India, mobile app development India, Flutter app development India, e-commerce website development India, Shopify developer India, AI chatbot development India, AI agent development India, WhatsApp chatbot India, custom software development India, SEO services India, digital marketing agency India, UI UX design agency India, website design cost India, clinic website design India, hospital website development India, school website design India, hotel website development India, CA firm website design India, architect website India, factory website India, manufacturer website India, astrologer website India, restaurant website India, real estate website India, edtech website India, salon booking website India, pharmacy website India, car dealer website India, logistics company website India, gym website India, wedding planner website India, solar company website India, web development company Jaipur, IT company Jaipur, software company India, website design Mumbai, web development Bangalore, web development Delhi, affordable web developer India, freelance web developer India, React website development India, Next.js website India, MERN stack developer India, Node.js developer India, Razorpay integration India, WhatsApp API integration India, best web development company India 2025, chartered accountant website India, agriculture website India, agritech website India, NGO website India, finance company website India"
   },
   about: {
     title: "About Orbnix — Remote-First Web Development Agency India | Our Team & Story",
@@ -4313,8 +4313,8 @@ const SEO_META = {
     keywords: "website design price India, web development cost India, how much does a website cost India, website design packages India, affordable website design India, website design starting 25000, mobile app cost India, AI development price India, e-commerce website cost India, web development charges India, website design fees India, IT company pricing India"
   },
   contact: {
-    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 90798 81416",
-    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 90798 81416 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
+    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 98765 43210",
+    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 98765 43210 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
     keywords: "contact web developer India, hire web developer India, get website quote India, free website consultation India, web development inquiry India, WhatsApp web developer India, hire React developer India, outsource web development India"
   }
 };
@@ -4338,17 +4338,17 @@ function SeoHead({ page, persona = "default" }) {
     setMeta("og:title", m.og, true);
     setMeta("og:description", m.desc, true);
     setMeta("og:type", "website", true);
-    setMeta("og:url", `https://orbnix.in/${page === "home" ? "" : page}`, true);
-    setMeta("og:image", "https://orbnix.in/og-cover.png", true);
+    setMeta("og:url", `https://www.orbnix.in/${page === "home" ? "" : page}`, true);
+    setMeta("og:image", "https://www.orbnix.in/og-cover.png", true);
     setMeta("og:site_name", "Orbnix", true);
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", m.og);
     setMeta("twitter:description", m.desc);
-    setMeta("twitter:image", "https://orbnix.in/og-cover.png");
+    setMeta("twitter:image", "https://www.orbnix.in/og-cover.png");
     setMeta("twitter:site", "@orbnix_in");
     let canon = document.querySelector('link[rel="canonical"]');
     if (!canon) { canon = document.createElement("link"); canon.setAttribute("rel", "canonical"); document.head.appendChild(canon); }
-    canon.setAttribute("href", `https://orbnix.in/${page === "home" ? "" : page}`);
+    canon.setAttribute("href", `https://www.orbnix.in/${page === "home" ? "" : page}`);
     // FAQ Rich Snippet Schema (home page)
     let faqLd = document.querySelector('#orbnix-faq-ld');
     if (page === "home") {
@@ -4378,11 +4378,11 @@ function SeoHead({ page, persona = "default" }) {
       "name": "Orbnix",
       "description": "Full-stack IT agency in India building custom websites, mobile apps, AI agents and SaaS software for startups and SMEs. 100% remote, pan-India.",
       "url": "https://orbnix.in",
-      "logo": "https://orbnix.in/logo.png",
-      "image": "https://orbnix.in/og-cover.png",
+      "logo": "https://www.orbnix.in/logo.png",
+      "image": "https://www.orbnix.in/og-cover.png",
       "email": "hello@orbnix.in",
       "telephone": "+919079881416",
-      "areaServed": ["IN","US","GB","AE","AU"],
+      "areaServed": ["IN","US","GB","AE","AU"], "serviceArea": [{"@type":"City","name":"Jaipur"},{"@type":"City","name":"Delhi"},{"@type":"City","name":"Mumbai"},{"@type":"City","name":"Bangalore"},{"@type":"City","name":"Hyderabad"},{"@type":"City","name":"Chennai"},{"@type":"City","name":"Pune"},{"@type":"City","name":"Ahmedabad"},{"@type":"City","name":"Kolkata"},{"@type":"City","name":"Surat"}],
       "currenciesAccepted": "INR, USD",
       "paymentAccepted": "UPI, Bank Transfer, Razorpay, PayPal, Stripe",
       "serviceType": ["Web Development","Mobile App Development","AI Agent Development","SEO","E-Commerce Development","UI/UX Design","SaaS Development","WhatsApp Marketing"],
@@ -4400,7 +4400,7 @@ function SeoHead({ page, persona = "default" }) {
         {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobile App Development"},"price":"80000","priceCurrency":"INR"},
         {"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Agent Development"},"price":"40000","priceCurrency":"INR"}
       ]},
-      "sameAs": ["https://instagram.com/orbnix.in","https://linkedin.com/company/orbnix","https://x.com/orbnix","https://youtube.com/@OrbnixIndia","https://www.facebook.com/orbnix.in","https://www.google.com/maps"]
+      "sameAs": ["https://instagram.com/orbnix.in","https://linkedin.com/company/orbnix","https://twitter.com/orbnix_in","https://youtube.com/@OrbnixIndia","https://facebook.com/OrbnixIndia","https://www.google.com/maps"]
     });
   }, [page, persona]);
   return null;
@@ -4417,10 +4417,10 @@ const SOCIALS = [
   { id:"li",   label:"LinkedIn",  url:"https://linkedin.com/company/orbnix",        color:"#0A66C2", grad:"linear-gradient(135deg,#0A66C2,#00A0DC)", icon:(
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-5a2 2 0 110 4 2 2 0 010-4z"/></svg>
   )},
-  { id:"x",    label:"X (Twitter)",url:"https://x.com/orbnix",             color:"#000",    grad:"linear-gradient(135deg,#111,#333)", icon:(
+  { id:"x",    label:"X (Twitter)",url:"https://twitter.com/orbnix_in",             color:"#000",    grad:"linear-gradient(135deg,#111,#333)", icon:(
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
   )},
-  { id:"fb",   label:"Facebook",  url:"https://www.facebook.com/orbnix.in",           color:"#1877F2", grad:"linear-gradient(135deg,#1877F2,#0C63D4)", icon:(
+  { id:"fb",   label:"Facebook",  url:"https://facebook.com/OrbnixIndia",           color:"#1877F2", grad:"linear-gradient(135deg,#1877F2,#0C63D4)", icon:(
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.5h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
   )},
 ];
@@ -4542,7 +4542,7 @@ const BOT_FLOWS = {
   human: {
     msg: "The Orbnix team typically replies within 2 hours ⚡\n\nBest ways to reach us:",
     opts: [
-      { label:"💬 WhatsApp +91 90798 81416", next:"wa" },
+      { label:"💬 WhatsApp +91 98765 43210", next:"wa" },
       { label:"✉️ Email hello@orbnix.in", next:"email" },
       { label:"📋 Fill contact form", next:"form" },
     ],
@@ -4756,13 +4756,886 @@ function Chatbot({ setPage }) {
 
 // ─── APP ROOT ─────────────────────────────────────────────────────────────────
 // ─── ROUTER WRAPPER ───────────────────────────────────────────────────────────
+const INDIA_LOCATIONS = [
+  ["anantapur","Anantapur","Andhra Pradesh"],
+  ["chittoor","Chittoor","Andhra Pradesh"],
+  ["east-godavari","East Godavari","Andhra Pradesh"],
+  ["guntur","Guntur","Andhra Pradesh"],
+  ["kadapa","Kadapa","Andhra Pradesh"],
+  ["krishna","Krishna","Andhra Pradesh"],
+  ["kurnool","Kurnool","Andhra Pradesh"],
+  ["nellore","Nellore","Andhra Pradesh"],
+  ["prakasam","Prakasam","Andhra Pradesh"],
+  ["srikakulam","Srikakulam","Andhra Pradesh"],
+  ["visakhapatnam","Visakhapatnam","Andhra Pradesh"],
+  ["vizianagaram","Vizianagaram","Andhra Pradesh"],
+  ["west-godavari","West Godavari","Andhra Pradesh"],
+  ["tirupati","Tirupati","Andhra Pradesh"],
+  ["vijayawada","Vijayawada","Andhra Pradesh"],
+  ["kakinada","Kakinada","Andhra Pradesh"],
+  ["rajahmundry","Rajahmundry","Andhra Pradesh"],
+  ["nandyal","Nandyal","Andhra Pradesh"],
+  ["ongole","Ongole","Andhra Pradesh"],
+  ["eluru","Eluru","Andhra Pradesh"],
+  ["bapatla","Bapatla","Andhra Pradesh"],
+  ["parvathipuram-manyam","Parvathipuram Manyam","Andhra Pradesh"],
+  ["alluri-sitharama-raju","Alluri Sitharama Raju","Andhra Pradesh"],
+  ["anakapalli","Anakapalli","Andhra Pradesh"],
+  ["konaseema","Konaseema","Andhra Pradesh"],
+  ["sri-sathya-sai","Sri Sathya Sai","Andhra Pradesh"],
+  ["anjaw","Anjaw","Arunachal Pradesh"],
+  ["changlang","Changlang","Arunachal Pradesh"],
+  ["dibang-valley","Dibang Valley","Arunachal Pradesh"],
+  ["east-kameng","East Kameng","Arunachal Pradesh"],
+  ["east-siang","East Siang","Arunachal Pradesh"],
+  ["itanagar","Itanagar","Arunachal Pradesh"],
+  ["kamle","Kamle","Arunachal Pradesh"],
+  ["kra-daadi","Kra Daadi","Arunachal Pradesh"],
+  ["kurung-kumey","Kurung Kumey","Arunachal Pradesh"],
+  ["lepa-rada","Lepa Rada","Arunachal Pradesh"],
+  ["lohit","Lohit","Arunachal Pradesh"],
+  ["longding","Longding","Arunachal Pradesh"],
+  ["lower-dibang-valley","Lower Dibang Valley","Arunachal Pradesh"],
+  ["lower-siang","Lower Siang","Arunachal Pradesh"],
+  ["lower-subansiri","Lower Subansiri","Arunachal Pradesh"],
+  ["namsai","Namsai","Arunachal Pradesh"],
+  ["pakke-kessang","Pakke Kessang","Arunachal Pradesh"],
+  ["papum-pare","Papum Pare","Arunachal Pradesh"],
+  ["shi-yomi","Shi Yomi","Arunachal Pradesh"],
+  ["siang","Siang","Arunachal Pradesh"],
+  ["tawang","Tawang","Arunachal Pradesh"],
+  ["tirap","Tirap","Arunachal Pradesh"],
+  ["upper-dibang-valley","Upper Dibang Valley","Arunachal Pradesh"],
+  ["upper-siang","Upper Siang","Arunachal Pradesh"],
+  ["upper-subansiri","Upper Subansiri","Arunachal Pradesh"],
+  ["west-kameng","West Kameng","Arunachal Pradesh"],
+  ["west-siang","West Siang","Arunachal Pradesh"],
+  ["baksa","Baksa","Assam"],
+  ["barpeta","Barpeta","Assam"],
+  ["biswanath","Biswanath","Assam"],
+  ["bongaigaon","Bongaigaon","Assam"],
+  ["cachar","Cachar","Assam"],
+  ["charaideo","Charaideo","Assam"],
+  ["chirang","Chirang","Assam"],
+  ["darrang","Darrang","Assam"],
+  ["dhemaji","Dhemaji","Assam"],
+  ["dhubri","Dhubri","Assam"],
+  ["dibrugarh","Dibrugarh","Assam"],
+  ["dima-hasao","Dima Hasao","Assam"],
+  ["goalpara","Goalpara","Assam"],
+  ["golaghat","Golaghat","Assam"],
+  ["guwahati","Guwahati","Assam"],
+  ["hailakandi","Hailakandi","Assam"],
+  ["hojai","Hojai","Assam"],
+  ["jorhat","Jorhat","Assam"],
+  ["kamrup","Kamrup","Assam"],
+  ["kamrup-metropolitan","Kamrup Metropolitan","Assam"],
+  ["karbi-anglong","Karbi Anglong","Assam"],
+  ["karimganj","Karimganj","Assam"],
+  ["kokrajhar","Kokrajhar","Assam"],
+  ["lakhimpur","Lakhimpur","Assam"],
+  ["majuli","Majuli","Assam"],
+  ["morigaon","Morigaon","Assam"],
+  ["nagaon","Nagaon","Assam"],
+  ["nalbari","Nalbari","Assam"],
+  ["sivasagar","Sivasagar","Assam"],
+  ["silchar","Silchar","Assam"],
+  ["sonitpur","Sonitpur","Assam"],
+  ["south-salmara-mankachar","South Salmara Mankachar","Assam"],
+  ["tinsukia","Tinsukia","Assam"],
+  ["udalguri","Udalguri","Assam"],
+  ["west-karbi-anglong","West Karbi Anglong","Assam"],
+  ["araria","Araria","Bihar"],
+  ["arwal","Arwal","Bihar"],
+  ["aurangabad","Aurangabad","Bihar"],
+  ["banka","Banka","Bihar"],
+  ["begusarai","Begusarai","Bihar"],
+  ["bhagalpur","Bhagalpur","Bihar"],
+  ["bhojpur","Bhojpur","Bihar"],
+  ["buxar","Buxar","Bihar"],
+  ["darbhanga","Darbhanga","Bihar"],
+  ["east-champaran","East Champaran","Bihar"],
+  ["gaya","Gaya","Bihar"],
+  ["gopalganj","Gopalganj","Bihar"],
+  ["jamui","Jamui","Bihar"],
+  ["jehanabad","Jehanabad","Bihar"],
+  ["kaimur","Kaimur","Bihar"],
+  ["katihar","Katihar","Bihar"],
+  ["khagaria","Khagaria","Bihar"],
+  ["kishanganj","Kishanganj","Bihar"],
+  ["lakhisarai","Lakhisarai","Bihar"],
+  ["madhepura","Madhepura","Bihar"],
+  ["madhubani","Madhubani","Bihar"],
+  ["munger","Munger","Bihar"],
+  ["muzaffarpur","Muzaffarpur","Bihar"],
+  ["nalanda","Nalanda","Bihar"],
+  ["nawada","Nawada","Bihar"],
+  ["patna","Patna","Bihar"],
+  ["purnia","Purnia","Bihar"],
+  ["rohtas","Rohtas","Bihar"],
+  ["saharsa","Saharsa","Bihar"],
+  ["samastipur","Samastipur","Bihar"],
+  ["saran","Saran","Bihar"],
+  ["sheikhpura","Sheikhpura","Bihar"],
+  ["sheohar","Sheohar","Bihar"],
+  ["sitamarhi","Sitamarhi","Bihar"],
+  ["siwan","Siwan","Bihar"],
+  ["supaul","Supaul","Bihar"],
+  ["vaishali","Vaishali","Bihar"],
+  ["west-champaran","West Champaran","Bihar"],
+  ["balod","Balod","Chhattisgarh"],
+  ["baloda-bazar","Baloda Bazar","Chhattisgarh"],
+  ["balrampur","Balrampur","Chhattisgarh"],
+  ["bastar","Bastar","Chhattisgarh"],
+  ["bemetara","Bemetara","Chhattisgarh"],
+  ["bijapur","Bijapur","Chhattisgarh"],
+  ["bilaspur","Bilaspur","Chhattisgarh"],
+  ["dantewada","Dantewada","Chhattisgarh"],
+  ["dhamtari","Dhamtari","Chhattisgarh"],
+  ["durg","Durg","Chhattisgarh"],
+  ["gariaband","Gariaband","Chhattisgarh"],
+  ["gaurela-pendra-marwahi","Gaurela Pendra Marwahi","Chhattisgarh"],
+  ["janjgir-champa","Janjgir Champa","Chhattisgarh"],
+  ["jashpur","Jashpur","Chhattisgarh"],
+  ["kabirdham","Kabirdham","Chhattisgarh"],
+  ["kanker","Kanker","Chhattisgarh"],
+  ["khairagarh","Khairagarh","Chhattisgarh"],
+  ["kondagaon","Kondagaon","Chhattisgarh"],
+  ["korba","Korba","Chhattisgarh"],
+  ["koriya","Koriya","Chhattisgarh"],
+  ["mahasamund","Mahasamund","Chhattisgarh"],
+  ["manendragarh","Manendragarh","Chhattisgarh"],
+  ["mohla-manpur","Mohla Manpur","Chhattisgarh"],
+  ["mungeli","Mungeli","Chhattisgarh"],
+  ["narayanpur","Narayanpur","Chhattisgarh"],
+  ["raigarh","Raigarh","Chhattisgarh"],
+  ["raipur","Raipur","Chhattisgarh"],
+  ["rajnandgaon","Rajnandgaon","Chhattisgarh"],
+  ["sakti","Sakti","Chhattisgarh"],
+  ["sarangarh-bilaigarh","Sarangarh Bilaigarh","Chhattisgarh"],
+  ["sukma","Sukma","Chhattisgarh"],
+  ["surajpur","Surajpur","Chhattisgarh"],
+  ["surguja","Surguja","Chhattisgarh"],
+  ["north-goa","North Goa","Goa"],
+  ["south-goa","South Goa","Goa"],
+  ["ahmedabad","Ahmedabad","Gujarat"],
+  ["amreli","Amreli","Gujarat"],
+  ["anand","Anand","Gujarat"],
+  ["aravalli","Aravalli","Gujarat"],
+  ["banaskantha","Banaskantha","Gujarat"],
+  ["bharuch","Bharuch","Gujarat"],
+  ["bhavnagar","Bhavnagar","Gujarat"],
+  ["botad","Botad","Gujarat"],
+  ["chhota-udaipur","Chhota Udaipur","Gujarat"],
+  ["dahod","Dahod","Gujarat"],
+  ["dang","Dang","Gujarat"],
+  ["devbhoomi-dwarka","Devbhoomi Dwarka","Gujarat"],
+  ["gandhinagar","Gandhinagar","Gujarat"],
+  ["gir-somnath","Gir Somnath","Gujarat"],
+  ["jamnagar","Jamnagar","Gujarat"],
+  ["junagadh","Junagadh","Gujarat"],
+  ["kheda","Kheda","Gujarat"],
+  ["kutch","Kutch","Gujarat"],
+  ["mahisagar","Mahisagar","Gujarat"],
+  ["mehsana","Mehsana","Gujarat"],
+  ["morbi","Morbi","Gujarat"],
+  ["narmada","Narmada","Gujarat"],
+  ["navsari","Navsari","Gujarat"],
+  ["panchmahal","Panchmahal","Gujarat"],
+  ["patan","Patan","Gujarat"],
+  ["porbandar","Porbandar","Gujarat"],
+  ["rajkot","Rajkot","Gujarat"],
+  ["sabarkantha","Sabarkantha","Gujarat"],
+  ["surat","Surat","Gujarat"],
+  ["surendranagar","Surendranagar","Gujarat"],
+  ["tapi","Tapi","Gujarat"],
+  ["vadodara","Vadodara","Gujarat"],
+  ["valsad","Valsad","Gujarat"],
+  ["ambala","Ambala","Haryana"],
+  ["bhiwani","Bhiwani","Haryana"],
+  ["charkhi-dadri","Charkhi Dadri","Haryana"],
+  ["faridabad","Faridabad","Haryana"],
+  ["fatehabad","Fatehabad","Haryana"],
+  ["gurugram","Gurugram","Haryana"],
+  ["hisar","Hisar","Haryana"],
+  ["jhajjar","Jhajjar","Haryana"],
+  ["jind","Jind","Haryana"],
+  ["kaithal","Kaithal","Haryana"],
+  ["karnal","Karnal","Haryana"],
+  ["kurukshetra","Kurukshetra","Haryana"],
+  ["mahendragarh","Mahendragarh","Haryana"],
+  ["nuh","Nuh","Haryana"],
+  ["palwal","Palwal","Haryana"],
+  ["panchkula","Panchkula","Haryana"],
+  ["panipat","Panipat","Haryana"],
+  ["rewari","Rewari","Haryana"],
+  ["rohtak","Rohtak","Haryana"],
+  ["sirsa","Sirsa","Haryana"],
+  ["sonipat","Sonipat","Haryana"],
+  ["yamunanagar","Yamunanagar","Haryana"],
+  ["bilaspur-hp","Bilaspur","Himachal Pradesh"],
+  ["chamba","Chamba","Himachal Pradesh"],
+  ["hamirpur-hp","Hamirpur","Himachal Pradesh"],
+  ["kangra","Kangra","Himachal Pradesh"],
+  ["kinnaur","Kinnaur","Himachal Pradesh"],
+  ["kullu","Kullu","Himachal Pradesh"],
+  ["lahaul-spiti","Lahaul Spiti","Himachal Pradesh"],
+  ["mandi","Mandi","Himachal Pradesh"],
+  ["shimla","Shimla","Himachal Pradesh"],
+  ["sirmaur","Sirmaur","Himachal Pradesh"],
+  ["solan","Solan","Himachal Pradesh"],
+  ["una","Una","Himachal Pradesh"],
+  ["bokaro","Bokaro","Jharkhand"],
+  ["chatra","Chatra","Jharkhand"],
+  ["deoghar","Deoghar","Jharkhand"],
+  ["dhanbad","Dhanbad","Jharkhand"],
+  ["dumka","Dumka","Jharkhand"],
+  ["east-singhbhum","East Singhbhum","Jharkhand"],
+  ["garhwa","Garhwa","Jharkhand"],
+  ["giridih","Giridih","Jharkhand"],
+  ["godda","Godda","Jharkhand"],
+  ["gumla","Gumla","Jharkhand"],
+  ["hazaribagh","Hazaribagh","Jharkhand"],
+  ["jamtara","Jamtara","Jharkhand"],
+  ["jamshedpur","Jamshedpur","Jharkhand"],
+  ["khunti","Khunti","Jharkhand"],
+  ["koderma","Koderma","Jharkhand"],
+  ["latehar","Latehar","Jharkhand"],
+  ["lohardaga","Lohardaga","Jharkhand"],
+  ["pakur","Pakur","Jharkhand"],
+  ["palamu","Palamu","Jharkhand"],
+  ["ramgarh","Ramgarh","Jharkhand"],
+  ["ranchi","Ranchi","Jharkhand"],
+  ["sahebganj","Sahebganj","Jharkhand"],
+  ["seraikela-kharsawan","Seraikela Kharsawan","Jharkhand"],
+  ["simdega","Simdega","Jharkhand"],
+  ["west-singhbhum","West Singhbhum","Jharkhand"],
+  ["bagalkot","Bagalkot","Karnataka"],
+  ["bangalore-rural","Bangalore Rural","Karnataka"],
+  ["bangalore-urban","Bangalore Urban","Karnataka"],
+  ["belgaum","Belgaum","Karnataka"],
+  ["bellary","Bellary","Karnataka"],
+  ["bidar","Bidar","Karnataka"],
+  ["chamarajanagar","Chamarajanagar","Karnataka"],
+  ["chikballapur","Chikballapur","Karnataka"],
+  ["chikkamagaluru","Chikkamagaluru","Karnataka"],
+  ["chitradurga","Chitradurga","Karnataka"],
+  ["dakshina-kannada","Dakshina Kannada","Karnataka"],
+  ["davangere","Davangere","Karnataka"],
+  ["dharwad","Dharwad","Karnataka"],
+  ["gadag","Gadag","Karnataka"],
+  ["gulbarga","Gulbarga","Karnataka"],
+  ["hassan","Hassan","Karnataka"],
+  ["haveri","Haveri","Karnataka"],
+  ["kodagu","Kodagu","Karnataka"],
+  ["kolar","Kolar","Karnataka"],
+  ["koppal","Koppal","Karnataka"],
+  ["mandya","Mandya","Karnataka"],
+  ["mangalore","Mangalore","Karnataka"],
+  ["mysore","Mysore","Karnataka"],
+  ["raichur","Raichur","Karnataka"],
+  ["ramanagara","Ramanagara","Karnataka"],
+  ["shimoga","Shimoga","Karnataka"],
+  ["tumkur","Tumkur","Karnataka"],
+  ["udupi","Udupi","Karnataka"],
+  ["uttara-kannada","Uttara Kannada","Karnataka"],
+  ["vijayapura","Vijayapura","Karnataka"],
+  ["yadgir","Yadgir","Karnataka"],
+  ["alappuzha","Alappuzha","Kerala"],
+  ["ernakulam","Ernakulam","Kerala"],
+  ["idukki","Idukki","Kerala"],
+  ["kannur","Kannur","Kerala"],
+  ["kasaragod","Kasaragod","Kerala"],
+  ["kochi","Kochi","Kerala"],
+  ["kollam","Kollam","Kerala"],
+  ["kottayam","Kottayam","Kerala"],
+  ["kozhikode","Kozhikode","Kerala"],
+  ["malappuram","Malappuram","Kerala"],
+  ["palakkad","Palakkad","Kerala"],
+  ["pathanamthitta","Pathanamthitta","Kerala"],
+  ["thiruvananthapuram","Thiruvananthapuram","Kerala"],
+  ["thrissur","Thrissur","Kerala"],
+  ["wayanad","Wayanad","Kerala"],
+  ["agar-malwa","Agar Malwa","Madhya Pradesh"],
+  ["alirajpur","Alirajpur","Madhya Pradesh"],
+  ["anuppur","Anuppur","Madhya Pradesh"],
+  ["ashoknagar","Ashoknagar","Madhya Pradesh"],
+  ["balaghat","Balaghat","Madhya Pradesh"],
+  ["barwani","Barwani","Madhya Pradesh"],
+  ["betul","Betul","Madhya Pradesh"],
+  ["bhind","Bhind","Madhya Pradesh"],
+  ["bhopal","Bhopal","Madhya Pradesh"],
+  ["burhanpur","Burhanpur","Madhya Pradesh"],
+  ["chhatarpur","Chhatarpur","Madhya Pradesh"],
+  ["chhindwara","Chhindwara","Madhya Pradesh"],
+  ["damoh","Damoh","Madhya Pradesh"],
+  ["datia","Datia","Madhya Pradesh"],
+  ["dewas","Dewas","Madhya Pradesh"],
+  ["dhar","Dhar","Madhya Pradesh"],
+  ["dindori","Dindori","Madhya Pradesh"],
+  ["guna","Guna","Madhya Pradesh"],
+  ["gwalior","Gwalior","Madhya Pradesh"],
+  ["harda","Harda","Madhya Pradesh"],
+  ["hoshangabad","Hoshangabad","Madhya Pradesh"],
+  ["indore","Indore","Madhya Pradesh"],
+  ["jabalpur","Jabalpur","Madhya Pradesh"],
+  ["jhabua","Jhabua","Madhya Pradesh"],
+  ["katni","Katni","Madhya Pradesh"],
+  ["khandwa","Khandwa","Madhya Pradesh"],
+  ["khargone","Khargone","Madhya Pradesh"],
+  ["mandla","Mandla","Madhya Pradesh"],
+  ["mandsaur","Mandsaur","Madhya Pradesh"],
+  ["morena","Morena","Madhya Pradesh"],
+  ["narsinghpur","Narsinghpur","Madhya Pradesh"],
+  ["neemuch","Neemuch","Madhya Pradesh"],
+  ["niwari","Niwari","Madhya Pradesh"],
+  ["panna","Panna","Madhya Pradesh"],
+  ["raisen","Raisen","Madhya Pradesh"],
+  ["rajgarh","Rajgarh","Madhya Pradesh"],
+  ["ratlam","Ratlam","Madhya Pradesh"],
+  ["rewa","Rewa","Madhya Pradesh"],
+  ["sagar","Sagar","Madhya Pradesh"],
+  ["satna","Satna","Madhya Pradesh"],
+  ["sehore","Sehore","Madhya Pradesh"],
+  ["seoni","Seoni","Madhya Pradesh"],
+  ["shahdol","Shahdol","Madhya Pradesh"],
+  ["shajapur","Shajapur","Madhya Pradesh"],
+  ["sheopur","Sheopur","Madhya Pradesh"],
+  ["shivpuri","Shivpuri","Madhya Pradesh"],
+  ["sidhi","Sidhi","Madhya Pradesh"],
+  ["singrauli","Singrauli","Madhya Pradesh"],
+  ["tikamgarh","Tikamgarh","Madhya Pradesh"],
+  ["ujjain","Ujjain","Madhya Pradesh"],
+  ["umaria","Umaria","Madhya Pradesh"],
+  ["vidisha","Vidisha","Madhya Pradesh"],
+  ["ahmednagar","Ahmednagar","Maharashtra"],
+  ["akola","Akola","Maharashtra"],
+  ["amravati","Amravati","Maharashtra"],
+  ["beed","Beed","Maharashtra"],
+  ["bhandara","Bhandara","Maharashtra"],
+  ["buldhana","Buldhana","Maharashtra"],
+  ["chandrapur","Chandrapur","Maharashtra"],
+  ["dhule","Dhule","Maharashtra"],
+  ["gadchiroli","Gadchiroli","Maharashtra"],
+  ["gondia","Gondia","Maharashtra"],
+  ["hingoli","Hingoli","Maharashtra"],
+  ["jalgaon","Jalgaon","Maharashtra"],
+  ["jalna","Jalna","Maharashtra"],
+  ["kolhapur","Kolhapur","Maharashtra"],
+  ["latur","Latur","Maharashtra"],
+  ["mumbai-city","Mumbai City","Maharashtra"],
+  ["mumbai-suburban","Mumbai Suburban","Maharashtra"],
+  ["nagpur","Nagpur","Maharashtra"],
+  ["nanded","Nanded","Maharashtra"],
+  ["nandurbar","Nandurbar","Maharashtra"],
+  ["nashik","Nashik","Maharashtra"],
+  ["osmanabad","Osmanabad","Maharashtra"],
+  ["palghar","Palghar","Maharashtra"],
+  ["parbhani","Parbhani","Maharashtra"],
+  ["pune","Pune","Maharashtra"],
+  ["raigad","Raigad","Maharashtra"],
+  ["ratnagiri","Ratnagiri","Maharashtra"],
+  ["sangli","Sangli","Maharashtra"],
+  ["satara","Satara","Maharashtra"],
+  ["sindhudurg","Sindhudurg","Maharashtra"],
+  ["solapur","Solapur","Maharashtra"],
+  ["thane","Thane","Maharashtra"],
+  ["wardha","Wardha","Maharashtra"],
+  ["washim","Washim","Maharashtra"],
+  ["yavatmal","Yavatmal","Maharashtra"],
+  ["bishnupur","Bishnupur","Manipur"],
+  ["chandel","Chandel","Manipur"],
+  ["churachandpur","Churachandpur","Manipur"],
+  ["imphal-east","Imphal East","Manipur"],
+  ["imphal-west","Imphal West","Manipur"],
+  ["jiribam","Jiribam","Manipur"],
+  ["kakching","Kakching","Manipur"],
+  ["kamjong","Kamjong","Manipur"],
+  ["kangpokpi","Kangpokpi","Manipur"],
+  ["noney","Noney","Manipur"],
+  ["pherzawl","Pherzawl","Manipur"],
+  ["senapati","Senapati","Manipur"],
+  ["tamenglong","Tamenglong","Manipur"],
+  ["tengnoupal","Tengnoupal","Manipur"],
+  ["thoubal","Thoubal","Manipur"],
+  ["ukhrul","Ukhrul","Manipur"],
+  ["east-garo-hills","East Garo Hills","Meghalaya"],
+  ["east-jaintia-hills","East Jaintia Hills","Meghalaya"],
+  ["east-khasi-hills","East Khasi Hills","Meghalaya"],
+  ["eastern-west-khasi-hills","Eastern West Khasi Hills","Meghalaya"],
+  ["north-garo-hills","North Garo Hills","Meghalaya"],
+  ["ri-bhoi","Ri Bhoi","Meghalaya"],
+  ["shillong","Shillong","Meghalaya"],
+  ["south-garo-hills","South Garo Hills","Meghalaya"],
+  ["south-west-garo-hills","South West Garo Hills","Meghalaya"],
+  ["south-west-khasi-hills","South West Khasi Hills","Meghalaya"],
+  ["west-garo-hills","West Garo Hills","Meghalaya"],
+  ["west-jaintia-hills","West Jaintia Hills","Meghalaya"],
+  ["west-khasi-hills","West Khasi Hills","Meghalaya"],
+  ["aizawl","Aizawl","Mizoram"],
+  ["champhai","Champhai","Mizoram"],
+  ["hnahthial","Hnahthial","Mizoram"],
+  ["khawzawl","Khawzawl","Mizoram"],
+  ["kolasib","Kolasib","Mizoram"],
+  ["lawngtlai","Lawngtlai","Mizoram"],
+  ["lunglei","Lunglei","Mizoram"],
+  ["mamit","Mamit","Mizoram"],
+  ["saitual","Saitual","Mizoram"],
+  ["serchhip","Serchhip","Mizoram"],
+  ["siaha","Siaha","Mizoram"],
+  ["chumoukedima","Chumoukedima","Nagaland"],
+  ["dimapur","Dimapur","Nagaland"],
+  ["kiphire","Kiphire","Nagaland"],
+  ["kohima","Kohima","Nagaland"],
+  ["longleng","Longleng","Nagaland"],
+  ["mokokchung","Mokokchung","Nagaland"],
+  ["mon","Mon","Nagaland"],
+  ["niuland","Niuland","Nagaland"],
+  ["noklak","Noklak","Nagaland"],
+  ["peren","Peren","Nagaland"],
+  ["phek","Phek","Nagaland"],
+  ["shamator","Shamator","Nagaland"],
+  ["tseminyu","Tseminyu","Nagaland"],
+  ["tuensang","Tuensang","Nagaland"],
+  ["wokha","Wokha","Nagaland"],
+  ["zunheboto","Zunheboto","Nagaland"],
+  ["angul","Angul","Odisha"],
+  ["balangir","Balangir","Odisha"],
+  ["balasore","Balasore","Odisha"],
+  ["bargarh","Bargarh","Odisha"],
+  ["bhadrak","Bhadrak","Odisha"],
+  ["bhubaneswar","Bhubaneswar","Odisha"],
+  ["boudh","Boudh","Odisha"],
+  ["cuttack","Cuttack","Odisha"],
+  ["deogarh","Deogarh","Odisha"],
+  ["dhenkanal","Dhenkanal","Odisha"],
+  ["gajapati","Gajapati","Odisha"],
+  ["ganjam","Ganjam","Odisha"],
+  ["jagatsinghpur","Jagatsinghpur","Odisha"],
+  ["jajpur","Jajpur","Odisha"],
+  ["jharsuguda","Jharsuguda","Odisha"],
+  ["kalahandi","Kalahandi","Odisha"],
+  ["kandhamal","Kandhamal","Odisha"],
+  ["kendrapara","Kendrapara","Odisha"],
+  ["kendujhar","Kendujhar","Odisha"],
+  ["khordha","Khordha","Odisha"],
+  ["koraput","Koraput","Odisha"],
+  ["malkangiri","Malkangiri","Odisha"],
+  ["mayurbhanj","Mayurbhanj","Odisha"],
+  ["nabarangpur","Nabarangpur","Odisha"],
+  ["nayagarh","Nayagarh","Odisha"],
+  ["nuapada","Nuapada","Odisha"],
+  ["puri","Puri","Odisha"],
+  ["rayagada","Rayagada","Odisha"],
+  ["sambalpur","Sambalpur","Odisha"],
+  ["sonepur","Sonepur","Odisha"],
+  ["sundargarh","Sundargarh","Odisha"],
+  ["amritsar","Amritsar","Punjab"],
+  ["barnala","Barnala","Punjab"],
+  ["bathinda","Bathinda","Punjab"],
+  ["faridkot","Faridkot","Punjab"],
+  ["fatehgarh-sahib","Fatehgarh Sahib","Punjab"],
+  ["fazilka","Fazilka","Punjab"],
+  ["ferozepur","Ferozepur","Punjab"],
+  ["gurdaspur","Gurdaspur","Punjab"],
+  ["hoshiarpur","Hoshiarpur","Punjab"],
+  ["jalandhar","Jalandhar","Punjab"],
+  ["kapurthala","Kapurthala","Punjab"],
+  ["ludhiana","Ludhiana","Punjab"],
+  ["malerkotla","Malerkotla","Punjab"],
+  ["mansa","Mansa","Punjab"],
+  ["moga","Moga","Punjab"],
+  ["mohali","Mohali","Punjab"],
+  ["muktsar","Muktsar","Punjab"],
+  ["pathankot","Pathankot","Punjab"],
+  ["patiala","Patiala","Punjab"],
+  ["rupnagar","Rupnagar","Punjab"],
+  ["sangrur","Sangrur","Punjab"],
+  ["shahid-bhagat-singh-nagar","Shahid Bhagat Singh Nagar","Punjab"],
+  ["tarn-taran","Tarn Taran","Punjab"],
+  ["ajmer","Ajmer","Rajasthan"],
+  ["alwar","Alwar","Rajasthan"],
+  ["anupgarh","Anupgarh","Rajasthan"],
+  ["balotra","Balotra","Rajasthan"],
+  ["banswara","Banswara","Rajasthan"],
+  ["baran","Baran","Rajasthan"],
+  ["barmer","Barmer","Rajasthan"],
+  ["beawar","Beawar","Rajasthan"],
+  ["bharatpur","Bharatpur","Rajasthan"],
+  ["bhilwara","Bhilwara","Rajasthan"],
+  ["bikaner","Bikaner","Rajasthan"],
+  ["bundi","Bundi","Rajasthan"],
+  ["chittorgarh","Chittorgarh","Rajasthan"],
+  ["churu","Churu","Rajasthan"],
+  ["dausa","Dausa","Rajasthan"],
+  ["deeg","Deeg","Rajasthan"],
+  ["dhaulpur","Dhaulpur","Rajasthan"],
+  ["didwana-kuchaman","Didwana Kuchaman","Rajasthan"],
+  ["dungarpur","Dungarpur","Rajasthan"],
+  ["ganganagar","Ganganagar","Rajasthan"],
+  ["hanumangarh","Hanumangarh","Rajasthan"],
+  ["jaipur","Jaipur","Rajasthan"],
+  ["jaipur-rural","Jaipur Rural","Rajasthan"],
+  ["jaisalmer","Jaisalmer","Rajasthan"],
+  ["jalore","Jalore","Rajasthan"],
+  ["jhalawar","Jhalawar","Rajasthan"],
+  ["jhunjhunu","Jhunjhunu","Rajasthan"],
+  ["jodhpur","Jodhpur","Rajasthan"],
+  ["jodhpur-rural","Jodhpur Rural","Rajasthan"],
+  ["karauli","Karauli","Rajasthan"],
+  ["kekri","Kekri","Rajasthan"],
+  ["kota","Kota","Rajasthan"],
+  ["kotputli-behror","Kotputli Behror","Rajasthan"],
+  ["nagaur","Nagaur","Rajasthan"],
+  ["neem-ka-thana","Neem Ka Thana","Rajasthan"],
+  ["pali","Pali","Rajasthan"],
+  ["phalodi","Phalodi","Rajasthan"],
+  ["pratapgarh","Pratapgarh","Rajasthan"],
+  ["rajsamand","Rajsamand","Rajasthan"],
+  ["salumbar","Salumbar","Rajasthan"],
+  ["sanchore","Sanchore","Rajasthan"],
+  ["sawai-madhopur","Sawai Madhopur","Rajasthan"],
+  ["shahpura","Shahpura","Rajasthan"],
+  ["sikar","Sikar","Rajasthan"],
+  ["sirohi","Sirohi","Rajasthan"],
+  ["tonk","Tonk","Rajasthan"],
+  ["udaipur","Udaipur","Rajasthan"],
+  ["east-sikkim","East Sikkim","Sikkim"],
+  ["gangtok","Gangtok","Sikkim"],
+  ["north-sikkim","North Sikkim","Sikkim"],
+  ["pakyong","Pakyong","Sikkim"],
+  ["soreng","Soreng","Sikkim"],
+  ["west-sikkim","West Sikkim","Sikkim"],
+  ["ariyalur","Ariyalur","Tamil Nadu"],
+  ["chengalpattu","Chengalpattu","Tamil Nadu"],
+  ["chennai","Chennai","Tamil Nadu"],
+  ["coimbatore","Coimbatore","Tamil Nadu"],
+  ["cuddalore","Cuddalore","Tamil Nadu"],
+  ["dharmapuri","Dharmapuri","Tamil Nadu"],
+  ["dindigul","Dindigul","Tamil Nadu"],
+  ["erode","Erode","Tamil Nadu"],
+  ["kallakurichi","Kallakurichi","Tamil Nadu"],
+  ["kancheepuram","Kancheepuram","Tamil Nadu"],
+  ["kanniyakumari","Kanniyakumari","Tamil Nadu"],
+  ["karur","Karur","Tamil Nadu"],
+  ["krishnagiri","Krishnagiri","Tamil Nadu"],
+  ["madurai","Madurai","Tamil Nadu"],
+  ["mayiladuthurai","Mayiladuthurai","Tamil Nadu"],
+  ["nagapattinam","Nagapattinam","Tamil Nadu"],
+  ["namakkal","Namakkal","Tamil Nadu"],
+  ["nilgiris","Nilgiris","Tamil Nadu"],
+  ["perambalur","Perambalur","Tamil Nadu"],
+  ["pudukkottai","Pudukkottai","Tamil Nadu"],
+  ["ramanathapuram","Ramanathapuram","Tamil Nadu"],
+  ["ranipet","Ranipet","Tamil Nadu"],
+  ["salem","Salem","Tamil Nadu"],
+  ["sivaganga","Sivaganga","Tamil Nadu"],
+  ["tenkasi","Tenkasi","Tamil Nadu"],
+  ["thanjavur","Thanjavur","Tamil Nadu"],
+  ["theni","Theni","Tamil Nadu"],
+  ["thoothukudi","Thoothukudi","Tamil Nadu"],
+  ["tiruchirappalli","Tiruchirappalli","Tamil Nadu"],
+  ["tirunelveli","Tirunelveli","Tamil Nadu"],
+  ["tirupathur","Tirupathur","Tamil Nadu"],
+  ["tiruppur","Tiruppur","Tamil Nadu"],
+  ["tiruvallur","Tiruvallur","Tamil Nadu"],
+  ["tiruvannamalai","Tiruvannamalai","Tamil Nadu"],
+  ["tiruvarur","Tiruvarur","Tamil Nadu"],
+  ["vellore","Vellore","Tamil Nadu"],
+  ["viluppuram","Viluppuram","Tamil Nadu"],
+  ["virudhunagar","Virudhunagar","Tamil Nadu"],
+  ["adilabad","Adilabad","Telangana"],
+  ["bhadradri-kothagudem","Bhadradri Kothagudem","Telangana"],
+  ["hanumakonda","Hanumakonda","Telangana"],
+  ["hyderabad","Hyderabad","Telangana"],
+  ["jagtial","Jagtial","Telangana"],
+  ["jangaon","Jangaon","Telangana"],
+  ["jayashankar-bhupalpally","Jayashankar Bhupalpally","Telangana"],
+  ["jogulamba-gadwal","Jogulamba Gadwal","Telangana"],
+  ["kamareddy","Kamareddy","Telangana"],
+  ["karimnagar","Karimnagar","Telangana"],
+  ["khammam","Khammam","Telangana"],
+  ["komaram-bheem","Komaram Bheem","Telangana"],
+  ["mahabubabad","Mahabubabad","Telangana"],
+  ["mahabubnagar","Mahabubnagar","Telangana"],
+  ["mancherial","Mancherial","Telangana"],
+  ["medak","Medak","Telangana"],
+  ["medchal-malkajgiri","Medchal Malkajgiri","Telangana"],
+  ["mulugu","Mulugu","Telangana"],
+  ["nagarkurnool","Nagarkurnool","Telangana"],
+  ["nalgonda","Nalgonda","Telangana"],
+  ["narayanpet","Narayanpet","Telangana"],
+  ["nirmal","Nirmal","Telangana"],
+  ["nizamabad","Nizamabad","Telangana"],
+  ["peddapalli","Peddapalli","Telangana"],
+  ["rajanna-sircilla","Rajanna Sircilla","Telangana"],
+  ["rangareddy","Rangareddy","Telangana"],
+  ["sangareddy","Sangareddy","Telangana"],
+  ["siddipet","Siddipet","Telangana"],
+  ["suryapet","Suryapet","Telangana"],
+  ["vikarabad","Vikarabad","Telangana"],
+  ["wanaparthy","Wanaparthy","Telangana"],
+  ["warangal","Warangal","Telangana"],
+  ["yadadri-bhuvanagiri","Yadadri Bhuvanagiri","Telangana"],
+  ["dhalai","Dhalai","Tripura"],
+  ["gomati","Gomati","Tripura"],
+  ["khowai","Khowai","Tripura"],
+  ["north-tripura","North Tripura","Tripura"],
+  ["sepahijala","Sepahijala","Tripura"],
+  ["south-tripura","South Tripura","Tripura"],
+  ["unakoti","Unakoti","Tripura"],
+  ["west-tripura","West Tripura","Tripura"],
+  ["agra","Agra","Uttar Pradesh"],
+  ["aligarh","Aligarh","Uttar Pradesh"],
+  ["prayagraj","Prayagraj","Uttar Pradesh"],
+  ["ambedkar-nagar","Ambedkar Nagar","Uttar Pradesh"],
+  ["amethi","Amethi","Uttar Pradesh"],
+  ["amroha","Amroha","Uttar Pradesh"],
+  ["auraiya","Auraiya","Uttar Pradesh"],
+  ["ayodhya","Ayodhya","Uttar Pradesh"],
+  ["azamgarh","Azamgarh","Uttar Pradesh"],
+  ["baghpat","Baghpat","Uttar Pradesh"],
+  ["bahraich","Bahraich","Uttar Pradesh"],
+  ["ballia","Ballia","Uttar Pradesh"],
+  ["banda","Banda","Uttar Pradesh"],
+  ["barabanki","Barabanki","Uttar Pradesh"],
+  ["bareilly","Bareilly","Uttar Pradesh"],
+  ["basti","Basti","Uttar Pradesh"],
+  ["bhadohi","Bhadohi","Uttar Pradesh"],
+  ["bijnor","Bijnor","Uttar Pradesh"],
+  ["budaun","Budaun","Uttar Pradesh"],
+  ["bulandshahr","Bulandshahr","Uttar Pradesh"],
+  ["chandauli","Chandauli","Uttar Pradesh"],
+  ["chitrakoot","Chitrakoot","Uttar Pradesh"],
+  ["deoria","Deoria","Uttar Pradesh"],
+  ["etah","Etah","Uttar Pradesh"],
+  ["etawah","Etawah","Uttar Pradesh"],
+  ["farrukhabad","Farrukhabad","Uttar Pradesh"],
+  ["fatehpur","Fatehpur","Uttar Pradesh"],
+  ["firozabad","Firozabad","Uttar Pradesh"],
+  ["gautam-buddha-nagar","Gautam Buddha Nagar","Uttar Pradesh"],
+  ["ghaziabad","Ghaziabad","Uttar Pradesh"],
+  ["ghazipur","Ghazipur","Uttar Pradesh"],
+  ["gonda","Gonda","Uttar Pradesh"],
+  ["gorakhpur","Gorakhpur","Uttar Pradesh"],
+  ["hamirpur-up","Hamirpur","Uttar Pradesh"],
+  ["hapur","Hapur","Uttar Pradesh"],
+  ["hardoi","Hardoi","Uttar Pradesh"],
+  ["hathras","Hathras","Uttar Pradesh"],
+  ["jalaun","Jalaun","Uttar Pradesh"],
+  ["jaunpur","Jaunpur","Uttar Pradesh"],
+  ["jhansi","Jhansi","Uttar Pradesh"],
+  ["kannauj","Kannauj","Uttar Pradesh"],
+  ["kanpur-dehat","Kanpur Dehat","Uttar Pradesh"],
+  ["kanpur-nagar","Kanpur Nagar","Uttar Pradesh"],
+  ["kasganj","Kasganj","Uttar Pradesh"],
+  ["kaushambi","Kaushambi","Uttar Pradesh"],
+  ["kheri","Kheri","Uttar Pradesh"],
+  ["kushinagar","Kushinagar","Uttar Pradesh"],
+  ["lalitpur","Lalitpur","Uttar Pradesh"],
+  ["lucknow","Lucknow","Uttar Pradesh"],
+  ["maharajganj","Maharajganj","Uttar Pradesh"],
+  ["mahoba","Mahoba","Uttar Pradesh"],
+  ["mainpuri","Mainpuri","Uttar Pradesh"],
+  ["mathura","Mathura","Uttar Pradesh"],
+  ["mau","Mau","Uttar Pradesh"],
+  ["meerut","Meerut","Uttar Pradesh"],
+  ["mirzapur","Mirzapur","Uttar Pradesh"],
+  ["moradabad","Moradabad","Uttar Pradesh"],
+  ["muzaffarnagar","Muzaffarnagar","Uttar Pradesh"],
+  ["noida","Noida","Uttar Pradesh"],
+  ["pilibhit","Pilibhit","Uttar Pradesh"],
+  ["pratapgarh-up","Pratapgarh","Uttar Pradesh"],
+  ["raebareli","Raebareli","Uttar Pradesh"],
+  ["rampur","Rampur","Uttar Pradesh"],
+  ["saharanpur","Saharanpur","Uttar Pradesh"],
+  ["sambhal","Sambhal","Uttar Pradesh"],
+  ["sant-kabir-nagar","Sant Kabir Nagar","Uttar Pradesh"],
+  ["shahjahanpur","Shahjahanpur","Uttar Pradesh"],
+  ["shamli","Shamli","Uttar Pradesh"],
+  ["shravasti","Shravasti","Uttar Pradesh"],
+  ["siddharthnagar","Siddharthnagar","Uttar Pradesh"],
+  ["sitapur","Sitapur","Uttar Pradesh"],
+  ["sonbhadra","Sonbhadra","Uttar Pradesh"],
+  ["sultanpur","Sultanpur","Uttar Pradesh"],
+  ["unnao","Unnao","Uttar Pradesh"],
+  ["varanasi","Varanasi","Uttar Pradesh"],
+  ["almora","Almora","Uttarakhand"],
+  ["bageshwar","Bageshwar","Uttarakhand"],
+  ["chamoli","Chamoli","Uttarakhand"],
+  ["champawat","Champawat","Uttarakhand"],
+  ["dehradun","Dehradun","Uttarakhand"],
+  ["haridwar","Haridwar","Uttarakhand"],
+  ["nainital","Nainital","Uttarakhand"],
+  ["pauri-garhwal","Pauri Garhwal","Uttarakhand"],
+  ["pithoragarh","Pithoragarh","Uttarakhand"],
+  ["rudraprayag","Rudraprayag","Uttarakhand"],
+  ["tehri-garhwal","Tehri Garhwal","Uttarakhand"],
+  ["udham-singh-nagar","Udham Singh Nagar","Uttarakhand"],
+  ["uttarkashi","Uttarkashi","Uttarakhand"],
+  ["alipurduar","Alipurduar","West Bengal"],
+  ["bankura","Bankura","West Bengal"],
+  ["birbhum","Birbhum","West Bengal"],
+  ["cooch-behar","Cooch Behar","West Bengal"],
+  ["dakshin-dinajpur","Dakshin Dinajpur","West Bengal"],
+  ["darjeeling","Darjeeling","West Bengal"],
+  ["hooghly","Hooghly","West Bengal"],
+  ["howrah","Howrah","West Bengal"],
+  ["jalpaiguri","Jalpaiguri","West Bengal"],
+  ["jhargram","Jhargram","West Bengal"],
+  ["kalimpong","Kalimpong","West Bengal"],
+  ["kolkata","Kolkata","West Bengal"],
+  ["malda","Malda","West Bengal"],
+  ["murshidabad","Murshidabad","West Bengal"],
+  ["nadia","Nadia","West Bengal"],
+  ["north-24-parganas","North 24 Parganas","West Bengal"],
+  ["paschim-bardhaman","Paschim Bardhaman","West Bengal"],
+  ["paschim-medinipur","Paschim Medinipur","West Bengal"],
+  ["purba-bardhaman","Purba Bardhaman","West Bengal"],
+  ["purba-medinipur","Purba Medinipur","West Bengal"],
+  ["purulia","Purulia","West Bengal"],
+  ["south-24-parganas","South 24 Parganas","West Bengal"],
+  ["uttar-dinajpur","Uttar Dinajpur","West Bengal"],
+  ["delhi","Delhi","Delhi"],
+  ["new-delhi","New Delhi","Delhi"],
+  ["chandigarh","Chandigarh","Chandigarh"],
+  ["puducherry","Puducherry","Puducherry"],
+  ["karaikal","Karaikal","Puducherry"],
+  ["mahe","Mahe","Puducherry"],
+  ["yanam","Yanam","Puducherry"],
+  ["daman","Daman","Dadra & Nagar Haveli and Daman & Diu"],
+  ["diu","Diu","Dadra & Nagar Haveli and Daman & Diu"],
+  ["dadra","Dadra & Nagar Haveli","Dadra & Nagar Haveli and Daman & Diu"],
+  ["lakshadweep","Lakshadweep","Lakshadweep"],
+  ["port-blair","Port Blair","Andaman & Nicobar Islands"],
+  ["srinagar","Srinagar","Jammu & Kashmir"],
+  ["jammu","Jammu","Jammu & Kashmir"],
+  ["anantnag","Anantnag","Jammu & Kashmir"],
+  ["baramulla","Baramulla","Jammu & Kashmir"],
+  ["budgam","Budgam","Jammu & Kashmir"],
+  ["bandipora","Bandipora","Jammu & Kashmir"],
+  ["ganderbal","Ganderbal","Jammu & Kashmir"],
+  ["kulgam","Kulgam","Jammu & Kashmir"],
+  ["kupwara","Kupwara","Jammu & Kashmir"],
+  ["pulwama","Pulwama","Jammu & Kashmir"],
+  ["rajouri","Rajouri","Jammu & Kashmir"],
+  ["ramban","Ramban","Jammu & Kashmir"],
+  ["reasi","Reasi","Jammu & Kashmir"],
+  ["samba","Samba","Jammu & Kashmir"],
+  ["shopian","Shopian","Jammu & Kashmir"],
+  ["udhampur","Udhampur","Jammu & Kashmir"],
+  ["kathua","Kathua","Jammu & Kashmir"],
+  ["doda","Doda","Jammu & Kashmir"],
+  ["kishtwar","Kishtwar","Jammu & Kashmir"],
+  ["poonch","Poonch","Jammu & Kashmir"],
+  ["leh","Leh","Ladakh"],
+  ["kargil","Kargil","Ladakh"],
+];
+
+
+
+// ─── CITY LANDING PAGE ────────────────────────────────────────────────────────
+function CityPage({ city, slug, state }) {
+  useEffect(() => {
+    document.title = `Web Development Company ${city} — Orbnix | Websites, Apps & AI Near You`;
+    let desc = document.querySelector('meta[name="description"]');
+    if (!desc) { desc = document.createElement('meta'); desc.name = 'description'; document.head.appendChild(desc); }
+    desc.content = `Orbnix is a top web development company near you in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores for businesses in ${city}. Starting ₹25,000. Free consultation in 24 hours.`;
+    let canon = document.querySelector('link[rel="canonical"]');
+    if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
+    canon.href = `https://www.orbnix.in/cities/${slug}`;
+  }, [city, slug]);
+
+  const services = ["Website Design & Development","Mobile App Development","AI Chatbot & Automation","E-Commerce Store","UI/UX Design","SEO & Digital Marketing"];
+  const industries = ["Clinics & Hospitals","Schools & Colleges","Hotels & Resorts","Restaurants & Cafes","CA Firms & Lawyers","Factories & Manufacturers","Real Estate","Retailers & D2C Brands"];
+
+  return (
+    <main style={{paddingTop:"5rem",minHeight:"100vh",background:"#fff"}}>
+      {/* Hero */}
+      <section style={{background:"linear-gradient(135deg,#1e3a8a 0%,#7c3aed 100%)",padding:"5rem 1.5rem 4rem",textAlign:"center"}}>
+        <div style={{display:"inline-block",background:"rgba(255,255,255,.15)",borderRadius:20,padding:".4rem 1.2rem",fontFamily:"'JetBrains Mono',monospace",fontSize:".75rem",color:"#fff",marginBottom:"1.2rem",letterSpacing:".08em"}}>WEB DEVELOPMENT COMPANY {city.toUpperCase()}</div>
+        <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.15}}>
+          Web Development Company<br/><span style={{color:"#fbbf24"}}>Near You in {city}</span>
+        </h1>
+        <p style={{color:"rgba(255,255,255,.85)",fontSize:"1.15rem",maxWidth:620,margin:"0 auto 2rem",lineHeight:1.7}}>
+          Orbnix builds professional websites, mobile apps, AI chatbots and e-commerce stores for businesses in {city}. Fast delivery, fair pricing, full code ownership.
+        </p>
+        <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
+          <a href="/contact" style={{background:"#f97316",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,textDecoration:"none",fontSize:"1rem"}}>Get Free Consultation →</a>
+          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.15)",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.3)"}}>WhatsApp Us</a>
+        </div>
+      </section>
+
+      {/* Why Orbnix in City */}
+      <section style={{padding:"4rem 1.5rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.6rem,3.5vw,2.4rem)",fontWeight:800,color:"#0f172a",textAlign:"center",marginBottom:".75rem"}}>Why {city} Businesses Choose Orbnix</h2>
+        <p style={{textAlign:"center",color:"#64748b",marginBottom:"3rem",fontSize:"1.05rem"}}>We are a remote-first agency serving clients across India — including {city}.</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"1.5rem"}}>
+          {[["7–14 Day Delivery","Your website live faster than any agency in {city}"],["50% On Delivery","Pay the balance only when you're satisfied"],["Full Code Ownership","You own 100% of your website — no lock-in"],["SEO From Day 1","Ranks on Google for {city} searches from launch"],["Pan-India Remote","Serving {city} businesses without local agency premium"],["30-Day Support","Free support after launch — always available"]].map(([title, desc]) => (
+            <div key={title} style={{background:"#f8fafc",borderRadius:16,padding:"1.5rem",border:"1.5px solid #e2e8f0"}}>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#0f172a",marginBottom:".5rem"}}>{title}</div>
+              <div style={{color:"#64748b",fontSize:".9rem",lineHeight:1.6}}>{desc.replace(/{city}/g, city)}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Services */}
+      <section style={{padding:"3rem 1.5rem",background:"#f8fafc"}}>
+        <div style={{maxWidth:1100,margin:"0 auto"}}>
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:800,color:"#0f172a",textAlign:"center",marginBottom:"2.5rem"}}>Our Services in {city}</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:"1rem"}}>
+            {services.map(svc => (
+              <div key={svc} style={{background:"#fff",borderRadius:14,padding:"1.25rem 1.5rem",border:"1.5px solid #e2e8f0",fontWeight:600,color:"#0f172a",fontSize:".95rem"}}>✅ {svc}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section style={{padding:"3rem 1.5rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:800,color:"#0f172a",textAlign:"center",marginBottom:"2.5rem"}}>Industries We Serve in {city}</h2>
+        <div style={{display:"flex",flexWrap:"wrap",gap:"1rem",justifyContent:"center"}}>
+          {industries.map(ind => (
+            <span key={ind} style={{background:"#eff6ff",color:"#2563eb",borderRadius:10,padding:".55rem 1.2rem",fontWeight:600,fontSize:".9rem"}}>{ind}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%)",padding:"4rem 1.5rem",textAlign:"center"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.6rem,3.5vw,2.4rem)",fontWeight:800,color:"#fff",marginBottom:"1rem"}}>Ready to grow your {city} business online?</h2>
+        <p style={{color:"rgba(255,255,255,.8)",marginBottom:"2rem",fontSize:"1.05rem"}}>Free consultation. No obligation. Reply within 24 hours.</p>
+        <a href="/contact" style={{background:"#f97316",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.1rem"}}>Get Started — It's Free →</a>
+      </section>
+    </main>
+  );
+}
+
+
 function AppInner() {
   const navigate = useNavigate();
   const location = useLocation();
-  const pathToPage = { "/": "home", "/about": "about", "/work": "work", "/blog": "blog", "/services": "services", "/pricing": "pricing", "/contact": "contact" };
-  const pageToPath = { home: "/", about: "/about", work: "/work", blog: "/blog", services: "/services", pricing: "/pricing", contact: "/contact" };
-  const page = pathToPage[location.pathname] || "home";
-  const setPage = (p) => navigate(pageToPath[p] || "/");
+  const getPageFromPath = (pathname) => {
+    const staticMap = { "/": "home", "/about": "about", "/work": "work", "/blog": "blog", "/services": "services", "/pricing": "pricing", "/contact": "contact" };
+    if (staticMap[pathname]) return staticMap[pathname];
+    const cityMatch = pathname.match(/^\/cities\/(.+)$/);
+    if (cityMatch) {
+      const slug = cityMatch[1];
+      const found = INDIA_LOCATIONS.find(([s]) => s === slug);
+      if (found) return "city-" + slug;
+    }
+    return "home";
+  };
+  const getPathFromPage = (p) => {
+    const staticMap = { home: "/", about: "/about", work: "/work", blog: "/blog", services: "/services", pricing: "/pricing", contact: "/contact" };
+    if (staticMap[p]) return staticMap[p];
+    if (p.startsWith("city-")) return "/cities/" + p.replace("city-","");
+    return "/";
+  };
+
+  const page = getPageFromPath(location.pathname);
+  const setPage = (p) => navigate(getPathFromPage(p));
 
   const [demo, setDemo] = useState(null);
   const [lastDemo, setLastDemo] = useState(null);
@@ -4796,6 +5669,19 @@ function AppInner() {
       {page === "services" && <Services setPage={setPage} />}
       {page === "pricing"  && <Pricing  setPage={setPage} />}
       {page === "contact"  && <Contact />}
+      
+      {page.startsWith("city-") && (() => {
+        const slug = page.replace("city-","");
+        const loc = INDIA_LOCATIONS.find(([s]) => s === slug);
+        return loc ? <CityPage city={loc[1]} slug={loc[0]} state={loc[2]} /> : null;
+      })()}
+      {false && <CityPage city="Mumbai" slug="mumbai" />}
+      {false && <CityPage city="Bangalore" slug="bangalore" />}
+      {false && <CityPage city="Hyderabad" slug="hyderabad" />}
+      {false && <CityPage city="Chennai" slug="chennai" />}
+      {false && <CityPage city="Pune" slug="pune" />}
+      {false && <CityPage city="Ahmedabad" slug="ahmedabad" />}
+      {false && <CityPage city="Kolkata" slug="kolkata" />}
       <DemoModal demo={demo} onClose={() => setDemo(null)} />
       <Chatbot setPage={setPage} />
     </div>
