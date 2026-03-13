@@ -5537,77 +5537,269 @@ const INDIA_LOCATIONS = [
 // ─── CITY LANDING PAGE ────────────────────────────────────────────────────────
 function CityPage({ city, slug, state }) {
   useEffect(() => {
-    document.title = `Web Development Company ${city} — Orbnix | Websites, Apps & AI Near You`;
+    document.title = `Web Development Company in ${city} — Orbnix | Websites, Apps & AI Near You`;
     let desc = document.querySelector('meta[name="description"]');
     if (!desc) { desc = document.createElement('meta'); desc.name = 'description'; document.head.appendChild(desc); }
-    desc.content = `Orbnix is a top web development company near you in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores for businesses in ${city}. Starting ₹25,000. Free consultation in 24 hours.`;
+    desc.content = `Orbnix is a top-rated web development company serving businesses in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores. 7–14 day delivery. Starting ₹25,000. Free consultation in 24 hrs.`;
     let canon = document.querySelector('link[rel="canonical"]');
     if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
     canon.href = `https://www.orbnix.in/cities/${slug}`;
-  }, [city, slug]);
+  }, [city, slug, state]);
 
-  const services = ["Website Design & Development","Mobile App Development","AI Chatbot & Automation","E-Commerce Store","UI/UX Design","SEO & Digital Marketing"];
-  const industries = ["Clinics & Hospitals","Schools & Colleges","Hotels & Resorts","Restaurants & Cafes","CA Firms & Lawyers","Factories & Manufacturers","Real Estate","Retailers & D2C Brands"];
+  const SERVICES = [
+    { icon: "🌐", title: "Website Design & Development", desc: `Custom, mobile-first websites for businesses in ${city}. React, Next.js, WordPress. SEO-ready from day one.`, price: "From ₹25,000" },
+    { icon: "📱", title: "Mobile App Development", desc: `Flutter & React Native apps for Android and iOS. Built for ${city} businesses expanding digitally.`, price: "From ₹60,000" },
+    { icon: "🤖", title: "AI Chatbot & Automation", desc: `Smart chatbots that handle customer queries 24/7. Perfect for clinics, schools and businesses in ${city}.`, price: "From ₹35,000" },
+    { icon: "🛒", title: "E-Commerce Store", desc: `Full-featured online stores with payments, inventory and delivery. Sell across ${city} and pan-India.`, price: "From ₹45,000" },
+    { icon: "📊", title: "ERP & CRM Systems", desc: `Custom business management software for factories, schools and enterprises in ${city}.`, price: "From ₹80,000" },
+    { icon: "🎨", title: "UI/UX Design", desc: `Beautiful, conversion-focused designs that make your ${city} business stand out from the competition.`, price: "From ₹15,000" },
+    { icon: "🔍", title: "SEO & Digital Marketing", desc: `Rank on Google for "${city} near me" searches. Local SEO, content and paid campaigns.`, price: "From ₹12,000/mo" },
+    { icon: "☁️", title: "Cloud & Hosting Setup", desc: `Vercel, AWS, DigitalOcean setup with SSL, backups and 99.9% uptime for your ${city} business.`, price: "From ₹8,000" },
+  ];
+
+  const INDUSTRIES = [
+    { icon: "🏥", name: "Clinics & Hospitals" },
+    { icon: "🎓", name: "Schools & Colleges" },
+    { icon: "🏨", name: "Hotels & Resorts" },
+    { icon: "🍽️", name: "Restaurants & Cafes" },
+    { icon: "⚖️", name: "CA Firms & Lawyers" },
+    { icon: "🏭", name: "Factories & Manufacturers" },
+    { icon: "🏠", name: "Real Estate Agents" },
+    { icon: "🛍️", name: "Retailers & D2C Brands" },
+    { icon: "💊", name: "Pharmacies & Labs" },
+    { icon: "🚗", name: "Auto Dealers" },
+    { icon: "💪", name: "Gyms & Fitness" },
+    { icon: "🎨", name: "Interior Designers" },
+  ];
+
+  const PROCESS = [
+    { step: "01", title: "Free Consultation", desc: "Tell us about your business in " + city + ". We respond within 24 hours — no cost, no obligation.", icon: "📞" },
+    { step: "02", title: "Design & Proposal", desc: "We share a detailed design mockup and fixed-price quote. No hidden costs, ever.", icon: "🎨" },
+    { step: "03", title: "Build & Deliver", desc: "We build your project in 7–14 days. You review and approve before we go live.", icon: "⚡" },
+    { step: "04", title: "Launch & Support", desc: "We launch your website and provide 30 days of free support after delivery.", icon: "🚀" },
+  ];
+
+  const FAQS = [
+    { q: `How much does a website cost in ${city}?`, a: `Our websites start from ₹25,000 for a basic business site. E-commerce stores start from ₹45,000 and mobile apps from ₹60,000. All prices are fixed — no surprises.` },
+    { q: `How long does it take to build a website?`, a: `Standard websites are delivered in 7–14 days. Mobile apps take 4–8 weeks. We guarantee delivery timelines in writing before starting.` },
+    { q: `Do you visit ${city} clients in person?`, a: `We are a remote-first agency serving all of India. All communication is via WhatsApp, Zoom and email — which means no travel costs for you and faster turnaround.` },
+    { q: `What is the payment structure?`, a: `We charge 50% advance and 50% only after delivery and your approval. You never pay the full amount upfront.` },
+    { q: `Will I own the website code?`, a: `100% yes. We hand over all source code, hosting credentials and domain access on delivery. No lock-in, ever.` },
+    { q: `Do you provide SEO for ${city} businesses?`, a: `Yes — every website we build is SEO-optimised from day one. We also offer ongoing local SEO packages to help you rank for "${city} near me" searches.` },
+  ];
+
+  const STATS = [
+    { num: "7–14", label: "Days delivery", sub: "Guaranteed in writing" },
+    { num: "50+", label: "Industries served", sub: "Across all of India" },
+    { num: "50%", label: "Pay on delivery", sub: "Risk-free for you" },
+    { num: "30", label: "Days free support", sub: "After every launch" },
+  ];
+
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const S = {
+    font: "'Bricolage Grotesque', sans-serif",
+    mono: "'JetBrains Mono', monospace",
+    body: "'Manrope', sans-serif",
+    blue: "#2563eb",
+    navy: "#0f172a",
+    orange: "#f97316",
+    gray: "#64748b",
+    lightbg: "#f8fafc",
+    border: "#e2e8f0",
+  };
 
   return (
-    <main style={{paddingTop:"5rem",minHeight:"100vh",background:"#fff"}}>
-      {/* Hero */}
-      <section style={{background:"linear-gradient(135deg,#1e3a8a 0%,#7c3aed 100%)",padding:"5rem 1.5rem 4rem",textAlign:"center"}}>
-        <div style={{display:"inline-block",background:"rgba(255,255,255,.15)",borderRadius:20,padding:".4rem 1.2rem",fontFamily:"'JetBrains Mono',monospace",fontSize:".75rem",color:"#fff",marginBottom:"1.2rem",letterSpacing:".08em"}}>WEB DEVELOPMENT COMPANY {city.toUpperCase()}</div>
-        <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.15}}>
-          Web Development Company<br/><span style={{color:"#fbbf24"}}>Near You in {city}</span>
-        </h1>
-        <p style={{color:"rgba(255,255,255,.85)",fontSize:"1.15rem",maxWidth:620,margin:"0 auto 2rem",lineHeight:1.7}}>
-          Orbnix builds professional websites, mobile apps, AI chatbots and e-commerce stores for businesses in {city}. Fast delivery, fair pricing, full code ownership.
-        </p>
-        <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="/contact" style={{background:"#f97316",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,textDecoration:"none",fontSize:"1rem"}}>Get Free Consultation →</a>
-          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.15)",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.3)"}}>WhatsApp Us</a>
-        </div>
-      </section>
+    <main style={{paddingTop:"4.5rem",minHeight:"100vh",background:"#fff",fontFamily:S.body}}>
 
-      {/* Why Orbnix in City */}
-      <section style={{padding:"4rem 1.5rem",maxWidth:1100,margin:"0 auto"}}>
-        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.6rem,3.5vw,2.4rem)",fontWeight:800,color:"#0f172a",textAlign:"center",marginBottom:".75rem"}}>Why {city} Businesses Choose Orbnix</h2>
-        <p style={{textAlign:"center",color:"#64748b",marginBottom:"3rem",fontSize:"1.05rem"}}>We are a remote-first agency serving clients across India — including {city}.</p>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"1.5rem"}}>
-          {[["7–14 Day Delivery","Your website live faster than any agency in {city}"],["50% On Delivery","Pay the balance only when you're satisfied"],["Full Code Ownership","You own 100% of your website — no lock-in"],["SEO From Day 1","Ranks on Google for {city} searches from launch"],["Pan-India Remote","Serving {city} businesses without local agency premium"],["30-Day Support","Free support after launch — always available"]].map(([title, desc]) => (
-            <div key={title} style={{background:"#f8fafc",borderRadius:16,padding:"1.5rem",border:"1.5px solid #e2e8f0"}}>
-              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#0f172a",marginBottom:".5rem"}}>{title}</div>
-              <div style={{color:"#64748b",fontSize:".9rem",lineHeight:1.6}}>{desc.replace(/{city}/g, city)}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Services */}
-      <section style={{padding:"3rem 1.5rem",background:"#f8fafc"}}>
-        <div style={{maxWidth:1100,margin:"0 auto"}}>
-          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:800,color:"#0f172a",textAlign:"center",marginBottom:"2.5rem"}}>Our Services in {city}</h2>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:"1rem"}}>
-            {services.map(svc => (
-              <div key={svc} style={{background:"#fff",borderRadius:14,padding:"1.25rem 1.5rem",border:"1.5px solid #e2e8f0",fontWeight:600,color:"#0f172a",fontSize:".95rem"}}>✅ {svc}</div>
+      {/* ── HERO ── */}
+      <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#7c3aed 100%)",padding:"5rem 1.5rem 5rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        {/* Glow blobs */}
+        <div style={{position:"absolute",top:-80,right:-80,width:400,height:400,background:"rgba(124,58,237,.15)",borderRadius:"50%",filter:"blur(60px)"}}/>
+        <div style={{position:"absolute",bottom:-60,left:-60,width:300,height:300,background:"rgba(37,99,235,.2)",borderRadius:"50%",filter:"blur(50px)"}}/>
+        <div style={{position:"relative",zIndex:1}}>
+          <div style={{display:"inline-block",background:"rgba(251,191,36,.15)",border:"1.5px solid rgba(251,191,36,.4)",borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",color:"#fbbf24",marginBottom:"1.4rem",letterSpacing:".1em"}}>
+            WEB DEVELOPMENT COMPANY · {city.toUpperCase()} · {state.toUpperCase()}
+          </div>
+          <h1 style={{fontFamily:S.font,fontSize:"clamp(2rem,5.5vw,3.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1,letterSpacing:"-.02em"}}>
+            Web Development<br/>Company Near You<br/><span style={{color:"#fbbf24"}}>in {city}</span>
+          </h1>
+          <p style={{color:"rgba(255,255,255,.8)",fontSize:"clamp(1rem,2vw,1.2rem)",maxWidth:640,margin:"0 auto 2.5rem",lineHeight:1.75}}>
+            Orbnix builds professional websites, mobile apps, AI chatbots and e-commerce stores for businesses in {city}, {state}. Fast delivery. Fair pricing. Full code ownership.
+          </p>
+          <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
+            <a href="/contact" style={{background:S.orange,color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.4)"}}>Get Free Consultation →</a>
+            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
+          </div>
+          {/* Stats row */}
+          <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"2rem",marginTop:"3.5rem"}}>
+            {STATS.map(s => (
+              <div key={s.num} style={{textAlign:"center"}}>
+                <div style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:"#fbbf24",lineHeight:1}}>{s.num}</div>
+                <div style={{color:"#fff",fontWeight:700,fontSize:".95rem",marginTop:".2rem"}}>{s.label}</div>
+                <div style={{color:"rgba(255,255,255,.55)",fontSize:".75rem"}}>{s.sub}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Industries */}
-      <section style={{padding:"3rem 1.5rem",maxWidth:1100,margin:"0 auto"}}>
-        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:800,color:"#0f172a",textAlign:"center",marginBottom:"2.5rem"}}>Industries We Serve in {city}</h2>
-        <div style={{display:"flex",flexWrap:"wrap",gap:"1rem",justifyContent:"center"}}>
-          {industries.map(ind => (
-            <span key={ind} style={{background:"#eff6ff",color:"#2563eb",borderRadius:10,padding:".55rem 1.2rem",fontWeight:600,fontSize:".9rem"}}>{ind}</span>
+      {/* ── WHY ORBNIX ── */}
+      <section style={{padding:"5rem 1.5rem",maxWidth:1200,margin:"0 auto"}}>
+        <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
+          <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>WHY ORBNIX</div>
+          <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:S.navy,marginBottom:".75rem"}}>Why {city} Businesses Choose Us</h2>
+          <p style={{color:S.gray,fontSize:"1.05rem",maxWidth:560,margin:"0 auto"}}>We're a remote-first agency — which means no office overheads, no middle-men, and better value for every rupee you spend.</p>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:"1.5rem"}}>
+          {[
+            ["⚡","7–14 Day Delivery","Your website live in under 2 weeks — faster than any local agency in "+city+"."],
+            ["💰","50% Pay On Delivery","Pay half upfront, the rest only when you're satisfied. We put our reputation on the line."],
+            ["🔓","Full Code Ownership","You own 100% of your code, hosting and domain. No subscriptions, no lock-in, ever."],
+            ["📱","Mobile-First Always","Every project is designed for mobile first — because 80% of your "+city+" customers are on phones."],
+            ["🔍","SEO From Day One","Your website ranks on Google from launch. We build SEO into the code, not as an afterthought."],
+            ["🛡️","30-Day Free Support","Free bug fixes and support for 30 days after launch. We don't disappear after delivery."],
+          ].map(([icon, title, desc]) => (
+            <div key={title} style={{background:S.lightbg,borderRadius:18,padding:"1.75rem",border:`1.5px solid ${S.border}`,transition:"box-shadow .2s"}}>
+              <div style={{fontSize:"2rem",marginBottom:"1rem"}}>{icon}</div>
+              <div style={{fontFamily:S.font,fontWeight:800,fontSize:"1.1rem",color:S.navy,marginBottom:".5rem"}}>{title}</div>
+              <div style={{color:S.gray,fontSize:".9rem",lineHeight:1.7}}>{desc}</div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%)",padding:"4rem 1.5rem",textAlign:"center"}}>
-        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.6rem,3.5vw,2.4rem)",fontWeight:800,color:"#fff",marginBottom:"1rem"}}>Ready to grow your {city} business online?</h2>
-        <p style={{color:"rgba(255,255,255,.8)",marginBottom:"2rem",fontSize:"1.05rem"}}>Free consultation. No obligation. Reply within 24 hours.</p>
-        <a href="/contact" style={{background:"#f97316",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.1rem"}}>Get Started — It's Free →</a>
+      {/* ── SERVICES ── */}
+      <section style={{background:S.lightbg,padding:"5rem 1.5rem"}}>
+        <div style={{maxWidth:1200,margin:"0 auto"}}>
+          <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
+            <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>OUR SERVICES</div>
+            <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:S.navy,marginBottom:".75rem"}}>What We Build for {city} Businesses</h2>
+            <p style={{color:S.gray,fontSize:"1.05rem",maxWidth:540,margin:"0 auto"}}>From simple landing pages to complex enterprise systems — we build it all, fast and affordable.</p>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"1.5rem"}}>
+            {SERVICES.map(svc => (
+              <div key={svc.title} style={{background:"#fff",borderRadius:18,padding:"1.75rem",border:`1.5px solid ${S.border}`,display:"flex",flexDirection:"column",gap:".75rem"}}>
+                <div style={{fontSize:"2.2rem"}}>{svc.icon}</div>
+                <div style={{fontFamily:S.font,fontWeight:800,fontSize:"1.05rem",color:S.navy}}>{svc.title}</div>
+                <div style={{color:S.gray,fontSize:".88rem",lineHeight:1.7,flex:1}}>{svc.desc}</div>
+                <div style={{fontFamily:S.mono,fontSize:".8rem",fontWeight:700,color:S.blue,background:"#eff6ff",borderRadius:8,padding:".35rem .8rem",alignSelf:"flex-start"}}>{svc.price}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{textAlign:"center",marginTop:"2.5rem"}}>
+            <a href="/pricing" style={{background:S.blue,color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",fontFamily:S.font}}>View All Pricing →</a>
+          </div>
+        </div>
       </section>
+
+      {/* ── INDUSTRIES ── */}
+      <section style={{padding:"5rem 1.5rem",maxWidth:1200,margin:"0 auto"}}>
+        <div style={{textAlign:"center",marginBottom:"3rem"}}>
+          <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>INDUSTRIES</div>
+          <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:S.navy,marginBottom:".75rem"}}>Who We Serve in {city}</h2>
+          <p style={{color:S.gray,fontSize:"1.05rem",maxWidth:500,margin:"0 auto"}}>We've built for 50+ industries. If you run a business in {city}, we have experience in your space.</p>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:"1rem"}}>
+          {INDUSTRIES.map(ind => (
+            <div key={ind.name} style={{background:S.lightbg,borderRadius:14,padding:"1.25rem 1rem",border:`1.5px solid ${S.border}`,textAlign:"center"}}>
+              <div style={{fontSize:"1.8rem",marginBottom:".5rem"}}>{ind.icon}</div>
+              <div style={{fontFamily:S.font,fontWeight:700,fontSize:".9rem",color:S.navy}}>{ind.name}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ── */}
+      <section style={{background:S.navy,padding:"5rem 1.5rem"}}>
+        <div style={{maxWidth:1100,margin:"0 auto"}}>
+          <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
+            <div style={{display:"inline-block",background:"rgba(255,255,255,.1)",color:"rgba(255,255,255,.7)",borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>PROCESS</div>
+            <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:"#fff",marginBottom:".75rem"}}>How It Works</h2>
+            <p style={{color:"rgba(255,255,255,.6)",fontSize:"1.05rem"}}>From first WhatsApp to live website — here's exactly what happens.</p>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"1.5rem"}}>
+            {PROCESS.map((p, i) => (
+              <div key={p.step} style={{background:"rgba(255,255,255,.06)",borderRadius:18,padding:"2rem 1.5rem",border:"1.5px solid rgba(255,255,255,.1)",position:"relative"}}>
+                <div style={{fontFamily:S.mono,fontSize:"2.5rem",fontWeight:900,color:"rgba(255,255,255,.08)",position:"absolute",top:"1rem",right:"1.25rem"}}>{p.step}</div>
+                <div style={{fontSize:"2rem",marginBottom:"1rem"}}>{p.icon}</div>
+                <div style={{fontFamily:S.font,fontWeight:800,fontSize:"1.1rem",color:"#fff",marginBottom:".6rem"}}>{p.title}</div>
+                <div style={{color:"rgba(255,255,255,.6)",fontSize:".9rem",lineHeight:1.7}}>{p.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRICING SNAPSHOT ── */}
+      <section style={{padding:"5rem 1.5rem",maxWidth:1100,margin:"0 auto"}}>
+        <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
+          <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>PRICING</div>
+          <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:S.navy,marginBottom:".75rem"}}>Transparent Pricing for {city} Businesses</h2>
+          <p style={{color:S.gray,fontSize:"1.05rem"}}>Fixed prices. No hidden fees. No surprises.</p>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:"1.5rem"}}>
+          {[
+            { name:"Landing Page", price:"₹25,000", duration:"7 days", features:["5 sections","Mobile responsive","Contact form","SEO optimised","1 revision round"] },
+            { name:"Business Website", price:"₹45,000", duration:"10 days", features:["10+ pages","Blog/CMS","WhatsApp chat","Google Analytics","3 revision rounds"], highlight:true },
+            { name:"E-Commerce Store", price:"₹75,000", duration:"14 days", features:["Product catalogue","Payment gateway","Order management","Admin dashboard","30-day support"] },
+          ].map(plan => (
+            <div key={plan.name} style={{background: plan.highlight ? S.blue : "#fff",borderRadius:20,padding:"2rem 1.5rem",border: plan.highlight ? "none" : `1.5px solid ${S.border}`,boxShadow: plan.highlight ? "0 8px 32px rgba(37,99,235,.25)" : "none"}}>
+              {plan.highlight && <div style={{background:"#fbbf24",color:S.navy,borderRadius:8,padding:".2rem .8rem",fontSize:".72rem",fontWeight:800,fontFamily:S.mono,display:"inline-block",marginBottom:"1rem"}}>MOST POPULAR</div>}
+              <div style={{fontFamily:S.font,fontWeight:800,fontSize:"1.15rem",color: plan.highlight ? "#fff" : S.navy,marginBottom:".25rem"}}>{plan.name}</div>
+              <div style={{fontFamily:S.font,fontSize:"2.2rem",fontWeight:900,color: plan.highlight ? "#fbbf24" : S.blue,marginBottom:".25rem"}}>{plan.price}</div>
+              <div style={{fontFamily:S.mono,fontSize:".75rem",color: plan.highlight ? "rgba(255,255,255,.6)" : S.gray,marginBottom:"1.5rem"}}>Delivered in {plan.duration}</div>
+              {plan.features.map(f => (
+                <div key={f} style={{display:"flex",alignItems:"center",gap:".6rem",marginBottom:".6rem"}}>
+                  <span style={{color: plan.highlight ? "#86efac" : "#22c55e",fontWeight:700}}>✓</span>
+                  <span style={{color: plan.highlight ? "rgba(255,255,255,.85)" : S.gray,fontSize:".9rem"}}>{f}</span>
+                </div>
+              ))}
+              <a href="/contact" style={{display:"block",textAlign:"center",marginTop:"1.5rem",background: plan.highlight ? "#fff" : S.blue,color: plan.highlight ? S.blue : "#fff",padding:".75rem",borderRadius:12,fontWeight:700,textDecoration:"none",fontSize:".95rem"}}>Get Started →</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section style={{background:S.lightbg,padding:"5rem 1.5rem"}}>
+        <div style={{maxWidth:780,margin:"0 auto"}}>
+          <div style={{textAlign:"center",marginBottom:"3rem"}}>
+            <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>FAQ</div>
+            <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.5rem)",fontWeight:900,color:S.navy}}>Common Questions from {city} Clients</h2>
+          </div>
+          {FAQS.map((faq, i) => (
+            <div key={i} style={{background:"#fff",borderRadius:14,marginBottom:"1rem",border:`1.5px solid ${openFaq===i ? S.blue : S.border}`,overflow:"hidden",transition:"border .2s"}}>
+              <div onClick={() => setOpenFaq(openFaq===i ? null : i)} style={{padding:"1.25rem 1.5rem",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",gap:"1rem"}}>
+                <div style={{fontFamily:S.font,fontWeight:700,fontSize:"1rem",color:S.navy}}>{faq.q}</div>
+                <div style={{fontSize:"1.2rem",color:S.blue,flexShrink:0,transition:"transform .2s",transform: openFaq===i ? "rotate(45deg)" : "none"}}>+</div>
+              </div>
+              {openFaq===i && (
+                <div style={{padding:"0 1.5rem 1.25rem",color:S.gray,fontSize:".95rem",lineHeight:1.75}}>{faq.a}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── */}
+      <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%)",padding:"5rem 1.5rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-100,right:-100,width:400,height:400,background:"rgba(124,58,237,.15)",borderRadius:"50%",filter:"blur(60px)"}}/>
+        <div style={{position:"relative",zIndex:1}}>
+          <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem"}}>Ready to grow your {city} business online?</h2>
+          <p style={{color:"rgba(255,255,255,.7)",marginBottom:"2.5rem",fontSize:"1.05rem",maxWidth:500,margin:"0 auto 2.5rem"}}>Free consultation. Fixed pricing. Delivery in 7–14 days. Reply guaranteed within 24 hours.</p>
+          <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
+            <a href="/contact" style={{background:S.orange,color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1.05rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.35)"}}>Start Your Project →</a>
+            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
+          </div>
+          <div style={{marginTop:"2.5rem",display:"flex",justifyContent:"center",gap:"2rem",flexWrap:"wrap"}}>
+            {["✓ No advance payment pressure","✓ Full code ownership","✓ 30-day free support","✓ Pan-India delivery"].map(t => (
+              <span key={t} style={{color:"rgba(255,255,255,.6)",fontSize:".88rem"}}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }
