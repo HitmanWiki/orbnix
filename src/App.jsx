@@ -369,532 +369,865 @@ function Nav({ page, setPage }) {
 }
 
 // ─── DEMO COMPONENTS ──────────────────────────────────────────────────────────
+// ─── DEMO COMPONENTS — FULL WEBSITE PREVIEWS ─────────────────────────────────
+// Each demo renders a full scrollable website homepage — nav, hero, sections, footer
+
 function DemoRestaurant() {
-  const [cart,setCart]=useState([]);
-  const [tab,setTab]=useState("menu");
-  const [booked,setBooked]=useState(false);
-  const menu=[
-    {id:1,name:"Laal Maas Risotto",desc:"Slow-cooked mutton in Rajasthani spices with saffron risotto",price:780,cat:"Main",img:"🥘"},
-    {id:2,name:"Tandoori Platter Royal",desc:"Assorted kebabs with mint chutney, onion salad",price:650,cat:"Starter",img:"🍢"},
-    {id:3,name:"Dal Baati Churma",desc:"Traditional Rajasthani specialty with ghee",price:520,cat:"Main",img:"🍛"},
-    {id:4,name:"Ghewar Brûlée",desc:"Fusion dessert — classic Rajasthani ghewar meets French brûlée",price:350,cat:"Dessert",img:"🍮"},
-    {id:5,name:"Aam Panna Mojito",desc:"Raw mango, mint, rock salt, sparkling water",price:220,cat:"Drinks",img:"🍹"},
-    {id:6,name:"Rajasthani Thali",desc:"Full 12-item thali — complete meal experience",price:980,cat:"Main",img:"🍽️"},
+  const [tab, setTab] = useState("menu");
+  const [cart, setCart] = useState([]);
+  const menu = [
+    { id:1, cat:"Starters", name:"Tandoori Platter", price:650, tag:"Chef's Pick", emoji:"🍢" },
+    { id:2, cat:"Starters", name:"Paneer Tikka",     price:420, tag:"Veg",         emoji:"🧀" },
+    { id:3, cat:"Mains",    name:"Laal Maas",        price:780, tag:"Spicy",       emoji:"🥘" },
+    { id:4, cat:"Mains",    name:"Dal Baati Churma", price:520, tag:"Traditional", emoji:"🍛" },
+    { id:5, cat:"Desserts", name:"Ghewar Brûlée",    price:350, tag:"Fusion",      emoji:"🍮" },
+    { id:6, cat:"Drinks",   name:"Aam Panna Mojito", price:220, tag:"Mocktail",    emoji:"🍹" },
   ];
-  const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const cats = ["All", ...new Set(menu.map(m => m.cat))];
+  const filtered = tab === "All" ? menu : menu.filter(m => m.cat === tab);
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  const addToCart = (item) => setCart(c => [...c, item]);
+
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#FFFBF5"}}>
-      <div style={{background:"linear-gradient(135deg,#7C2D12,#B45309)",padding:"0 1rem",display:"flex",alignItems:"center",justifyContent:"space-between",height:56,flexWrap:"wrap",gap:".5rem"}}>
-        <div style={{display:"flex",alignItems:"center",gap:8}}>
-          <span style={{fontSize:"1.2rem"}}>🌸</span>
-          <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:800,color:"#FEF3C7"}}>SAVORIA</span>
-          <span style={{fontSize:".65rem",color:"rgba(254,243,199,.6)",fontStyle:"italic"}}>Fine Dining · India</span>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#FFFBF5",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"#7C2D12",padding:"0 2rem",height:60,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:50}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <span style={{fontSize:"1.5rem"}}>🌸</span>
+          <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.2rem",fontWeight:900,color:"#fff",letterSpacing:"-.01em"}}>Savoria</span>
         </div>
-        <div style={{display:"flex",gap:"1rem",alignItems:"center"}}>
-          {["Menu","Reservations","About"].map(t=>(
-            <button key={t} onClick={()=>setTab(t.toLowerCase())} style={{background:"transparent",border:"none",color:tab===t.toLowerCase()?"#FDE68A":"rgba(254,243,199,.6)",fontWeight:600,fontSize:".8rem",cursor:"pointer",fontFamily:"'Manrope',sans-serif"}}>{t}</button>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Menu","About","Reservations","Contact"].map(n => (
+            <span key={n} style={{color:"rgba(255,255,255,.8)",fontSize:".85rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
           ))}
-          <button onClick={()=>alert(`Cart:\n${cart.map(i=>`${i.name} x${i.qty} — ₹${i.price*i.qty}`).join("\n")}\n\nTotal: ₹${total}`)} style={{background:"#D97706",color:"#fff",border:"none",borderRadius:16,padding:".25rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".75rem"}}>🛒 {cart.length} · ₹{total}</button>
+        </div>
+        <div style={{background:"#fbbf24",color:"#7c2d12",padding:".4rem 1.1rem",borderRadius:20,fontWeight:800,fontSize:".82rem",cursor:"pointer"}}>
+          Book Table
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(135deg,#7C2D12 0%,#92400E 50%,#B45309 100%)",padding:"5rem 2rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",inset:0,background:"url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"20\" cy=\"20\" r=\"40\" fill=\"rgba(255,255,255,.03)\"/><circle cx=\"80\" cy=\"80\" r=\"60\" fill=\"rgba(255,255,255,.02)\"/></svg>')",backgroundSize:"cover"}}/>
+        <div style={{position:"relative"}}>
+          <div style={{display:"inline-block",background:"rgba(251,191,36,.2)",border:"1px solid rgba(251,191,36,.4)",borderRadius:20,padding:".3rem 1rem",fontSize:".75rem",color:"#fbbf24",marginBottom:"1.2rem",letterSpacing:".1em"}}>JAIPUR · EST. 2018</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2.5rem,6vw,4.5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.05}}>Fine Dining<br/><span style={{color:"#fbbf24"}}>Reimagined</span></h1>
+          <p style={{color:"rgba(255,255,255,.75)",fontSize:"1.1rem",maxWidth:500,margin:"0 auto 2rem",lineHeight:1.7}}>Authentic Rajasthani flavours with a modern culinary twist. Fresh ingredients. Handcrafted cocktails. Unforgettable evenings.</p>
+          <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
+            <div style={{background:"#fbbf24",color:"#7c2d12",padding:".85rem 2rem",borderRadius:12,fontWeight:800,fontSize:".95rem",cursor:"pointer"}}>Reserve a Table →</div>
+            <div style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,fontSize:".95rem",border:"1.5px solid rgba(255,255,255,.25)",cursor:"pointer"}}>View Menu</div>
+          </div>
         </div>
       </div>
-      {tab==="menu" && <div style={{background:"linear-gradient(to bottom,#92400E,#B45309)",padding:"1.5rem 1rem 1rem",textAlign:"center"}}><h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.5rem",fontWeight:800,color:"#FEF3C7"}}>Today's Menu</h2><p style={{color:"rgba(254,243,199,.75)",fontSize:".8rem"}}>Fresh ingredients · Updated daily</p></div>}
-      {tab==="menu" && (
-        <div style={{padding:"1.5rem 1rem",maxWidth:900,margin:"0 auto"}}>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))",gap:"1rem"}}>
-            {menu.map(item=>{
-              const inCart=cart.find(c=>c.id===item.id);
-              return (
-                <div key={item.id} style={{background:"#fff",borderRadius:14,overflow:"hidden",boxShadow:"0 2px 12px rgba(0,0,0,.06)",border:"1px solid #FED7AA"}}>
-                  <div style={{height:90,background:"linear-gradient(135deg,#FFF7ED,#FEF3C7)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2.5rem",position:"relative"}}>
-                    {item.img}
-                    <span style={{position:"absolute",top:6,right:6,background:"#D97706",color:"#fff",fontSize:".55rem",fontWeight:700,padding:".15rem .45rem",borderRadius:4}}>{item.cat}</span>
-                  </div>
-                  <div style={{padding:".85rem"}}>
-                    <div style={{fontWeight:700,fontSize:".85rem",marginBottom:".25rem"}}>{item.name}</div>
-                    <div style={{fontSize:".72rem",color:C.t3,marginBottom:".6rem",lineHeight:1.4}}>{item.desc}</div>
-                    <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                      <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#B45309",fontSize:".95rem"}}>₹{item.price}</span>
-                      {inCart?(
-                        <div style={{display:"flex",alignItems:"center",gap:".4rem"}}>
-                          <button onClick={()=>setCart(c=>c.map(x=>x.id===item.id?{...x,qty:Math.max(0,x.qty-1)}:{...x}).filter(x=>x.qty>0))} style={{width:26,height:26,borderRadius:"50%",border:"none",background:"#FEF3C7",color:"#B45309",fontWeight:800,cursor:"pointer"}}>-</button>
-                          <span style={{fontWeight:700,minWidth:18,textAlign:"center",fontSize:".85rem"}}>{inCart.qty}</span>
-                          <button onClick={()=>setCart(c=>c.map(x=>x.id===item.id?{...x,qty:x.qty+1}:{...x}))} style={{width:26,height:26,borderRadius:"50%",border:"none",background:"#D97706",color:"#fff",fontWeight:800,cursor:"pointer"}}>+</button>
-                        </div>
-                      ):(
-                        <button onClick={()=>setCart(c=>[...c,{...item,qty:1}])} style={{background:"linear-gradient(135deg,#D97706,#B45309)",color:"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Add +</button>
-                      )}
-                    </div>
-                  </div>
+
+      {/* STATS BAR */}
+      <div style={{background:"#fff",padding:"1.5rem 2rem",display:"flex",justifyContent:"center",gap:"3rem",flexWrap:"wrap",boxShadow:"0 4px 24px rgba(0,0,0,.06)"}}>
+        {[["500+","Happy Guests/Month"],["4.9★","Google Rating"],["12","Years of Excellence"],["50+","Menu Items"]].map(([n,l]) => (
+          <div key={l} style={{textAlign:"center"}}>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#7c2d12"}}>{n}</div>
+            <div style={{fontSize:".8rem",color:"#6b7280",fontWeight:600}}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* MENU */}
+      <div style={{padding:"3rem 2rem",maxWidth:900,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2rem",fontWeight:900,color:"#1c0a00",textAlign:"center",marginBottom:"2rem"}}>Our Menu</h2>
+        <div style={{display:"flex",gap:".75rem",marginBottom:"2rem",justifyContent:"center",flexWrap:"wrap"}}>
+          {cats.map(c => (
+            <div key={c} onClick={() => setTab(c)} style={{padding:".5rem 1.25rem",borderRadius:20,fontWeight:700,fontSize:".85rem",cursor:"pointer",background: tab===c ? "#7c2d12" : "#f3f4f6",color: tab===c ? "#fff" : "#374151",transition:"all .15s"}}>{c}</div>
+          ))}
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(250px,1fr))",gap:"1rem"}}>
+          {filtered.map(item => (
+            <div key={item.id} style={{background:"#fff",borderRadius:16,padding:"1.25rem",border:"1.5px solid #f3e8d8",boxShadow:"0 2px 8px rgba(0,0,0,.04)"}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:".5rem"}}>
+                <span style={{fontSize:"2rem"}}>{item.emoji}</span>
+                <span style={{background:"#fef3c7",color:"#92400e",borderRadius:8,padding:".2rem .6rem",fontSize:".7rem",fontWeight:700}}>{item.tag}</span>
+              </div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#1c0a00",marginBottom:".25rem"}}>{item.name}</div>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:".75rem"}}>
+                <span style={{fontWeight:800,color:"#7c2d12",fontSize:"1.05rem"}}>₹{item.price}</span>
+                <div onClick={() => addToCart(item)} style={{background:"#7c2d12",color:"#fff",padding:".35rem .9rem",borderRadius:8,fontSize:".8rem",fontWeight:700,cursor:"pointer"}}>+ Add</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {cart.length > 0 && (
+          <div style={{position:"sticky",bottom:16,background:"#7c2d12",color:"#fff",borderRadius:16,padding:"1rem 1.5rem",display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"1.5rem",boxShadow:"0 8px 32px rgba(124,45,18,.4)"}}>
+            <span style={{fontWeight:700}}>{cart.length} item{cart.length>1?"s":""} in cart</span>
+            <span style={{fontWeight:900,fontSize:"1.1rem"}}>₹{total} →</span>
+          </div>
+        )}
+      </div>
+
+      {/* ABOUT STRIP */}
+      <div style={{background:"#7c2d12",padding:"3rem 2rem",textAlign:"center"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#fff",marginBottom:".75rem"}}>A Table for Every Occasion</h2>
+        <p style={{color:"rgba(255,255,255,.7)",maxWidth:500,margin:"0 auto 1.5rem",lineHeight:1.7}}>Private dining rooms, rooftop terrace, live ghazal evenings every Friday. Make a reservation and experience Savoria.</p>
+        <div style={{display:"inline-block",background:"#fbbf24",color:"#7c2d12",padding:".75rem 2rem",borderRadius:12,fontWeight:800,cursor:"pointer"}}>Book Your Table Tonight →</div>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{background:"#1c0a00",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.5)",fontSize:".8rem"}}>© 2025 Savoria Restaurant, Jaipur</div>
+        <div style={{color:"rgba(255,255,255,.5)",fontSize:".8rem"}}>📍 MI Road, Jaipur · 📞 +91 98765 43210</div>
+        <div style={{color:"#fbbf24",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
+      </div>
+    </div>
+  );
+}
+
+function DemoHotel() {
+  const [month, setMonth] = useState("Mar 2025");
+  const [guests, setGuests] = useState(2);
+  const rooms = [
+    { name:"Deluxe Room", size:"320 sq ft", price:4500, tag:"Best Value", emoji:"🛏️", features:["King Bed","City View","Free WiFi","Breakfast"] },
+    { name:"Heritage Suite", size:"520 sq ft", price:8500, tag:"Most Popular", emoji:"🏰", features:["King Bed","Courtyard View","Butler","Spa Access"] },
+    { name:"Royal Haveli Suite", size:"900 sq ft", price:14000, tag:"Luxury", emoji:"👑", features:["2 Bedrooms","Private Pool","Personal Chef","Airport Transfer"] },
+  ];
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#fafaf8",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"rgba(255,255,255,.95)",backdropFilter:"blur(10px)",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #e7e5e0",position:"sticky",top:0,zIndex:50}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <span style={{fontSize:"1.4rem"}}>🏰</span>
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:900,color:"#1a1208",lineHeight:1}}>Royal Haveli</div>
+            <div style={{fontSize:".65rem",color:"#a0926e",letterSpacing:".1em",fontWeight:600}}>RESORT & SPA</div>
+          </div>
+        </div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Rooms","Dining","Spa","Experiences","Gallery"].map(n => (
+            <span key={n} style={{color:"#5c4a2a",fontSize:".85rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{background:"#8B5E3C",color:"#fff",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Check Availability</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(to bottom, rgba(20,12,4,.5) 0%, rgba(20,12,4,.2) 50%, rgba(20,12,4,.7) 100%), linear-gradient(135deg,#3d2b1f 0%,#6b4423 100%)",padding:"6rem 2rem",textAlign:"center",position:"relative"}}>
+        <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"8rem",opacity:.05}}>🏯</div>
+        <div style={{position:"relative"}}>
+          <div style={{display:"inline-block",border:"1px solid rgba(212,175,55,.5)",borderRadius:4,padding:".35rem 1.2rem",fontSize:".72rem",color:"#d4af37",marginBottom:"1.5rem",letterSpacing:".2em",fontWeight:600}}>UDAIPUR · RAJASTHAN · INDIA</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2.5rem,6vw,5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.05}}>Stay Like<br/><span style={{color:"#d4af37"}}>Royalty</span></h1>
+          <p style={{color:"rgba(255,255,255,.75)",fontSize:"1.1rem",maxWidth:520,margin:"0 auto 2.5rem",lineHeight:1.75}}>A 19th century haveli restored to its original grandeur. 42 heritage rooms, a rooftop pool and a Michelin-starred restaurant.</p>
+          {/* BOOKING BAR */}
+          <div style={{background:"rgba(255,255,255,.95)",borderRadius:16,padding:"1.25rem 1.5rem",display:"inline-flex",gap:"1rem",flexWrap:"wrap",alignItems:"center",boxShadow:"0 8px 40px rgba(0,0,0,.3)"}}>
+            {[["Check-In","15 Mar 2025"],["Check-Out","18 Mar 2025"],["Guests",guests+" Adults"]].map(([label,val]) => (
+              <div key={label} style={{textAlign:"left",minWidth:110}}>
+                <div style={{fontSize:".7rem",color:"#9ca3af",fontWeight:700,marginBottom:".2rem",letterSpacing:".05em"}}>{label.toUpperCase()}</div>
+                <div style={{fontWeight:700,color:"#1a1208",fontSize:".95rem"}}>{val}</div>
+              </div>
+            ))}
+            <div style={{background:"#8B5E3C",color:"#fff",padding:".75rem 1.75rem",borderRadius:10,fontWeight:800,fontSize:".9rem",cursor:"pointer",whiteSpace:"nowrap"}}>Search Rooms</div>
+          </div>
+        </div>
+      </div>
+
+      {/* ROOMS */}
+      <div style={{padding:"4rem 2rem",maxWidth:1000,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2rem",fontWeight:900,color:"#1a1208",textAlign:"center",marginBottom:".5rem"}}>Our Rooms & Suites</h2>
+        <p style={{textAlign:"center",color:"#7c6a4e",marginBottom:"2.5rem"}}>Every room tells a story. Every stay, a memory.</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"1.5rem"}}>
+          {rooms.map(r => (
+            <div key={r.name} style={{background:"#fff",borderRadius:20,overflow:"hidden",border:"1.5px solid #e7e5e0",boxShadow:"0 4px 20px rgba(0,0,0,.05)"}}>
+              <div style={{background:"linear-gradient(135deg,#3d2b1f,#8B5E3C)",height:160,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"4rem",position:"relative"}}>
+                {r.emoji}
+                <div style={{position:"absolute",top:12,right:12,background:"#d4af37",color:"#1a1208",borderRadius:8,padding:".2rem .7rem",fontSize:".7rem",fontWeight:800}}>{r.tag}</div>
+              </div>
+              <div style={{padding:"1.25rem"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.1rem",color:"#1a1208",marginBottom:".2rem"}}>{r.name}</div>
+                <div style={{fontSize:".8rem",color:"#7c6a4e",marginBottom:"1rem"}}>{r.size}</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:".4rem",marginBottom:"1rem"}}>
+                  {r.features.map(f => (
+                    <span key={f} style={{background:"#faf7f2",border:"1px solid #e7e5e0",borderRadius:6,padding:".2rem .6rem",fontSize:".72rem",color:"#5c4a2a",fontWeight:600}}>✓ {f}</span>
+                  ))}
                 </div>
-              );
-            })}
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <div><span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,fontSize:"1.3rem",color:"#8B5E3C"}}>₹{r.price.toLocaleString()}</span><span style={{fontSize:".75rem",color:"#9ca3af"}}>/night</span></div>
+                  <div style={{background:"#8B5E3C",color:"#fff",padding:".5rem 1.1rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Book Now</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* AMENITIES */}
+      <div style={{background:"#3d2b1f",padding:"3rem 2rem",textAlign:"center"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#d4af37",marginBottom:"2rem"}}>World-Class Amenities</h2>
+        <div style={{display:"flex",justifyContent:"center",gap:"2.5rem",flexWrap:"wrap"}}>
+          {["🌊 Rooftop Pool","🧖 Ayurvedic Spa","🍽️ Fine Dining","🏋️ Fitness Centre","🎭 Cultural Evenings","🚗 Airport Transfers"].map(a => (
+            <div key={a} style={{color:"rgba(255,255,255,.8)",fontSize:".9rem",fontWeight:600}}>{a}</div>
+          ))}
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{background:"#1a1208",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.4)",fontSize:".8rem"}}>© 2025 Royal Haveli Resort, Udaipur</div>
+        <div style={{color:"#d4af37",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
+      </div>
+    </div>
+  );
+}
+
+function DemoClinic() {
+  const [tab, setTab] = useState("doctors");
+  const doctors = [
+    { name:"Dr. Priya Sharma", spec:"Cardiologist", exp:"15 yrs", rating:"4.9", slots:["9:00 AM","11:30 AM","4:00 PM"], emoji:"👩‍⚕️" },
+    { name:"Dr. Rahul Verma",  spec:"Orthopaedic",  exp:"12 yrs", rating:"4.8", slots:["10:00 AM","2:00 PM","5:30 PM"], emoji:"👨‍⚕️" },
+    { name:"Dr. Ananya Patel", spec:"Paediatrician",exp:"8 yrs",  rating:"5.0", slots:["9:30 AM","1:00 PM","4:30 PM"], emoji:"👩‍⚕️" },
+  ];
+  const [booked, setBooked] = useState(null);
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#f0f9ff",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"#fff",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #e0f2fe",position:"sticky",top:0,zIndex:50,boxShadow:"0 2px 12px rgba(0,0,0,.04)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <div style={{width:36,height:36,background:"linear-gradient(135deg,#0ea5e9,#0284c7)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem"}}>❤️</div>
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:900,color:"#0c4a6e",lineHeight:1}}>LifeCare Clinic</div>
+            <div style={{fontSize:".65rem",color:"#0ea5e9",letterSpacing:".08em",fontWeight:600}}>MULTISPECIALITY HOSPITAL</div>
           </div>
         </div>
-      )}
-      {tab==="reservations" && (
-        <div style={{maxWidth:480,margin:"2rem auto",padding:"0 1rem"}}>
-          <div style={{background:"#fff",borderRadius:16,padding:"2rem",boxShadow:"0 4px 24px rgba(0,0,0,.08)",border:"1px solid #FED7AA"}}>
-            <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.25rem",fontWeight:800,marginBottom:"1.25rem"}}>Reserve a Table</h3>
-            {[["Full Name","text","Rahul Sharma"],["Email","email","rahul@gmail.com"],["Phone","tel","+91 98765 43210"],["Date","date",""],["Guests","number","2"]].map(([l,t,ph])=>(
-              <div key={l} style={{marginBottom:".85rem"}}>
-                <label style={{display:"block",fontSize:".75rem",fontWeight:600,color:C.t2,marginBottom:".25rem"}}>{l}</label>
-                <input type={t} placeholder={ph} style={{width:"100%",padding:".65rem .9rem",background:"#FFF7ED",border:"1.5px solid #FED7AA",borderRadius:9,fontSize:".875rem",outline:"none",fontFamily:"'Manrope',sans-serif"}}/>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Home","Doctors","Services","Lab Tests","Contact"].map(n => (
+            <span key={n} style={{color:"#374151",fontSize:".85rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{background:"#0ea5e9",color:"#fff",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>📞 Emergency</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(135deg,#0c4a6e 0%,#0369a1 60%,#0ea5e9 100%)",padding:"4rem 2rem",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",right:"-5%",top:"-20%",width:"45%",height:"140%",background:"rgba(255,255,255,.04)",borderRadius:"50%"}}/>
+        <div style={{maxWidth:800,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"2rem",alignItems:"center"}}>
+          <div>
+            <div style={{display:"inline-block",background:"rgba(251,191,36,.2)",border:"1px solid rgba(251,191,36,.4)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#fbbf24",marginBottom:"1.2rem",letterSpacing:".1em",fontWeight:700}}>TRUSTED BY 10,000+ PATIENTS</div>
+            <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Your Health,<br/>Our <span style={{color:"#7dd3fc"}}>Priority</span></h1>
+            <p style={{color:"rgba(255,255,255,.75)",lineHeight:1.7,marginBottom:"1.75rem",fontSize:".95rem"}}>Book appointments with top specialists, get lab results online and manage your family's health — all in one place.</p>
+            <div style={{display:"flex",gap:".75rem",flexWrap:"wrap"}}>
+              <div style={{background:"#fff",color:"#0369a1",padding:".75rem 1.5rem",borderRadius:10,fontWeight:800,fontSize:".88rem",cursor:"pointer"}}>Book Appointment →</div>
+              <div style={{background:"rgba(255,255,255,.12)",color:"#fff",padding:".75rem 1.5rem",borderRadius:10,fontWeight:700,fontSize:".88rem",border:"1.5px solid rgba(255,255,255,.25)",cursor:"pointer"}}>View Doctors</div>
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".75rem"}}>
+            {[["30+","Specialists"],["10K+","Patients"],["4.9★","Rating"],["24/7","Emergency"]].map(([n,l]) => (
+              <div key={l} style={{background:"rgba(255,255,255,.1)",borderRadius:14,padding:"1.1rem",textAlign:"center",border:"1.5px solid rgba(255,255,255,.15)"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#fff"}}>{n}</div>
+                <div style={{fontSize:".75rem",color:"rgba(255,255,255,.65)",fontWeight:600}}>{l}</div>
               </div>
             ))}
-            {booked?<div style={{background:"#ECFDF5",border:"1.5px solid #A7F3D0",borderRadius:9,padding:"1rem",textAlign:"center",color:"#065F46",fontWeight:600}}>✅ Table Reserved! Check your WhatsApp.</div>:<button onClick={()=>setBooked(true)} style={{width:"100%",background:"linear-gradient(135deg,#D97706,#B45309)",color:"#fff",border:"none",borderRadius:11,padding:".85rem",fontWeight:700,cursor:"pointer",fontSize:".9rem"}}>Confirm Reservation</button>}
           </div>
         </div>
-      )}
-      {tab==="about" && (
-        <div style={{maxWidth:600,margin:"2rem auto",padding:"0 1rem",textAlign:"center"}}>
-          <div style={{fontSize:"3rem",marginBottom:".75rem"}}>🌸</div>
-          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.5rem",fontWeight:800,marginBottom:.75*16}}>A Story of Flavours</h2>
-          <p style={{color:C.t3,lineHeight:1.85,fontSize:".9rem"}}>Founded in 2018 by Chef Arjun Meena, Savoria blends Rajasthani royal traditions with contemporary culinary art.</p>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:".75rem",marginTop:"1.5rem"}}>
-            {[["6+","Years"],["4.8★","Rating"],["50K+","Guests"]].map(([n,l])=>(
-              <div key={l} style={{background:"#fff",border:"1px solid #FED7AA",borderRadius:12,padding:"1rem"}}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.5rem",fontWeight:800,color:"#B45309"}}>{n}</div>
-                <div style={{fontSize:".75rem",color:C.t3}}>{l}</div>
+      </div>
+
+      {/* SERVICES STRIP */}
+      <div style={{background:"#fff",padding:"1.5rem 2rem",boxShadow:"0 4px 20px rgba(0,0,0,.04)"}}>
+        <div style={{display:"flex",justifyContent:"center",gap:"1.5rem",flexWrap:"wrap"}}>
+          {["🫀 Cardiology","🦴 Orthopaedics","👶 Paediatrics","🧠 Neurology","👁️ Ophthalmology","🦷 Dentistry"].map(s => (
+            <div key={s} style={{background:"#f0f9ff",color:"#0369a1",borderRadius:10,padding:".5rem 1rem",fontSize:".82rem",fontWeight:700,cursor:"pointer"}}>{s}</div>
+          ))}
+        </div>
+      </div>
+
+      {/* DOCTORS */}
+      <div style={{padding:"3rem 2rem",maxWidth:900,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2rem",fontWeight:900,color:"#0c4a6e",textAlign:"center",marginBottom:".5rem"}}>Our Doctors</h2>
+        <p style={{textAlign:"center",color:"#64748b",marginBottom:"2.5rem"}}>Book an appointment directly — online or in-clinic</p>
+        {doctors.map(doc => (
+          <div key={doc.name} style={{background:"#fff",borderRadius:18,padding:"1.5rem",marginBottom:"1rem",border:"1.5px solid #e0f2fe",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem",boxShadow:"0 2px 12px rgba(0,0,0,.04)"}}>
+            <div style={{display:"flex",gap:"1rem",alignItems:"center"}}>
+              <div style={{width:60,height:60,background:"linear-gradient(135deg,#0ea5e9,#0284c7)",borderRadius:16,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2rem"}}>{doc.emoji}</div>
+              <div>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.05rem",color:"#0c4a6e"}}>{doc.name}</div>
+                <div style={{fontSize:".82rem",color:"#0ea5e9",fontWeight:700}}>{doc.spec}</div>
+                <div style={{fontSize:".78rem",color:"#64748b"}}>{doc.exp} experience · ⭐ {doc.rating}</div>
+              </div>
+            </div>
+            <div style={{display:"flex",gap:".5rem",flexWrap:"wrap"}}>
+              {doc.slots.map(slot => (
+                <div key={slot} onClick={() => setBooked(doc.name + " · " + slot)} style={{background: booked===doc.name+" · "+slot ? "#0ea5e9" : "#f0f9ff",color: booked===doc.name+" · "+slot ? "#fff" : "#0369a1",borderRadius:8,padding:".4rem .9rem",fontSize:".78rem",fontWeight:700,cursor:"pointer",border:"1.5px solid #bae6fd",transition:"all .15s"}}>{slot}</div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {booked && <div style={{background:"#dcfce7",border:"1.5px solid #86efac",borderRadius:12,padding:"1rem 1.5rem",textAlign:"center",color:"#166534",fontWeight:700}}>✅ Appointment booked — {booked}</div>}
+      </div>
+
+      {/* FOOTER */}
+      <div style={{background:"#0c4a6e",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.5)",fontSize:".8rem"}}>© 2025 LifeCare Clinic · All Rights Reserved</div>
+        <div style={{color:"#7dd3fc",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
+      </div>
+    </div>
+  );
+}
+
+function DemoSchool() {
+  const [tab, setTab] = useState("about");
+  const stats = [["2,400+","Students"],["180+","Faculty"],["98%","Board Results"],["Est. 1994","30 Years"]];
+  const programs = [
+    { name:"Pre-Primary (Nursery–KG)", age:"3–5 years", icon:"🎨", desc:"Play-based learning with Montessori methodology. Activity rooms, storytelling and creative arts." },
+    { name:"Primary School (I–V)", age:"6–10 years", icon:"📚", desc:"Strong foundation in Maths, Science, English and Hindi. Sports, music and coding introduced." },
+    { name:"Middle School (VI–VIII)", age:"11–13 years", icon:"🔬", desc:"Subject specialisation, science labs, debate club and leadership programmes." },
+    { name:"Secondary (IX–X)", age:"14–15 years", icon:"🏆", desc:"CBSE board preparation with 98% pass rate. Individual mentoring and career guidance." },
+  ];
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#fafffe",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"#fff",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #e2e8f0",position:"sticky",top:0,zIndex:50,boxShadow:"0 2px 8px rgba(0,0,0,.04)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <div style={{width:40,height:40,background:"linear-gradient(135deg,#15803d,#16a34a)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.3rem"}}>🎓</div>
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.05rem",fontWeight:900,color:"#14532d",lineHeight:1}}>Bright Future Academy</div>
+            <div style={{fontSize:".6rem",color:"#16a34a",letterSpacing:".08em",fontWeight:700}}>CBSE AFFILIATED · JAIPUR</div>
+          </div>
+        </div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Home","About","Admissions","Academics","Gallery","Contact"].map(n => (
+            <span key={n} style={{color:"#374151",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{background:"#15803d",color:"#fff",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Apply Now</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(135deg,#14532d 0%,#15803d 50%,#16a34a 100%)",padding:"5rem 2rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-80,right:-60,width:320,height:320,background:"rgba(255,255,255,.05)",borderRadius:"50%"}}/>
+        <div style={{position:"absolute",bottom:-60,left:-40,width:240,height:240,background:"rgba(255,255,255,.04)",borderRadius:"50%"}}/>
+        <div style={{position:"relative"}}>
+          <div style={{display:"inline-block",background:"rgba(251,191,36,.2)",border:"1px solid rgba(251,191,36,.4)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#fbbf24",marginBottom:"1.5rem",letterSpacing:".1em",fontWeight:700}}>ADMISSIONS OPEN 2025–26</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2.2rem,5.5vw,4rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Shaping Tomorrow's<br/><span style={{color:"#bbf7d0"}}>Leaders Today</span></h1>
+          <p style={{color:"rgba(255,255,255,.75)",fontSize:"1.05rem",maxWidth:540,margin:"0 auto 2.5rem",lineHeight:1.75}}>A CBSE-affiliated institution committed to holistic education — academic excellence, sports, arts and moral values since 1994.</p>
+          <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
+            <div style={{background:"#fff",color:"#15803d",padding:".85rem 2rem",borderRadius:12,fontWeight:800,fontSize:".95rem",cursor:"pointer"}}>Apply for Admission →</div>
+            <div style={{background:"rgba(255,255,255,.12)",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,fontSize:".95rem",border:"1.5px solid rgba(255,255,255,.25)",cursor:"pointer"}}>Download Prospectus</div>
+          </div>
+        </div>
+      </div>
+
+      {/* STATS */}
+      <div style={{background:"#fff",padding:"1.75rem 2rem",display:"flex",justifyContent:"center",gap:"3rem",flexWrap:"wrap",boxShadow:"0 4px 20px rgba(0,0,0,.05)"}}>
+        {stats.map(([n,l]) => (
+          <div key={l} style={{textAlign:"center"}}>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2rem",fontWeight:900,color:"#15803d"}}>{n}</div>
+            <div style={{fontSize:".8rem",color:"#6b7280",fontWeight:600}}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* PROGRAMS */}
+      <div style={{padding:"3.5rem 2rem",maxWidth:1000,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2rem",fontWeight:900,color:"#14532d",textAlign:"center",marginBottom:".5rem"}}>Academic Programmes</h2>
+        <p style={{textAlign:"center",color:"#6b7280",marginBottom:"2.5rem"}}>Structured curriculum from Nursery to Class X</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:"1.25rem"}}>
+          {programs.map(p => (
+            <div key={p.name} style={{background:"#f0fdf4",borderRadius:18,padding:"1.5rem",border:"1.5px solid #bbf7d0"}}>
+              <div style={{fontSize:"2.2rem",marginBottom:".75rem"}}>{p.icon}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#14532d",marginBottom:".25rem"}}>{p.name}</div>
+              <div style={{display:"inline-block",background:"#dcfce7",color:"#15803d",borderRadius:8,padding:".15rem .6rem",fontSize:".7rem",fontWeight:700,marginBottom:".75rem"}}>{p.age}</div>
+              <div style={{color:"#4b7c5a",fontSize:".85rem",lineHeight:1.6}}>{p.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* NOTICE BOARD */}
+      <div style={{background:"#f0fdf4",padding:"2.5rem 2rem"}}>
+        <div style={{maxWidth:900,margin:"0 auto"}}>
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#14532d",marginBottom:"1.5rem",textAlign:"center"}}>📋 Latest Notices</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:"1rem"}}>
+            {[
+              ["15 Mar","Annual Day — Registration Open","All parents invited. Register by 20 March."],
+              ["12 Mar","Board Exam Schedule","Class X practicals from 18 March. Check portal."],
+              ["10 Mar","Admissions 2025–26","Last date for Class I admissions: 31 March 2025."],
+            ].map(([date,title,sub]) => (
+              <div key={title} style={{background:"#fff",borderRadius:12,padding:"1.1rem",border:"1.5px solid #bbf7d0"}}>
+                <div style={{fontSize:".72rem",color:"#16a34a",fontWeight:700,marginBottom:".4rem"}}>{date}</div>
+                <div style={{fontWeight:700,color:"#14532d",fontSize:".92rem",marginBottom:".3rem"}}>{title}</div>
+                <div style={{fontSize:".8rem",color:"#64748b"}}>{sub}</div>
               </div>
             ))}
           </div>
         </div>
-      )}
+      </div>
+
+      {/* FOOTER */}
+      <div style={{background:"#14532d",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.5)",fontSize:".8rem"}}>© 2025 Bright Future Academy · CBSE Affiliation No. 1730456</div>
+        <div style={{color:"#86efac",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
+      </div>
     </div>
   );
 }
 
 function DemoEcommerce() {
-  const [cart,setCart]=useState([]);
-  const [filter,setFilter]=useState("All");
-  const [search,setSearch]=useState("");
-  const [cartOpen,setCartOpen]=useState(false);
-  const products=[
-    {id:1,name:"Oversized Blazer",price:2199,mrp:3499,cat:"Tops",img:"🧥",rating:4.8,reviews:124,badge:"Bestseller"},
-    {id:2,name:"Air Mesh Runners",price:3499,mrp:null,cat:"Footwear",img:"👟",rating:4.9,reviews:87},
-    {id:3,name:"Mini Crossbody Bag",price:1499,mrp:1999,cat:"Bags",img:"👜",rating:4.7,reviews:203,badge:"Sale"},
-    {id:4,name:"Premium Cotton Polo",price:999,mrp:null,cat:"Tops",img:"👕",rating:4.6,reviews:56},
-    {id:5,name:"UV400 Sunglasses",price:899,mrp:1299,cat:"Accessories",img:"🕶️",rating:4.5,reviews:41},
-    {id:6,name:"Linen Joggers",price:1299,mrp:null,cat:"Bottoms",img:"👖",rating:4.7,reviews:78},
-    {id:7,name:"Silk Scarf",price:699,mrp:999,cat:"Accessories",img:"🧣",rating:4.8,reviews:32,badge:"New"},
-    {id:8,name:"High-Rise Jeans",price:2499,mrp:null,cat:"Bottoms",img:"🩳",rating:4.6,reviews:167},
-    {id:9,name:"Embroidered Kurta",price:1799,mrp:2499,cat:"Tops",img:"👘",rating:4.9,reviews:312,badge:"Trending"},
+  const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+  const [filter, setFilter] = useState("All");
+  const products = [
+    { id:1, name:"Anarkali Ethnic Set", price:2499, orig:3999, cat:"Ethnic", tag:"Best Seller", emoji:"👗", rating:4.8, reviews:234 },
+    { id:2, name:"Cotton Kurti — Printed", price:799, orig:1299, cat:"Kurti", tag:"New", emoji:"👘", rating:4.6, reviews:89 },
+    { id:3, name:"Silk Saree — Banarasi", price:5499, orig:7999, cat:"Saree", tag:"Premium", emoji:"🥻", rating:4.9, reviews:156 },
+    { id:4, name:"Lehenga Set — Bridal", price:8999, orig:14999, cat:"Ethnic", tag:"Wedding", emoji:"💃", rating:4.7, reviews:67 },
+    { id:5, name:"Casual Summer Dress", price:1299, orig:1999, cat:"Western", tag:"Trending", emoji:"👒", rating:4.5, reviews:312 },
+    { id:6, name:"Palazzo Set — Floral", price:1099, orig:1799, cat:"Kurti", tag:"Sale", emoji:"🌸", rating:4.4, reviews:178 },
   ];
-  const cats=["All","Tops","Footwear","Bags","Accessories","Bottoms"];
-  const filtered=products.filter(p=>(filter==="All"||p.cat===filter)&&p.name.toLowerCase().includes(search.toLowerCase()));
-  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const addToCart=p=>setCart(c=>{const ex=c.find(x=>x.id===p.id);return ex?c.map(x=>x.id===p.id?{...x,qty:x.qty+1}:x):[...c,{...p,qty:1}];});
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#FAFAFA",minHeight:"100vh"}}>
-      <div style={{background:"linear-gradient(90deg,#2563EB,#7C3AED)",padding:".35rem 1rem",textAlign:"center",fontSize:".72rem",color:"#fff",fontWeight:600}}>🎉 Free Shipping above ₹999 &nbsp;|&nbsp; 7-Day Returns &nbsp;|&nbsp; COD Available</div>
-      <div style={{background:"#fff",borderBottom:"1px solid #E2E8F0",padding:"0 1rem",display:"flex",alignItems:"center",justifyContent:"space-between",height:54,gap:".75rem",flexWrap:"wrap"}}>
-        <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:800}}>Shop<span style={{color:"#7C3AED"}}>Nova</span></div>
-        <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search..." style={{flex:1,maxWidth:280,padding:".4rem .85rem",background:"#F8FAFC",border:"1.5px solid #E2E8F0",borderRadius:16,fontSize:".8rem",outline:"none"}}/>
-        <button onClick={()=>setCartOpen(!cartOpen)} style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:16,padding:".35rem .9rem",fontWeight:700,cursor:"pointer",fontSize:".78rem",whiteSpace:"nowrap"}}>🛒 {cart.reduce((s,i)=>s+i.qty,0)} · ₹{total}</button>
-      </div>
-      {cartOpen&&(
-        <div style={{position:"fixed",top:0,right:0,bottom:0,width:300,background:"#fff",boxShadow:"-4px 0 40px rgba(0,0,0,.15)",zIndex:9999,overflowY:"auto"}}>
-          <div style={{padding:"1rem 1.25rem",borderBottom:"1px solid #E2E8F0",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-            <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800}}>Cart ({cart.reduce((s,i)=>s+i.qty,0)})</span>
-            <button onClick={()=>setCartOpen(false)} style={{background:"#F1F5F9",border:"none",borderRadius:7,width:30,height:30,cursor:"pointer"}}>✕</button>
-          </div>
-          {cart.length===0?<div style={{padding:"2.5rem",textAlign:"center",color:C.t4}}>Empty cart</div>:cart.map(item=>(
-            <div key={item.id} style={{padding:".85rem 1.25rem",borderBottom:"1px solid #F1F5F9",display:"flex",gap:".75rem",alignItems:"center"}}>
-              <div style={{width:44,height:44,borderRadius:9,background:"#F8FAFC",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.5rem"}}>{item.img}</div>
-              <div style={{flex:1}}>
-                <div style={{fontWeight:600,fontSize:".82rem"}}>{item.name}</div>
-                <div style={{color:"#7C3AED",fontWeight:700,fontSize:".85rem"}}>₹{item.price}</div>
-              </div>
-              <div style={{display:"flex",alignItems:"center",gap:".35rem"}}>
-                <button onClick={()=>setCart(c=>c.map(x=>x.id===item.id?{...x,qty:x.qty-1}:x).filter(x=>x.qty>0))} style={{width:24,height:24,borderRadius:"50%",border:"1.5px solid #E2E8F0",background:"#fff",cursor:"pointer",fontWeight:700,fontSize:".8rem"}}>-</button>
-                <span style={{fontWeight:700,minWidth:16,textAlign:"center",fontSize:".85rem"}}>{item.qty}</span>
-                <button onClick={()=>addToCart(item)} style={{width:24,height:24,borderRadius:"50%",border:"none",background:"#7C3AED",color:"#fff",cursor:"pointer",fontWeight:700,fontSize:".8rem"}}>+</button>
-              </div>
-            </div>
-          ))}
-          {cart.length>0&&<div style={{padding:"1.25rem"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:".85rem",fontWeight:700}}><span>Total</span><span style={{color:"#2563EB"}}>₹{total}</span></div><button onClick={()=>{alert("Order placed! 🎉");setCart([]);setCartOpen(false);}} style={{width:"100%",background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:11,padding:".85rem",fontWeight:700,cursor:"pointer"}}>Checkout →</button></div>}
-        </div>
-      )}
-      <div style={{padding:".9rem 1rem",display:"flex",gap:".4rem",flexWrap:"wrap",borderBottom:"1px solid #E2E8F0",background:"#fff"}}>
-        {cats.map(c=><button key={c} onClick={()=>setFilter(c)} style={{padding:".35rem .85rem",borderRadius:16,border:"1.5px solid",borderColor:filter===c?"#7C3AED":"#E2E8F0",background:filter===c?"#F5F3FF":"#fff",color:filter===c?"#7C3AED":C.t3,fontWeight:600,cursor:"pointer",fontSize:".78rem"}}>{c}</button>)}
-      </div>
-      <div style={{padding:"1.25rem 1rem",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",gap:"1rem"}}>
-        {filtered.map(p=>{
-          const inCart=cart.find(c=>c.id===p.id);
-          return (
-            <div key={p.id} style={{background:"#fff",borderRadius:14,overflow:"hidden",border:"1.5px solid #E2E8F0",transition:"all .25s",cursor:"pointer"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 12px 40px rgba(0,0,0,.1)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
-              <div style={{height:130,background:"linear-gradient(135deg,#F8FAFC,#F1F5F9)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"3.5rem",position:"relative"}}>
-                {p.img}
-                {p.badge&&<span style={{position:"absolute",top:8,left:8,background:p.badge==="Sale"?"#EF4444":p.badge==="New"?"#10B981":p.badge==="Trending"?"#F97316":"#7C3AED",color:"#fff",fontSize:".55rem",fontWeight:700,padding:".18rem .45rem",borderRadius:4}}>{p.badge}</span>}
-              </div>
-              <div style={{padding:".85rem"}}>
-                <div style={{fontSize:".75rem",color:"#7C3AED",fontWeight:600,marginBottom:".15rem"}}>{p.cat}</div>
-                <div style={{fontWeight:700,color:"#0F172A",marginBottom:".25rem",fontSize:".85rem"}}>{p.name}</div>
-                <div style={{fontSize:".72rem",color:C.t3,marginBottom:".55rem"}}>⭐ {p.rating} ({p.reviews})</div>
-                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                  <div>
-                    <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#2563EB",fontSize:".95rem"}}>₹{p.price.toLocaleString()}</span>
-                    {p.mrp&&<span style={{textDecoration:"line-through",color:C.t4,fontSize:".72rem",marginLeft:".35rem"}}>₹{p.mrp.toLocaleString()}</span>}
-                  </div>
-                  {inCart?(
-                    <div style={{display:"flex",alignItems:"center",gap:".3rem"}}>
-                      <button onClick={()=>setCart(c=>c.map(x=>x.id===p.id?{...x,qty:x.qty-1}:x).filter(x=>x.qty>0))} style={{width:24,height:24,borderRadius:"50%",border:"1.5px solid #E2E8F0",background:"#fff",cursor:"pointer",fontWeight:800,fontSize:".8rem"}}>-</button>
-                      <span style={{fontWeight:700,minWidth:18,textAlign:"center",fontSize:".85rem"}}>{inCart.qty}</span>
-                      <button onClick={()=>addToCart(p)} style={{width:24,height:24,borderRadius:"50%",border:"none",background:"#2563EB",color:"#fff",cursor:"pointer",fontWeight:800,fontSize:".8rem"}}>+</button>
-                    </div>
-                  ):(
-                    <button onClick={()=>addToCart(p)} style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:7,padding:".35rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Add</button>
-                  )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+  const cats = ["All","Ethnic","Kurti","Saree","Western"];
+  const filtered = filter === "All" ? products : products.filter(p => p.cat === filter);
+  const discount = (p, o) => Math.round((1-p/o)*100);
 
-function DemoAI() {
-  const [msgs,setMsgs]=useState([{from:"bot",text:"Hi! 👋 I'm SupportBot — Orbnix's AI. Ask me about pricing, timelines, services, or anything tech!"}]);
-  const [input,setInput]=useState("");
-  const [typing,setTyping]=useState(false);
-  const [quickClicked,setQuickClicked]=useState(false);
-  const bottomRef=useRef(null);
-  const quick=["What does a website cost?","How long to build an app?","Do I own the code?","Do you work internationally?","Can AI agents replace my support team?"];
-  const reply=(q)=>{
-    const m=q.toLowerCase();
-    if(m.includes("cost")||m.includes("price")||m.includes("website cost")) return "Great question! 💰 Our website packages:\n\n• Starter — ₹25,000 (5-page site, 15 days)\n• Growth — ₹55,000 (15 pages + CMS, SEO, 30 days)\n• Enterprise — Custom quote\n\nFor US/UK clients: starts at $500. Fixed pricing, zero hidden fees!";
-    if(m.includes("long")||m.includes("time")||m.includes("timeline")) return "⏱️ Typical timelines:\n\n• Website — 2 to 4 weeks\n• Mobile App — 6 to 12 weeks\n• AI Agent — 3 to 6 weeks\n• Custom ERP/SaaS — 8 to 20 weeks\n\n100% on-time delivery record.";
-    if(m.includes("own")||m.includes("code")) return "🔒 Absolutely! 100% of the code and IP is yours from day one.\n\nYou get complete source code on delivery. No ongoing fees, no lock-in, forever.";
-    if(m.includes("international")||m.includes("global")) return "🌍 Yes! ~40% of our clients are international.\n\nWe work with US, UK, UAE, Australia, Europe. Invoice in USD/GBP, sign NDAs, adjust to your timezone.";
-    if(m.includes("ai")||m.includes("agent")||m.includes("replace")) return "🤖 AI agents handle 60–80% of routine queries automatically!\n\nOne client reduced support costs by 80% with our AI bot. Want details?";
-    return "Happy to help! 😊 The best next step is a free 30-min call — we'll give an honest recommendation.\n\n📞 WhatsApp: +91 98765 43210\n✉️ hello@orbnix.in";
-  };
-  const send=(text)=>{
-    const q=text||input.trim();
-    if(!q)return;
-    setInput("");
-    setMsgs(m=>[...m,{from:"user",text:q}]);
-    setTyping(true);
-    setTimeout(()=>{setTyping(false);setMsgs(m=>[...m,{from:"bot",text:reply(q)}]);},1200+Math.random()*600);
-  };
-  useEffect(()=>{bottomRef.current?.scrollIntoView({behavior:"smooth"});},[msgs,typing]);
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",display:"flex",flexDirection:"column",height:"100%",minHeight:560,background:"#F8FAFC"}}>
-      <div style={{background:"linear-gradient(135deg,#10B981,#2563EB)",padding:"1rem 1.25rem",display:"flex",alignItems:"center",gap:".85rem"}}>
-        <div style={{width:40,height:40,borderRadius:"50%",background:"rgba(255,255,255,.25)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem",flexShrink:0}}>🤖</div>
-        <div>
-          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#fff"}}>Orbnix SupportBot</div>
-          <div style={{fontSize:".72rem",color:"rgba(255,255,255,.8)",display:"flex",alignItems:"center",gap:4}}>
-            <span style={{width:6,height:6,borderRadius:"50%",background:"#86EFAC",display:"inline-block"}}/>Online · AI-powered
-          </div>
-        </div>
-        <div style={{marginLeft:"auto",background:"rgba(255,255,255,.15)",borderRadius:16,padding:".25rem .75rem",fontSize:".68rem",color:"rgba(255,255,255,.9)",fontFamily:"'JetBrains Mono',monospace"}}>GPT-4</div>
-      </div>
-      <div style={{flex:1,overflowY:"auto",padding:"1rem",display:"flex",flexDirection:"column",gap:".75rem"}}>
-        {msgs.map((m,i)=>(
-              <div key={`m-${i}`} style={{display:"flex",justifyContent:m.from==="user"?"flex-end":"flex-start"}}>
-            {m.from==="bot"&&<div style={{width:28,height:28,borderRadius:"50%",background:"linear-gradient(135deg,#10B981,#2563EB)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".8rem",flexShrink:0,marginRight:6,alignSelf:"flex-end"}}>🤖</div>}
-            <div style={{maxWidth:"78%",padding:".7rem .9rem",borderRadius:m.from==="user"?"14px 14px 4px 14px":"14px 14px 14px 4px",background:m.from==="user"?"linear-gradient(135deg,#2563EB,#7C3AED)":"#fff",color:m.from==="user"?"#fff":"#334155",fontSize:".85rem",lineHeight:1.6,boxShadow:"0 2px 10px rgba(0,0,0,.05)",border:m.from==="bot"?"1.5px solid #E2E8F0":"none",whiteSpace:"pre-line"}}>
-              {m.text}
-            </div>
-          </div>
-        ))}
-        {typing&&<div style={{display:"flex",alignItems:"center",gap:6}}><div style={{width:28,height:28,borderRadius:"50%",background:"linear-gradient(135deg,#10B981,#2563EB)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".8rem"}}>🤖</div><div style={{background:"#fff",border:"1.5px solid #E2E8F0",borderRadius:"14px 14px 14px 4px",padding:".6rem .9rem",display:"flex",gap:4}}>{[0,1,2].map(i=><div key={i} style={{width:6,height:6,borderRadius:"50%",background:"#94A3B8",animation:`blink .9s ${i*.2}s ease infinite`}}/>)}</div></div>}
-        <div ref={bottomRef}/>
-      </div>
-      {!quickClicked&&<div style={{padding:".65rem 1rem",display:"flex",gap:".4rem",flexWrap:"wrap",borderTop:"1px solid #E2E8F0"}}>{quick.map(q=><button key={q} onClick={()=>{setQuickClicked(true);send(q);}} style={{background:"#fff",border:"1.5px solid #E2E8F0",borderRadius:16,padding:".3rem .75rem",fontSize:".72rem",color:"#334155",cursor:"pointer"}}>{q}</button>)}</div>}
-      <div style={{padding:".85rem 1rem",borderTop:"1px solid #E2E8F0",display:"flex",gap:".65rem",background:"#fff"}}>
-        <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&send()} placeholder="Ask about pricing, services..." style={{flex:1,background:"#F8FAFC",border:"1.5px solid #E2E8F0",borderRadius:11,padding:".65rem .9rem",fontSize:".85rem",outline:"none",fontFamily:"'Manrope',sans-serif"}}/>
-        <button onClick={()=>send()} style={{background:"linear-gradient(135deg,#10B981,#2563EB)",color:"#fff",border:"none",borderRadius:11,padding:".65rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".85rem"}}>↑</button>
-      </div>
-    </div>
-  );
-}
-
-function DemoDashboard() {
-  const [activeNav,setActiveNav]=useState("dashboard");
-  const data=[42,65,55,80,70,92,78,96];
-  const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"];
-  const maxVal=Math.max(...data);
-  const orders=[
-    {id:"#5201",client:"Priya Sharma",plan:"Growth",amount:"₹5,500",status:"Active",date:"Today"},
-    {id:"#5200",client:"Rahul Mehta",plan:"Starter",amount:"₹1,200",status:"Active",date:"Yesterday"},
-    {id:"#5199",client:"Ananya Tech",plan:"Enterprise",amount:"₹22,000",status:"Active",date:"Dec 14"},
-    {id:"#5198",client:"Vikram Patel",plan:"Growth",amount:"₹5,500",status:"Pending",date:"Dec 13"},
-  ];
-  const kpis=[["Total Revenue","₹48.2L","↑ +22%","#EFF6FF","#2563EB"],["Active Clients","284","8 new","#F5F3FF","#7C3AED"],["Active Users","3,847","↑ +5.7%","#ECFDF5","#10B981"],["Avg Rating","4.9 ★","Excellent","#FFFBEB","#D97706"]];
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",display:"grid",gridTemplateColumns:"160px 1fr",minHeight:560,background:"#F8FAFC"}}>
-      <div style={{background:"#fff",borderRight:"1px solid #E2E8F0",padding:"1rem 0"}}>
-        <div style={{padding:".65rem 1rem",fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".9rem",marginBottom:".5rem",background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Analytix</div>
-        {[["dashboard","◈ Dashboard"],["reports","◷ Reports"],["clients","◻ Clients"],["products","◫ Products"],["settings","◰ Settings"]].map(([key,label])=>(
-          <div key={key} onClick={()=>setActiveNav(key)} style={{padding:".45rem 1rem",fontSize:".78rem",color:activeNav===key?"#2563EB":"#64748B",background:activeNav===key?"#EFF6FF":"transparent",borderLeft:activeNav===key?"3px solid #2563EB":"3px solid transparent",cursor:"pointer",fontWeight:activeNav===key?700:500}}>{label}</div>
-        ))}
-      </div>
-      <div style={{padding:"1.25rem",overflowY:"auto"}}>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem",flexWrap:"wrap",gap:".5rem"}}>
-          <div>
-            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".95rem"}}>Good morning, Rahul 👋</div>
-            <div style={{fontSize:".72rem",color:"#64748B"}}>Here's your business overview.</div>
-          </div>
-          <button style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:8,padding:".4rem .9rem",fontSize:".75rem",fontWeight:700,cursor:"pointer"}}>Export Report</button>
-        </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:".75rem",marginBottom:"1rem"}}>
-          {kpis.map(([l,v,c,bg,col])=>(
-            <div key={l} style={{background:bg,borderRadius:12,padding:".85rem",border:`1.5px solid ${col}22`}}>
-              <div style={{fontSize:".6rem",color:"#94A3B8",textTransform:"uppercase",letterSpacing:".07em",marginBottom:".25rem"}}>{l}</div>
-              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.25rem",fontWeight:800,color:col}}>{v}</div>
-              <div style={{fontSize:".68rem",color:"#64748B",marginTop:".15rem"}}>{c}</div>
-            </div>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#fdf2f8",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"#fff",padding:"0 2rem",height:60,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #fce7f3",position:"sticky",top:0,zIndex:50,boxShadow:"0 2px 8px rgba(0,0,0,.04)"}}>
+        <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.3rem",fontWeight:900,color:"#9d174d",letterSpacing:"-.02em"}}>Miraa <span style={{color:"#ec4899"}}>Fashion</span></div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["New Arrivals","Ethnic","Western","Sale","About"].map(n => (
+            <span key={n} style={{color:"#374151",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
           ))}
         </div>
-        <div style={{background:"#fff",border:"1px solid #E2E8F0",borderRadius:12,padding:"1rem",marginBottom:"1rem"}}>
-          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".85rem",marginBottom:".75rem"}}>Revenue Overview</div>
-          <div style={{display:"flex",alignItems:"flex-end",gap:8,height:80}}>
-            {data.map((v,i)=>(
-              <div key={`v-${i}`} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:3}}>
-                <div style={{width:"100%",borderRadius:"3px 3px 0 0",background:i===data.length-1?"linear-gradient(180deg,#2563EB,rgba(37,99,235,.3))":"#EFF6FF",height:`${(v/maxVal)*100}%`,border:`1.5px solid ${i===data.length-1?"#2563EB":"#BFDBFE"}`,borderBottom:"none"}}/>
-                <div style={{fontSize:".55rem",color:"#94A3B8"}}>{months[i]}</div>
-              </div>
+        <div style={{display:"flex",gap:"1rem",alignItems:"center"}}>
+          <span style={{cursor:"pointer",fontSize:"1.1rem"}}>🔍</span>
+          <span style={{cursor:"pointer",fontSize:"1.1rem"}}>♡</span>
+          <div style={{background:"#9d174d",color:"#fff",padding:".4rem 1rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer",display:"flex",alignItems:"center",gap:".4rem"}}>
+            🛒 {cart.length}
+          </div>
+        </div>
+      </nav>
+
+      {/* HERO BANNER */}
+      <div style={{background:"linear-gradient(135deg,#9d174d 0%,#be185d 50%,#ec4899 100%)",padding:"4rem 2rem",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",right:"-5%",top:"-30%",width:"40%",height:"160%",background:"rgba(255,255,255,.05)",borderRadius:"50%"}}/>
+        <div style={{maxWidth:600,position:"relative"}}>
+          <div style={{display:"inline-block",background:"rgba(251,191,36,.25)",border:"1px solid rgba(251,191,36,.5)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#fef08a",marginBottom:"1.2rem",letterSpacing:".1em",fontWeight:700}}>SUMMER SALE — UP TO 40% OFF</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Wear Your<br/><span style={{color:"#fce7f3"}}>Confidence</span></h1>
+          <p style={{color:"rgba(255,255,255,.75)",fontSize:"1rem",marginBottom:"2rem",lineHeight:1.7}}>Curated ethnic and contemporary fashion. Free shipping above ₹999. Easy 30-day returns.</p>
+          <div style={{display:"flex",gap:".75rem",flexWrap:"wrap"}}>
+            <div style={{background:"#fff",color:"#9d174d",padding:".85rem 2rem",borderRadius:12,fontWeight:800,fontSize:".95rem",cursor:"pointer"}}>Shop Now →</div>
+            <div style={{background:"rgba(255,255,255,.15)",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,fontSize:".95rem",border:"1.5px solid rgba(255,255,255,.3)",cursor:"pointer"}}>View Sale</div>
+          </div>
+        </div>
+      </div>
+
+      {/* TRUST BADGES */}
+      <div style={{background:"#fff",padding:"1rem 2rem",display:"flex",justifyContent:"center",gap:"2.5rem",flexWrap:"wrap",borderBottom:"1px solid #fce7f3"}}>
+        {["🚚 Free Shipping ₹999+","↩️ 30-Day Returns","✅ 100% Authentic","💳 Easy EMI Available"].map(b => (
+          <span key={b} style={{fontSize:".82rem",color:"#6b7280",fontWeight:600}}>{b}</span>
+        ))}
+      </div>
+
+      {/* PRODUCTS */}
+      <div style={{padding:"2.5rem 2rem",maxWidth:1100,margin:"0 auto"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem",flexWrap:"wrap",gap:"1rem"}}>
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#9d174d"}}>New Arrivals</h2>
+          <div style={{display:"flex",gap:".5rem",flexWrap:"wrap"}}>
+            {cats.map(c => (
+              <div key={c} onClick={() => setFilter(c)} style={{padding:".4rem 1rem",borderRadius:20,fontWeight:700,fontSize:".8rem",cursor:"pointer",background: filter===c ? "#9d174d" : "#fce7f3",color: filter===c ? "#fff" : "#9d174d",transition:"all .15s"}}>{c}</div>
             ))}
           </div>
         </div>
-        <div style={{background:"#fff",border:"1px solid #E2E8F0",borderRadius:12,overflow:"hidden"}}>
-          <div style={{padding:".75rem 1rem",borderBottom:"1px solid #F1F5F9",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-            <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".85rem"}}>Recent Orders</span>
-            <button style={{fontSize:".75rem",color:"#2563EB",fontWeight:600,background:"transparent",border:"none",cursor:"pointer"}}>View All →</button>
-          </div>
-          {orders.map((o,i)=>(
-            <div key={o.id} style={{display:"grid",gridTemplateColumns:"1fr 1.5fr 1fr 1fr 1fr",padding:".55rem 1rem",borderBottom:"1px solid #F8FAFC",background:i%2?"#FAFAFA":"#fff",fontSize:".75rem",alignItems:"center",gap:".5rem"}}>
-              <span style={{color:"#2563EB",fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem"}}>{o.id}</span>
-              <span style={{fontWeight:600}}>{o.client}</span>
-              <span style={{color:"#64748B"}}>{o.plan}</span>
-              <span style={{fontWeight:700}}>{o.amount}</span>
-              <span style={{padding:".15rem .5rem",borderRadius:16,background:o.status==="Active"?"#ECFDF5":"#FFFBEB",color:o.status==="Active"?"#10B981":"#D97706",fontSize:".65rem",fontWeight:700,display:"inline-block"}}>{o.status}</span>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))",gap:"1.25rem"}}>
+          {filtered.map(p => (
+            <div key={p.id} style={{background:"#fff",borderRadius:18,overflow:"hidden",border:"1.5px solid #fce7f3",boxShadow:"0 2px 12px rgba(0,0,0,.04)"}}>
+              <div style={{background:"linear-gradient(135deg,#fce7f3,#fbcfe8)",height:180,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"5rem",position:"relative",cursor:"pointer"}}>
+                {p.emoji}
+                <div style={{position:"absolute",top:10,left:10,background:"#9d174d",color:"#fff",borderRadius:6,padding:".15rem .6rem",fontSize:".7rem",fontWeight:800}}>{p.tag}</div>
+                <div onClick={() => setWishlist(w => w.includes(p.id) ? w.filter(i=>i!==p.id) : [...w,p.id])} style={{position:"absolute",top:8,right:10,fontSize:"1.3rem",cursor:"pointer"}}>{wishlist.includes(p.id) ? "❤️" : "🤍"}</div>
+              </div>
+              <div style={{padding:"1rem"}}>
+                <div style={{fontWeight:700,fontSize:".9rem",color:"#1f2937",marginBottom:".3rem"}}>{p.name}</div>
+                <div style={{fontSize:".75rem",color:"#9ca3af",marginBottom:".5rem"}}>⭐ {p.rating} · {p.reviews} reviews</div>
+                <div style={{display:"flex",alignItems:"center",gap:".5rem",marginBottom:".75rem"}}>
+                  <span style={{fontWeight:900,color:"#9d174d",fontSize:"1.05rem"}}>₹{p.price}</span>
+                  <span style={{textDecoration:"line-through",color:"#9ca3af",fontSize:".82rem"}}>₹{p.orig}</span>
+                  <span style={{background:"#fce7f3",color:"#9d174d",borderRadius:6,padding:".1rem .4rem",fontSize:".7rem",fontWeight:800}}>{discount(p.price,p.orig)}% OFF</span>
+                </div>
+                <div onClick={() => setCart(c => c.includes(p.id) ? c : [...c,p.id])} style={{background: cart.includes(p.id) ? "#15803d" : "#9d174d",color:"#fff",padding:".55rem",borderRadius:10,fontWeight:700,fontSize:".82rem",textAlign:"center",cursor:"pointer",transition:"background .15s"}}>
+                  {cart.includes(p.id) ? "✓ Added to Cart" : "Add to Cart"}
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
-  );
-}
 
-function DemoApp() {
-  const [steps,setSteps]=useState(8432);
-  const [liked,setLiked]=useState([]);
-  const workouts=[{id:1,name:"Full Body HIIT",dur:"28 min",kcal:340,level:"Intermediate",emoji:"🔥"},{id:2,name:"Yoga Flow",dur:"40 min",kcal:180,level:"Beginner",emoji:"🧘"},{id:3,name:"Strength Circuit",dur:"45 min",kcal:420,level:"Advanced",emoji:"💪"},{id:4,name:"5K Run",dur:"30 min",kcal:380,level:"Intermediate",emoji:"🏃"}];
-  useEffect(()=>{const t=setInterval(()=>setSteps(s=>s+Math.floor(Math.random()*5)),2000);return()=>clearInterval(t);},[]);
-  return (
-    <div style={{display:"flex",justifyContent:"center",alignItems:"center",gap:"2rem",padding:"2rem",background:"linear-gradient(135deg,#F5F3FF,#FDF2F8)",minHeight:560,flexWrap:"wrap"}}>
-      {[0,1,2].map(screenIdx=>(
-        <div key={screenIdx} style={{width:185,background:"#0F172A",borderRadius:28,overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,.3)",border:"5px solid #1E293B",flexShrink:0}}>
-          <div style={{height:16,background:"#0F172A",display:"flex",justifyContent:"center",alignItems:"center"}}><div style={{width:50,height:4,background:"#1E293B",borderRadius:3}}/></div>
-          {screenIdx===0&&(
-            <div style={{background:"linear-gradient(160deg,#1E1B4B,#2D1D69,#1E293B)",minHeight:290,padding:".85rem"}}>
-              <div style={{fontSize:".6rem",color:"rgba(255,255,255,.5)",marginBottom:".3rem",fontFamily:"'JetBrains Mono',monospace"}}>8:42 AM · Monday</div>
-              <div style={{fontSize:".8rem",fontWeight:700,color:"#fff",marginBottom:".15rem"}}>Good Morning 💪</div>
-              <div style={{fontSize:".6rem",color:"rgba(255,255,255,.5)",marginBottom:".85rem"}}>1,568 steps from your goal!</div>
-              <div style={{background:"linear-gradient(135deg,rgba(124,58,237,.3),rgba(236,72,153,.2))",borderRadius:12,padding:".85rem",marginBottom:".65rem",textAlign:"center",border:"1px solid rgba(124,58,237,.3)"}}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.5rem",fontWeight:800,color:"#fff"}}>{steps.toLocaleString()}</div>
-                <div style={{fontSize:".55rem",color:"rgba(255,255,255,.5)"}}>steps today</div>
-                <div style={{background:"rgba(255,255,255,.12)",height:4,borderRadius:3,marginTop:".6rem"}}><div style={{width:`${Math.min(100,(steps/10000)*100)}%`,height:"100%",background:"linear-gradient(90deg,#A78BFA,#F472B4)",borderRadius:3,transition:"width 1s"}}/></div>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".4rem"}}>
-                {[["🔥","342 kcal"],["💧","1.8L"],["⏱️","42m"],["🏆","12 day"]].map(([e,v])=>(
-                  <div key={v} style={{background:"rgba(255,255,255,.07)",borderRadius:8,padding:".5rem",textAlign:"center"}}>
-                    <div style={{fontSize:".8rem"}}>{e}</div>
-                    <div style={{fontSize:".62rem",fontWeight:700,color:"#fff",marginTop:".1rem"}}>{v}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-          {screenIdx===1&&(
-            <div style={{background:"linear-gradient(160deg,#1E1B4B,#2D1D69)",minHeight:290,padding:".85rem"}}>
-              <div style={{fontSize:".8rem",fontWeight:700,color:"#fff",marginBottom:".7rem"}}>Today's Plan 💪</div>
-              <div style={{display:"flex",flexDirection:"column",gap:".4rem"}}>
-                {workouts.map(w=>(
-                  <div key={w.id} onClick={()=>setLiked(l=>l.includes(w.id)?l.filter(x=>x!==w.id):[...l,w.id])} style={{background:"rgba(255,255,255,.07)",borderRadius:9,padding:".55rem .65rem",display:"flex",alignItems:"center",gap:".5rem",border:`1px solid ${liked.includes(w.id)?"rgba(167,139,250,.5)":"rgba(255,255,255,.06)"}`,cursor:"pointer"}}>
-                    <span style={{fontSize:".9rem"}}>{w.emoji}</span>
-                    <div style={{flex:1}}>
-                      <div style={{fontSize:".68rem",fontWeight:700,color:"#fff"}}>{w.name}</div>
-                      <div style={{fontSize:".55rem",color:"rgba(255,255,255,.4)"}}>{w.dur} · {w.kcal}kcal</div>
-                    </div>
-                    <span style={{fontSize:".7rem",color:liked.includes(w.id)?"#A78BFA":"rgba(255,255,255,.2)"}}>{liked.includes(w.id)?"♥":"♡"}</span>
-                  </div>
-                ))}
-              </div>
-              <button onClick={()=>alert("Workout started! 🔥")} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#EC4899)",color:"#fff",border:"none",borderRadius:9,padding:".55rem",marginTop:".75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>▶ Start Workout</button>
-            </div>
-          )}
-          {screenIdx===2&&(
-            <div style={{background:"linear-gradient(160deg,#701A75,#86198F,#1E293B)",minHeight:290,padding:".85rem"}}>
-              <div style={{fontSize:".8rem",fontWeight:700,color:"#fff",marginBottom:".75rem"}}>This Week 📈</div>
-              <div style={{background:"rgba(0,0,0,.2)",borderRadius:9,padding:".65rem .55rem",marginBottom:".65rem"}}>
-                <div style={{display:"flex",alignItems:"flex-end",gap:3,height:50,marginBottom:".25rem"}}>
-                  {[60,80,45,90,70,85,100].map((h,i)=>(
-              <div key={`h-${i}`} style={{flex:1,height:`${h}%`,background:i===6?"linear-gradient(180deg,#F0ABFC,rgba(240,171,252,.4))":"rgba(255,255,255,.18)",borderRadius:"3px 3px 0 0",border:`1px solid ${i===6?"rgba(240,171,252,.6)":"rgba(255,255,255,.1)"}`,borderBottom:"none"}}/>
-                  ))}
-                </div>
-                <div style={{display:"flex",justifyContent:"space-between"}}>
-                  {["M","T","W","T","F","S","S"].map((d,i)=><div key={i} style={{flex:1,textAlign:"center",fontSize:".5rem",color:i===6?"#F0ABFC":"rgba(255,255,255,.3)"}}>{d}</div>)}
-                </div>
-              </div>
-              {[["⚖️ Weight","↓ 1.2 kg","rgba(240,171,252,.9)"],["🔥 Fat","↓ 0.4%","rgba(251,146,60,.9)"],["💪 Muscle","↑ 0.3 kg","rgba(52,211,153,.9)"],["🏃 Steps","9,840/day","rgba(147,197,253,.9)"]].map(([l,v,c])=>(
-                <div key={l} style={{display:"flex",justifyContent:"space-between",padding:".35rem 0",borderBottom:"1px solid rgba(255,255,255,.07)",fontSize:".65rem"}}>
-                  <span style={{color:"rgba(255,255,255,.5)"}}>{l}</span>
-                  <span style={{color:c,fontWeight:700}}>{v}</span>
-                </div>
-              ))}
-            </div>
-          )}
-          <div style={{background:"#0F172A",display:"flex",justifyContent:"space-around",padding:".4rem .65rem"}}>
-            {["🏠","🏋️","📊","👤"].map((e,i)=><div key={i} style={{fontSize:".85rem",cursor:"pointer",opacity:i===screenIdx?1:.4,padding:".2rem"}}>{e}</div>)}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// ── NEW DEMOS ─────────────────────────────────────────────────────────────────
-function DemoBooking() {
-  const [step,setStep]=useState(1);
-  const [selected,setSelected]=useState({service:"",date:"",time:"",name:"",phone:""});
-  const [done,setDone]=useState(false);
-  const services=["Haircut & Style","Beard Grooming","Hair Color","Facial Treatment","Manicure & Pedicure","Full Package"];
-  const slots=["10:00 AM","10:30 AM","11:00 AM","11:30 AM","2:00 PM","2:30 PM","3:00 PM","4:00 PM"];
-  const prices={"Haircut & Style":499,"Beard Grooming":299,"Hair Color":1199,"Facial Treatment":899,"Manicure & Pedicure":749,"Full Package":2499};
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100%",background:"#0F172A"}}>
-      <div style={{background:"linear-gradient(135deg,#7C3AED,#2563EB)",padding:"1rem 1.5rem",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-        <div>
-          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#fff",fontSize:"1.1rem"}}>✂️ LuxeCuts Studio</div>
-          <div style={{fontSize:".7rem",color:"rgba(255,255,255,.65)"}}>Premium Salon · India</div>
-        </div>
-        <div style={{background:"rgba(255,255,255,.15)",borderRadius:20,padding:".25rem .85rem",fontSize:".72rem",color:"rgba(255,255,255,.9)"}}>⭐ 4.9 · 840 reviews</div>
-      </div>
-      <div style={{padding:"1.5rem",maxWidth:500,margin:"0 auto"}}>
-        <div style={{display:"flex",gap:.5,marginBottom:"1.5rem"}}>
-          {["Service","Date & Time","Confirm"].map((s,i)=>(
-            <div key={s} style={{flex:1,textAlign:"center"}}>
-              <div style={{width:28,height:28,borderRadius:"50%",background:step>i?"#10B981":step===i+1?"#7C3AED":"rgba(255,255,255,.1)",color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto .3rem",fontWeight:700,fontSize:".78rem"}}>{step>i?"✓":i+1}</div>
-              <div style={{fontSize:".65rem",color:step===i+1?"#A78BFA":"rgba(255,255,255,.4)"}}>{s}</div>
-            </div>
-          ))}
-        </div>
-        {step===1&&(
-          <div>
-            <div style={{color:"#A78BFA",fontSize:".78rem",fontWeight:600,marginBottom:".85rem",fontFamily:"'JetBrains Mono',monospace"}}>CHOOSE SERVICE</div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem"}}>
-              {services.map(s=>(
-                <div key={s} onClick={()=>setSelected({...selected,service:s})} style={{background:selected.service===s?"rgba(124,58,237,.3)":"rgba(255,255,255,.05)",border:`1.5px solid ${selected.service===s?"#7C3AED":"rgba(255,255,255,.1)"}`,borderRadius:10,padding:".85rem .75rem",cursor:"pointer",transition:"all .2s"}}>
-                  <div style={{fontWeight:700,color:"#fff",fontSize:".82rem"}}>{s}</div>
-                  <div style={{color:"#A78BFA",fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,marginTop:".2rem",fontSize:".9rem"}}>₹{prices[s]}</div>
-                </div>
-              ))}
-            </div>
-            <button onClick={()=>selected.service&&setStep(2)} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#2563EB)",color:"#fff",border:"none",borderRadius:11,padding:".85rem",marginTop:"1.25rem",fontWeight:700,cursor:"pointer",opacity:selected.service?1:.5}}>Next: Pick a Slot →</button>
-          </div>
-        )}
-        {step===2&&(
-          <div>
-            <div style={{color:"#A78BFA",fontSize:".78rem",fontWeight:600,marginBottom:".85rem",fontFamily:"'JetBrains Mono',monospace"}}>PICK DATE & TIME</div>
-            <input type="date" onChange={e=>setSelected({...selected,date:e.target.value})} style={{width:"100%",padding:".75rem 1rem",background:"rgba(255,255,255,.08)",border:"1.5px solid rgba(255,255,255,.15)",borderRadius:10,color:"#fff",marginBottom:"1rem",fontFamily:"'Manrope',sans-serif",fontSize:".875rem",outline:"none"}}/>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:".5rem",marginBottom:"1.25rem"}}>
-              {slots.map(t=>(
-                <div key={t} onClick={()=>setSelected({...selected,time:t})} style={{background:selected.time===t?"rgba(124,58,237,.4)":"rgba(255,255,255,.06)",border:`1.5px solid ${selected.time===t?"#7C3AED":"rgba(255,255,255,.1)"}`,borderRadius:8,padding:".5rem",textAlign:"center",cursor:"pointer",fontSize:".7rem",color:selected.time===t?"#A78BFA":"rgba(255,255,255,.6)",fontWeight:600}}>{t}</div>
-              ))}
-            </div>
-            <div style={{display:"flex",gap:".65rem"}}>
-              <button onClick={()=>setStep(1)} style={{flex:.5,background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.7)",border:"1.5px solid rgba(255,255,255,.1)",borderRadius:11,padding:".85rem",fontWeight:700,cursor:"pointer"}}>← Back</button>
-              <button onClick={()=>(selected.date&&selected.time)&&setStep(3)} style={{flex:1,background:"linear-gradient(135deg,#7C3AED,#2563EB)",color:"#fff",border:"none",borderRadius:11,padding:".85rem",fontWeight:700,cursor:"pointer",opacity:(selected.date&&selected.time)?1:.5}}>Next →</button>
-            </div>
-          </div>
-        )}
-        {step===3&&!done&&(
-          <div>
-            <div style={{color:"#A78BFA",fontSize:".78rem",fontWeight:600,marginBottom:".85rem",fontFamily:"'JetBrains Mono',monospace"}}>CONFIRM BOOKING</div>
-            <div style={{background:"rgba(124,58,237,.15)",border:"1.5px solid rgba(124,58,237,.3)",borderRadius:12,padding:"1rem",marginBottom:"1.25rem"}}>
-              <div style={{color:"#fff",fontWeight:700,fontSize:".9rem"}}>{selected.service}</div>
-              <div style={{color:"rgba(255,255,255,.6)",fontSize:".78rem",marginTop:".3rem"}}>{selected.date} · {selected.time}</div>
-              <div style={{color:"#A78BFA",fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.1rem",marginTop:".5rem"}}>₹{prices[selected.service]}</div>
-            </div>
-            {[["Your Name","text","Rahul Sharma","name"],["WhatsApp Number","tel","+91 98765 43210","phone"]].map(([l,t,ph,key])=>(
-              <div key={key} style={{marginBottom:".85rem"}}>
-                <label style={{display:"block",fontSize:".72rem",color:"rgba(255,255,255,.5)",marginBottom:".3rem"}}>{l}</label>
-                <input type={t} placeholder={ph} value={selected[key]} onChange={e=>setSelected({...selected,[key]:e.target.value})} style={{width:"100%",padding:".7rem .9rem",background:"rgba(255,255,255,.08)",border:"1.5px solid rgba(255,255,255,.15)",borderRadius:9,color:"#fff",fontSize:".875rem",outline:"none",fontFamily:"'Manrope',sans-serif"}}/>
-              </div>
-            ))}
-            <div style={{display:"flex",gap:".65rem"}}>
-              <button onClick={()=>setStep(2)} style={{flex:.5,background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.7)",border:"1.5px solid rgba(255,255,255,.1)",borderRadius:11,padding:".85rem",fontWeight:700,cursor:"pointer"}}>← Back</button>
-              <button onClick={()=>setDone(true)} style={{flex:1,background:"linear-gradient(135deg,#10B981,#2563EB)",color:"#fff",border:"none",borderRadius:11,padding:".85rem",fontWeight:700,cursor:"pointer"}}>Confirm Booking ✓</button>
-            </div>
-          </div>
-        )}
-        {done&&(
-          <div style={{textAlign:"center",padding:"2rem 0"}}>
-            <div style={{fontSize:"3rem",marginBottom:"1rem"}}>🎉</div>
-            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#fff",fontSize:"1.3rem",marginBottom:".5rem"}}>Booking Confirmed!</div>
-            <p style={{color:"rgba(255,255,255,.6)",fontSize:".85rem",marginBottom:"1.25rem"}}>WhatsApp reminder sent to {selected.phone || "your number"}.</p>
-            <button onClick={()=>{setDone(false);setStep(1);setSelected({service:"",date:"",time:"",name:"",phone:""}); }} style={{background:"linear-gradient(135deg,#7C3AED,#2563EB)",color:"#fff",border:"none",borderRadius:11,padding:".75rem 2rem",fontWeight:700,cursor:"pointer"}}>Book Another →</button>
-          </div>
-        )}
+      {/* FOOTER */}
+      <div style={{background:"#9d174d",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.5)",fontSize:".8rem"}}>© 2025 Miraa Fashion · All Rights Reserved</div>
+        <div style={{color:"#fbcfe8",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
       </div>
     </div>
   );
 }
 
 function DemoRealEstate() {
-  const [filter,setFilter]=useState("Buy");
-  const [activeCard,setActiveCard]=useState(null);
-  const props=[
-    {id:1,name:"Sunrise Villa",loc:"Bandra West, Mumbai",price:"₹85L",type:"Villa",bed:4,bath:3,sqft:2400,tag:"New",img:"🏡",color:"#F97316"},
-    {id:2,name:"Sky Heights 3BHK",loc:"Koramangala, Bengaluru",price:"₹62L",type:"Apartment",bed:3,bath:2,sqft:1650,tag:"Featured",img:"🏢",color:"#2563EB"},
-    {id:3,name:"Green Garden Flat",loc:"Connaught Place, Delhi",price:"₹45L",type:"Apartment",bed:2,bath:2,sqft:1100,tag:"Hot Deal",img:"🏠",color:"#10B981"},
-    {id:4,name:"Royal Duplex",loc:"Jubilee Hills, Hyderabad",price:"₹1.2Cr",type:"Duplex",bed:5,bath:4,sqft:3800,tag:"Luxury",img:"🏰",color:"#7C3AED"},
-    {id:5,name:"Studio Nest",loc:"Andheri East, Mumbai",price:"₹22L",type:"Studio",bed:1,bath:1,sqft:550,tag:"Affordable",img:"🏘️",color:"#EC4899"},
-    {id:6,name:"Commercial Office",loc:"BKC, Mumbai",price:"₹1.8Cr",type:"Commercial",bed:0,bath:2,sqft:5000,tag:"Investment",img:"🏗️",color:"#F59E0B"},
+  const [tab, setTab] = useState("buy");
+  const [priceRange, setPriceRange] = useState("All");
+  const props = [
+    { id:1, name:"3 BHK Luxury Apartment", area:"Vaishali Nagar, Jaipur", price:"₹85 Lakh", size:"1,450 sq ft", type:"Apartment", tag:"Ready to Move", emoji:"🏢", features:["3 BHK","2 Bath","Parking","Gym"] },
+    { id:2, name:"4 BHK Villa — Gated", area:"Mansarovar, Jaipur", price:"₹1.8 Cr", size:"2,800 sq ft", type:"Villa", tag:"Premium", emoji:"🏡", features:["4 BHK","3 Bath","Garden","Pool"] },
+    { id:3, name:"2 BHK Modern Flat", area:"Malviya Nagar, Jaipur", price:"₹52 Lakh", size:"950 sq ft", type:"Apartment", tag:"Best Deal", emoji:"🏠", features:["2 BHK","2 Bath","Parking","Security"] },
+    { id:4, name:"Penthouse — City View", area:"C-Scheme, Jaipur", price:"₹3.2 Cr", size:"4,200 sq ft", type:"Penthouse", tag:"Luxury", emoji:"🏙️", features:["5 BHK","4 Bath","Terrace","Staff Qtrs"] },
   ];
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#F8FAFC",minHeight:"100%"}}>
-      <div style={{background:"linear-gradient(135deg,#0F172A,#1E293B)",padding:"1rem 1.5rem"}}>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:".85rem",flexWrap:"wrap",gap:".5rem"}}>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#f8fafc",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"#fff",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #e2e8f0",position:"sticky",top:0,zIndex:50,boxShadow:"0 2px 8px rgba(0,0,0,.04)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:8}}>
+          <span style={{fontSize:"1.4rem"}}>🏠</span>
           <div>
-            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#fff",fontSize:"1.1rem"}}>🏠 PropSearch India</div>
-            <div style={{fontSize:".68rem",color:"rgba(255,255,255,.5)"}}>Find your perfect property</div>
-          </div>
-          <div style={{display:"flex",gap:".4rem"}}>
-            {["Buy","Rent","Commercial"].map(f=><button key={f} onClick={()=>setFilter(f)} style={{background:filter===f?"linear-gradient(135deg,#2563EB,#7C3AED)":"rgba(255,255,255,.08)",color:"#fff",border:`1.5px solid ${filter===f?"transparent":"rgba(255,255,255,.15)"}`,borderRadius:8,padding:".35rem .85rem",fontWeight:600,cursor:"pointer",fontSize:".78rem"}}>{f}</button>)}
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:900,color:"#0f172a",lineHeight:1}}>PropSearch</div>
+            <div style={{fontSize:".6rem",color:"#2563eb",letterSpacing:".08em",fontWeight:700}}>JAIPUR REAL ESTATE</div>
           </div>
         </div>
-        <div style={{display:"flex",gap:".5rem"}}>
-          <input placeholder="Search locality, project, builder..." style={{flex:1,padding:".65rem 1rem",background:"rgba(255,255,255,.1)",border:"1.5px solid rgba(255,255,255,.15)",borderRadius:10,color:"#fff",fontSize:".85rem",outline:"none",fontFamily:"'Manrope',sans-serif"}}/>
-          <button style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:10,padding:".65rem 1.25rem",fontWeight:700,cursor:"pointer",fontSize:".85rem"}}>Search</button>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Buy","Rent","New Projects","Agents","EMI Calculator"].map(n => (
+            <span key={n} style={{color:"#374151",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{background:"#2563eb",color:"#fff",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>List Property</div>
+      </nav>
+
+      {/* HERO + SEARCH */}
+      <div style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%)",padding:"4.5rem 2rem",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",right:"-10%",top:"-20%",width:"50%",height:"140%",background:"rgba(255,255,255,.03)",borderRadius:"50%"}}/>
+        <div style={{textAlign:"center",position:"relative"}}>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Find Your Dream Home<br/><span style={{color:"#93c5fd"}}>in Jaipur</span></h1>
+          <p style={{color:"rgba(255,255,255,.7)",fontSize:"1rem",marginBottom:"2rem"}}>10,000+ verified properties. Trusted by 50,000+ buyers.</p>
+          {/* SEARCH BAR */}
+          <div style={{background:"#fff",borderRadius:16,padding:"1.25rem",display:"inline-flex",gap:".75rem",flexWrap:"wrap",alignItems:"center",boxShadow:"0 8px 40px rgba(0,0,0,.25)",maxWidth:700,width:"100%"}}>
+            <div style={{display:"flex",gap:".4rem",flexShrink:0}}>
+              {["buy","rent"].map(t => (
+                <div key={t} onClick={() => setTab(t)} style={{padding:".45rem 1.1rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer",background: tab===t ? "#2563eb" : "#f1f5f9",color: tab===t ? "#fff" : "#374151",textTransform:"capitalize",transition:"all .15s"}}>{t.charAt(0).toUpperCase()+t.slice(1)}</div>
+              ))}
+            </div>
+            <input placeholder="Search locality, project, or builder..." style={{flex:1,border:"1.5px solid #e2e8f0",borderRadius:8,padding:".6rem 1rem",fontSize:".88rem",outline:"none",minWidth:180}} />
+            <select style={{border:"1.5px solid #e2e8f0",borderRadius:8,padding:".6rem .8rem",fontSize:".82rem",color:"#374151",background:"#f8fafc"}}>
+              <option>All Types</option><option>Apartment</option><option>Villa</option><option>Plot</option>
+            </select>
+            <div style={{background:"#2563eb",color:"#fff",padding:".65rem 1.5rem",borderRadius:10,fontWeight:800,fontSize:".88rem",cursor:"pointer",whiteSpace:"nowrap"}}>🔍 Search</div>
+          </div>
         </div>
       </div>
-      <div style={{padding:"1.25rem",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:"1rem"}}>
-        {props.map(p=>(
-          <div key={p.id} style={{background:"#fff",borderRadius:14,overflow:"hidden",border:"1.5px solid #E2E8F0",transition:"all .25s",cursor:"pointer"}} onClick={()=>setActiveCard(activeCard===p.id?null:p.id)} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow=`0 12px 32px ${p.color}22`;}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
-            <div style={{height:110,background:`linear-gradient(135deg,${p.color}22,${p.color}11)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"3rem",position:"relative"}}>
-              {p.img}
-              <span style={{position:"absolute",top:8,right:8,background:p.color,color:"#fff",fontSize:".58rem",fontWeight:700,padding:".18rem .5rem",borderRadius:5}}>{p.tag}</span>
-              <span style={{position:"absolute",bottom:8,left:8,background:"rgba(15,23,42,.7)",color:"#fff",fontSize:".6rem",padding:".18rem .5rem",borderRadius:4}}>{p.type}</span>
+
+      {/* STATS */}
+      <div style={{background:"#fff",padding:"1.5rem 2rem",display:"flex",justifyContent:"center",gap:"3rem",flexWrap:"wrap",boxShadow:"0 4px 20px rgba(0,0,0,.04)"}}>
+        {[["10K+","Properties Listed"],["50K+","Happy Buyers"],["500+","Verified Agents"],["₹200Cr+","Properties Sold"]].map(([n,l]) => (
+          <div key={l} style={{textAlign:"center"}}>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#2563eb"}}>{n}</div>
+            <div style={{fontSize:".8rem",color:"#6b7280",fontWeight:600}}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* LISTINGS */}
+      <div style={{padding:"3rem 2rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#0f172a",marginBottom:"2rem"}}>Featured Properties in Jaipur</h2>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:"1.5rem"}}>
+          {props.map(p => (
+            <div key={p.id} style={{background:"#fff",borderRadius:20,overflow:"hidden",border:"1.5px solid #e2e8f0",boxShadow:"0 4px 20px rgba(0,0,0,.05)",cursor:"pointer"}}>
+              <div style={{background:"linear-gradient(135deg,#1e3a8a,#2563eb)",height:180,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"5rem",position:"relative"}}>
+                {p.emoji}
+                <div style={{position:"absolute",top:12,left:12,background:"#fbbf24",color:"#0f172a",borderRadius:6,padding:".2rem .7rem",fontSize:".7rem",fontWeight:800}}>{p.tag}</div>
+                <div style={{position:"absolute",bottom:12,right:12,background:"rgba(0,0,0,.5)",color:"#fff",borderRadius:6,padding:".2rem .7rem",fontSize:".72rem",fontWeight:700}}>{p.type}</div>
+              </div>
+              <div style={{padding:"1.25rem"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#0f172a",marginBottom:".25rem"}}>{p.name}</div>
+                <div style={{fontSize:".8rem",color:"#2563eb",fontWeight:600,marginBottom:".5rem"}}>📍 {p.area}</div>
+                <div style={{fontSize:".78rem",color:"#64748b",marginBottom:".75rem"}}>{p.size}</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:".35rem",marginBottom:".75rem"}}>
+                  {p.features.map(f => <span key={f} style={{background:"#eff6ff",color:"#2563eb",borderRadius:6,padding:".15rem .5rem",fontSize:".7rem",fontWeight:600}}>{f}</span>)}
+                </div>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,fontSize:"1.2rem",color:"#0f172a"}}>{p.price}</span>
+                  <div style={{background:"#2563eb",color:"#fff",padding:".45rem 1rem",borderRadius:8,fontWeight:700,fontSize:".8rem",cursor:"pointer"}}>View Details</div>
+                </div>
+              </div>
             </div>
-            <div style={{padding:".9rem"}}>
-              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".9rem",color:"#0F172A",marginBottom:".2rem"}}>{p.name}</div>
-              <div style={{fontSize:".72rem",color:C.t3,marginBottom:".6rem"}}>📍 {p.loc}</div>
-              <div style={{display:"flex",gap:".75rem",fontSize:".68rem",color:C.t3,marginBottom:".65rem"}}>
-                {p.bed>0&&<span>🛏 {p.bed}BHK</span>}
-                <span>🚿 {p.bath} Bath</span>
-                <span>📐 {p.sqft} sqft</span>
+          ))}
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{background:"#0f172a",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.4)",fontSize:".8rem"}}>© 2025 PropSearch · Jaipur's Most Trusted Real Estate Platform</div>
+        <div style={{color:"#93c5fd",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
+      </div>
+    </div>
+  );
+}
+
+function DemoCA() {
+  const services = [
+    { icon:"📊", title:"GST Filing & Compliance", desc:"Monthly, quarterly and annual GST returns. GSTR-1, GSTR-3B, annual reconciliation.", price:"₹2,500/month" },
+    { icon:"📁", title:"Income Tax Returns", desc:"ITR filing for individuals, firms and companies. Tax planning and audit support.", price:"From ₹1,500" },
+    { icon:"🏢", title:"Company Registration", desc:"Pvt Ltd, LLP, OPC, Partnership firm registration with MCA. End-to-end compliance.", price:"From ₹8,000" },
+    { icon:"📋", title:"Accounting & Bookkeeping", desc:"Monthly accounts, P&L, balance sheet, payroll and MIS reports for your business.", price:"₹5,000/month" },
+    { icon:"🔍", title:"Tax Audit & Statutory Audit", desc:"Statutory audit under Companies Act. Tax audit u/s 44AB. RERA audit.", price:"On request" },
+    { icon:"🤝", title:"Business Advisory", desc:"Startup advisory, valuation, due diligence, financial projections and investor decks.", price:"₹3,000/hr" },
+  ];
+  const team = [
+    { name:"CA Rajesh Sharma", qual:"FCA, DISA", exp:"22 years", spec:"Taxation & Audit", emoji:"👨‍💼" },
+    { name:"CA Priya Gupta", qual:"ACA, CS", exp:"14 years", spec:"Company Law & GST", emoji:"👩‍💼" },
+    { name:"CA Anil Verma", qual:"FCA, MBA", exp:"18 years", spec:"Business Advisory", emoji:"👨‍💼" },
+  ];
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#fafafa",overflowY:"auto"}}>
+      {/* NAV */}
+      <nav style={{background:"#1a2744",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:50}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <div style={{width:36,height:36,background:"#d4af37",borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,color:"#1a2744",fontSize:".9rem"}}>S&A</div>
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1rem",fontWeight:900,color:"#fff",lineHeight:1}}>Sharma & Associates</div>
+            <div style={{fontSize:".6rem",color:"#d4af37",letterSpacing:".08em",fontWeight:600}}>CHARTERED ACCOUNTANTS</div>
+          </div>
+        </div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Home","Services","Team","Clients","Contact"].map(n => (
+            <span key={n} style={{color:"rgba(255,255,255,.8)",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{border:"1.5px solid #d4af37",color:"#d4af37",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Get Consultation</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(135deg,#1a2744 0%,#243563 60%,#2e4080 100%)",padding:"5rem 2rem",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",right:"-5%",top:"-20%",width:"40%",height:"140%",background:"rgba(212,175,55,.05)",borderRadius:"50%"}}/>
+        <div style={{maxWidth:900,margin:"0 auto",display:"grid",gridTemplateColumns:"1.2fr 1fr",gap:"3rem",alignItems:"center"}}>
+          <div>
+            <div style={{display:"inline-block",background:"rgba(212,175,55,.15)",border:"1px solid rgba(212,175,55,.3)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#d4af37",marginBottom:"1.5rem",letterSpacing:".1em",fontWeight:700}}>JAIPUR · EST. 2002 · ICAI REGISTERED</div>
+            <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,4.5vw,3.5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Trusted CA Firm<br/>for <span style={{color:"#d4af37"}}>Every Business</span></h1>
+            <p style={{color:"rgba(255,255,255,.7)",lineHeight:1.75,marginBottom:"2rem",fontSize:".95rem"}}>From GST filing to company registration, audit and financial advisory — Sharma & Associates has guided 500+ businesses since 2002.</p>
+            <div style={{display:"flex",gap:".75rem",flexWrap:"wrap"}}>
+              <div style={{background:"#d4af37",color:"#1a2744",padding:".85rem 2rem",borderRadius:10,fontWeight:800,fontSize:".9rem",cursor:"pointer"}}>Book Free Consultation →</div>
+              <div style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:".85rem 2rem",borderRadius:10,fontWeight:700,fontSize:".9rem",border:"1.5px solid rgba(255,255,255,.2)",cursor:"pointer"}}>Our Services</div>
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"1rem"}}>
+            {[["500+","Clients Served"],["22","Years Experience"],["100%","ICAI Compliant"],["24hr","Response Time"]].map(([n,l]) => (
+              <div key={l} style={{background:"rgba(255,255,255,.07)",borderRadius:14,padding:"1.25rem",textAlign:"center",border:"1.5px solid rgba(212,175,55,.2)"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#d4af37"}}>{n}</div>
+                <div style={{fontSize:".72rem",color:"rgba(255,255,255,.55)",fontWeight:600,marginTop:".2rem"}}>{l}</div>
               </div>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:p.color,fontSize:"1rem"}}>{p.price}</div>
-                <button onClick={e=>{e.stopPropagation();alert(`Contact for ${p.name}\n\nPrice: ${p.price}\nLocation: ${p.loc}\n\nWhatsApp: +91 98765 43210`);}} style={{background:p.color,color:"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Enquire</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* SERVICES */}
+      <div style={{padding:"4rem 2rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#1a2744",textAlign:"center",marginBottom:".5rem"}}>Our Services</h2>
+        <p style={{textAlign:"center",color:"#64748b",marginBottom:"2.5rem"}}>Comprehensive financial and compliance services for businesses of all sizes</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:"1.25rem"}}>
+          {services.map(s => (
+            <div key={s.title} style={{background:"#fff",borderRadius:16,padding:"1.5rem",border:"1.5px solid #e2e8f0",boxShadow:"0 2px 12px rgba(0,0,0,.04)"}}>
+              <div style={{fontSize:"2rem",marginBottom:".75rem"}}>{s.icon}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#1a2744",marginBottom:".5rem"}}>{s.title}</div>
+              <div style={{color:"#64748b",fontSize:".85rem",lineHeight:1.6,marginBottom:".75rem"}}>{s.desc}</div>
+              <div style={{fontWeight:800,color:"#d4af37",fontSize:".9rem"}}>{s.price}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* TEAM */}
+      <div style={{background:"#f8fafc",padding:"3.5rem 2rem"}}>
+        <div style={{maxWidth:900,margin:"0 auto"}}>
+          <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#1a2744",textAlign:"center",marginBottom:"2.5rem"}}>Our Partners</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:"1.25rem"}}>
+            {team.map(t => (
+              <div key={t.name} style={{background:"#fff",borderRadius:16,padding:"1.5rem",textAlign:"center",border:"1.5px solid #e2e8f0",boxShadow:"0 2px 8px rgba(0,0,0,.04)"}}>
+                <div style={{width:64,height:64,background:"linear-gradient(135deg,#1a2744,#2e4080)",borderRadius:20,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2rem",margin:"0 auto 1rem"}}>{t.emoji}</div>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#1a2744",marginBottom:".2rem"}}>{t.name}</div>
+                <div style={{fontSize:".78rem",color:"#d4af37",fontWeight:700,marginBottom:".3rem"}}>{t.qual}</div>
+                <div style={{fontSize:".78rem",color:"#64748b"}}>{t.exp} · {t.spec}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{background:"#1a2744",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.4)",fontSize:".8rem"}}>© 2025 Sharma & Associates · ICAI Reg. No. 012345N</div>
+        <div style={{color:"#d4af37",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
+      </div>
+    </div>
+  );
+}
+
+function DemoAI() {
+  const [msgs, setMsgs] = useState([
+    { from:"bot", text:"Hi! I'm the SupportBot for TechStore. How can I help you today? 😊" },
+  ]);
+  const [input, setInput] = useState("");
+  const [typing, setTyping] = useState(false);
+  const replies = {
+    "order": "I can help with your order! Please share your Order ID and I'll check the status right away. 📦",
+    "return": "Our return policy allows returns within 30 days of delivery. Would you like me to initiate a return request? 🔄",
+    "price": "We have products starting from ₹499. Would you like to browse our latest deals and offers? 🏷️",
+    "delivery": "Standard delivery takes 3–5 business days. Express delivery (1–2 days) is available for ₹99 extra. 🚚",
+    "support": "Our support team is available 9 AM – 9 PM, 7 days a week. You can also reach us at +91 98765 43210. 📞",
+    "default": "Thanks for reaching out! Let me connect you with a specialist for that query. They'll respond within 2 hours. ✅",
+  };
+  const getReply = (msg) => {
+    const m = msg.toLowerCase();
+    if (m.includes("order") || m.includes("track")) return replies.order;
+    if (m.includes("return") || m.includes("refund")) return replies.return;
+    if (m.includes("price") || m.includes("cost") || m.includes("how much")) return replies.price;
+    if (m.includes("deliver") || m.includes("shipping")) return replies.delivery;
+    if (m.includes("support") || m.includes("contact") || m.includes("help")) return replies.support;
+    return replies.default;
+  };
+  const send = () => {
+    if (!input.trim()) return;
+    const userMsg = input.trim();
+    setMsgs(m => [...m, { from:"user", text:userMsg }]);
+    setInput("");
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      setMsgs(m => [...m, { from:"bot", text:getReply(userMsg) }]);
+    }, 1200);
+  };
+
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",height:"100%",background:"#f8fafc",display:"flex",flexDirection:"column"}}>
+      {/* HEADER */}
+      <div style={{background:"linear-gradient(135deg,#1e3a8a,#2563eb)",padding:"1rem 1.5rem",display:"flex",alignItems:"center",gap:"1rem"}}>
+        <div style={{width:44,height:44,background:"rgba(255,255,255,.15)",borderRadius:14,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.4rem"}}>🤖</div>
+        <div>
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.05rem",color:"#fff"}}>SupportBot</div>
+          <div style={{fontSize:".75rem",color:"rgba(255,255,255,.7)",display:"flex",alignItems:"center",gap:".4rem"}}><span style={{width:7,height:7,background:"#4ade80",borderRadius:"50%",display:"inline-block"}}/>Online · Avg reply 30 sec</div>
+        </div>
+        <div style={{marginLeft:"auto",background:"rgba(255,255,255,.1)",color:"#fff",borderRadius:8,padding:".35rem .9rem",fontSize:".75rem",fontWeight:700}}>AI Powered</div>
+      </div>
+
+      {/* QUICK ACTIONS */}
+      <div style={{padding:".75rem 1rem",background:"#fff",borderBottom:"1px solid #e2e8f0",display:"flex",gap:".5rem",flexWrap:"wrap"}}>
+        {["Track Order","Return/Refund","Delivery Info","Talk to Agent"].map(q => (
+          <div key={q} onClick={() => { setInput(q); }} style={{background:"#eff6ff",color:"#2563eb",borderRadius:20,padding:".35rem .9rem",fontSize:".75rem",fontWeight:700,cursor:"pointer",border:"1px solid #bfdbfe"}}>{q}</div>
+        ))}
+      </div>
+
+      {/* MESSAGES */}
+      <div style={{flex:1,padding:"1rem",overflowY:"auto",display:"flex",flexDirection:"column",gap:".75rem",maxHeight:340}}>
+        {msgs.map((m, i) => (
+          <div key={i} style={{display:"flex",justifyContent: m.from==="user" ? "flex-end" : "flex-start",gap:".5rem",alignItems:"flex-end"}}>
+            {m.from==="bot" && <div style={{width:30,height:30,background:"linear-gradient(135deg,#1e3a8a,#2563eb)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",fontSize:".9rem",flexShrink:0}}>🤖</div>}
+            <div style={{background: m.from==="user" ? "#2563eb" : "#fff",color: m.from==="user" ? "#fff" : "#0f172a",borderRadius: m.from==="user" ? "16px 4px 16px 16px" : "4px 16px 16px 16px",padding:".65rem 1rem",fontSize:".88rem",maxWidth:"75%",lineHeight:1.5,boxShadow:"0 2px 8px rgba(0,0,0,.06)",border: m.from==="bot" ? "1px solid #e2e8f0" : "none"}}>
+              {m.text}
+            </div>
+          </div>
+        ))}
+        {typing && (
+          <div style={{display:"flex",alignItems:"center",gap:".5rem"}}>
+            <div style={{width:30,height:30,background:"linear-gradient(135deg,#1e3a8a,#2563eb)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",fontSize:".9rem"}}>🤖</div>
+            <div style={{background:"#fff",borderRadius:"4px 16px 16px 16px",padding:".65rem 1rem",border:"1px solid #e2e8f0",display:"flex",gap:".3rem",alignItems:"center"}}>
+              {[0,1,2].map(i => <div key={i} style={{width:7,height:7,background:"#94a3b8",borderRadius:"50%",animation:`bounce .8s ${i*0.15}s infinite`}}/>)}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* INPUT */}
+      <div style={{padding:"1rem",background:"#fff",borderTop:"1px solid #e2e8f0",display:"flex",gap:".75rem",alignItems:"center"}}>
+        <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key==="Enter" && send()} placeholder="Type your message..." style={{flex:1,border:"1.5px solid #e2e8f0",borderRadius:12,padding:".65rem 1rem",fontSize:".88rem",outline:"none",fontFamily:"'Manrope',sans-serif"}}/>
+        <div onClick={send} style={{background:"#2563eb",color:"#fff",width:42,height:42,borderRadius:12,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",fontSize:"1.1rem",flexShrink:0}}>→</div>
+      </div>
+
+      {/* POWERED BY */}
+      <div style={{background:"#f8fafc",padding:".5rem",textAlign:"center",borderTop:"1px solid #e2e8f0"}}>
+        <span style={{fontSize:".72rem",color:"#94a3b8",fontWeight:600}}>Powered by Orbnix AI · orbnix.in</span>
+      </div>
+    </div>
+  );
+}
+
+function DemoDashboard() {
+  const data = [
+    { month:"Oct", rev:45000, orders:89 }, { month:"Nov", rev:62000, orders:124 },
+    { month:"Dec", rev:88000, orders:178 }, { month:"Jan", rev:54000, orders:107 },
+    { month:"Feb", rev:71000, orders:142 }, { month:"Mar", rev:95000, orders:190 },
+  ];
+  const maxRev = Math.max(...data.map(d => d.rev));
+  const kpis = [
+    { label:"Total Revenue", val:"₹4,15,000", change:"+23%", up:true, icon:"💰" },
+    { label:"Total Orders", val:"830", change:"+18%", up:true, icon:"📦" },
+    { label:"Active Customers", val:"1,240", change:"+31%", up:true, icon:"👥" },
+    { label:"Avg Order Value", val:"₹500", change:"-4%", up:false, icon:"🛒" },
+  ];
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100%",background:"#0f172a",color:"#fff",padding:"1.5rem",overflowY:"auto"}}>
+      {/* HEADER */}
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem",flexWrap:"wrap",gap:"1rem"}}>
+        <div>
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.3rem",fontWeight:900,color:"#fff"}}>Analytics Dashboard</div>
+          <div style={{fontSize:".78rem",color:"#64748b"}}>Last 6 months · Updated just now</div>
+        </div>
+        <div style={{display:"flex",gap:".5rem"}}>
+          {["7D","1M","6M","1Y"].map(p => (
+            <div key={p} style={{background: p==="6M" ? "#2563eb" : "rgba(255,255,255,.06)",color: p==="6M" ? "#fff" : "#94a3b8",borderRadius:8,padding:".35rem .8rem",fontSize:".78rem",fontWeight:700,cursor:"pointer"}}>{p}</div>
+          ))}
+        </div>
+      </div>
+
+      {/* KPI CARDS */}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:"1rem",marginBottom:"1.5rem"}}>
+        {kpis.map(k => (
+          <div key={k.label} style={{background:"rgba(255,255,255,.05)",borderRadius:16,padding:"1.25rem",border:"1px solid rgba(255,255,255,.08)"}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:".75rem"}}>
+              <span style={{fontSize:"1.5rem"}}>{k.icon}</span>
+              <span style={{background: k.up ? "rgba(74,222,128,.15)" : "rgba(248,113,113,.15)",color: k.up ? "#4ade80" : "#f87171",borderRadius:8,padding:".2rem .6rem",fontSize:".72rem",fontWeight:700}}>{k.change}</span>
+            </div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#fff",lineHeight:1}}>{k.val}</div>
+            <div style={{fontSize:".75rem",color:"#64748b",marginTop:".3rem"}}>{k.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* BAR CHART */}
+      <div style={{background:"rgba(255,255,255,.04)",borderRadius:16,padding:"1.5rem",border:"1px solid rgba(255,255,255,.07)",marginBottom:"1.5rem"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem"}}>
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#fff"}}>Monthly Revenue</div>
+          <div style={{fontSize:".75rem",color:"#64748b"}}>Oct 2024 — Mar 2025</div>
+        </div>
+        <div style={{display:"flex",alignItems:"flex-end",gap:"1rem",height:160}}>
+          {data.map(d => (
+            <div key={d.month} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:".4rem"}}>
+              <div style={{fontSize:".68rem",color:"#64748b",fontWeight:600}}>₹{(d.rev/1000).toFixed(0)}K</div>
+              <div style={{width:"100%",background: d.month==="Mar" ? "#2563eb" : "rgba(255,255,255,.12)",borderRadius:"6px 6px 0 0",height: (d.rev/maxRev*120)+"px",minHeight:8,transition:"height .3s",position:"relative",overflow:"hidden"}}>
+                {d.month==="Mar" && <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg,#3b82f6,#1d4ed8)"}}/>}
+              </div>
+              <div style={{fontSize:".72rem",color:"#94a3b8",fontWeight:600}}>{d.month}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* RECENT ORDERS */}
+      <div style={{background:"rgba(255,255,255,.04)",borderRadius:16,padding:"1.5rem",border:"1px solid rgba(255,255,255,.07)"}}>
+        <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#fff",marginBottom:"1.25rem"}}>Recent Orders</div>
+        {[
+          { id:"#4521", customer:"Priya S.", product:"Anarkali Set", amount:"₹2,499", status:"Delivered" },
+          { id:"#4520", customer:"Rahul V.", product:"Silk Saree", amount:"₹5,499", status:"Shipped" },
+          { id:"#4519", customer:"Ananya P.", product:"Kurti Pack", amount:"₹1,598", status:"Processing" },
+        ].map(o => (
+          <div key={o.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:".75rem 0",borderBottom:"1px solid rgba(255,255,255,.06)",flexWrap:"wrap",gap:".5rem"}}>
+            <div style={{display:"flex",gap:".75rem",alignItems:"center"}}>
+              <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:".78rem",color:"#2563eb",fontWeight:700}}>{o.id}</span>
+              <div>
+                <div style={{fontSize:".85rem",fontWeight:600,color:"#fff"}}>{o.customer}</div>
+                <div style={{fontSize:".75rem",color:"#64748b"}}>{o.product}</div>
+              </div>
+            </div>
+            <div style={{display:"flex",gap:"1rem",alignItems:"center"}}>
+              <span style={{fontWeight:700,color:"#fff",fontSize:".88rem"}}>{o.amount}</span>
+              <span style={{background: o.status==="Delivered" ? "rgba(74,222,128,.15)" : o.status==="Shipped" ? "rgba(96,165,250,.15)" : "rgba(251,191,36,.15)",color: o.status==="Delivered" ? "#4ade80" : o.status==="Shipped" ? "#60a5fa" : "#fbbf24",borderRadius:8,padding:".2rem .7rem",fontSize:".72rem",fontWeight:700}}>{o.status}</span>
             </div>
           </div>
         ))}
@@ -903,961 +1236,522 @@ function DemoRealEstate() {
   );
 }
 
+function DemoApp() {
+  const [screen, setScreen] = useState("home");
+  const [logged, setLogged] = useState(false);
+  const workouts = [
+    { name:"Morning HIIT", duration:"30 min", cal:280, level:"Medium", emoji:"🏃", complete:true },
+    { name:"Yoga Flow", duration:"45 min", cal:180, level:"Easy", emoji:"🧘", complete:true },
+    { name:"Upper Body", duration:"50 min", cal:320, level:"Hard", emoji:"💪", complete:false },
+    { name:"Evening Run", duration:"35 min", cal:250, level:"Medium", emoji:"🌆", complete:false },
+  ];
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",height:"100%",background:"#0f172a",display:"flex",flexDirection:"column",maxWidth:380,margin:"0 auto"}}>
+      {/* STATUS BAR */}
+      <div style={{background:"#0f172a",padding:".5rem 1.25rem",display:"flex",justifyContent:"space-between",fontSize:".72rem",color:"rgba(255,255,255,.5)"}}>
+        <span>9:41 AM</span><span>●●●●  WiFi  🔋</span>
+      </div>
+
+      {screen==="home" && (
+        <div style={{flex:1,overflowY:"auto",padding:"0 1.25rem 1.25rem"}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",paddingTop:".5rem",marginBottom:"1.5rem"}}>
+            <div>
+              <div style={{fontSize:".78rem",color:"rgba(255,255,255,.5)"}}>Good morning 👋</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,color:"#fff",fontSize:"1.3rem"}}>Rahul</div>
+            </div>
+            <div style={{width:40,height:40,background:"linear-gradient(135deg,#f97316,#ec4899)",borderRadius:12,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem"}}>🏋️</div>
+          </div>
+
+          {/* TODAY RING */}
+          <div style={{background:"linear-gradient(135deg,#1e3a8a,#7c3aed)",borderRadius:20,padding:"1.5rem",marginBottom:"1.25rem",textAlign:"center"}}>
+            <div style={{fontSize:".75rem",color:"rgba(255,255,255,.6)",marginBottom:".25rem",letterSpacing:".08em"}}>TODAY'S PROGRESS</div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"3rem",fontWeight:900,color:"#fff",lineHeight:1}}>580</div>
+            <div style={{color:"rgba(255,255,255,.6)",fontSize:".8rem",marginBottom:"1rem"}}>of 800 cal goal</div>
+            <div style={{background:"rgba(255,255,255,.15)",borderRadius:10,height:8,overflow:"hidden"}}>
+              <div style={{background:"linear-gradient(90deg,#4ade80,#22c55e)",height:"100%",width:"72%",borderRadius:10}}/>
+            </div>
+            <div style={{display:"flex",justifyContent:"space-around",marginTop:"1rem"}}>
+              {[["💧","2.1L","Water"],["🔥","580","Calories"],["👣","7,240","Steps"]].map(([e,v,l]) => (
+                <div key={l} style={{textAlign:"center"}}>
+                  <div style={{fontSize:"1rem"}}>{e}</div>
+                  <div style={{fontWeight:800,color:"#fff",fontSize:".88rem"}}>{v}</div>
+                  <div style={{fontSize:".65rem",color:"rgba(255,255,255,.5)"}}>{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* WORKOUTS */}
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#fff",fontSize:"1rem",marginBottom:".75rem"}}>Today's Workouts</div>
+          {workouts.map(w => (
+            <div key={w.name} style={{background: w.complete ? "rgba(74,222,128,.08)" : "rgba(255,255,255,.05)",borderRadius:14,padding:"1rem",marginBottom:".6rem",display:"flex",justifyContent:"space-between",alignItems:"center",border: w.complete ? "1px solid rgba(74,222,128,.2)" : "1px solid rgba(255,255,255,.07)"}}>
+              <div style={{display:"flex",gap:".75rem",alignItems:"center"}}>
+                <span style={{fontSize:"1.5rem"}}>{w.emoji}</span>
+                <div>
+                  <div style={{fontWeight:700,color:"#fff",fontSize:".88rem"}}>{w.name}</div>
+                  <div style={{fontSize:".72rem",color:"#64748b"}}>{w.duration} · {w.cal} cal · {w.level}</div>
+                </div>
+              </div>
+              <div style={{width:24,height:24,borderRadius:8,background: w.complete ? "#22c55e" : "rgba(255,255,255,.1)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".75rem"}}>{w.complete ? "✓" : ""}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* BOTTOM NAV */}
+      <div style={{background:"rgba(255,255,255,.05)",backdropFilter:"blur(10px)",borderTop:"1px solid rgba(255,255,255,.08)",padding:".75rem 1.25rem",display:"flex",justifyContent:"space-around"}}>
+        {[["🏠","Home"],["📊","Stats"],["💪","Workout"],["👤","Profile"]].map(([icon,label]) => (
+          <div key={label} onClick={() => setScreen(label.toLowerCase())} style={{textAlign:"center",cursor:"pointer"}}>
+            <div style={{fontSize:"1.2rem"}}>{icon}</div>
+            <div style={{fontSize:".6rem",color: screen===label.toLowerCase() ? "#60a5fa" : "rgba(255,255,255,.4)",fontWeight:700,marginTop:".1rem"}}>{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DemoBooking() {
+  const [step, setStep] = useState(1);
+  const [selected, setSelected] = useState({ service: null, stylist: null, date: null, time: null });
+  const services = [
+    { id:1, name:"Haircut & Style", duration:"45 min", price:600, emoji:"✂️" },
+    { id:2, name:"Hair Colour", duration:"90 min", price:2200, emoji:"🎨" },
+    { id:3, name:"Keratin Treatment", duration:"120 min", price:3500, emoji:"✨" },
+    { id:4, name:"Facial & Cleanup", duration:"60 min", price:1200, emoji:"💆" },
+  ];
+  const stylists = [
+    { id:1, name:"Priya Sharma", spec:"Colouring Expert", rating:"4.9", emoji:"👩" },
+    { id:2, name:"Aarav Singh", spec:"Hair Styling", rating:"4.8", emoji:"👨" },
+    { id:3, name:"Meera Patel", spec:"Skin & Beauty", rating:"5.0", emoji:"👩" },
+  ];
+  const slots = ["10:00","11:30","13:00","14:30","16:00","17:30"];
+  const [booked, setBooked] = useState(false);
+
+  return (
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100%",background:"#0f0a0a",color:"#fff",display:"flex",flexDirection:"column"}}>
+      {/* HEADER */}
+      <div style={{background:"linear-gradient(135deg,#2d0a0a,#4a1010)",padding:"1.25rem 1.5rem",display:"flex",alignItems:"center",gap:".75rem"}}>
+        <span style={{fontSize:"1.5rem"}}>✂️</span>
+        <div>
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,fontSize:"1.1rem",color:"#fff"}}>LuxeCuts Salon</div>
+          <div style={{fontSize:".72rem",color:"rgba(255,255,255,.5)"}}>Book your appointment in 60 seconds</div>
+        </div>
+      </div>
+
+      {/* PROGRESS */}
+      <div style={{background:"rgba(255,255,255,.05)",padding:".75rem 1.5rem",display:"flex",gap:".5rem",alignItems:"center"}}>
+        {["Service","Stylist","Date & Time","Confirm"].map((s,i) => (
+          <React.Fragment key={s}>
+            <div style={{display:"flex",alignItems:"center",gap:".35rem"}}>
+              <div style={{width:22,height:22,borderRadius:"50%",background: step>i+1 ? "#22c55e" : step===i+1 ? "#e11d48" : "rgba(255,255,255,.1)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".65rem",fontWeight:800}}>
+                {step>i+1 ? "✓" : i+1}
+              </div>
+              <span style={{fontSize:".72rem",color: step===i+1 ? "#fff" : "rgba(255,255,255,.4)",fontWeight:600}}>{s}</span>
+            </div>
+            {i<3 && <div style={{flex:1,height:1,background:"rgba(255,255,255,.1)"}}/>}
+          </React.Fragment>
+        ))}
+      </div>
+
+      <div style={{flex:1,padding:"1.25rem",overflowY:"auto"}}>
+        {step===1 && (
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.05rem",color:"#fff",marginBottom:"1rem"}}>Choose a Service</div>
+            {services.map(s => (
+              <div key={s.id} onClick={() => setSelected(p=>({...p,service:s}))} style={{background: selected.service?.id===s.id ? "rgba(225,29,72,.15)" : "rgba(255,255,255,.05)",borderRadius:14,padding:"1rem 1.25rem",marginBottom:".6rem",display:"flex",justifyContent:"space-between",alignItems:"center",cursor:"pointer",border: selected.service?.id===s.id ? "1.5px solid rgba(225,29,72,.5)" : "1.5px solid rgba(255,255,255,.06)"}}>
+                <div style={{display:"flex",gap:".75rem",alignItems:"center"}}>
+                  <span style={{fontSize:"1.5rem"}}>{s.emoji}</span>
+                  <div>
+                    <div style={{fontWeight:700,color:"#fff",fontSize:".9rem"}}>{s.name}</div>
+                    <div style={{fontSize:".72rem",color:"rgba(255,255,255,.4)"}}>{s.duration}</div>
+                  </div>
+                </div>
+                <span style={{fontWeight:800,color:"#e11d48",fontSize:".95rem"}}>₹{s.price}</span>
+              </div>
+            ))}
+          </div>
+        )}
+        {step===2 && (
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.05rem",color:"#fff",marginBottom:"1rem"}}>Choose a Stylist</div>
+            {stylists.map(s => (
+              <div key={s.id} onClick={() => setSelected(p=>({...p,stylist:s}))} style={{background: selected.stylist?.id===s.id ? "rgba(225,29,72,.15)" : "rgba(255,255,255,.05)",borderRadius:14,padding:"1rem",marginBottom:".6rem",display:"flex",gap:"1rem",alignItems:"center",cursor:"pointer",border: selected.stylist?.id===s.id ? "1.5px solid rgba(225,29,72,.5)" : "1.5px solid rgba(255,255,255,.06)"}}>
+                <div style={{width:44,height:44,background:"linear-gradient(135deg,#4a1010,#e11d48)",borderRadius:12,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.4rem"}}>{s.emoji}</div>
+                <div>
+                  <div style={{fontWeight:700,color:"#fff"}}>{s.name}</div>
+                  <div style={{fontSize:".75rem",color:"rgba(255,255,255,.5)"}}>{s.spec} · ⭐ {s.rating}</div>
+                </div>
+                {selected.stylist?.id===s.id && <div style={{marginLeft:"auto",color:"#e11d48",fontWeight:800}}>✓</div>}
+              </div>
+            ))}
+          </div>
+        )}
+        {step===3 && (
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.05rem",color:"#fff",marginBottom:"1rem"}}>Pick Date & Time</div>
+            <div style={{display:"flex",gap:".5rem",marginBottom:"1rem",flexWrap:"wrap"}}>
+              {["Sat, 15 Mar","Sun, 16 Mar","Mon, 17 Mar","Tue, 18 Mar"].map(d => (
+                <div key={d} onClick={() => setSelected(p=>({...p,date:d}))} style={{background: selected.date===d ? "#e11d48" : "rgba(255,255,255,.06)",color:"#fff",borderRadius:10,padding:".5rem .9rem",fontSize:".78rem",fontWeight:700,cursor:"pointer",border: selected.date===d ? "1.5px solid #e11d48" : "1.5px solid rgba(255,255,255,.08)"}}>{d}</div>
+              ))}
+            </div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:700,fontSize:".9rem",color:"rgba(255,255,255,.6)",marginBottom:".75rem"}}>Available Slots</div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:".5rem"}}>
+              {slots.map(t => (
+                <div key={t} onClick={() => setSelected(p=>({...p,time:t}))} style={{background: selected.time===t ? "#e11d48" : "rgba(255,255,255,.06)",color:"#fff",borderRadius:10,padding:".6rem",textAlign:"center",fontSize:".82rem",fontWeight:700,cursor:"pointer",border: selected.time===t ? "1.5px solid #e11d48" : "1.5px solid rgba(255,255,255,.08)"}}>{t}</div>
+              ))}
+            </div>
+          </div>
+        )}
+        {step===4 && !booked && (
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1.05rem",color:"#fff",marginBottom:"1.25rem"}}>Confirm Booking</div>
+            <div style={{background:"rgba(255,255,255,.05)",borderRadius:16,padding:"1.25rem",border:"1px solid rgba(255,255,255,.08)"}}>
+              {[["Service",selected.service?.name || "—"],["Stylist",selected.stylist?.name || "—"],["Date",selected.date || "—"],["Time",selected.time || "—"],["Amount","₹"+(selected.service?.price || 0)]].map(([l,v]) => (
+                <div key={l} style={{display:"flex",justifyContent:"space-between",padding:".6rem 0",borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+                  <span style={{color:"rgba(255,255,255,.5)",fontSize:".85rem"}}>{l}</span>
+                  <span style={{fontWeight:700,color:"#fff",fontSize:".85rem"}}>{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {booked && (
+          <div style={{textAlign:"center",padding:"2rem 0"}}>
+            <div style={{fontSize:"4rem",marginBottom:"1rem"}}>🎉</div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,fontSize:"1.4rem",color:"#22c55e",marginBottom:".5rem"}}>Booking Confirmed!</div>
+            <div style={{color:"rgba(255,255,255,.6)",fontSize:".9rem",lineHeight:1.6}}>See you at LuxeCuts on<br/><strong style={{color:"#fff"}}>{selected.date} at {selected.time}</strong></div>
+          </div>
+        )}
+      </div>
+
+      {/* BOTTOM BUTTON */}
+      {!booked && (
+        <div style={{padding:"1rem 1.5rem",borderTop:"1px solid rgba(255,255,255,.08)"}}>
+          <div onClick={() => { if(step<4) setStep(s=>s+1); else setBooked(true); }} style={{background:"#e11d48",color:"#fff",borderRadius:14,padding:"1rem",textAlign:"center",fontWeight:800,fontSize:"1rem",cursor:"pointer"}}>
+            {step<4 ? "Continue →" : "Confirm Booking"}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function DemoLMS() {
-  const [tab,setTab]=useState("courses");
-  const [enrolled,setEnrolled]=useState([1,3]);
-  const courses=[
-    {id:1,title:"Complete React & Next.js Bootcamp",instructor:"Arjun Mehra",cat:"Web Dev",students:4820,rating:4.9,price:1299,mrp:4999,level:"Beginner",emoji:"⚛️",lessons:84,hours:32},
-    {id:2,title:"Python for Data Science & AI",instructor:"Dr. Priya Sharma",cat:"Data Science",students:6240,rating:4.8,price:999,mrp:3999,level:"Intermediate",emoji:"🐍",lessons:62,hours:24},
-    {id:3,title:"UI/UX Design Masterclass",instructor:"Rahul Kapoor",cat:"Design",students:3190,rating:4.9,price:1499,mrp:5499,level:"Beginner",emoji:"🎨",lessons:56,hours:20},
-    {id:4,title:"Digital Marketing & SEO 2025",instructor:"Neha Joshi",cat:"Marketing",students:2840,rating:4.7,price:799,mrp:2999,level:"Beginner",emoji:"📈",lessons:48,hours:18},
-    {id:5,title:"Full Stack Node.js + MongoDB",instructor:"Vikram Singh",cat:"Web Dev",students:3640,rating:4.8,price:1199,mrp:4499,level:"Advanced",emoji:"🟢",lessons:72,hours:28},
-    {id:6,title:"Flutter Mobile App Development",instructor:"Ananya Tech",cat:"Mobile",students:2280,rating:4.9,price:1399,mrp:5499,level:"Intermediate",emoji:"📱",lessons:68,hours:26},
+  const [tab, setTab] = useState("courses");
+  const courses = [
+    { id:1, title:"React & Next.js — Complete Course", instructor:"Arjun Dev", students:4820, rating:4.9, price:1999, progress:65, tag:"Bestseller", emoji:"⚛️" },
+    { id:2, title:"Python for Data Science", instructor:"Dr. Priya R.", students:6240, rating:4.8, price:2499, progress:0, tag:"Hot", emoji:"🐍" },
+    { id:3, title:"UI/UX Design Masterclass", instructor:"Sneha Patel", students:3180, rating:4.7, price:1499, progress:30, tag:"New", emoji:"🎨" },
+    { id:4, title:"Node.js & MongoDB Backend", instructor:"Rahul Kumar", students:2950, rating:4.9, price:1799, progress:0, tag:"Trending", emoji:"🟢" },
   ];
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#F8FAFC",minHeight:"100%"}}>
-      <div style={{background:"linear-gradient(135deg,#1E1B4B,#2D1D69)",padding:"1rem 1.5rem",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:".75rem"}}>
-        <div>
-          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#fff",fontSize:"1.1rem"}}>📚 LearnHub India</div>
-          <div style={{fontSize:".68rem",color:"rgba(255,255,255,.5)"}}>10,000+ students · 200+ courses</div>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#fafafa",overflowY:"auto"}}>
+      <nav style={{background:"#fff",padding:"0 2rem",height:60,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #e5e7eb",position:"sticky",top:0,zIndex:50}}>
+        <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,fontSize:"1.2rem",color:"#7c3aed"}}>Learn<span style={{color:"#0f172a"}}>Hub</span></div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Courses","My Learning","Instructors","Blog"].map(n => (
+            <span key={n} style={{color:"#374151",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
         </div>
-        <div style={{display:"flex",gap:".4rem"}}>
-          {["courses","my learning"].map(t=><button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"rgba(167,139,250,.3)":"rgba(255,255,255,.08)",color:tab===t?"#A78BFA":"rgba(255,255,255,.6)",border:`1.5px solid ${tab===t?"rgba(167,139,250,.5)":"rgba(255,255,255,.1)"}`,borderRadius:8,padding:".35rem .85rem",fontWeight:600,cursor:"pointer",fontSize:".78rem",textTransform:"capitalize"}}>{t}</button>)}
+        <div style={{display:"flex",gap:".75rem"}}>
+          <div style={{border:"1.5px solid #7c3aed",color:"#7c3aed",padding:".4rem 1rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Log In</div>
+          <div style={{background:"#7c3aed",color:"#fff",padding:".4rem 1rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Sign Up Free</div>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(135deg,#4c1d95,#7c3aed,#6d28d9)",padding:"4rem 2rem",textAlign:"center"}}>
+        <div style={{display:"inline-block",background:"rgba(255,255,255,.15)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#ddd6fe",marginBottom:"1.2rem",letterSpacing:".08em",fontWeight:700}}>15,000+ STUDENTS · 120+ COURSES</div>
+        <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Learn Skills That<br/><span style={{color:"#c4b5fd"}}>Actually Pay</span></h1>
+        <p style={{color:"rgba(255,255,255,.7)",fontSize:"1rem",maxWidth:500,margin:"0 auto 2rem",lineHeight:1.7}}>Industry-led courses in coding, design and business. Certificate on completion. Job placement support.</p>
+        <div style={{display:"flex",gap:".75rem",justifyContent:"center",flexWrap:"wrap"}}>
+          <div style={{background:"#fff",color:"#7c3aed",padding:".85rem 2rem",borderRadius:12,fontWeight:800,fontSize:".95rem",cursor:"pointer"}}>Explore Courses →</div>
+          <div style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".85rem 2rem",borderRadius:12,fontWeight:700,fontSize:".95rem",border:"1.5px solid rgba(255,255,255,.25)",cursor:"pointer"}}>Try for Free</div>
         </div>
       </div>
-      {tab==="courses"&&(
-        <div style={{padding:"1.25rem",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"1rem"}}>
-          {courses.map(c=>(
-            <div key={c.id} style={{background:"#fff",borderRadius:14,overflow:"hidden",border:"1.5px solid #E2E8F0",transition:"all .25s"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 12px 32px rgba(0,0,0,.1)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
-              <div style={{height:100,background:"linear-gradient(135deg,#1E1B4B,#2D1D69)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"3rem",position:"relative"}}>
+
+      {/* COURSES */}
+      <div style={{padding:"3rem 2rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#0f172a",marginBottom:"2rem"}}>Popular Courses</h2>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:"1.5rem"}}>
+          {courses.map(c => (
+            <div key={c.id} style={{background:"#fff",borderRadius:18,overflow:"hidden",border:"1.5px solid #e5e7eb",boxShadow:"0 4px 16px rgba(0,0,0,.05)"}}>
+              <div style={{background:"linear-gradient(135deg,#4c1d95,#7c3aed)",height:140,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"4rem",position:"relative"}}>
                 {c.emoji}
-                <span style={{position:"absolute",top:8,right:8,background:"rgba(255,255,255,.15)",color:"#fff",fontSize:".58rem",fontWeight:600,padding:".18rem .5rem",borderRadius:4}}>{c.level}</span>
+                <div style={{position:"absolute",top:10,left:10,background:"#fbbf24",color:"#0f172a",borderRadius:6,padding:".15rem .6rem",fontSize:".7rem",fontWeight:800}}>{c.tag}</div>
               </div>
-              <div style={{padding:".9rem"}}>
-                <div style={{fontSize:".6rem",color:"#7C3AED",fontFamily:"'JetBrains Mono',monospace",fontWeight:600,marginBottom:".25rem"}}>{c.cat}</div>
-                <div style={{fontWeight:700,fontSize:".85rem",lineHeight:1.3,marginBottom:".35rem",color:"#0F172A"}}>{c.title}</div>
-                <div style={{fontSize:".72rem",color:C.t3,marginBottom:".5rem"}}>by {c.instructor}</div>
-                <div style={{display:"flex",gap:".75rem",fontSize:".68rem",color:C.t3,marginBottom:".65rem"}}>
-                  <span>⭐ {c.rating}</span>
-                  <span>👥 {c.students.toLocaleString()}</span>
-                  <span>📹 {c.lessons} lessons</span>
-                </div>
-                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                  <div>
-                    <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,color:"#2563EB",fontSize:"1rem"}}>₹{c.price}</span>
-                    <span style={{textDecoration:"line-through",color:C.t4,fontSize:".72rem",marginLeft:".35rem"}}>₹{c.mrp}</span>
-                  </div>
-                  {enrolled.includes(c.id)?(
-                    <span style={{background:"#ECFDF5",color:"#10B981",fontSize:".7rem",fontWeight:700,padding:".3rem .7rem",borderRadius:7}}>✓ Enrolled</span>
-                  ):(
-                    <button onClick={()=>setEnrolled([...enrolled,c.id])} style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:7,padding:".35rem .75rem",fontWeight:700,cursor:"pointer",fontSize:".72rem"}}>Enroll</button>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-      {tab==="my learning"&&(
-        <div style={{padding:"1.5rem"}}>
-          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",marginBottom:"1rem"}}>My Courses ({enrolled.length})</div>
-          {courses.filter(c=>enrolled.includes(c.id)).map(c=>(
-            <div key={c.id} style={{background:"#fff",borderRadius:12,padding:"1rem",marginBottom:".75rem",border:"1.5px solid #E2E8F0",display:"flex",gap:"1rem",alignItems:"center"}}>
-              <div style={{width:52,height:52,borderRadius:10,background:"linear-gradient(135deg,#1E1B4B,#2D1D69)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.75rem",flexShrink:0}}>{c.emoji}</div>
-              <div style={{flex:1}}>
-                <div style={{fontWeight:700,fontSize:".875rem",marginBottom:".25rem"}}>{c.title}</div>
-                <div style={{background:"#E2E8F0",height:5,borderRadius:3,marginBottom:".25rem"}}><div style={{width:`${Math.floor(Math.random()*60+20)}%`,height:"100%",background:"linear-gradient(90deg,#2563EB,#7C3AED)",borderRadius:3}}/></div>
-                <div style={{fontSize:".7rem",color:C.t3}}>{c.lessons} lessons · {c.hours}h total</div>
-              </div>
-              <button onClick={()=>alert(`Continuing: ${c.title}`)} style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:8,padding:".4rem .9rem",fontWeight:700,cursor:"pointer",fontSize:".78rem",whiteSpace:"nowrap"}}>Continue →</button>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── DEMO MODAL ────────────────────────────────────────────────────────────────
-const demos = {
-  restaurant: { title: "🍽️ Savoria Restaurant — Full Demo",         comp: DemoRestaurant },
-  ecommerce:  { title: "🛍️ ShopNova Fashion — Full Demo",           comp: DemoEcommerce  },
-  ai:         { title: "🤖 SupportBot AI — Live Chat",               comp: DemoAI         },
-  dashboard:  { title: "📊 Analytix Dashboard — Full Demo",          comp: DemoDashboard  },
-  app:        { title: "📱 FitFlow App — 3-Screen Preview",          comp: DemoApp        },
-  booking:    { title: "✂️ LuxeCuts Salon — Booking Flow",           comp: DemoBooking    },
-  realestate: { title: "🏠 PropSearch — Real Estate Portal",         comp: DemoRealEstate },
-  lms:        { title: "📚 LearnHub — Online Learning Platform",     comp: DemoLMS        },
-  clinic:     { title: "🏥 LifeCare Clinic — Doctor Booking",        comp: DemoClinic     },
-  school:     { title: "🏫 Bright Future Academy — School Website",  comp: DemoSchool     },
-  hotel:      { title: "🏰 Royal Haveli Resort — Hotel Booking",     comp: DemoHotel      },
-  ca:         { title: "⚖️ Sharma & Associates — CA Firm",           comp: DemoCA         },
-  architect:  { title: "✏️ Studio Srivastava — Architect Portfolio", comp: DemoArchitect  },
-  factory:    { title: "🏭 Precision Industries — Manufacturer",     comp: DemoFactory    },
-  astrologer: { title: "🔮 Pandit Suresh Shastri — Astrologer",     comp: DemoAstrologer },
-};
-
-// ─── ERROR BOUNDARY ───────────────────────────────────────────────────────────
-class ErrorBoundary extends Component {
-  constructor(props) { super(props); this.state = { hasError: false }; }
-  static getDerivedStateFromError() { return { hasError: true }; }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{padding:"3rem",textAlign:"center",color:"#64748B",fontFamily:"'Manrope',sans-serif"}}>
-          <div style={{fontSize:"2rem",marginBottom:"1rem"}}>⚠️</div>
-          <div style={{fontWeight:700,marginBottom:".5rem"}}>Something went wrong loading this demo.</div>
-          <button onClick={()=>this.setState({hasError:false})} style={{marginTop:"1rem",padding:".5rem 1.5rem",borderRadius:8,border:"1px solid #E2E8F0",background:"#fff",cursor:"pointer",fontFamily:"'Manrope',sans-serif"}}>Try again</button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
-
-// ─── DEMO: CLINIC / DOCTOR ────────────────────────────────────────────────────
-function DemoClinic() {
-  const [tab, setTab] = useState("home");
-  const [appt, setAppt] = useState({ name:"", phone:"", date:"", time:"", doc:"Dr. Sharma" });
-  const [booked, setBooked] = useState(false);
-  const doctors = [
-    { name:"Dr. Anjali Sharma", spec:"MBBS, MD — General Physician", exp:"12 yrs", avail:"Mon–Sat", emoji:"👩‍⚕️", slots:["10:00 AM","11:30 AM","2:00 PM","4:30 PM"] },
-    { name:"Dr. Rajesh Gupta",  spec:"BDS, MDS — Dental Surgeon",    exp:"9 yrs",  avail:"Tue–Sun", emoji:"👨‍⚕️", slots:["9:30 AM","12:00 PM","3:00 PM","5:00 PM"] },
-    { name:"Dr. Meera Patel",   spec:"MBBS, DGO — Gynaecologist",    exp:"15 yrs", avail:"Mon–Fri", emoji:"👩‍⚕️", slots:["10:30 AM","1:00 PM","3:30 PM"] },
-  ];
-  const services = [
-    { icon:"🩺", name:"General Consultation", price:"₹500", time:"15 min" },
-    { icon:"🦷", name:"Dental Checkup",        price:"₹800", time:"30 min" },
-    { icon:"💉", name:"Vaccinations",          price:"₹300", time:"10 min" },
-    { icon:"🔬", name:"Lab Tests",             price:"₹250+",time:"1 day"  },
-    { icon:"❤️", name:"Cardiology Consult",    price:"₹1,200",time:"20 min"},
-    { icon:"👁️", name:"Eye Checkup",           price:"₹600", time:"20 min" },
-  ];
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#F0FDF4",minHeight:400}}>
-      {/* Header */}
-      <div style={{background:"linear-gradient(135deg,#10B981,#059669)",color:"#fff",padding:"1rem 1.5rem",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-        <div>
-          <div style={{fontWeight:800,fontSize:"1rem"}}>🏥 LifeCare Clinic</div>
-          <div style={{fontSize:".72rem",opacity:.85}}>NABH Certified · Jaipur · Open 9AM–8PM</div>
-        </div>
-        <div style={{display:"flex",gap:".5rem"}}>
-          {["home","doctors","services","book"].map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"#fff":"rgba(255,255,255,.2)",color:tab===t?"#10B981":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t==="book"?"📅 Book":t.charAt(0).toUpperCase()+t.slice(1)}</button>
-          ))}
-        </div>
-      </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="home" && (
-          <div>
-            <div style={{background:"linear-gradient(135deg,#ECFDF5,#D1FAE5)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
-              <div>
-                <div style={{fontWeight:800,fontSize:"1.05rem",color:"#065F46",marginBottom:".3rem"}}>Your Health, Our Priority</div>
-                <div style={{fontSize:".82rem",color:"#047857",marginBottom:"1rem"}}>15+ specialists · Online booking · Home visits available</div>
-                <button onClick={()=>setTab("book")} style={{background:"#10B981",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.25rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>Book Appointment →</button>
-              </div>
-              <div style={{fontSize:"3.5rem"}}>🏥</div>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:".75rem",marginBottom:"1rem"}}>
-              {[["15+","Specialist Doctors"],["50K+","Patients Treated"],["4.9★","Google Rating"],["24/7","Emergency Care"]].map(([n,l])=>(
-                <div key={l} style={{background:"#fff",borderRadius:11,padding:".75rem",textAlign:"center",border:"1px solid #D1FAE5"}}>
-                  <div style={{fontWeight:800,fontSize:"1.1rem",color:"#10B981"}}>{n}</div>
-                  <div style={{fontSize:".65rem",color:"#64748B",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #D1FAE5"}}>
-              <div style={{fontWeight:700,fontSize:".85rem",color:"#065F46",marginBottom:".75rem"}}>Today's Available Slots</div>
-              {doctors.slice(0,2).map(d=>(
-                <div key={d.name} style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:".6rem 0",borderBottom:"1px solid #F0FDF4"}}>
-                  <div style={{display:"flex",alignItems:"center",gap:".6rem"}}>
-                    <span style={{fontSize:"1.4rem"}}>{d.emoji}</span>
-                    <div><div style={{fontSize:".8rem",fontWeight:700,color:"#0F172A"}}>{d.name}</div><div style={{fontSize:".68rem",color:"#64748B"}}>{d.spec}</div></div>
-                  </div>
-                  <button onClick={()=>{setAppt(a=>({...a,doc:d.name}));setTab("book");}} style={{background:"#ECFDF5",color:"#10B981",border:"1px solid #A7F3D0",borderRadius:7,padding:".3rem .7rem",fontSize:".7rem",fontWeight:700,cursor:"pointer"}}>Book</button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="doctors" && (
-          <div style={{display:"flex",flexDirection:"column",gap:".85rem"}}>
-            {doctors.map(d=>(
-              <div key={d.name} style={{background:"#fff",borderRadius:13,padding:"1rem",border:"1px solid #D1FAE5",display:"flex",gap:"1rem",alignItems:"flex-start"}}>
-                <div style={{width:52,height:52,borderRadius:12,background:"#ECFDF5",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.8rem",flexShrink:0}}>{d.emoji}</div>
-                <div style={{flex:1}}>
-                  <div style={{fontWeight:800,color:"#0F172A",fontSize:".9rem"}}>{d.name}</div>
-                  <div style={{fontSize:".75rem",color:"#10B981",marginBottom:".3rem"}}>{d.spec}</div>
-                  <div style={{fontSize:".72rem",color:"#64748B",marginBottom:".6rem"}}>Experience: {d.exp} · Available: {d.avail}</div>
-                  <div style={{display:"flex",gap:".35rem",flexWrap:"wrap"}}>
-                    {d.slots.map(s=><span key={s} onClick={()=>{setAppt(a=>({...a,doc:d.name,time:s}));setTab("book");}} style={{background:"#ECFDF5",color:"#059669",fontSize:".65rem",padding:".2rem .55rem",borderRadius:5,fontWeight:600,cursor:"pointer",border:"1px solid #A7F3D0"}}>{s}</span>)}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="services" && (
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".75rem"}}>
-            {services.map(s=>(
-              <div key={s.name} style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #D1FAE5"}}>
-                <div style={{fontSize:"1.5rem",marginBottom:".4rem"}}>{s.icon}</div>
-                <div style={{fontWeight:700,fontSize:".82rem",color:"#0F172A",marginBottom:".2rem"}}>{s.name}</div>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:".4rem"}}>
-                  <span style={{color:"#10B981",fontWeight:800,fontSize:".85rem"}}>{s.price}</span>
-                  <span style={{color:"#94A3B8",fontSize:".68rem"}}>{s.time}</span>
-                </div>
-                <button onClick={()=>setTab("book")} style={{width:"100%",marginTop:".6rem",background:"#ECFDF5",color:"#10B981",border:"1px solid #A7F3D0",borderRadius:7,padding:".35rem",fontSize:".7rem",fontWeight:700,cursor:"pointer"}}>Book Now</button>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="book" && (
-          <div style={{maxWidth:420,margin:"0 auto"}}>
-            {booked ? (
-              <div style={{textAlign:"center",padding:"2.5rem 1rem"}}>
-                <div style={{fontSize:"3rem",marginBottom:"1rem"}}>✅</div>
-                <div style={{fontWeight:800,fontSize:"1.05rem",color:"#065F46",marginBottom:".5rem"}}>Appointment Confirmed!</div>
-                <div style={{fontSize:".82rem",color:"#64748B",marginBottom:"1.5rem"}}>With {appt.doc} on {appt.date || "Tomorrow"} at {appt.time || "10:00 AM"}</div>
-                <div style={{background:"#ECFDF5",borderRadius:10,padding:"1rem",fontSize:".78rem",color:"#047857",marginBottom:"1rem"}}>📱 Confirmation SMS sent to {appt.phone || "your number"}<br/>📧 Reminder 1 hour before appointment</div>
-                <button onClick={()=>{setBooked(false);setAppt({name:"",phone:"",date:"",time:"",doc:"Dr. Sharma"});}} style={{background:"#10B981",color:"#fff",border:"none",borderRadius:9,padding:".65rem 1.5rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>Book Another</button>
-              </div>
-            ) : (
-              <div>
-                <div style={{fontWeight:800,fontSize:".95rem",color:"#065F46",marginBottom:"1.25rem"}}>📅 Book Appointment</div>
-                {[["Patient Name","name","text","Enter full name"],["Phone Number","phone","tel","+91 98765 43210"],["Preferred Date","date","date",""],["Preferred Time","time","time",""]].map(([label,key,type,ph])=>(
-                  <div key={key} style={{marginBottom:".85rem"}}>
-                    <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
-                    <input type={type} placeholder={ph} value={appt[key]} onChange={e=>setAppt(a=>({...a,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #D1FAE5",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
-                  </div>
-                ))}
-                <div style={{marginBottom:".85rem"}}>
-                  <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>Select Doctor</div>
-                  <select value={appt.doc} onChange={e=>setAppt(a=>({...a,doc:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #D1FAE5",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",background:"#fff"}}>
-                    {doctors.map(d=><option key={d.name}>{d.name}</option>)}
-                  </select>
-                </div>
-                <button onClick={()=>appt.name&&appt.phone?setBooked(true):alert("Please fill name and phone")} style={{width:"100%",background:"linear-gradient(135deg,#10B981,#059669)",color:"#fff",border:"none",borderRadius:11,padding:".8rem",fontWeight:800,cursor:"pointer",fontSize:".9rem",fontFamily:"'Manrope',sans-serif"}}>Confirm Appointment →</button>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── DEMO: SCHOOL / COACHING INSTITUTE ───────────────────────────────────────
-function DemoSchool() {
-  const [tab, setTab] = useState("home");
-  const [form, setForm] = useState({ name:"", phone:"", class:"", board:"" });
-  const [submitted, setSubmitted] = useState(false);
-  const classes = ["Nursery","LKG","UKG","Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"];
-  const results = [
-    { name:"Aryan Sharma",   class:"XII",  perc:"98.4%", stream:"Science",  rank:"School Topper 🏆" },
-    { name:"Priya Meena",    class:"X",    perc:"97.2%", stream:"All Subj", rank:"District 2nd 🥈"  },
-    { name:"Rohit Agarwal",  class:"XII",  perc:"96.8%", stream:"Commerce", rank:"School Topper 🏆" },
-    { name:"Sneha Joshi",    class:"X",    perc:"96.0%", stream:"All Subj", rank:"School 2nd 🥈"    },
-  ];
-  const facilities = ["🏊 Swimming Pool","🔬 Science Labs","💻 Computer Lab","📚 Digital Library","🚌 School Buses","🎨 Art Studio","⚽ Sports Ground","🎵 Music Room","🍱 Cafeteria","🏥 Medical Room"];
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#EFF6FF",minHeight:400}}>
-      <div style={{background:"linear-gradient(135deg,#1E40AF,#3B82F6)",color:"#fff",padding:"1rem 1.5rem"}}>
-        <div style={{fontWeight:800,fontSize:"1rem",marginBottom:".15rem"}}>🏫 Bright Future Academy</div>
-        <div style={{fontSize:".72rem",opacity:.85,marginBottom:".75rem"}}>CBSE Affiliated · Est. 1998 · Jaipur · Nursery to Class XII</div>
-        <div style={{display:"flex",gap:".4rem",flexWrap:"wrap"}}>
-          {["home","results","facilities","admissions"].map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"#fff":"rgba(255,255,255,.2)",color:tab===t?"#1E40AF":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t==="admissions"?"📝 Admissions":t.charAt(0).toUpperCase()+t.slice(1)}</button>
-          ))}
-        </div>
-      </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="home" && (
-          <div>
-            <div style={{background:"linear-gradient(135deg,#DBEAFE,#EFF6FF)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem"}}>
-              <div style={{fontWeight:800,fontSize:"1rem",color:"#1E3A8A",marginBottom:".3rem"}}>Admissions Open 2025–26 🎉</div>
-              <div style={{fontSize:".82rem",color:"#1D4ED8",marginBottom:"1rem"}}>Limited seats · CBSE Board · Smart classrooms · 100% Board results</div>
-              <div style={{display:"flex",gap:".5rem",flexWrap:"wrap"}}>
-                <button onClick={()=>setTab("admissions")} style={{background:"#1E40AF",color:"#fff",border:"none",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Apply Now →</button>
-                <button onClick={()=>setTab("results")} style={{background:"#fff",color:"#1E40AF",border:"1.5px solid #93C5FD",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Board Results</button>
-              </div>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem",marginBottom:"1rem"}}>
-              {[["2,400+","Students"],["180+","Teachers"],["100%","Board Pass"],["25 yrs","Excellence"]].map(([n,l])=>(
-                <div key={l} style={{background:"#fff",borderRadius:11,padding:".85rem",textAlign:"center",border:"1px solid #BFDBFE"}}>
-                  <div style={{fontWeight:800,fontSize:"1.15rem",color:"#1E40AF"}}>{n}</div>
-                  <div style={{fontSize:".68rem",color:"#64748B",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #BFDBFE"}}>
-              <div style={{fontWeight:700,fontSize:".82rem",color:"#1E3A8A",marginBottom:".6rem"}}>🏆 Recent Achievements</div>
-              {["CBSE Class X: 100% students scored above 80%","CBSE Class XII: 3 students in Top 100 Merit List","National Science Olympiad: District Champions 2024","District Sports Meet: Overall Champions 3rd year running"].map((a,i)=>(
-                <div key={i} style={{fontSize:".75rem",color:"#374151",padding:".4rem 0",borderBottom:"1px solid #EFF6FF",display:"flex",gap:".5rem",alignItems:"flex-start"}}>
-                  <span style={{color:"#3B82F6",flexShrink:0}}>✓</span>{a}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="results" && (
-          <div>
-            <div style={{fontWeight:700,fontSize:".9rem",color:"#1E3A8A",marginBottom:"1rem"}}>📊 Board Results 2024</div>
-            {results.map(r=>(
-              <div key={r.name} style={{background:"#fff",borderRadius:12,padding:"1rem",marginBottom:".65rem",border:"1px solid #BFDBFE",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                <div style={{display:"flex",alignItems:"center",gap:".75rem"}}>
-                  <div style={{width:40,height:40,borderRadius:10,background:"linear-gradient(135deg,#1E40AF,#3B82F6)",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",fontWeight:800,fontSize:".8rem"}}>{r.name.split(" ").map(n=>n[0]).join("")}</div>
-                  <div>
-                    <div style={{fontWeight:700,fontSize:".82rem",color:"#0F172A"}}>{r.name}</div>
-                    <div style={{fontSize:".7rem",color:"#64748B"}}>Class {r.class} · {r.stream}</div>
-                    <div style={{fontSize:".68rem",color:"#3B82F6",marginTop:".15rem"}}>{r.rank}</div>
-                  </div>
-                </div>
-                <div style={{fontWeight:800,fontSize:"1.1rem",color:"#1E40AF"}}>{r.perc}</div>
-              </div>
-            ))}
-            <div style={{background:"linear-gradient(135deg,#DBEAFE,#EFF6FF)",borderRadius:12,padding:"1rem",textAlign:"center"}}>
-              <div style={{fontWeight:800,color:"#1E3A8A",fontSize:".9rem"}}>School Overall Pass: 100%</div>
-              <div style={{fontSize:".75rem",color:"#1D4ED8",marginTop:".2rem"}}>Average Score: 84.6% · Distinction: 68 students</div>
-            </div>
-          </div>
-        )}
-        {tab==="facilities" && (
-          <div>
-            <div style={{fontWeight:700,fontSize:".9rem",color:"#1E3A8A",marginBottom:"1rem"}}>🏫 World-Class Facilities</div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".6rem"}}>
-              {facilities.map(f=>(
-                <div key={f} style={{background:"#fff",borderRadius:10,padding:".75rem",border:"1px solid #BFDBFE",fontSize:".8rem",fontWeight:600,color:"#1E3A8A"}}>{f}</div>
-              ))}
-            </div>
-            <div style={{background:"linear-gradient(135deg,#1E40AF,#3B82F6)",borderRadius:12,padding:"1rem",marginTop:"1rem",color:"#fff",textAlign:"center"}}>
-              <div style={{fontWeight:800,marginBottom:".35rem"}}>Schedule a School Visit</div>
-              <div style={{fontSize:".78rem",opacity:.9,marginBottom:".75rem"}}>See our campus and facilities in person</div>
-              <button onClick={()=>setTab("admissions")} style={{background:"#fff",color:"#1E40AF",border:"none",borderRadius:9,padding:".55rem 1.25rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Book Visit →</button>
-            </div>
-          </div>
-        )}
-        {tab==="admissions" && (
-          <div style={{maxWidth:420,margin:"0 auto"}}>
-            {submitted ? (
-              <div style={{textAlign:"center",padding:"2rem 1rem"}}>
-                <div style={{fontSize:"3rem",marginBottom:"1rem"}}>🎉</div>
-                <div style={{fontWeight:800,fontSize:"1rem",color:"#1E3A8A",marginBottom:".5rem"}}>Application Received!</div>
-                <div style={{fontSize:".82rem",color:"#64748B",marginBottom:"1rem"}}>We'll call {form.phone} within 24 hours to schedule your admission test.</div>
-                <button onClick={()=>{setSubmitted(false);setForm({name:"",phone:"",class:"",board:""});}} style={{background:"#1E40AF",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.5rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>Apply Another</button>
-              </div>
-            ) : (
-              <div>
-                <div style={{fontWeight:800,fontSize:".95rem",color:"#1E3A8A",marginBottom:"1.25rem"}}>📝 Admission Enquiry Form</div>
-                {[["Student Name","name","text","Full name"],["Parent Phone","phone","tel","+91 98765 43210"]].map(([label,key,type,ph])=>(
-                  <div key={key} style={{marginBottom:".85rem"}}>
-                    <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
-                    <input type={type} placeholder={ph} value={form[key]} onChange={e=>setForm(f=>({...f,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #BFDBFE",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
-                  </div>
-                ))}
-                <div style={{marginBottom:".85rem"}}>
-                  <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>Applying for Class</div>
-                  <select value={form.class} onChange={e=>setForm(f=>({...f,class:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #BFDBFE",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",background:"#fff"}}>
-                    <option value="">Select class</option>
-                    {classes.map(c=><option key={c}>{c}</option>)}
-                  </select>
-                </div>
-                <button onClick={()=>form.name&&form.phone&&form.class?setSubmitted(true):alert("Please fill all fields")} style={{width:"100%",background:"linear-gradient(135deg,#1E40AF,#3B82F6)",color:"#fff",border:"none",borderRadius:11,padding:".8rem",fontWeight:800,cursor:"pointer",fontSize:".9rem",fontFamily:"'Manrope',sans-serif"}}>Submit Enquiry →</button>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── DEMO: HOTEL / RESORT ─────────────────────────────────────────────────────
-function DemoHotel() {
-  const [tab, setTab] = useState("home");
-  const [booking, setBooking] = useState({ checkin:"", checkout:"", guests:"2", room:"Deluxe Room" });
-  const [confirmed, setConfirmed] = useState(false);
-  const rooms = [
-    { name:"Deluxe Room",       price:"₹3,500/night", size:"320 sq ft", beds:"1 King Bed",   features:["AC","TV","Free WiFi","Room Service"], emoji:"🛏️",  bg:"#FFF7ED" },
-    { name:"Premium Suite",     price:"₹6,500/night", size:"550 sq ft", beds:"1 King + Sofa",features:["AC","55-inch TV","Jacuzzi","Breakfast"],  emoji:"🏨",  bg:"#EFF6FF" },
-    { name:"Heritage Villa",    price:"₹12,000/night",size:"900 sq ft", beds:"2 King Beds",  features:["Private Pool","Butler","Breakfast","Bar"],emoji:"🏰",bg:"#FDF2F8" },
-    { name:"Family Apartment",  price:"₹5,200/night", size:"680 sq ft", beds:"2 Queen Beds", features:["Kitchen","AC","WiFi","Kids Amenities"],emoji:"🏠",  bg:"#ECFDF5" },
-  ];
-  const amenities = ["🏊 Infinity Pool","🧖 Luxury Spa","🍽️ Fine Dining","🎾 Tennis Court","💪 Fitness Centre","🚗 Airport Transfer","📸 Sunset Point","🎪 Event Hall","🍹 Rooftop Bar","🧘 Yoga Deck"];
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#FFF7ED",minHeight:400}}>
-      <div style={{background:"linear-gradient(135deg,#92400E,#D97706,#F59E0B)",color:"#fff",padding:"1rem 1.5rem"}}>
-        <div style={{fontWeight:800,fontSize:"1rem",marginBottom:".15rem"}}>🏰 The Royal Haveli Resort</div>
-        <div style={{fontSize:".72rem",opacity:.85,marginBottom:".75rem"}}>5-Star Heritage Hotel · Jaipur · Est. 1842 · TripAdvisor #1</div>
-        <div style={{display:"flex",gap:".4rem",flexWrap:"wrap"}}>
-          {["home","rooms","amenities","book"].map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"#fff":"rgba(255,255,255,.2)",color:tab===t?"#92400E":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t==="book"?"📅 Book Now":t.charAt(0).toUpperCase()+t.slice(1)}</button>
-          ))}
-        </div>
-      </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="home" && (
-          <div>
-            <div style={{background:"linear-gradient(135deg,#FEF3C7,#FFF7ED)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem",border:"1px solid #FDE68A"}}>
-              <div style={{fontWeight:800,fontSize:"1rem",color:"#78350F",marginBottom:".3rem"}}>Experience Royal Rajputana Luxury</div>
-              <div style={{fontSize:".82rem",color:"#92400E",marginBottom:"1rem"}}>180-year heritage property · 50 heritage rooms · 4.9★ on TripAdvisor</div>
-              <div style={{display:"flex",gap:".5rem",flexWrap:"wrap"}}>
-                <button onClick={()=>setTab("book")} style={{background:"#D97706",color:"#fff",border:"none",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Book Direct — Best Rate →</button>
-                <button onClick={()=>setTab("rooms")} style={{background:"#fff",color:"#92400E",border:"1.5px solid #FCD34D",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>View Rooms</button>
-              </div>
-            </div>
-            <div style={{background:"#fff5",borderRadius:10,padding:".75rem",marginBottom:"1rem",border:"1px solid #FDE68A",fontSize:".78rem",color:"#78350F",fontWeight:600}}>
-              💡 Book directly and save 15% vs MakeMyTrip/OYO. Includes complimentary breakfast for 2.
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem"}}>
-              {[["4.9★","TripAdvisor"],["50+","Heritage Rooms"],["180 yrs","Legacy"],["#1","Jaipur Hotels"]].map(([n,l])=>(
-                <div key={l} style={{background:"#fff",borderRadius:11,padding:".85rem",textAlign:"center",border:"1px solid #FDE68A"}}>
-                  <div style={{fontWeight:800,fontSize:"1.1rem",color:"#D97706"}}>{n}</div>
-                  <div style={{fontSize:".68rem",color:"#64748B",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="rooms" && (
-          <div style={{display:"flex",flexDirection:"column",gap:".85rem"}}>
-            {rooms.map(r=>(
-              <div key={r.name} style={{background:r.bg,borderRadius:13,padding:"1rem",border:"1px solid #FDE68A"}}>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:".6rem"}}>
-                  <div style={{display:"flex",alignItems:"center",gap:".6rem"}}>
-                    <span style={{fontSize:"1.6rem"}}>{r.emoji}</span>
-                    <div>
-                      <div style={{fontWeight:800,fontSize:".88rem",color:"#0F172A"}}>{r.name}</div>
-                      <div style={{fontSize:".7rem",color:"#64748B"}}>{r.size} · {r.beds}</div>
+              <div style={{padding:"1.1rem"}}>
+                <div style={{fontWeight:800,fontSize:".9rem",color:"#0f172a",marginBottom:".25rem",lineHeight:1.4}}>{c.title}</div>
+                <div style={{fontSize:".75rem",color:"#6b7280",marginBottom:".5rem"}}>by {c.instructor} · ⭐ {c.rating} · {c.students.toLocaleString()} students</div>
+                {c.progress > 0 && (
+                  <div style={{marginBottom:".75rem"}}>
+                    <div style={{display:"flex",justifyContent:"space-between",fontSize:".72rem",color:"#6b7280",marginBottom:".25rem"}}><span>Progress</span><span>{c.progress}%</span></div>
+                    <div style={{background:"#f3f4f6",borderRadius:10,height:6,overflow:"hidden"}}>
+                      <div style={{background:"#7c3aed",height:"100%",width:c.progress+"%",borderRadius:10}}/>
                     </div>
                   </div>
-                  <div style={{fontWeight:800,color:"#D97706",fontSize:".9rem"}}>{r.price}</div>
-                </div>
-                <div style={{display:"flex",gap:".35rem",flexWrap:"wrap",marginBottom:".6rem"}}>
-                  {r.features.map(f=><span key={f} style={{background:"rgba(255,255,255,.7)",fontSize:".65rem",padding:".2rem .5rem",borderRadius:5,color:"#78350F",fontWeight:600}}>✓ {f}</span>)}
-                </div>
-                <button onClick={()=>{setBooking(b=>({...b,room:r.name}));setTab("book");}} style={{width:"100%",background:"#D97706",color:"#fff",border:"none",borderRadius:9,padding:".5rem",fontWeight:700,cursor:"pointer",fontSize:".78rem"}}>Select This Room →</button>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="amenities" && (
-          <div>
-            <div style={{fontWeight:700,fontSize:".9rem",color:"#78350F",marginBottom:"1rem"}}>🏨 Resort Amenities</div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".6rem",marginBottom:"1rem"}}>
-              {amenities.map(a=>(
-                <div key={a} style={{background:"#fff",borderRadius:10,padding:".75rem",border:"1px solid #FDE68A",fontSize:".8rem",fontWeight:600,color:"#92400E"}}>{a}</div>
-              ))}
-            </div>
-            <div style={{background:"linear-gradient(135deg,#92400E,#D97706)",borderRadius:12,padding:"1rem",color:"#fff",textAlign:"center"}}>
-              <div style={{fontWeight:800,marginBottom:".35rem"}}>Plan Your Perfect Stay</div>
-              <div style={{fontSize:".78rem",opacity:.9,marginBottom:".75rem"}}>Weddings · Corporate Events · Family Retreats</div>
-              <button onClick={()=>setTab("book")} style={{background:"#fff",color:"#92400E",border:"none",borderRadius:9,padding:".55rem 1.25rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Check Availability →</button>
-            </div>
-          </div>
-        )}
-        {tab==="book" && (
-          <div style={{maxWidth:420,margin:"0 auto"}}>
-            {confirmed ? (
-              <div style={{textAlign:"center",padding:"2rem 1rem"}}>
-                <div style={{fontSize:"3rem",marginBottom:"1rem"}}>🎉</div>
-                <div style={{fontWeight:800,fontSize:"1rem",color:"#78350F",marginBottom:".5rem"}}>Booking Confirmed!</div>
-                <div style={{background:"#FEF3C7",borderRadius:10,padding:"1rem",fontSize:".78rem",color:"#92400E",marginBottom:"1rem",textAlign:"left"}}>
-                  <div>🛏️ <b>{booking.room}</b></div>
-                  <div>📅 Check-in: {booking.checkin||"Tomorrow"} · Check-out: {booking.checkout||"+2 days"}</div>
-                  <div>👥 Guests: {booking.guests}</div>
-                  <div style={{marginTop:".5rem",fontWeight:700}}>✅ Free breakfast included · 15% direct booking discount applied</div>
-                </div>
-                <button onClick={()=>{setConfirmed(false);}} style={{background:"#D97706",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.5rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>Book Another Room</button>
-              </div>
-            ) : (
-              <div>
-                <div style={{fontWeight:800,fontSize:".95rem",color:"#78350F",marginBottom:"1.25rem"}}>📅 Check Availability & Book</div>
-                <div style={{background:"#FEF3C7",borderRadius:9,padding:".65rem",marginBottom:"1rem",fontSize:".75rem",color:"#78350F",fontWeight:600}}>🎁 Direct booking perks: Free breakfast · Airport pickup · Early check-in</div>
-                {[["Check-in Date","checkin","date"],["Check-out Date","checkout","date"]].map(([label,key,type])=>(
-                  <div key={key} style={{marginBottom:".85rem"}}>
-                    <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
-                    <input type={type} value={booking[key]} onChange={e=>setBooking(b=>({...b,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #FDE68A",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
+                )}
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:900,fontSize:"1.1rem",color:"#7c3aed"}}>₹{c.price}</span>
+                  <div style={{background: c.progress > 0 ? "#7c3aed" : "#7c3aed",color:"#fff",padding:".4rem .9rem",borderRadius:8,fontWeight:700,fontSize:".78rem",cursor:"pointer"}}>
+                    {c.progress > 0 ? "Continue →" : "Enroll Now"}
                   </div>
-                ))}
-                <div style={{marginBottom:".85rem"}}>
-                  <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>Room Type</div>
-                  <select value={booking.room} onChange={e=>setBooking(b=>({...b,room:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #FDE68A",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",background:"#fff"}}>
-                    {rooms.map(r=><option key={r.name}>{r.name} — {r.price}</option>)}
-                  </select>
                 </div>
-                <button onClick={()=>setConfirmed(true)} style={{width:"100%",background:"linear-gradient(135deg,#92400E,#D97706)",color:"#fff",border:"none",borderRadius:11,padding:".8rem",fontWeight:800,cursor:"pointer",fontSize:".9rem",fontFamily:"'Manrope',sans-serif"}}>Confirm Booking →</button>
               </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── DEMO: CA / ACCOUNTING FIRM ──────────────────────────────────────────────
-function DemoCA() {
-  const [tab, setTab] = useState("home");
-  const [query, setQuery] = useState({ name:"", phone:"", service:"", message:"" });
-  const [sent, setSent] = useState(false);
-  const services = [
-    { icon:"📊", name:"GST Registration & Filing",  price:"₹1,500/month", desc:"Monthly GST returns, registration, reconciliation & notices." },
-    { icon:"💼", name:"Income Tax Returns",          price:"₹2,500/filing",desc:"ITR filing for individuals, firms, LLPs and companies." },
-    { icon:"🏢", name:"Company Registration",        price:"₹8,999",       desc:"Pvt Ltd, LLP, OPC, Partnership — complete Govt fee included." },
-    { icon:"📋", name:"Accounting & Bookkeeping",    price:"₹3,000/month", desc:"Tally, QuickBooks, Zoho Books — monthly MIS & P&L." },
-    { icon:"🔍", name:"Tax Audit (Sec 44AB)",        price:"₹15,000+",     desc:"Statutory audit, tax audit, internal audit for all entities." },
-    { icon:"🌍", name:"FEMA / Foreign Remittance",   price:"₹5,000+",      desc:"Foreign investments, FEMA compliance, RBI filings." },
-  ];
-  return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#EFF6FF",minHeight:400}}>
-      <div style={{background:"linear-gradient(135deg,#1E3A8A,#2563EB)",color:"#fff",padding:"1rem 1.5rem"}}>
-        <div style={{fontWeight:800,fontSize:"1rem",marginBottom:".15rem"}}>⚖️ Sharma & Associates — CA Firm</div>
-        <div style={{fontSize:".72rem",opacity:.85,marginBottom:".75rem"}}>Chartered Accountants · ICAI Registered · Jaipur · Since 2001</div>
-        <div style={{display:"flex",gap:".4rem",flexWrap:"wrap"}}>
-          {["home","services","team","contact"].map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"#fff":"rgba(255,255,255,.2)",color:tab===t?"#1E3A8A":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t.charAt(0).toUpperCase()+t.slice(1)}</button>
+            </div>
           ))}
         </div>
       </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="home" && (
-          <div>
-            <div style={{background:"linear-gradient(135deg,#DBEAFE,#EFF6FF)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem",border:"1px solid #BFDBFE"}}>
-              <div style={{fontWeight:800,fontSize:"1rem",color:"#1E3A8A",marginBottom:".3rem"}}>Trusted by 800+ Businesses Across Rajasthan</div>
-              <div style={{fontSize:".82rem",color:"#1D4ED8",marginBottom:"1rem"}}>GST · Income Tax · Audit · Company Formation · FEMA</div>
-              <button onClick={()=>setTab("contact")} style={{background:"#2563EB",color:"#fff",border:"none",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Free 30-Min Consultation →</button>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem",marginBottom:"1rem"}}>
-              {[["800+","Clients Served"],["23 yrs","Experience"],["₹50Cr+","Tax Saved"],["4.9★","Google Rating"]].map(([n,l])=>(
-                <div key={l} style={{background:"#fff",borderRadius:11,padding:".85rem",textAlign:"center",border:"1px solid #BFDBFE"}}>
-                  <div style={{fontWeight:800,fontSize:"1.1rem",color:"#2563EB"}}>{n}</div>
-                  <div style={{fontSize:".68rem",color:"#64748B",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #BFDBFE"}}>
-              <div style={{fontWeight:700,fontSize:".82rem",color:"#1E3A8A",marginBottom:".6rem"}}>📅 Important Upcoming Deadlines</div>
-              {[["Mar 31","ITR Filing for AY 2024-25 (Belated)","🔴"],["Apr 20","GSTR-3B for March 2025","🟡"],["May 31","TDS Return Q4 FY 2024-25","🟡"],["Jun 30","Advance Tax — 1st Instalment","🟢"]].map(([date,task,dot])=>(
-                <div key={task} style={{display:"flex",gap:".75rem",alignItems:"center",padding:".4rem 0",borderBottom:"1px solid #EFF6FF",fontSize:".75rem"}}>
-                  <span style={{fontSize:".9rem"}}>{dot}</span>
-                  <span style={{color:"#2563EB",fontWeight:700,minWidth:45}}>{date}</span>
-                  <span style={{color:"#374151"}}>{task}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="services" && (
-          <div style={{display:"flex",flexDirection:"column",gap:".75rem"}}>
-            {services.map(s=>(
-              <div key={s.name} style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #BFDBFE",display:"flex",gap:"1rem",alignItems:"flex-start"}}>
-                <span style={{fontSize:"1.6rem",flexShrink:0}}>{s.icon}</span>
-                <div style={{flex:1}}>
-                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:".3rem",marginBottom:".3rem"}}>
-                    <div style={{fontWeight:700,fontSize:".85rem",color:"#0F172A"}}>{s.name}</div>
-                    <div style={{fontWeight:800,color:"#2563EB",fontSize:".82rem"}}>{s.price}</div>
-                  </div>
-                  <div style={{fontSize:".75rem",color:"#64748B",marginBottom:".5rem"}}>{s.desc}</div>
-                  <button onClick={()=>setTab("contact")} style={{background:"#EFF6FF",color:"#2563EB",border:"1px solid #BFDBFE",borderRadius:7,padding:".28rem .7rem",fontSize:".68rem",fontWeight:700,cursor:"pointer"}}>Get Quote</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="team" && (
-          <div>
-            {[
-              { name:"CA Ramesh Sharma", qual:"B.Com, FCA, DISA", exp:"23 yrs", spec:"Direct Tax, Audit, FEMA", emoji:"👨‍💼" },
-              { name:"CA Priya Agarwal", qual:"B.Com, ACA, CS",   exp:"12 yrs", spec:"GST, Company Law, MCA",  emoji:"👩‍💼" },
-              { name:"CA Amit Joshi",    qual:"MBA, ACA",          exp:"8 yrs",  spec:"Transfer Pricing, Intl Tax",emoji:"👨‍💼"},
-            ].map(m=>(
-              <div key={m.name} style={{background:"#fff",borderRadius:13,padding:"1.25rem",marginBottom:".75rem",border:"1px solid #BFDBFE",display:"flex",gap:"1rem"}}>
-                <div style={{width:52,height:52,borderRadius:12,background:"linear-gradient(135deg,#1E3A8A,#2563EB)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.6rem",flexShrink:0}}>{m.emoji}</div>
-                <div>
-                  <div style={{fontWeight:800,color:"#0F172A",fontSize:".9rem"}}>{m.name}</div>
-                  <div style={{fontSize:".72rem",color:"#2563EB",marginBottom:".25rem"}}>{m.qual}</div>
-                  <div style={{fontSize:".72rem",color:"#64748B"}}>Experience: {m.exp}</div>
-                  <div style={{fontSize:".72rem",color:"#64748B"}}>Specialisation: {m.spec}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="contact" && (
-          <div style={{maxWidth:420,margin:"0 auto"}}>
-            {sent ? (
-              <div style={{textAlign:"center",padding:"2rem 1rem"}}>
-                <div style={{fontSize:"3rem",marginBottom:"1rem"}}>✅</div>
-                <div style={{fontWeight:800,color:"#1E3A8A",marginBottom:".5rem"}}>Query Received!</div>
-                <div style={{fontSize:".82rem",color:"#64748B"}}>CA Ramesh will call you within 2 hours for a free consultation.</div>
-                <button onClick={()=>setSent(false)} style={{marginTop:"1.25rem",background:"#2563EB",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.5rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>Send Another</button>
-              </div>
-            ) : (
-              <div>
-                <div style={{fontWeight:800,fontSize:".95rem",color:"#1E3A8A",marginBottom:"1rem"}}>📞 Free Consultation</div>
-                {[["Your Name","name","text","Full name"],["Phone","phone","tel","+91 98765 43210"],["Service Needed","service","text","e.g. GST Filing, ITR"]].map(([label,key,type,ph])=>(
-                  <div key={key} style={{marginBottom:".75rem"}}>
-                    <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
-                    <input type={type} placeholder={ph} value={query[key]} onChange={e=>setQuery(q=>({...q,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #BFDBFE",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
-                  </div>
-                ))}
-                <div style={{marginBottom:".85rem"}}>
-                  <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>Brief Message (optional)</div>
-                  <textarea placeholder="Describe your requirement..." value={query.message} onChange={e=>setQuery(q=>({...q,message:e.target.value}))} rows={3} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #BFDBFE",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",resize:"vertical",boxSizing:"border-box"}}/>
-                </div>
-                <button onClick={()=>query.name&&query.phone?setSent(true):alert("Please fill name and phone")} style={{width:"100%",background:"linear-gradient(135deg,#1E3A8A,#2563EB)",color:"#fff",border:"none",borderRadius:11,padding:".8rem",fontWeight:800,cursor:"pointer",fontSize:".9rem",fontFamily:"'Manrope',sans-serif"}}>Request Free Consultation →</button>
-              </div>
-            )}
-          </div>
-        )}
+
+      <div style={{background:"#7c3aed",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.5)",fontSize:".8rem"}}>© 2025 LearnHub · All Rights Reserved</div>
+        <div style={{color:"#ddd6fe",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
       </div>
     </div>
   );
 }
 
-// ─── DEMO: ARCHITECT / INTERIOR DESIGNER ─────────────────────────────────────
 function DemoArchitect() {
-  const [tab, setTab] = useState("portfolio");
-  const [selected, setSelected] = useState(null);
   const projects = [
-    { id:1, name:"The Joshi Residence",    type:"Luxury Home",      area:"4,200 sq ft", city:"Jaipur",     year:"2024", tags:["Contemporary","Marble","Smart Home"],   emoji:"🏡", color:"#7C3AED", desc:"A contemporary luxury home blending Rajputana heritage with modern minimalism. Custom Italian marble, imported fixtures, and full home automation." },
-    { id:2, name:"Skyline Corporate Park", type:"Commercial Office", area:"12,000 sq ft",city:"Gurugram",   year:"2024", tags:["Glass","LEED","Open Plan"],            emoji:"🏢", color:"#2563EB", desc:"LEED-certified corporate campus for a 500-person tech company. Energy-efficient design with collaborative open spaces and biophilic elements." },
-    { id:3, name:"Casa Verde",             type:"Villa Interior",    area:"6,800 sq ft", city:"Udaipur",    year:"2023", tags:["Organic","Wood","Vastu"],              emoji:"🌿", color:"#10B981", desc:"Award-winning Vastu-compliant villa interior. Handcrafted wood furniture, natural materials, and a seamless indoor-outdoor connection." },
-    { id:4, name:"The Haveli Hotel",       type:"Heritage Hospitality",area:"28,000 sq ft",city:"Jodhpur",  year:"2023", tags:["Heritage","Stone","Restoration"],      emoji:"🏰", color:"#F97316", desc:"Restoration of a 200-year-old haveli into a boutique 5-star hotel. Preserved original architecture while adding modern luxury amenities." },
-    { id:5, name:"ModSpace Coworking",     type:"Coworking Design",  area:"5,500 sq ft", city:"Bengaluru",  year:"2024", tags:["Industrial","Exposed Brick","Agile"],  emoji:"🖥️", color:"#EC4899", desc:"High-energy coworking space designed for productivity and community. Flexible zones, acoustic pods, and brand-forward design." },
-    { id:6, name:"Green Valley School",    type:"Educational",       area:"18,000 sq ft",city:"Jaipur",     year:"2023", tags:["Child-Centric","Natural Light","Play"], emoji:"🏫", color:"#F59E0B", desc:"Activity-based learning environment designed around child psychology. Maximum natural light, flexible classrooms, and outdoor integration." },
+    { name:"Sharma Residence", type:"Residential Villa", location:"Jaipur", year:"2024", emoji:"🏡", tag:"Completed" },
+    { name:"The Atrium Office", type:"Commercial Space", location:"Delhi", year:"2024", emoji:"🏢", tag:"Featured" },
+    { name:"Nirvana Resort", type:"Hospitality", location:"Udaipur", year:"2023", emoji:"🏨", tag:"Award Winner" },
+    { name:"Green Valley Apartments", type:"Residential Complex", location:"Pune", year:"2024", emoji:"🏘️", tag:"Ongoing" },
+    { name:"Heritage Museum", type:"Public Space", location:"Jaipur", year:"2023", emoji:"🏛️", tag:"Completed" },
+    { name:"Sky Café", type:"Interior Design", location:"Mumbai", year:"2024", emoji:"☁️", tag:"Featured" },
   ];
-  const active = selected ? projects.find(p=>p.id===selected) : null;
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#FAF5FF",minHeight:400}}>
-      <div style={{background:"linear-gradient(135deg,#4C1D95,#7C3AED)",color:"#fff",padding:"1rem 1.5rem"}}>
-        <div style={{fontWeight:800,fontSize:"1rem",marginBottom:".15rem"}}>✏️ Studio Srivastava — Architecture & Interiors</div>
-        <div style={{fontSize:".72rem",opacity:.85,marginBottom:".75rem"}}>15 Years · 120+ Projects · COA Registered · Jaipur & Pan-India</div>
-        <div style={{display:"flex",gap:".4rem",flexWrap:"wrap"}}>
-          {["portfolio","about","process","contact"].map(t=>(
-            <button key={t} onClick={()=>{setTab(t);setSelected(null);}} style={{background:tab===t?"#fff":"rgba(255,255,255,.2)",color:tab===t?"#4C1D95":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t.charAt(0).toUpperCase()+t.slice(1)}</button>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#fafaf8",overflowY:"auto"}}>
+      <nav style={{background:"#fff",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #e7e5e0",position:"sticky",top:0,zIndex:50}}>
+        <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:900,color:"#1c1917",letterSpacing:"-.01em"}}>Studio <span style={{fontWeight:400,color:"#78716c"}}>Srivastava</span></div>
+        <div style={{display:"flex",gap:"2rem"}}>
+          {["Work","Studio","Process","Contact"].map(n => (
+            <span key={n} style={{color:"#57534e",fontSize:".85rem",fontWeight:600,cursor:"pointer",letterSpacing:".02em"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{border:"1px solid #1c1917",color:"#1c1917",padding:".5rem 1.25rem",borderRadius:4,fontWeight:600,fontSize:".82rem",cursor:"pointer",letterSpacing:".04em"}}>Enquire</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"#1c1917",padding:"6rem 2rem",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",inset:0,opacity:.08,fontSize:"20rem",display:"flex",alignItems:"center",justifyContent:"flex-end",paddingRight:"2rem",lineHeight:1}}>⬡</div>
+        <div style={{position:"relative",maxWidth:700}}>
+          <div style={{fontSize:".72rem",color:"#a8a29e",letterSpacing:".2em",marginBottom:"1.5rem",fontWeight:600}}>ARCHITECTURE & INTERIOR DESIGN · SINCE 2008</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2.5rem,6vw,5rem)",fontWeight:900,color:"#fff",marginBottom:"1.25rem",lineHeight:1.0,letterSpacing:"-.03em"}}>We Design<br/>Spaces That<br/><span style={{color:"#d6d3d1"}}>Inspire.</span></h1>
+          <p style={{color:"#a8a29e",fontSize:"1.05rem",maxWidth:480,lineHeight:1.75,marginBottom:"2.5rem"}}>Award-winning architecture and interior design. 150+ projects across India. From private residences to landmark commercial spaces.</p>
+          <div style={{display:"flex",gap:"1rem",flexWrap:"wrap"}}>
+            <div style={{background:"#fff",color:"#1c1917",padding:".9rem 2rem",borderRadius:4,fontWeight:700,fontSize:".9rem",cursor:"pointer",letterSpacing:".02em"}}>View Our Work →</div>
+            <div style={{border:"1px solid rgba(255,255,255,.3)",color:"#fff",padding:".9rem 2rem",borderRadius:4,fontWeight:600,fontSize:".9rem",cursor:"pointer"}}>Download Portfolio</div>
+          </div>
+        </div>
+      </div>
+
+      {/* STATS */}
+      <div style={{background:"#292524",padding:"2rem",display:"flex",justifyContent:"center",gap:"4rem",flexWrap:"wrap"}}>
+        {[["150+","Projects"],["16","Years"],["12","Awards"],["8","Cities"]].map(([n,l]) => (
+          <div key={l} style={{textAlign:"center"}}>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2.2rem",fontWeight:900,color:"#fff"}}>{n}</div>
+            <div style={{fontSize:".78rem",color:"#78716c",fontWeight:600,letterSpacing:".08em"}}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* PORTFOLIO GRID */}
+      <div style={{padding:"4rem 2rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"2rem",fontWeight:900,color:"#1c1917",marginBottom:".5rem"}}>Selected Work</h2>
+        <p style={{color:"#78716c",marginBottom:"2.5rem"}}>A curated selection from our portfolio</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"1.5rem"}}>
+          {projects.map(p => (
+            <div key={p.name} style={{background:"#1c1917",borderRadius:4,overflow:"hidden",cursor:"pointer",position:"relative",aspectRatio:"4/3",display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
+              <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"6rem",opacity:.3}}>{p.emoji}</div>
+              <div style={{position:"absolute",top:12,right:12,background:"rgba(255,255,255,.9)",color:"#1c1917",borderRadius:4,padding:".2rem .7rem",fontSize:".7rem",fontWeight:800}}>{p.tag}</div>
+              <div style={{background:"linear-gradient(to top,rgba(0,0,0,.9),transparent)",padding:"1.5rem",position:"relative"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#fff",marginBottom:".25rem"}}>{p.name}</div>
+                <div style={{fontSize:".78rem",color:"rgba(255,255,255,.5)"}}>{p.type} · {p.location} · {p.year}</div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="portfolio" && !active && (
-          <div>
-            <div style={{fontSize:".8rem",color:"#64748B",marginBottom:"1rem"}}>Click any project to view details →</div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".75rem"}}>
-              {projects.map(p=>(
-                <div key={p.id} onClick={()=>setSelected(p.id)} style={{background:"#fff",borderRadius:13,padding:"1rem",border:`2px solid ${p.color}22`,cursor:"pointer",transition:"all .2s"}} onMouseEnter={e=>{e.currentTarget.style.borderColor=p.color;e.currentTarget.style.transform="translateY(-3px)";}} onMouseLeave={e=>{e.currentTarget.style.borderColor=p.color+"22";e.currentTarget.style.transform="none";}}>
-                  <div style={{fontSize:"1.8rem",marginBottom:".5rem"}}>{p.emoji}</div>
-                  <div style={{fontWeight:700,fontSize:".82rem",color:"#0F172A",marginBottom:".2rem"}}>{p.name}</div>
-                  <div style={{fontSize:".68rem",color:p.color,fontWeight:600,marginBottom:".3rem"}}>{p.type}</div>
-                  <div style={{fontSize:".68rem",color:"#94A3B8"}}>{p.city} · {p.year}</div>
-                  <div style={{display:"flex",flexWrap:"wrap",gap:".2rem",marginTop:".5rem"}}>
-                    {p.tags.map(t=><span key={t} style={{background:p.color+"15",color:p.color,fontSize:".58rem",padding:".15rem .4rem",borderRadius:4,fontWeight:600}}>{t}</span>)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="portfolio" && active && (
-          <div>
-            <button onClick={()=>setSelected(null)} style={{background:"none",border:"none",color:"#7C3AED",cursor:"pointer",fontFamily:"'Manrope',sans-serif",fontSize:".82rem",fontWeight:700,marginBottom:"1rem",padding:0}}>← Back to Portfolio</button>
-            <div style={{background:"#fff",borderRadius:16,padding:"1.25rem",border:`2px solid ${active.color}33`}}>
-              <div style={{fontSize:"2.5rem",marginBottom:".75rem"}}>{active.emoji}</div>
-              <div style={{fontWeight:800,fontSize:"1.05rem",color:"#0F172A",marginBottom:".25rem"}}>{active.name}</div>
-              <div style={{fontSize:".78rem",color:active.color,fontWeight:600,marginBottom:"1rem"}}>{active.type} · {active.area} · {active.city} · {active.year}</div>
-              <p style={{fontSize:".82rem",color:"#374151",lineHeight:1.75,marginBottom:"1rem"}}>{active.desc}</p>
-              <div style={{display:"flex",flexWrap:"wrap",gap:".35rem",marginBottom:"1rem"}}>
-                {active.tags.map(t=><span key={t} style={{background:active.color+"15",color:active.color,fontSize:".7rem",padding:".25rem .6rem",borderRadius:6,fontWeight:600}}>{t}</span>)}
-              </div>
-              <button onClick={()=>setTab("contact")} style={{background:`linear-gradient(135deg,#4C1D95,#7C3AED)`,color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.25rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Enquire About This Project →</button>
-            </div>
-          </div>
-        )}
-        {tab==="about" && (
-          <div>
-            <div style={{background:"linear-gradient(135deg,#F5F3FF,#FAF5FF)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem",border:"1px solid #DDD6FE"}}>
-              <div style={{fontWeight:800,fontSize:".95rem",color:"#4C1D95",marginBottom:".5rem"}}>Ar. Vikas Srivastava, B.Arch, M.Arch (USA)</div>
-              <p style={{fontSize:".8rem",color:"#374151",lineHeight:1.75}}>15 years of award-winning architecture and interior design. Trained at SPA Delhi and Cornell University. Specialising in luxury residences, commercial spaces, and heritage restoration across India.</p>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem"}}>
-              {[["120+","Projects Delivered"],["15 yrs","Experience"],["8","Design Awards"],["Pan-India","Presence"]].map(([n,l])=>(
-                <div key={l} style={{background:"#fff",borderRadius:11,padding:".85rem",textAlign:"center",border:"1px solid #DDD6FE"}}>
-                  <div style={{fontWeight:800,fontSize:"1.1rem",color:"#7C3AED"}}>{n}</div>
-                  <div style={{fontSize:".68rem",color:"#64748B",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="process" && (
-          <div>
-            {[["01","Discovery & Brief","We understand your vision, budget, lifestyle, and Vastu requirements in a free 1-hour consultation."],["02","Concept Design","3D visualisations, mood boards, and material palettes so you see your space before we build."],["03","Detailed Drawings","AutoCAD/Revit drawings, structural coordination, and BOQ for contractor tendering."],["04","Project Execution","On-site supervision, vendor coordination, and quality checks at every milestone."],["05","Handover","Final snag list, client training, and 1-year post-occupancy support."]].map(([num,title,desc])=>(
-              <div key={num} style={{display:"flex",gap:"1rem",marginBottom:"1rem",alignItems:"flex-start"}}>
-                <div style={{width:36,height:36,borderRadius:10,background:"linear-gradient(135deg,#4C1D95,#7C3AED)",color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",fontWeight:800,fontSize:".85rem",flexShrink:0}}>{num}</div>
-                <div>
-                  <div style={{fontWeight:700,fontSize:".85rem",color:"#0F172A",marginBottom:".25rem"}}>{title}</div>
-                  <div style={{fontSize:".78rem",color:"#64748B",lineHeight:1.65}}>{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="contact" && (
-          <div style={{textAlign:"center",padding:"1.5rem 1rem"}}>
-            <div style={{fontSize:"2.5rem",marginBottom:"1rem"}}>✏️</div>
-            <div style={{fontWeight:800,fontSize:".95rem",color:"#4C1D95",marginBottom:".5rem"}}>Start Your Dream Project</div>
-            <div style={{fontSize:".82rem",color:"#64748B",marginBottom:"1.5rem"}}>Free 1-hour consultation · 3D visualisation included · No obligation quote</div>
-            <div style={{display:"flex",flexDirection:"column",gap:".75rem"}}>
-              {[["📞 Call Directly","+91 98765 43210","#4C1D95"],["💬 WhatsApp","Chat on WhatsApp","#25D366"],["📧 Email","studio@srivastavarch.in","#2563EB"]].map(([label,val,col])=>(
-                <div key={label} style={{background:"#fff",borderRadius:11,padding:".85rem",border:`1.5px solid ${col}33`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                  <span style={{fontSize:".82rem",fontWeight:700,color:"#0F172A"}}>{label}</span>
-                  <span style={{fontSize:".78rem",color:col,fontWeight:600}}>{val}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
+      {/* FOOTER */}
+      <div style={{background:"#1c1917",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.3)",fontSize:".8rem"}}>© 2025 Studio Srivastava · All Rights Reserved</div>
+        <div style={{color:"#a8a29e",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
       </div>
     </div>
   );
 }
 
-// ─── DEMO: FACTORY / MANUFACTURER ────────────────────────────────────────────
 function DemoFactory() {
-  const [tab, setTab] = useState("home");
-  const [enquiry, setEnquiry] = useState({ name:"", company:"", email:"", product:"", qty:"" });
-  const [sent, setSent] = useState(false);
   const products = [
-    { name:"Precision CNC Parts",    moq:"100 pcs",  lead:"7 days",  cert:"ISO 9001",   desc:"Steel, aluminium & brass machined components to ±0.01mm tolerance.",  emoji:"⚙️",  tags:["CNC","Steel","Aluminium"] },
-    { name:"Industrial Castings",    moq:"50 pcs",   lead:"10 days", cert:"BIS",        desc:"Grey iron, SG iron, and steel castings up to 500kg per piece.",         emoji:"🔩",  tags:["Iron","Sand Cast","Die Cast"] },
-    { name:"Sheet Metal Fabrication",moq:"200 pcs",  lead:"5 days",  cert:"ISO 9001",   desc:"Laser cutting, bending, welding and powder coating to your drawings.",   emoji:"🔧",  tags:["Laser Cut","Weld","Powder Coat"] },
-    { name:"Plastic Injection Molds",moq:"500 pcs",  lead:"14 days", cert:"RoHS",       desc:"ABS, PP, Nylon injection moulded components. In-house mould making.",    emoji:"🏭",  tags:["ABS","PP","Custom Mould"] },
+    { name:"Industrial Bearing Set", code:"IBS-4420", moq:"500 units", price:"₹180/unit", lead:"15 days", emoji:"⚙️" },
+    { name:"Precision Gear Assembly", code:"PGA-7730", moq:"200 units", price:"₹420/unit", lead:"21 days", emoji:"🔩" },
+    { name:"Hydraulic Pump Unit", code:"HPU-1150", moq:"50 units", price:"₹2,800/unit", lead:"30 days", emoji:"🔧" },
+    { name:"Stainless Steel Flange", code:"SSF-3310", moq:"1000 units", price:"₹95/unit", lead:"10 days", emoji:"🛞" },
   ];
+  const certs = ["ISO 9001:2015","ISO 14001","MSME Registered","Make in India","BIS Certified"];
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"#F8FAFC",minHeight:400}}>
-      <div style={{background:"linear-gradient(135deg,#0F172A,#1E293B,#334155)",color:"#fff",padding:"1rem 1.5rem"}}>
-        <div style={{fontWeight:800,fontSize:"1rem",marginBottom:".15rem"}}>🏭 Precision Industries Pvt. Ltd.</div>
-        <div style={{fontSize:".72rem",opacity:.85,marginBottom:".75rem"}}>ISO 9001:2015 · Jaipur · Exporting to 18 Countries · Since 1995</div>
-        <div style={{display:"flex",gap:".4rem",flexWrap:"wrap"}}>
-          {["home","products","certifications","enquiry"].map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"#fff":"rgba(255,255,255,.15)",color:tab===t?"#0F172A":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t==="enquiry"?"📋 RFQ":t.charAt(0).toUpperCase()+t.slice(1)}</button>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#f8fafc",overflowY:"auto"}}>
+      <nav style={{background:"#0f172a",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:50}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <span style={{fontSize:"1.5rem"}}>⚙️</span>
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.05rem",fontWeight:900,color:"#fff",lineHeight:1}}>Precision Engineering</div>
+            <div style={{fontSize:".6rem",color:"#fbbf24",letterSpacing:".1em",fontWeight:700}}>SINCE 1998 · ISO CERTIFIED</div>
+          </div>
+        </div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Products","Capabilities","Quality","Export","Contact"].map(n => (
+            <span key={n} style={{color:"rgba(255,255,255,.7)",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{background:"#f97316",color:"#fff",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Request Quote</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{background:"linear-gradient(135deg,#0f172a 0%,#1e293b 60%,#334155 100%)",padding:"5rem 2rem",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",right:0,top:0,bottom:0,width:"40%",opacity:.05,fontSize:"15rem",display:"flex",alignItems:"center",justifyContent:"center"}}>⚙️</div>
+        <div style={{position:"relative",maxWidth:700}}>
+          <div style={{display:"inline-block",background:"rgba(251,191,36,.15)",border:"1px solid rgba(251,191,36,.3)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#fbbf24",marginBottom:"1.5rem",letterSpacing:".1em",fontWeight:700}}>ISO 9001:2015 CERTIFIED · RAJASTHAN</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.5rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Precision-Engineered<br/><span style={{color:"#fbbf24"}}>Industrial Components</span></h1>
+          <p style={{color:"rgba(255,255,255,.65)",lineHeight:1.75,marginBottom:"2rem",fontSize:".95rem",maxWidth:560}}>Manufacturing high-quality industrial components for automotive, aerospace and heavy engineering sectors since 1998. Export to 18 countries.</p>
+          <div style={{display:"flex",gap:".75rem",flexWrap:"wrap"}}>
+            <div style={{background:"#f97316",color:"#fff",padding:".9rem 2rem",borderRadius:10,fontWeight:800,fontSize:".9rem",cursor:"pointer"}}>Request Bulk Quote →</div>
+            <div style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:".9rem 2rem",borderRadius:10,fontWeight:700,fontSize:".9rem",border:"1.5px solid rgba(255,255,255,.15)",cursor:"pointer"}}>Download Catalogue</div>
+          </div>
+          <div style={{display:"flex",gap:"2.5rem",marginTop:"2.5rem",flexWrap:"wrap"}}>
+            {[["25+","Years"],["500+","Products"],["18","Export Countries"],["50M+","Units/Year"]].map(([n,l]) => (
+              <div key={l}><div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#fbbf24"}}>{n}</div><div style={{fontSize:".75rem",color:"rgba(255,255,255,.5)",fontWeight:600}}>{l}</div></div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CERTIFICATIONS */}
+      <div style={{background:"#fff",padding:"1rem 2rem",display:"flex",justifyContent:"center",gap:"1rem",flexWrap:"wrap",borderBottom:"1px solid #e2e8f0"}}>
+        {certs.map(c => (
+          <span key={c} style={{background:"#f0fdf4",color:"#15803d",border:"1px solid #bbf7d0",borderRadius:8,padding:".3rem .8rem",fontSize:".75rem",fontWeight:700}}>✓ {c}</span>
+        ))}
+      </div>
+
+      {/* PRODUCTS */}
+      <div style={{padding:"3rem 2rem",maxWidth:1100,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#0f172a",marginBottom:".5rem"}}>Featured Products</h2>
+        <p style={{color:"#64748b",marginBottom:"2.5rem"}}>Custom manufacturing available. All products tested to industry standards.</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:"1.25rem"}}>
+          {products.map(p => (
+            <div key={p.name} style={{background:"#fff",borderRadius:16,padding:"1.5rem",border:"1.5px solid #e2e8f0",boxShadow:"0 2px 12px rgba(0,0,0,.04)"}}>
+              <div style={{fontSize:"2.5rem",marginBottom:"1rem"}}>{p.emoji}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#0f172a",marginBottom:".25rem"}}>{p.name}</div>
+              <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:".72rem",color:"#2563eb",background:"#eff6ff",borderRadius:6,padding:".2rem .6rem",display:"inline-block",marginBottom:".75rem"}}>{p.code}</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".5rem",marginBottom:"1rem"}}>
+                {[["MOQ",p.moq],["Price",p.price],["Lead Time",p.lead]].map(([l,v]) => (
+                  <div key={l} style={{background:"#f8fafc",borderRadius:8,padding:".5rem .75rem"}}>
+                    <div style={{fontSize:".65rem",color:"#94a3b8",fontWeight:700,marginBottom:".1rem"}}>{l}</div>
+                    <div style={{fontSize:".82rem",fontWeight:700,color:"#0f172a"}}>{v}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{background:"#0f172a",color:"#fff",padding:".6rem",borderRadius:10,textAlign:"center",fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Request Quote</div>
+            </div>
           ))}
         </div>
       </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="home" && (
-          <div>
-            <div style={{background:"linear-gradient(135deg,#0F172A,#1E293B)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem",color:"#fff"}}>
-              <div style={{fontWeight:800,fontSize:".95rem",marginBottom:".3rem"}}>30 Years of Precision Manufacturing</div>
-              <div style={{fontSize:".8rem",opacity:.85,marginBottom:"1rem"}}>CNC Machining · Castings · Sheet Metal · Plastic Moulding</div>
-              <div style={{display:"flex",gap:".5rem",flexWrap:"wrap"}}>
-                <button onClick={()=>setTab("enquiry")} style={{background:"#F59E0B",color:"#0F172A",border:"none",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>Request Quote →</button>
-                <button onClick={()=>setTab("products")} style={{background:"rgba(255,255,255,.15)",color:"#fff",border:"1px solid rgba(255,255,255,.3)",borderRadius:9,padding:".55rem 1.1rem",fontWeight:700,cursor:"pointer",fontSize:".8rem"}}>View Products</button>
-              </div>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem",marginBottom:"1rem"}}>
-              {[["50,000+","Parts/Month"],["18","Export Countries"],["30 yrs","Experience"],["ISO 9001","Certified"]].map(([n,l])=>(
-                <div key={l} style={{background:"#fff",borderRadius:11,padding:".85rem",textAlign:"center",border:"1px solid #E2E8F0",boxShadow:"0 1px 3px rgba(0,0,0,.06)"}}>
-                  <div style={{fontWeight:800,fontSize:"1rem",color:"#0F172A"}}>{n}</div>
-                  <div style={{fontSize:".68rem",color:"#64748B",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{background:"#fff",borderRadius:12,padding:"1rem",border:"1px solid #E2E8F0"}}>
-              <div style={{fontWeight:700,fontSize:".82rem",color:"#0F172A",marginBottom:".6rem"}}>🌍 Export Markets</div>
-              <div style={{display:"flex",flexWrap:"wrap",gap:".4rem"}}>
-                {["🇩🇪 Germany","🇺🇸 USA","🇦🇪 UAE","🇬🇧 UK","🇸🇬 Singapore","🇦🇺 Australia","🇯🇵 Japan","🇫🇷 France"].map(c=>(
-                  <span key={c} style={{background:"#F8FAFC",border:"1px solid #E2E8F0",borderRadius:6,padding:".3rem .6rem",fontSize:".72rem",fontWeight:600,color:"#374151"}}>{c}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-        {tab==="products" && (
-          <div style={{display:"flex",flexDirection:"column",gap:".85rem"}}>
-            {products.map(p=>(
-              <div key={p.name} style={{background:"#fff",borderRadius:13,padding:"1rem",border:"1px solid #E2E8F0",boxShadow:"0 1px 4px rgba(0,0,0,.06)"}}>
-                <div style={{display:"flex",gap:".75rem",alignItems:"flex-start",marginBottom:".6rem"}}>
-                  <span style={{fontSize:"1.8rem"}}>{p.emoji}</span>
-                  <div style={{flex:1}}>
-                    <div style={{fontWeight:800,fontSize:".88rem",color:"#0F172A",marginBottom:".2rem"}}>{p.name}</div>
-                    <div style={{fontSize:".75rem",color:"#64748B",lineHeight:1.6,marginBottom:".5rem"}}>{p.desc}</div>
-                    <div style={{display:"flex",gap:"1rem",fontSize:".7rem",color:"#374151",marginBottom:".5rem"}}>
-                      <span>📦 MOQ: <b>{p.moq}</b></span>
-                      <span>⏱️ Lead: <b>{p.lead}</b></span>
-                      <span>✅ <b>{p.cert}</b></span>
-                    </div>
-                    <div style={{display:"flex",gap:".3rem",flexWrap:"wrap"}}>
-                      {p.tags.map(t=><span key={t} style={{background:"#F1F5F9",color:"#475569",fontSize:".62rem",padding:".18rem .5rem",borderRadius:4,fontWeight:600}}>{t}</span>)}
-                    </div>
-                  </div>
-                </div>
-                <button onClick={()=>setTab("enquiry")} style={{width:"100%",background:"#0F172A",color:"#fff",border:"none",borderRadius:9,padding:".5rem",fontWeight:700,cursor:"pointer",fontSize:".75rem"}}>Request Quote for {p.name}</button>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="certifications" && (
-          <div>
-            <div style={{fontWeight:700,fontSize:".9rem",color:"#0F172A",marginBottom:"1rem"}}>🏆 Certifications & Compliance</div>
-            {[["ISO 9001:2015","Quality Management System — Bureau Veritas Certified","✅"],["ISO 14001:2015","Environmental Management — Valid till Dec 2025","✅"],["DGFT Registration","Export-Import Code (IEC) Active","✅"],["BIS Certification","Bureau of Indian Standards — 12 product categories","✅"],["CE Marking","European Conformity for export to EU markets","✅"],["REACH Compliance","Chemical safety for European Union exports","✅"]].map(([cert,desc,status])=>(
-              <div key={cert} style={{background:"#fff",borderRadius:11,padding:"1rem",marginBottom:".6rem",border:"1px solid #E2E8F0",display:"flex",gap:".75rem",alignItems:"flex-start"}}>
-                <span style={{fontSize:"1.2rem"}}>{status}</span>
-                <div>
-                  <div style={{fontWeight:700,fontSize:".82rem",color:"#0F172A"}}>{cert}</div>
-                  <div style={{fontSize:".73rem",color:"#64748B",marginTop:".2rem"}}>{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="enquiry" && (
-          <div style={{maxWidth:420,margin:"0 auto"}}>
-            {sent ? (
-              <div style={{textAlign:"center",padding:"2rem 1rem"}}>
-                <div style={{fontSize:"3rem",marginBottom:"1rem"}}>📋</div>
-                <div style={{fontWeight:800,fontSize:"1rem",color:"#0F172A",marginBottom:".5rem"}}>RFQ Received!</div>
-                <div style={{fontSize:".82rem",color:"#64748B"}}>Our sales team will send a detailed quotation within 4 business hours.</div>
-                <button onClick={()=>setSent(false)} style={{marginTop:"1.25rem",background:"#0F172A",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.5rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>New RFQ</button>
-              </div>
-            ) : (
-              <div>
-                <div style={{fontWeight:800,fontSize:".95rem",color:"#0F172A",marginBottom:"1rem"}}>📋 Request for Quotation (RFQ)</div>
-                {[["Contact Name","name","text","Your full name"],["Company Name","company","text","Company / Business name"],["Email","email","email","business@email.com"],["Product / Specification","product","text","e.g. CNC Aluminium 6061 Parts"],["Quantity Required","qty","text","e.g. 500 pcs/month"]].map(([label,key,type,ph])=>(
-                  <div key={key} style={{marginBottom:".75rem"}}>
-                    <div style={{fontSize:".75rem",fontWeight:600,color:"#374151",marginBottom:".3rem"}}>{label}</div>
-                    <input type={type} placeholder={ph} value={enquiry[key]} onChange={e=>setEnquiry(q=>({...q,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid #E2E8F0",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",boxSizing:"border-box"}}/>
-                  </div>
-                ))}
-                <button onClick={()=>enquiry.name&&enquiry.email?setSent(true):alert("Please fill name and email")} style={{width:"100%",background:"linear-gradient(135deg,#0F172A,#1E293B)",color:"#fff",border:"none",borderRadius:11,padding:".8rem",fontWeight:800,cursor:"pointer",fontSize:".9rem",fontFamily:"'Manrope',sans-serif"}}>Submit RFQ →</button>
-              </div>
-            )}
-          </div>
-        )}
+
+      <div style={{background:"#0f172a",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
+        <div style={{color:"rgba(255,255,255,.4)",fontSize:".8rem"}}>© 2025 Precision Engineering Co. · All Rights Reserved</div>
+        <div style={{color:"#fbbf24",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
       </div>
     </div>
   );
 }
 
-// ─── DEMO: ASTROLOGER ─────────────────────────────────────────────────────────
 function DemoAstrologer() {
-  const [tab, setTab] = useState("home");
-  const [booking, setBooking] = useState({ name:"", phone:"", dob:"", time:"", type:"Janam Kundali" });
-  const [booked, setBooked] = useState(false);
+  const [tab, setTab] = useState("services");
   const services = [
-    { name:"Janam Kundali",        price:"₹1,100",     duration:"45 min", desc:"Complete birth chart analysis, dashas, and life predictions.",     emoji:"📜" },
-    { name:"Marriage Matching",    price:"₹2,100",     duration:"60 min", desc:"Kundali milan, 36 guna matching, and compatibility report.",        emoji:"💑" },
-    { name:"Business Muhurta",     price:"₹3,100",     duration:"30 min", desc:"Auspicious timing for business launch, agreement signing, deals.",   emoji:"🏢" },
-    { name:"Vastu Consultation",   price:"₹5,100",     duration:"2 hrs",  desc:"Home/office Vastu analysis with detailed remedies and directions.",  emoji:"🏠" },
-    { name:"Gemstone Advice",      price:"₹1,500",     duration:"30 min", desc:"Personalised gemstone recommendations based on your birth chart.",   emoji:"💎" },
-    { name:"Annual Forecast",      price:"₹4,100",     duration:"90 min", desc:"Detailed yearly prediction covering career, health, love, finance.", emoji:"📅" },
-  ];
-  const testimonials = [
-    { name:"Seema R.", text:"Panditji predicted my career change to the exact month. His gemstone advice transformed my business luck!", stars:5 },
-    { name:"Rajesh K.", text:"Marriage matching was incredibly accurate. My family was hesitant but his analysis convinced everyone.", stars:5 },
-    { name:"Anita S.", text:"The Vastu changes he suggested for my shop doubled my sales within 3 months.", stars:5 },
+    { name:"Kundali Analysis", desc:"Detailed birth chart reading — career, marriage, health, finance.", duration:"60 min", price:"₹1,100", emoji:"⭐" },
+    { name:"Numerology Report", desc:"Name & date analysis. Lucky numbers, colours and remedies.", duration:"45 min", price:"₹800", emoji:"🔢" },
+    { name:"Vastu Consultation", desc:"Home & office Vastu analysis with correction remedies.", duration:"90 min", price:"₹2,500", emoji:"🏠" },
+    { name:"Match Making", desc:"Detailed horoscope matching for marriage compatibility.", duration:"60 min", price:"₹1,500", emoji:"💑" },
   ];
   return (
-    <div style={{fontFamily:"'Manrope',sans-serif",background:"linear-gradient(180deg,#1E1B4B,#312E81)",minHeight:400}}>
-      <div style={{background:"linear-gradient(135deg,#312E81,#4338CA)",color:"#fff",padding:"1rem 1.5rem",borderBottom:"1px solid rgba(255,255,255,.1)"}}>
-        <div style={{fontWeight:800,fontSize:"1rem",marginBottom:".15rem"}}>🔮 Pandit Suresh Shastri Ji</div>
-        <div style={{fontSize:".72rem",opacity:.85,marginBottom:".75rem"}}>Vedic Astrologer · 30+ Years · Jyotish Acharya · Vastu Vishaarad</div>
-        <div style={{display:"flex",gap:".4rem",flexWrap:"wrap"}}>
-          {["home","services","reviews","book"].map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{background:tab===t?"#F59E0B":"rgba(255,255,255,.15)",color:tab===t?"#1E1B4B":"#fff",border:"none",borderRadius:7,padding:".3rem .75rem",fontSize:".7rem",fontWeight:700,cursor:"pointer",textTransform:"capitalize"}}>{t==="book"?"📅 Book Session":t.charAt(0).toUpperCase()+t.slice(1)}</button>
+    <div style={{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",background:"#0d0714",overflowY:"auto"}}>
+      <nav style={{background:"rgba(13,7,20,.9)",backdropFilter:"blur(10px)",padding:"0 2rem",height:64,display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid rgba(139,92,246,.2)",position:"sticky",top:0,zIndex:50}}>
+        <div style={{display:"flex",alignItems:"center",gap:8}}>
+          <span style={{fontSize:"1.4rem"}}>🌙</span>
+          <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.1rem",fontWeight:900,color:"#fff"}}>Jyotish <span style={{color:"#a78bfa"}}>Wisdom</span></div>
+        </div>
+        <div style={{display:"flex",gap:"1.5rem"}}>
+          {["Services","About","Testimonials","Contact"].map(n => (
+            <span key={n} style={{color:"rgba(255,255,255,.7)",fontSize:".82rem",fontWeight:600,cursor:"pointer"}}>{n}</span>
+          ))}
+        </div>
+        <div style={{background:"linear-gradient(135deg,#7c3aed,#a78bfa)",color:"#fff",padding:".5rem 1.25rem",borderRadius:8,fontWeight:700,fontSize:".82rem",cursor:"pointer"}}>Book Session</div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{padding:"5rem 2rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.2) 0%, transparent 70%)"}}/>
+        <div style={{position:"relative"}}>
+          <div style={{fontSize:"4rem",marginBottom:"1rem"}}>🌟</div>
+          <div style={{display:"inline-block",background:"rgba(139,92,246,.15)",border:"1px solid rgba(139,92,246,.3)",borderRadius:20,padding:".3rem 1rem",fontSize:".72rem",color:"#a78bfa",marginBottom:"1.5rem",letterSpacing:".1em",fontWeight:700}}>VEDIC ASTROLOGY · 20+ YEARS EXPERIENCE</div>
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,5vw,3.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1}}>Discover Your<br/><span style={{color:"#c4b5fd"}}>Cosmic Path</span></h1>
+          <p style={{color:"rgba(255,255,255,.65)",fontSize:"1.05rem",maxWidth:520,margin:"0 auto 2.5rem",lineHeight:1.75}}>Authentic Vedic astrology, numerology and Vastu consultations. Guidance for life's most important decisions.</p>
+          <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
+            <div style={{background:"linear-gradient(135deg,#7c3aed,#a78bfa)",color:"#fff",padding:".9rem 2rem",borderRadius:12,fontWeight:800,fontSize:".95rem",cursor:"pointer"}}>Book Consultation →</div>
+            <div style={{background:"rgba(255,255,255,.06)",color:"#fff",padding:".9rem 2rem",borderRadius:12,fontWeight:700,fontSize:".95rem",border:"1.5px solid rgba(139,92,246,.3)",cursor:"pointer"}}>Free Kundali</div>
+          </div>
+        </div>
+      </div>
+
+      {/* SERVICES */}
+      <div style={{padding:"2rem",maxWidth:900,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:"#fff",textAlign:"center",marginBottom:"2rem"}}>Our Services</h2>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"1.25rem"}}>
+          {services.map(s => (
+            <div key={s.name} style={{background:"rgba(139,92,246,.08)",borderRadius:18,padding:"1.5rem",border:"1px solid rgba(139,92,246,.2)"}}>
+              <div style={{fontSize:"2.5rem",marginBottom:"1rem"}}>{s.emoji}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"1rem",color:"#fff",marginBottom:".5rem"}}>{s.name}</div>
+              <div style={{color:"rgba(255,255,255,.55)",fontSize:".85rem",lineHeight:1.6,marginBottom:"1rem"}}>{s.desc}</div>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                <span style={{fontWeight:800,color:"#a78bfa",fontSize:".95rem"}}>{s.price}</span>
+                <span style={{fontSize:".75rem",color:"rgba(255,255,255,.4)"}}>{s.duration}</span>
+              </div>
+              <div style={{background:"linear-gradient(135deg,#7c3aed,#a78bfa)",color:"#fff",padding:".55rem",borderRadius:10,textAlign:"center",fontWeight:700,fontSize:".82rem",cursor:"pointer",marginTop:".75rem"}}>Book Now</div>
+            </div>
           ))}
         </div>
       </div>
-      <div style={{padding:"1.25rem 1.5rem",overflowY:"auto",maxHeight:520}}>
-        {tab==="home" && (
-          <div>
-            <div style={{background:"rgba(255,255,255,.08)",borderRadius:14,padding:"1.25rem",marginBottom:"1rem",border:"1px solid rgba(245,158,11,.3)",backdropFilter:"blur(10px)"}}>
-              <div style={{color:"#F59E0B",fontWeight:800,fontSize:"1rem",marginBottom:".3rem"}}>🌟 30 Years of Vedic Wisdom</div>
-              <div style={{color:"rgba(255,255,255,.85)",fontSize:".82rem",marginBottom:"1rem"}}>Consulted by 50,000+ families across India for kundali, marriage, business & Vastu</div>
-              <button onClick={()=>setTab("book")} style={{background:"linear-gradient(135deg,#F59E0B,#D97706)",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.25rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>📅 Book Consultation →</button>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".65rem",marginBottom:"1rem"}}>
-              {[["50,000+","Consultations"],["4.9★","Rating"],["30 yrs","Experience"],["Online+","Offline"]].map(([n,l])=>(
-                <div key={l} style={{background:"rgba(255,255,255,.08)",borderRadius:11,padding:".85rem",textAlign:"center",border:"1px solid rgba(255,255,255,.1)"}}>
-                  <div style={{fontWeight:800,fontSize:"1.1rem",color:"#F59E0B"}}>{n}</div>
-                  <div style={{fontSize:".68rem",color:"rgba(255,255,255,.65)",marginTop:".2rem"}}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{background:"rgba(245,158,11,.1)",borderRadius:12,padding:"1rem",border:"1px solid rgba(245,158,11,.25)"}}>
-              <div style={{color:"#F59E0B",fontWeight:700,fontSize:".82rem",marginBottom:".6rem"}}>📺 Featured On</div>
-              <div style={{display:"flex",flexWrap:"wrap",gap:".5rem"}}>
-                {["Aaj Tak","Zee News","Dainik Bhaskar","India TV","Rajasthan Patrika"].map(ch=>(
-                  <span key={ch} style={{background:"rgba(255,255,255,.1)",color:"#fff",fontSize:".7rem",padding:".25rem .65rem",borderRadius:5,fontWeight:600}}>{ch}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-        {tab==="services" && (
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:".75rem"}}>
-            {services.map(s=>(
-              <div key={s.name} style={{background:"rgba(255,255,255,.07)",borderRadius:12,padding:".9rem",border:"1px solid rgba(245,158,11,.2)"}}>
-                <div style={{fontSize:"1.5rem",marginBottom:".4rem"}}>{s.emoji}</div>
-                <div style={{fontWeight:700,fontSize:".78rem",color:"#fff",marginBottom:".25rem"}}>{s.name}</div>
-                <div style={{fontSize:".68rem",color:"rgba(255,255,255,.6)",lineHeight:1.5,marginBottom:".5rem"}}>{s.desc}</div>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:".5rem"}}>
-                  <span style={{color:"#F59E0B",fontWeight:800,fontSize:".85rem"}}>{s.price}</span>
-                  <span style={{color:"rgba(255,255,255,.5)",fontSize:".65rem"}}>{s.duration}</span>
-                </div>
-                <button onClick={()=>{setBooking(b=>({...b,type:s.name}));setTab("book");}} style={{width:"100%",background:"rgba(245,158,11,.2)",color:"#F59E0B",border:"1px solid rgba(245,158,11,.3)",borderRadius:7,padding:".3rem",fontSize:".68rem",fontWeight:700,cursor:"pointer"}}>Book This</button>
-              </div>
-            ))}
-          </div>
-        )}
-        {tab==="reviews" && (
-          <div>
-            <div style={{display:"flex",flexDirection:"column",gap:".75rem"}}>
-              {testimonials.map((t,i)=>(
-                <div key={i} style={{background:"rgba(255,255,255,.07)",borderRadius:12,padding:"1rem",border:"1px solid rgba(245,158,11,.2)"}}>
-                  <div style={{color:"#F59E0B",fontSize:"1rem",marginBottom:".4rem"}}>{"⭐".repeat(t.stars)}</div>
-                  <p style={{color:"rgba(255,255,255,.85)",fontSize:".8rem",lineHeight:1.7,marginBottom:".5rem",fontStyle:"italic"}}>"{t.text}"</p>
-                  <div style={{color:"rgba(255,255,255,.5)",fontSize:".72rem",fontWeight:600}}>— {t.name}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {tab==="book" && (
-          <div style={{maxWidth:400,margin:"0 auto"}}>
-            {booked ? (
-              <div style={{textAlign:"center",padding:"2rem 1rem"}}>
-                <div style={{fontSize:"3rem",marginBottom:"1rem"}}>🔮</div>
-                <div style={{fontWeight:800,fontSize:"1rem",color:"#F59E0B",marginBottom:".5rem"}}>Session Booked!</div>
-                <div style={{fontSize:".82rem",color:"rgba(255,255,255,.75)",marginBottom:"1rem"}}>Panditji will call {booking.phone} to confirm timing. Please keep your birth details ready.</div>
-                <button onClick={()=>{setBooked(false);}} style={{background:"linear-gradient(135deg,#F59E0B,#D97706)",color:"#fff",border:"none",borderRadius:9,padding:".6rem 1.5rem",fontWeight:700,cursor:"pointer",fontSize:".82rem"}}>Book Another</button>
-              </div>
-            ) : (
-              <div>
-                <div style={{fontWeight:800,fontSize:".95rem",color:"#F59E0B",marginBottom:"1rem"}}>📅 Book Your Consultation</div>
-                <div style={{marginBottom:".75rem"}}>
-                  <div style={{fontSize:".75rem",fontWeight:600,color:"rgba(255,255,255,.75)",marginBottom:".3rem"}}>Service</div>
-                  <select value={booking.type} onChange={e=>setBooking(b=>({...b,type:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid rgba(245,158,11,.4)",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",background:"#312E81",color:"#fff"}}>
-                    {services.map(s=><option key={s.name}>{s.name} — {s.price}</option>)}
-                  </select>
-                </div>
-                {[["Your Name","name","text","Full name"],["Phone","phone","tel","+91 98765 43210"],["Date of Birth","dob","date",""],["Time of Birth (if known)","time","time",""]].map(([label,key,type,ph])=>(
-                  <div key={key} style={{marginBottom:".75rem"}}>
-                    <div style={{fontSize:".75rem",fontWeight:600,color:"rgba(255,255,255,.75)",marginBottom:".3rem"}}>{label}</div>
-                    <input type={type} placeholder={ph} value={booking[key]} onChange={e=>setBooking(b=>({...b,[key]:e.target.value}))} style={{width:"100%",padding:".6rem .85rem",border:"1.5px solid rgba(245,158,11,.4)",borderRadius:9,fontSize:".82rem",fontFamily:"'Manrope',sans-serif",outline:"none",background:"rgba(255,255,255,.05)",color:"#fff",boxSizing:"border-box"}}/>
-                  </div>
-                ))}
-                <button onClick={()=>booking.name&&booking.phone?setBooked(true):alert("Please fill name and phone")} style={{width:"100%",background:"linear-gradient(135deg,#F59E0B,#D97706)",color:"#fff",border:"none",borderRadius:11,padding:".8rem",fontWeight:800,cursor:"pointer",fontSize:".9rem",fontFamily:"'Manrope',sans-serif"}}>Book Consultation →</button>
-              </div>
-            )}
-          </div>
-        )}
+
+      <div style={{background:"rgba(139,92,246,.1)",borderTop:"1px solid rgba(139,92,246,.2)",padding:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem",marginTop:"2rem"}}>
+        <div style={{color:"rgba(255,255,255,.3)",fontSize:".8rem"}}>© 2025 Jyotish Wisdom · All Rights Reserved</div>
+        <div style={{color:"#a78bfa",fontSize:".75rem",fontWeight:700}}>Website by Orbnix</div>
       </div>
     </div>
   );
 }
+
+
+// ─── DEMO REGISTRY ────────────────────────────────────────────────────────────
+const demos = {
+  restaurant: { title: "🍽️ Savoria Restaurant — Full Website",          comp: DemoRestaurant },
+  ecommerce:  { title: "🛍️ Miraa Fashion — E-Commerce Store",           comp: DemoEcommerce  },
+  ai:         { title: "🤖 SupportBot AI — Live Chat Demo",              comp: DemoAI         },
+  dashboard:  { title: "📊 Analytics Dashboard — Business Metrics",      comp: DemoDashboard  },
+  app:        { title: "📱 FitFlow — Mobile App Preview",                comp: DemoApp        },
+  booking:    { title: "✂️ LuxeCuts Salon — Booking Flow",               comp: DemoBooking    },
+  realestate: { title: "🏠 PropSearch — Real Estate Portal",             comp: DemoRealEstate },
+  lms:        { title: "📚 LearnHub — Online Learning Platform",         comp: DemoLMS        },
+  clinic:     { title: "🏥 LifeCare Clinic — Hospital Website",          comp: DemoClinic     },
+  school:     { title: "🎓 Bright Future Academy — School Website",      comp: DemoSchool     },
+  hotel:      { title: "🏰 Royal Haveli Resort — Hotel Website",         comp: DemoHotel      },
+  ca:         { title: "⚖️ Sharma & Associates — CA Firm Website",       comp: DemoCA         },
+  architect:  { title: "✏️ Studio Srivastava — Architect Portfolio",     comp: DemoArchitect  },
+  factory:    { title: "⚙️ Precision Engineering — B2B Website",         comp: DemoFactory    },
+  astrologer: { title: "🌙 Jyotish Wisdom — Astrologer Website",        comp: DemoAstrologer },
+};
 
 function DemoModal({ demo, onClose }) {
   if (!demo) return null;
@@ -1869,7 +1763,7 @@ function DemoModal({ demo, onClose }) {
           <span style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".9rem"}}>{demos[demo]?.title}</span>
           <button onClick={onClose} style={{width:32,height:32,borderRadius:8,border:"1.5px solid #E2E8F0",background:"#fff",cursor:"pointer",fontSize:"1rem",display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>
         </div>
-        <div style={{overflowY:"auto",flex:1}}>{Comp && <ErrorBoundary><Comp/></ErrorBoundary>}</div>
+        <div style={{overflowY:"auto",flex:1}}>{Comp && <Comp/>}</div>
       </div>
     </div>
   );
