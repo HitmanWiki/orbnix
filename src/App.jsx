@@ -317,7 +317,7 @@ function Nav({ page, setPage }) {
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
-  const links = [["Home","home"],["About","about"],["Work","work"],["Blog","blog"],["Services","services"],["Pricing","pricing"],["Contact","contact"]];
+  const links = [["Home","home"],["Products","products"],["About","about"],["Work","work"],["Blog","blog"],["Services","services"],["Pricing","pricing"],["Contact","contact"]];
   return (
     <>
       <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:999,height:68,display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 4%",background:"rgba(255,255,255,.95)",backdropFilter:"blur(20px)",borderBottom:`1px solid ${C.border}`,boxShadow:scrolled?"0 4px 24px rgba(0,0,0,.08)":"none",transition:"box-shadow .3s"}}>
@@ -4206,6 +4206,13 @@ const SEO_META = {
     description: "Transparent website design pricing for India. Web Starter from ₹25,000. Mobile App from ₹80,000. AI Agent from ₹40,000. E-Commerce from ₹40,000. Custom ERP/CRM from ₹1,50,000. International clients: starting $500. No hidden costs.",
     keywords: "website design price India, web development cost India, how much does a website cost India, website design packages India, affordable website design India, website design starting 25000, mobile app cost India, AI development price India, e-commerce website cost India, web development charges India, website design fees India, IT company pricing India"
   },
+  products: {
+    title: "Orbnix Products — School ERP, Web Apps & AI Solutions for Indian Institutions",
+    description: "Explore Orbnix products — School ERP with AI, custom web apps, mobile apps and SaaS solutions built for Indian schools and businesses. 16+ modules, 7-day setup.",
+    keywords: "school ERP India, school management software, AI school software, student management system, fee management software India, attendance system India, school app India",
+    og: "Orbnix Products — School ERP & AI Solutions",
+    desc: "School ERP with AI, attendance, fees, exams, transport & more. Built for Indian schools."
+  },
   contact: {
     title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 90798 81416",
     description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 90798 81416 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
@@ -5434,7 +5441,7 @@ function CityPage({ city, slug, state }) {
     document.title = `Web Development Company in ${city} — Orbnix | Websites, Apps & AI Near You`;
     let desc = document.querySelector('meta[name="description"]');
     if (!desc) { desc = document.createElement('meta'); desc.name = 'description'; document.head.appendChild(desc); }
-    desc.content = `Orbnix is a top-rated web development company serving businesses in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores. 7–14 day delivery. Starting ₹25,000. Free consultation in 24 hrs.`;
+    desc.content = `Orbnix is a top-rated web development company and software product company serving businesses and institutions in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores. 7–14 day delivery. Starting ₹25,000. Free consultation in 24 hrs.`;
     let canon = document.querySelector('link[rel="canonical"]');
     if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
     canon.href = `https://www.orbnix.in/cities/${slug}`;
@@ -5604,6 +5611,86 @@ function CityPage({ city, slug, state }) {
         </div>
       </section>
 
+      {/* ── SCHOOL ERP PRODUCT SECTION ── */}
+      <section style={{padding:"4rem 1.5rem",background:"linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-80,right:-80,width:350,height:350,background:"radial-gradient(circle,rgba(37,99,235,.2) 0%,transparent 70%)",pointerEvents:"none"}}/>
+        <div style={{maxWidth:1100,margin:"0 auto",position:"relative"}}>
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(37,99,235,.2)",border:"1px solid rgba(37,99,235,.4)",borderRadius:20,padding:"5px 14px",marginBottom:20}}>
+            <span style={{width:7,height:7,background:"#22c55e",borderRadius:"50%",display:"inline-block"}}/>
+            <span style={{color:"#93c5fd",fontSize:".75rem",fontWeight:700,letterSpacing:".06em"}}>🏫 FEATURED PRODUCT — SCHOOL ERP</span>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3rem",alignItems:"center"}}>
+            <div>
+              <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.6rem,3.5vw,2.5rem)",fontWeight:900,color:"#fff",lineHeight:1.1,marginBottom:16}}>
+                School ERP for<br/>
+                <span style={{color:"#60a5fa"}}>Schools in {city}</span>
+              </h2>
+              <p style={{color:"rgba(255,255,255,.65)",lineHeight:1.75,marginBottom:24,fontSize:".95rem"}}>
+                Orbnix School ERP is a complete AI-enabled school management system — covering students, attendance, fees, exams, transport, library and parent communication. Built specifically for Indian schools.
+              </p>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:28}}>
+                {[
+                  ["👥","Student Profiles & History"],
+                  ["✅","Attendance + SMS Alerts"],
+                  ["💰","Fee Collection & Reminders"],
+                  ["📝","Online Exams & Report Cards"],
+                  ["🚌","Transport & GPS Tracking"],
+                  ["✨","AI Studio — Reports & Papers"],
+                  ["👨‍👩‍👧","Parent App — Android & iOS"],
+                  ["🌐","School Website CMS"],
+                ].map(([icon,label])=>(
+                  <div key={label} style={{display:"flex",alignItems:"center",gap:8,background:"rgba(255,255,255,.06)",borderRadius:10,padding:"8px 12px",border:"1px solid rgba(255,255,255,.08)"}}>
+                    <span style={{fontSize:".9rem"}}>{icon}</span>
+                    <span style={{color:"rgba(255,255,255,.8)",fontSize:".78rem",fontWeight:500}}>{label}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+                <a href="/products" style={{background:"#2563EB",color:"#fff",padding:"11px 24px",borderRadius:10,fontWeight:700,fontSize:".88rem",textDecoration:"none",boxShadow:"0 6px 20px rgba(37,99,235,.4)"}}>View School ERP →</a>
+                <a href="/contact" style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"11px 24px",borderRadius:10,fontWeight:600,fontSize:".88rem",textDecoration:"none",border:"1.5px solid rgba(255,255,255,.2)"}}>Book Free Demo</a>
+              </div>
+            </div>
+            <div style={{background:"#0F172A",borderRadius:16,overflow:"hidden",border:"1.5px solid rgba(255,255,255,.08)",boxShadow:"0 20px 60px rgba(0,0,0,.4)"}}>
+              <div style={{background:"#1e293b",padding:"8px 14px",display:"flex",alignItems:"center",gap:6,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+                {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:10,height:10,borderRadius:"50%",background:c}}/>)}
+                <span style={{color:"rgba(255,255,255,.3)",fontSize:".7rem",marginLeft:6}}>erp.school.in — Dashboard</span>
+              </div>
+              <div style={{display:"flex",minHeight:320}}>
+                <div style={{width:140,background:"#1a2744",borderRight:"1px solid rgba(255,255,255,.05)",padding:"12px 0",flexShrink:0}}>
+                  {[["👥","Students"],["✅","Attendance"],["💰","Fees"],["📝","Exams"],["🚌","Transport"],["👨‍💼","Staff"],["📢","Notices"],["✨","AI Studio"]].map(([ic,lb],i)=>(
+                    <div key={lb} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 12px",background:i===0?"rgba(37,99,235,.2)":"transparent"}}>
+                      <span style={{fontSize:".78rem"}}>{ic}</span>
+                      <span style={{color:i===0?"#60a5fa":"rgba(255,255,255,.5)",fontSize:".72rem",fontWeight:i===0?700:400}}>{lb}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{flex:1,padding:14}}>
+                  <div style={{color:"rgba(255,255,255,.35)",fontSize:".65rem",marginBottom:4}}>Academic Year 2025–26</div>
+                  <div style={{color:"#fff",fontWeight:800,fontSize:".95rem",marginBottom:12}}>🎓 School Dashboard</div>
+                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:10}}>
+                    {[["👥","1,240","Students","#2563EB"],["✅","94%","Attendance","#10b981"],["💰","23","Defaulters","#f59e0b"],["👨‍💼","86","Staff","#7c3aed"]].map(([ic,val,lb,col])=>(
+                      <div key={lb} style={{background:"rgba(255,255,255,.05)",borderRadius:8,padding:10,border:"1px solid rgba(255,255,255,.06)"}}>
+                        <div style={{fontSize:".75rem",marginBottom:4}}>{ic}</div>
+                        <div style={{fontWeight:900,color:"#fff",fontSize:"1.1rem",lineHeight:1}}>{val}</div>
+                        <div style={{color:"rgba(255,255,255,.4)",fontSize:".62rem"}}>{lb}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{background:"rgba(255,255,255,.04)",borderRadius:8,padding:10,border:"1px solid rgba(255,255,255,.06)"}}>
+                    <div style={{color:"rgba(255,255,255,.5)",fontSize:".65rem",marginBottom:6}}>Quick Actions</div>
+                    <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                      {["✅ Attendance","💰 Collect Fee","📢 Notice","📝 Exam"].map(a=>(
+                        <div key={a} style={{background:"rgba(37,99,235,.2)",borderRadius:6,padding:"4px 8px",color:"#60a5fa",fontSize:".62rem",fontWeight:600}}>{a}</div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── HOW IT WORKS ── */}
       <section style={{background:S.navy,padding:"5rem 1.5rem"}}>
         <div style={{maxWidth:1100,margin:"0 auto"}}>
@@ -5699,11 +5786,528 @@ function CityPage({ city, slug, state }) {
 }
 
 
+// ─── PRODUCTS PAGE ────────────────────────────────────────────────────────────
+function Products({ setPage }) {
+  useEffect(() => {
+    document.title = "Orbnix Products — School ERP, Web Apps & AI Solutions for India";
+    const setMeta = (name, val, prop=false) => {
+      const sel = prop ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+      let el = document.querySelector(sel);
+      if (!el) { el = document.createElement("meta"); prop ? el.setAttribute("property",name) : el.setAttribute("name",name); document.head.appendChild(el); }
+      el.setAttribute("content", val);
+    };
+    setMeta("description", "Explore Orbnix products — School ERP with AI, custom web apps, mobile apps and SaaS solutions built for Indian businesses and institutions.");
+    setMeta("keywords", "school ERP India, school management software, AI school software, ERP for schools India, student management system, fee management software, school app India");
+    setMeta("og:title","Orbnix Products — School ERP & AI Solutions",true);
+    setMeta("og:description","School ERP with AI, attendance, fees, exams, transport & more. Built for Indian schools.",true);
+    let canon = document.querySelector('link[rel="canonical"]');
+    if (!canon) { canon = document.createElement("link"); canon.setAttribute("rel","canonical"); document.head.appendChild(canon); }
+    canon.setAttribute("href","https://www.orbnix.in/products");
+
+    // Product schema
+    let ld = document.querySelector('#products-ld');
+    if (!ld) { ld = document.createElement("script"); ld.type="application/ld+json"; ld.id="products-ld"; document.head.appendChild(ld); }
+    ld.textContent = JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"SoftwareApplication",
+      "name":"Orbnix School ERP",
+      "applicationCategory":"EducationalApplication",
+      "operatingSystem":"Web, Android, iOS",
+      "description":"AI-enabled School ERP system covering students, attendance, fees, exams, timetable, homework, transport, library and more.",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"INR","description":"Contact for pricing"},
+      "provider":{"@type":"Organization","name":"Orbnix","url":"https://www.orbnix.in"}
+    });
+  }, []);
+
+  const modules = [
+    { icon:"👥", name:"Students", desc:"Complete student profiles, admission records, documents & history" },
+    { icon:"✅", name:"Attendance", desc:"Daily attendance with biometric, app & SMS alerts to parents" },
+    { icon:"📝", name:"Examinations", desc:"Online exams, result cards, report generation & analytics" },
+    { icon:"📅", name:"Timetable", desc:"Smart timetable builder with teacher & room conflict detection" },
+    { icon:"📚", name:"Homework", desc:"Assign, submit and grade homework digitally from anywhere" },
+    { icon:"💰", name:"Fee Management", desc:"Collect fees, send reminders, track defaulters & generate receipts" },
+    { icon:"📊", name:"Accounting", desc:"Full school accounts, payroll, expenses & financial reports" },
+    { icon:"👨‍👩‍👧", name:"Parents Portal", desc:"Parents track attendance, fees, results & communicate with staff" },
+    { icon:"🚌", name:"Transport", desc:"Route management, GPS tracking & student bus allocation" },
+    { icon:"📖", name:"Library", desc:"Book catalogue, issue/return, fine management & reports" },
+    { icon:"📢", name:"Notice Board", desc:"Digital notices, circulars & announcements to all stakeholders" },
+    { icon:"🎒", name:"Admissions CRM", desc:"Online enquiries, follow-ups, application forms & conversion tracking" },
+    { icon:"🏆", name:"Clubs & Houses", desc:"Manage student clubs, houses, activities & points" },
+    { icon:"🌐", name:"Website CMS", desc:"Update school website content without any technical knowledge" },
+    { icon:"✨", name:"AI Studio", desc:"AI-powered insights, report writing, question papers & analytics" },
+    { icon:"📱", name:"Social Media", desc:"Schedule & post school updates to Instagram, Facebook & WhatsApp" },
+  ];
+
+  const highlights = [
+    { stat:"16+", label:"Modules Included", icon:"🧩" },
+    { stat:"AI", label:"Powered Intelligence", icon:"✨" },
+    { stat:"24/7", label:"Parent Access", icon:"👨‍👩‍👧" },
+    { stat:"7 Days", label:"Go Live Time", icon:"🚀" },
+  ];
+
+  return (
+    <div style={{width:"100%",paddingTop:68,minHeight:"100vh",background:C.bg2}}>
+
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section style={{background:"linear-gradient(135deg,#0F172A 0%,#1E3A5F 50%,#0F172A 100%)",padding:"72px 4% 80px",position:"relative",overflow:"hidden"}}>
+        {/* BG grid */}
+        <div style={{position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(37,99,235,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.12) 1px,transparent 1px)",backgroundSize:"40px 40px",opacity:.4}}/>
+        {/* Glow orbs */}
+        <div style={{position:"absolute",top:-100,right:-100,width:500,height:500,background:"radial-gradient(circle,rgba(37,99,235,.25) 0%,transparent 70%)",pointerEvents:"none"}}/>
+        <div style={{position:"absolute",bottom:-100,left:-100,width:400,height:400,background:"radial-gradient(circle,rgba(124,58,237,.2) 0%,transparent 70%)",pointerEvents:"none"}}/>
+
+        <div style={{maxWidth:1200,margin:"0 auto",position:"relative"}}>
+          {/* Breadcrumb */}
+          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:24}}>
+            <span onClick={()=>setPage("home")} style={{color:"rgba(255,255,255,.5)",fontSize:".82rem",cursor:"pointer"}}>Home</span>
+            <span style={{color:"rgba(255,255,255,.3)"}}>›</span>
+            <span style={{color:"rgba(255,255,255,.8)",fontSize:".82rem"}}>Products</span>
+          </div>
+
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(37,99,235,.2)",border:"1px solid rgba(37,99,235,.4)",borderRadius:20,padding:"6px 16px",marginBottom:24}}>
+            <span style={{width:8,height:8,background:"#22c55e",borderRadius:"50%",display:"inline-block",boxShadow:"0 0 8px #22c55e"}}/>
+            <span style={{color:"#93c5fd",fontSize:".8rem",fontWeight:600,letterSpacing:".06em"}}>NOW LIVE — SCHOOL ERP v2.0</span>
+          </div>
+
+          <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2.2rem,5vw,4rem)",fontWeight:900,color:"#fff",lineHeight:1.08,marginBottom:20,maxWidth:700}}>
+            Products Built for<br/>
+            <span style={{background:"linear-gradient(90deg,#60a5fa,#818cf8)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Indian Institutions</span>
+          </h1>
+          <p style={{color:"rgba(255,255,255,.65)",fontSize:"1.1rem",maxWidth:580,lineHeight:1.7,marginBottom:36}}>
+            Beyond websites — we build full software products. Our flagship School ERP is used by schools across India, with AI baked in from day one.
+          </p>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+            <div onClick={()=>setPage("contact")} style={{background:"#2563EB",color:"#fff",padding:"13px 28px",borderRadius:10,fontWeight:700,fontSize:".95rem",cursor:"pointer",boxShadow:"0 8px 32px rgba(37,99,235,.4)"}}>Request a Demo →</div>
+            <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"13px 28px",borderRadius:10,fontWeight:600,fontSize:".95rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.2)"}}>Get Pricing</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── STATS BAR ─────────────────────────────────────────── */}
+      <section style={{background:"#fff",borderBottom:`1px solid ${C.border}`,padding:"20px 4%"}}>
+        <div style={{maxWidth:1200,margin:"0 auto",display:"flex",justifyContent:"center",gap:"clamp(2rem,5vw,5rem)",flexWrap:"wrap"}}>
+          {highlights.map(({stat,label,icon})=>(
+            <div key={label} style={{textAlign:"center"}}>
+              <div style={{fontSize:"1rem",marginBottom:2}}>{icon}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.8rem",fontWeight:900,color:C.blue,lineHeight:1}}>{stat}</div>
+              <div style={{fontSize:".78rem",color:C.t3,fontWeight:600}}>{label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── SCHOOL ERP PRODUCT CARD ───────────────────────────── */}
+      <section style={{padding:"64px 4%",maxWidth:1200,margin:"0 auto"}}>
+        <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"#eff6ff",border:"1px solid #bfdbfe",borderRadius:20,padding:"4px 14px",marginBottom:16}}>
+          <span style={{fontSize:".75rem",color:C.blue,fontWeight:700,letterSpacing:".06em"}}>🏫 PRODUCT 01</span>
+        </div>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.8rem,4vw,3rem)",fontWeight:900,color:C.t,lineHeight:1.1,marginBottom:12}}>
+          Orbnix School ERP
+          <span style={{display:"block",fontSize:"clamp(1rem,2vw,1.4rem)",color:C.blue,fontWeight:700,marginTop:4}}>AI-Enabled School Management System</span>
+        </h2>
+        <p style={{color:C.t2,fontSize:"1.05rem",maxWidth:640,lineHeight:1.7,marginBottom:48}}>
+          A complete school management ecosystem — students, staff, fees, exams, transport, library and AI-powered insights. One platform. Every stakeholder.
+        </p>
+
+        {/* ── DASHBOARD WIREFRAME ── */}
+        <div style={{background:"#0F172A",borderRadius:20,overflow:"hidden",boxShadow:"0 32px 80px rgba(0,0,0,.25)",marginBottom:56,border:"1.5px solid rgba(255,255,255,.08)"}}>
+          {/* Browser chrome */}
+          <div style={{background:"#1e293b",padding:"10px 16px",display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+            <div style={{display:"flex",gap:6}}>
+              {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:12,height:12,borderRadius:"50%",background:c}}/>)}
+            </div>
+            <div style={{flex:1,background:"rgba(255,255,255,.06)",borderRadius:6,padding:"4px 12px",textAlign:"center",maxWidth:320,margin:"0 auto"}}>
+              <span style={{color:"rgba(255,255,255,.4)",fontSize:".78rem"}}>erp.yourschool.in</span>
+            </div>
+          </div>
+
+          {/* Dashboard content */}
+          <div style={{display:"flex",minHeight:480}}>
+            {/* Sidebar */}
+            <div style={{width:200,background:"#1a2744",borderRight:"1px solid rgba(255,255,255,.06)",padding:"20px 0",flexShrink:0}}>
+              <div style={{padding:"0 16px 20px",borderBottom:"1px solid rgba(255,255,255,.06)",marginBottom:16}}>
+                <div style={{display:"flex",alignItems:"center",gap:10}}>
+                  <div style={{width:32,height:32,background:"linear-gradient(135deg,#2563EB,#7c3aed)",borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center",fontSize:".8rem",fontWeight:900,color:"#fff"}}>O</div>
+                  <div>
+                    <div style={{color:"#fff",fontSize:".82rem",fontWeight:700,lineHeight:1}}>Orbnix ERP</div>
+                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".68rem"}}>School Admin</div>
+                  </div>
+                </div>
+              </div>
+              {[
+                {section:"ACADEMICS",items:[["👥","Students"],["✅","Attendance"],["📝","Examinations"],["📅","Timetable"],["📚","Homework"]]},
+                {section:"FINANCE",items:[["💰","Fee Management"],["📊","Accounting"]]},
+                {section:"PEOPLE",items:[["👨‍💼","Staff & HR"],["🎒","Admissions CRM"],["👨‍👩‍👧","Parents"]]},
+                {section:"OPERATIONS",items:[["🚌","Transport"],["📖","Library"],["📢","Notices"]]},
+                {section:"INTELLIGENCE",items:[["✨","AI Studio"],["📱","Social Media"],["🌐","Website CMS"]]},
+              ].map(({section,items})=>(
+                <div key={section} style={{marginBottom:16}}>
+                  <div style={{color:"rgba(255,255,255,.3)",fontSize:".62rem",fontWeight:700,letterSpacing:".1em",padding:"0 16px",marginBottom:6}}>{section}</div>
+                  {items.map(([icon,label],j)=>(
+                    <div key={label} style={{display:"flex",alignItems:"center",gap:10,padding:"7px 16px",background:label==="Dashboard"?"rgba(37,99,235,.25)":"transparent",cursor:"pointer"}}>
+                      <span style={{fontSize:".9rem"}}>{icon}</span>
+                      <span style={{color:label==="Dashboard"?"#60a5fa":"rgba(255,255,255,.6)",fontSize:".8rem",fontWeight:label==="Dashboard"?700:400}}>{label}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Main dashboard */}
+            <div style={{flex:1,padding:24,overflow:"hidden"}}>
+              {/* Top bar */}
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
+                <div>
+                  <div style={{color:"rgba(255,255,255,.4)",fontSize:".75rem"}}>Sunday, March 29 · Academic Year 2025–26</div>
+                  <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",color:"#fff",fontSize:"1.3rem",fontWeight:800}}>🎓 Good morning, Principal!</div>
+                </div>
+                <div style={{display:"flex",gap:8}}>
+                  <div style={{background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.1)",borderRadius:8,padding:"6px 14px",color:"rgba(255,255,255,.6)",fontSize:".78rem",cursor:"pointer"}}>🔍 Search</div>
+                  <div style={{background:"#2563EB",borderRadius:8,padding:"6px 14px",color:"#fff",fontSize:".78rem",fontWeight:700,cursor:"pointer"}}>+ New</div>
+                </div>
+              </div>
+
+              {/* KPI Cards */}
+              <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:20}}>
+                {[
+                  {label:"Total Students",val:"1,240",change:"+2%",up:true,icon:"👥",color:"#2563EB"},
+                  {label:"Today's Attendance",val:"94.2%",change:"↑ Good",up:true,icon:"✅",color:"#10b981"},
+                  {label:"Fee Defaulters",val:"23",change:"↓ 5 cleared",up:true,icon:"💰",color:"#f59e0b"},
+                  {label:"Total Staff",val:"86",change:"Active",up:true,icon:"👨‍💼",color:"#7c3aed"},
+                ].map(({label,val,change,up,icon,color})=>(
+                  <div key={label} style={{background:"rgba(255,255,255,.05)",borderRadius:12,padding:16,border:"1px solid rgba(255,255,255,.07)"}}>
+                    <div style={{display:"flex",justifyContent:"space-between",marginBottom:10}}>
+                      <span style={{fontSize:"1.2rem"}}>{icon}</span>
+                      <span style={{background:up?"rgba(16,185,129,.15)":"rgba(239,68,68,.15)",color:up?"#4ade80":"#f87171",borderRadius:6,padding:"2px 8px",fontSize:".7rem",fontWeight:700}}>{change}</span>
+                    </div>
+                    <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#fff",lineHeight:1}}>{val}</div>
+                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".72rem",marginTop:4}}>{label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Middle row */}
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>
+                {/* Attendance chart */}
+                <div style={{background:"rgba(255,255,255,.04)",borderRadius:12,padding:16,border:"1px solid rgba(255,255,255,.07)"}}>
+                  <div style={{color:"rgba(255,255,255,.7)",fontSize:".8rem",fontWeight:600,marginBottom:12}}>Today's Attendance</div>
+                  <div style={{display:"flex",alignItems:"center",justifyContent:"center",marginBottom:12}}>
+                    <div style={{width:80,height:80,borderRadius:"50%",background:"conic-gradient(#22c55e 0deg 339deg,rgba(255,255,255,.1) 339deg 360deg)",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                      <div style={{width:56,height:56,borderRadius:"50%",background:"#0F172A",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",fontWeight:800,fontSize:".95rem"}}>94%</div>
+                    </div>
+                  </div>
+                  <div style={{display:"flex",justifyContent:"space-around"}}>
+                    {[["1,167","Present","#22c55e"],["48","Absent","#f87171"],["25","Leave","#f59e0b"]].map(([n,l,c])=>(
+                      <div key={l} style={{textAlign:"center"}}>
+                        <div style={{fontWeight:800,color:c,fontSize:".95rem"}}>{n}</div>
+                        <div style={{color:"rgba(255,255,255,.4)",fontSize:".65rem"}}>{l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Quick actions */}
+                <div style={{background:"rgba(255,255,255,.04)",borderRadius:12,padding:16,border:"1px solid rgba(255,255,255,.07)"}}>
+                  <div style={{color:"rgba(255,255,255,.7)",fontSize:".8rem",fontWeight:600,marginBottom:12}}>Quick Actions</div>
+                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+                    {[["✅","Attendance"],["💰","Collect Fee"],["👥","Add Student"],["📝","Exams"],["🎒","Admissions"],["👨‍💼","Staff"],["📢","Notice"],["✨","AI Studio"]].map(([icon,label])=>(
+                      <div key={label} style={{background:"rgba(255,255,255,.06)",borderRadius:8,padding:"8px 6px",textAlign:"center",cursor:"pointer"}}>
+                        <div style={{fontSize:".9rem",marginBottom:2}}>{icon}</div>
+                        <div style={{color:"rgba(255,255,255,.55)",fontSize:".62rem"}}>{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Recent activity */}
+                <div style={{background:"rgba(255,255,255,.04)",borderRadius:12,padding:16,border:"1px solid rgba(255,255,255,.07)"}}>
+                  <div style={{color:"rgba(255,255,255,.7)",fontSize:".8rem",fontWeight:600,marginBottom:12}}>Recent Activity</div>
+                  {[
+                    {icon:"✅",text:"Attendance marked — Class X",time:"10 min ago",c:"#22c55e"},
+                    {icon:"💰",text:"Fee collected — ₹12,500",time:"25 min ago",c:"#f59e0b"},
+                    {icon:"📢",text:"Notice sent to all parents",time:"1 hr ago",c:"#60a5fa"},
+                    {icon:"📝",text:"Exam results published",time:"2 hr ago",c:"#a78bfa"},
+                    {icon:"🎒",text:"3 new admissions enquiries",time:"3 hr ago",c:"#34d399"},
+                  ].map(({icon,text,time,c})=>(
+                    <div key={text} style={{display:"flex",gap:10,marginBottom:10,alignItems:"flex-start"}}>
+                      <div style={{width:26,height:26,borderRadius:8,background:`${c}22`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:".75rem",flexShrink:0}}>{icon}</div>
+                      <div>
+                        <div style={{color:"rgba(255,255,255,.75)",fontSize:".72rem",lineHeight:1.3}}>{text}</div>
+                        <div style={{color:"rgba(255,255,255,.3)",fontSize:".65rem"}}>{time}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── MOBILE APP WIREFRAME ── */}
+        <div style={{marginBottom:56}}>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:900,color:C.t,marginBottom:8}}>Mobile Apps for Every Stakeholder</h3>
+          <p style={{color:C.t3,marginBottom:32}}>Dedicated apps for students, parents and teachers — Android & iOS.</p>
+
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:24}}>
+
+            {/* ── STUDENT APP ── */}
+            <div style={{background:"#0F172A",borderRadius:20,overflow:"hidden",border:"1.5px solid rgba(255,255,255,.08)",boxShadow:"0 24px 60px rgba(0,0,0,.3)"}}>
+              <div style={{background:"#1e293b",padding:"10px 16px",display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+                <div style={{display:"flex",gap:5}}>{["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:10,height:10,borderRadius:"50%",background:c}}/>)}</div>
+                <span style={{color:"rgba(255,255,255,.3)",fontSize:".7rem",marginLeft:4}}>Student App</span>
+              </div>
+              <div style={{padding:20}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+                  <div>
+                    <div style={{color:"rgba(255,255,255,.45)",fontSize:".72rem"}}>Good morning 👋</div>
+                    <div style={{color:"#fff",fontWeight:800,fontSize:"1.1rem"}}>Aryan Sharma</div>
+                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".72rem"}}>Class X-A · Roll No. 12</div>
+                  </div>
+                  <div style={{width:42,height:42,borderRadius:12,background:"linear-gradient(135deg,#2563EB,#7c3aed)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem"}}>🎓</div>
+                </div>
+
+                {/* Attendance card */}
+                <div style={{background:"linear-gradient(135deg,#1d4ed8,#7c3aed)",borderRadius:14,padding:16,marginBottom:12}}>
+                  <div style={{color:"rgba(255,255,255,.6)",fontSize:".68rem",fontWeight:700,letterSpacing:".1em",marginBottom:4}}>TODAY'S ATTENDANCE</div>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                    <div style={{color:"#fff",fontWeight:900,fontSize:"1.4rem"}}>✅ Present</div>
+                    <div style={{color:"rgba(255,255,255,.6)",fontSize:".72rem"}}>Marked 8:42 AM</div>
+                  </div>
+                  <div style={{background:"rgba(255,255,255,.15)",borderRadius:8,height:6,marginTop:10,overflow:"hidden"}}>
+                    <div style={{background:"#4ade80",height:"100%",width:"94%",borderRadius:8}}/>
+                  </div>
+                  <div style={{color:"rgba(255,255,255,.5)",fontSize:".68rem",marginTop:4}}>94% attendance this term</div>
+                </div>
+
+                {/* Today's schedule */}
+                <div style={{color:"rgba(255,255,255,.5)",fontSize:".72rem",fontWeight:700,marginBottom:8,letterSpacing:".06em"}}>TODAY'S SCHEDULE</div>
+                {[
+                  {icon:"📐",sub:"Mathematics","time":"8:00–8:45","room":"Room 12"},
+                  {icon:"🔬",sub:"Science Lab","time":"9:00–9:45","room":"Lab 3"},
+                  {icon:"📖",sub:"English","time":"10:00–10:45","room":"Room 12"},
+                ].map(({icon,sub,time,room})=>(
+                  <div key={sub} style={{display:"flex",alignItems:"center",gap:10,background:"rgba(255,255,255,.05)",borderRadius:10,padding:"10px 12px",marginBottom:8,border:"1px solid rgba(255,255,255,.06)"}}>
+                    <div style={{width:34,height:34,borderRadius:10,background:"rgba(37,99,235,.25)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem",flexShrink:0}}>{icon}</div>
+                    <div style={{flex:1}}>
+                      <div style={{color:"#fff",fontWeight:600,fontSize:".82rem"}}>{sub}</div>
+                      <div style={{color:"rgba(255,255,255,.4)",fontSize:".7rem"}}>{room}</div>
+                    </div>
+                    <div style={{color:"rgba(255,255,255,.45)",fontSize:".7rem"}}>{time}</div>
+                  </div>
+                ))}
+
+                {/* Homework due */}
+                <div style={{background:"rgba(245,158,11,.1)",border:"1px solid rgba(245,158,11,.25)",borderRadius:10,padding:"10px 12px",marginTop:4}}>
+                  <div style={{color:"#fbbf24",fontSize:".7rem",fontWeight:700,marginBottom:4}}>⚠ HOMEWORK DUE TODAY</div>
+                  <div style={{color:"rgba(255,255,255,.7)",fontSize:".78rem"}}>📚 Physics — Chapter 5 Questions</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── PARENT APP ── */}
+            <div style={{background:"#0a1628",borderRadius:20,overflow:"hidden",border:"1.5px solid rgba(255,255,255,.08)",boxShadow:"0 24px 60px rgba(0,0,0,.3)"}}>
+              <div style={{background:"#0f1f38",padding:"10px 16px",display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+                <div style={{display:"flex",gap:5}}>{["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:10,height:10,borderRadius:"50%",background:c}}/>)}</div>
+                <span style={{color:"rgba(255,255,255,.3)",fontSize:".7rem",marginLeft:4}}>Parent Portal</span>
+              </div>
+              <div style={{padding:20}}>
+                <div style={{marginBottom:16}}>
+                  <div style={{color:"rgba(255,255,255,.45)",fontSize:".72rem"}}>Welcome back</div>
+                  <div style={{color:"#fff",fontWeight:800,fontSize:"1.1rem"}}>Ramesh Sharma</div>
+                </div>
+
+                {/* Children cards */}
+                {[
+                  {name:"Aryan Sharma",cls:"Class X-A",att:"94%",status:"Present",fees:"Paid",attColor:"#4ade80"},
+                  {name:"Priya Sharma",cls:"Class VII-B",att:"88%",status:"Present",fees:"Due ₹1,500",attColor:"#4ade80"},
+                ].map(({name,cls,att,status,fees,attColor})=>(
+                  <div key={name} style={{background:"rgba(255,255,255,.05)",borderRadius:14,padding:14,marginBottom:12,border:"1px solid rgba(255,255,255,.08)"}}>
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+                      <div>
+                        <div style={{color:"#fff",fontWeight:700,fontSize:".88rem"}}>{name}</div>
+                        <div style={{color:"rgba(255,255,255,.4)",fontSize:".72rem"}}>{cls}</div>
+                      </div>
+                      <div style={{background:"rgba(34,197,94,.15)",border:"1px solid rgba(34,197,94,.3)",borderRadius:8,padding:"3px 10px",color:"#4ade80",fontSize:".72rem",fontWeight:700}}>{status}</div>
+                    </div>
+                    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}>
+                      {[["📊",att,"Attendance"],[fees.includes("Due")?"⚠️":"✅",fees,"Fees"],["📝","View","Results"]].map(([ic,val,lbl])=>(
+                        <div key={lbl} style={{background:"rgba(255,255,255,.06)",borderRadius:8,padding:"8px 6px",textAlign:"center"}}>
+                          <div style={{fontSize:".85rem",marginBottom:2}}>{ic}</div>
+                          <div style={{color:fees.includes("Due")&&lbl==="Fees"?"#fbbf24":"rgba(255,255,255,.7)",fontSize:".68rem",fontWeight:600}}>{val}</div>
+                          <div style={{color:"rgba(255,255,255,.35)",fontSize:".62rem"}}>{lbl}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+
+                {/* Fee payment */}
+                <div style={{background:"rgba(245,158,11,.1)",border:"1px solid rgba(245,158,11,.25)",borderRadius:12,padding:14,marginBottom:12}}>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+                    <div style={{color:"#fbbf24",fontSize:".72rem",fontWeight:700}}>⚠ FEE DUE — PRIYA SHARMA</div>
+                  </div>
+                  <div style={{color:"#fff",fontWeight:900,fontSize:"1.3rem",marginBottom:4}}>₹1,500</div>
+                  <div style={{color:"rgba(255,255,255,.5)",fontSize:".72rem",marginBottom:10}}>Q2 Transport Fee · Due 5 Apr</div>
+                  <div style={{background:"#2563EB",borderRadius:8,padding:"8px",textAlign:"center",cursor:"pointer"}}>
+                    <span style={{color:"#fff",fontWeight:700,fontSize:".82rem"}}>Pay Now →</span>
+                  </div>
+                </div>
+
+                {/* Notice */}
+                <div style={{background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.08)",borderRadius:10,padding:12}}>
+                  <div style={{color:"rgba(255,255,255,.5)",fontSize:".68rem",fontWeight:700,marginBottom:6}}>📢 LATEST NOTICE</div>
+                  <div style={{color:"rgba(255,255,255,.8)",fontSize:".78rem",lineHeight:1.5}}>Annual Sports Day on 5 April. Students to report in sports uniform by 8:00 AM.</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── TEACHER APP ── */}
+            <div style={{background:"#0d1f0d",borderRadius:20,overflow:"hidden",border:"1.5px solid rgba(255,255,255,.08)",boxShadow:"0 24px 60px rgba(0,0,0,.3)"}}>
+              <div style={{background:"#122012",padding:"10px 16px",display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+                <div style={{display:"flex",gap:5}}>{["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:10,height:10,borderRadius:"50%",background:c}}/>)}</div>
+                <span style={{color:"rgba(255,255,255,.3)",fontSize:".7rem",marginLeft:4}}>Teacher Dashboard</span>
+              </div>
+              <div style={{padding:20}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+                  <div>
+                    <div style={{color:"rgba(255,255,255,.45)",fontSize:".72rem"}}>Class Teacher</div>
+                    <div style={{color:"#fff",fontWeight:800,fontSize:"1.1rem"}}>Mrs. Sunita Verma</div>
+                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".72rem"}}>Mathematics · Class X</div>
+                  </div>
+                  <div style={{textAlign:"right"}}>
+                    <div style={{color:"#4ade80",fontWeight:700,fontSize:".78rem"}}>● Online</div>
+                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".68rem"}}>4 classes today</div>
+                  </div>
+                </div>
+
+                {/* Attendance marking */}
+                <div style={{background:"rgba(34,197,94,.08)",border:"1px solid rgba(34,197,94,.2)",borderRadius:12,padding:14,marginBottom:12}}>
+                  <div style={{color:"#4ade80",fontSize:".72rem",fontWeight:700,marginBottom:8}}>📋 MARK ATTENDANCE — CLASS X-A</div>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
+                    <div style={{color:"rgba(255,255,255,.7)",fontSize:".78rem"}}>Period 1 · 8:00–8:45 AM</div>
+                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".72rem"}}>42 students</div>
+                  </div>
+                  <div style={{display:"grid",gridTemplateColumns:"repeat(8,1fr)",gap:4,marginBottom:10}}>
+                    {Array.from({length:42},(_,i)=>(
+                      <div key={i} style={{width:"100%",aspectRatio:"1",borderRadius:4,background:i<38?"rgba(34,197,94,.3)":i<40?"rgba(239,68,68,.3)":"rgba(245,158,11,.3)",border:i<38?"1px solid rgba(34,197,94,.5)":i<40?"1px solid rgba(239,68,68,.5)":"1px solid rgba(245,158,11,.5)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".5rem",color:"rgba(255,255,255,.6)"}}>{i+1}</div>
+                    ))}
+                  </div>
+                  <div style={{display:"flex",gap:8,marginBottom:10}}>
+                    {[["38","Present","#4ade80"],["2","Absent","#f87171"],["2","Leave","#fbbf24"]].map(([n,l,c])=>(
+                      <div key={l} style={{flex:1,textAlign:"center",background:"rgba(255,255,255,.04)",borderRadius:8,padding:"6px 4px"}}>
+                        <div style={{color:c,fontWeight:800,fontSize:".88rem"}}>{n}</div>
+                        <div style={{color:"rgba(255,255,255,.4)",fontSize:".62rem"}}>{l}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{background:"#16a34a",borderRadius:8,padding:"8px",textAlign:"center"}}>
+                    <span style={{color:"#fff",fontWeight:700,fontSize:".82rem"}}>Submit Attendance ✓</span>
+                  </div>
+                </div>
+
+                {/* Homework assigned */}
+                <div style={{color:"rgba(255,255,255,.5)",fontSize:".68rem",fontWeight:700,marginBottom:8}}>📚 HOMEWORK ASSIGNED</div>
+                {[
+                  {cls:"Class X-A","sub":"Chapter 5 — Quadratic Equations","due":"Due Tomorrow"},
+                  {cls:"Class X-B","sub":"Chapter 5 — Practice Set","due":"Due Tomorrow"},
+                ].map(({cls,sub,due})=>(
+                  <div key={cls} style={{display:"flex",gap:10,background:"rgba(255,255,255,.04)",borderRadius:10,padding:"10px 12px",marginBottom:8,border:"1px solid rgba(255,255,255,.06)"}}>
+                    <div style={{width:32,height:32,borderRadius:8,background:"rgba(34,197,94,.2)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".85rem",flexShrink:0}}>📝</div>
+                    <div>
+                      <div style={{color:"rgba(255,255,255,.8)",fontSize:".75rem",fontWeight:600}}>{cls} — {sub}</div>
+                      <div style={{color:"rgba(255,255,255,.4)",fontSize:".68rem"}}>{due}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ── MODULES GRID ── */}
+        <div style={{marginBottom:56}}>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:900,color:C.t,marginBottom:8}}>Every Module You Need</h3>
+          <p style={{color:C.t3,marginBottom:32}}>16+ integrated modules — one login, one platform, zero chaos.</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:16}}>
+            {modules.map(({icon,name,desc})=>(
+              <div key={name} style={{background:"#fff",borderRadius:14,padding:20,border:`1.5px solid ${C.border}`,boxShadow:"0 2px 12px rgba(0,0,0,.04)",transition:"transform .15s,box-shadow .15s"}}>
+                <div style={{width:42,height:42,borderRadius:12,background:C.blueLL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.3rem",marginBottom:12}}>{icon}</div>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".98rem",color:C.t,marginBottom:6}}>{name}</div>
+                <div style={{color:C.t3,fontSize:".83rem",lineHeight:1.55}}>{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── WHY ORBNIX ERP ── */}
+        <div style={{background:"linear-gradient(135deg,#0F172A,#1E3A5F)",borderRadius:24,padding:"48px 40px",marginBottom:56,position:"relative",overflow:"hidden"}}>
+          <div style={{position:"absolute",top:-60,right:-60,width:300,height:300,background:"radial-gradient(circle,rgba(37,99,235,.2) 0%,transparent 70%)"}}/>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:900,color:"#fff",marginBottom:8,position:"relative"}}>Why Schools Choose Orbnix ERP</h3>
+          <p style={{color:"rgba(255,255,255,.6)",marginBottom:36,position:"relative"}}>Not just software — a partner in your school's digital journey.</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:20,position:"relative"}}>
+            {[
+              {icon:"🤖",title:"AI Built-In",desc:"AI Studio generates report cards, question papers, notice drafts and gives attendance insights automatically."},
+              {icon:"📱",title:"Mobile First",desc:"Dedicated apps for students, parents and teachers. Works on Android & iOS."},
+              {icon:"🔒",title:"Data Privacy",desc:"Your school's data stays in India. No third-party sharing. DPDP compliant."},
+              {icon:"⚡",title:"7-Day Setup",desc:"We onboard your school, import all data and train your staff — live in one week."},
+              {icon:"🎓",title:"India-Specific",desc:"Built for CBSE, ICSE, State Board. RTE compliance, TC generation, migration certificates."},
+              {icon:"📞",title:"Dedicated Support",desc:"Dedicated account manager. WhatsApp support. On-site training available."},
+            ].map(({icon,title,desc})=>(
+              <div key={title} style={{background:"rgba(255,255,255,.06)",borderRadius:14,padding:20,border:"1px solid rgba(255,255,255,.1)"}}>
+                <div style={{fontSize:"1.5rem",marginBottom:10}}>{icon}</div>
+                <div style={{fontWeight:700,color:"#fff",marginBottom:6,fontSize:".95rem"}}>{title}</div>
+                <div style={{color:"rgba(255,255,255,.55)",fontSize:".82rem",lineHeight:1.6}}>{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── CTA ── */}
+        <div style={{background:"#fff",borderRadius:20,padding:"48px 40px",border:`2px solid ${C.border}`,textAlign:"center",boxShadow:"0 8px 40px rgba(0,0,0,.06)"}}>
+          <div style={{display:"inline-block",background:C.blueLL,borderRadius:20,padding:"4px 14px",marginBottom:16}}>
+            <span style={{color:C.blue,fontSize:".78rem",fontWeight:700}}>🚀 GET STARTED</span>
+          </div>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:900,color:C.t,marginBottom:12}}>Ready to Transform Your School?</h3>
+          <p style={{color:C.t3,maxWidth:480,margin:"0 auto 28px",lineHeight:1.7}}>Book a free 30-minute demo. See the full system live. We'll customise it for your school.</p>
+          <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+            <div onClick={()=>setPage("contact")} style={{background:C.blue,color:"#fff",padding:"13px 32px",borderRadius:10,fontWeight:700,fontSize:".95rem",cursor:"pointer",boxShadow:`0 8px 24px rgba(37,99,235,.35)`}}>Book Free Demo →</div>
+            <div onClick={()=>setPage("contact")} style={{background:C.bg2,color:C.t,padding:"13px 32px",borderRadius:10,fontWeight:600,fontSize:".95rem",cursor:"pointer",border:`1.5px solid ${C.border}`}}>Talk to Sales</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMING SOON ─────────────────────────────────────────── */}
+      <section style={{padding:"0 4% 72px",maxWidth:1200,margin:"0 auto"}}>
+        <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.5rem",fontWeight:900,color:C.t,marginBottom:8}}>More Products Coming Soon</h3>
+        <p style={{color:C.t3,marginBottom:24}}>We're building more. Be the first to know.</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:16}}>
+          {[
+            {icon:"🏨",name:"Hotel PMS","desc":"Property management system for hotels, resorts & homestays.",tag:"Q3 2026"},
+            {icon:"🏥",name:"Clinic ERP","desc":"Patient management, appointments, billing & prescriptions.",tag:"Q4 2026"},
+            {icon:"🏋️",name:"Gym & Fitness","desc":"Member management, attendance, diet plans & billing.",tag:"2027"},
+          ].map(({icon,name,desc,tag})=>(
+            <div key={name} style={{background:"#fff",borderRadius:14,padding:20,border:`1.5px dashed ${C.border}`,opacity:.8}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:12}}>
+                <div style={{width:42,height:42,borderRadius:12,background:C.bg2,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.3rem"}}>{icon}</div>
+                <div style={{background:C.bg2,borderRadius:8,padding:"3px 10px",fontSize:".7rem",color:C.t3,fontWeight:700}}>{tag}</div>
+              </div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".95rem",color:C.t,marginBottom:6}}>{name}</div>
+              <div style={{color:C.t3,fontSize:".82rem",lineHeight:1.55}}>{desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
 function AppInner() {
   const navigate = useNavigate();
   const location = useLocation();
   const getPageFromPath = (pathname) => {
-    const staticMap = { "/": "home", "/about": "about", "/work": "work", "/blog": "blog", "/services": "services", "/pricing": "pricing", "/contact": "contact" };
+    const staticMap = { "/": "home", "/products": "products", "/about": "about", "/work": "work", "/blog": "blog", "/services": "services", "/pricing": "pricing", "/contact": "contact" };
     if (staticMap[pathname]) return staticMap[pathname];
     const cityMatch = pathname.match(/^\/cities\/(.+)$/);
     if (cityMatch) {
@@ -5714,7 +6318,7 @@ function AppInner() {
     return "home";
   };
   const getPathFromPage = (p) => {
-    const staticMap = { home: "/", about: "/about", work: "/work", blog: "/blog", services: "/services", pricing: "/pricing", contact: "/contact" };
+    const staticMap = { home: "/", products:"/products", about: "/about", work: "/work", blog: "/blog", services: "/services", pricing: "/pricing", contact: "/contact" };
     if (staticMap[p]) return staticMap[p];
     if (p.startsWith("city-")) return "/cities/" + p.replace("city-","");
     return "/";
@@ -5752,6 +6356,7 @@ function AppInner() {
       {page === "about"    && <About    setPage={setPage} />}
       {page === "work"     && <Work     setPage={setPage} openDemo={openDemo} />}
       {page === "blog"     && <Blog     setPage={setPage} onCatClick={handleBlogClick} />}
+      {page === "products" && <Products setPage={setPage} />}
       {page === "services" && <Services setPage={setPage} />}
       {page === "pricing"  && <Pricing  setPage={setPage} />}
       {page === "contact"  && <Contact />}
