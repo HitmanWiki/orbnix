@@ -18,6 +18,9 @@ const GlobalStyles = () => (
     @keyframes slideInRight{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
     @media(max-width:768px){
       .social-sidebar{display:none!important;}
+      .city-erp-grid{grid-template-columns:1fr!important;}
+      .city-erp-sidebar{display:none!important;}
+      .city-erp-features{grid-template-columns:1fr 1fr!important;}
     }
     @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
     @keyframes slideIn{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);}}
@@ -2315,32 +2318,49 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
               <p style={{fontSize:".83rem",color:"rgba(255,255,255,.5)",lineHeight:1.85,maxWidth:240}}>Full-stack IT development studio — 100% remote. Websites, mobile apps, AI agents & custom software for Indian startups & SMEs. Globally trusted.</p>
             </div>
             {[
-              ["Services",["Web Development","App Development","AI Agents","E-Commerce","WhatsApp Marketing","IT Support & AMC"]],
-              ["Company",["About Us","Our Work","Blog","Pricing","Contact"]],
-              ["Contact",["hello@orbnix.in","WhatsApp Us","Book a Free Call","India · 100% Remote"]]
-            ].map(([h,links])=>(
+              {h:"Products", links:[
+                {label:"School ERP",pg:"products"},
+                {label:"Hotel PMS",pg:"products"},
+                {label:"Clinic ERP",pg:"products"},
+                {label:"View All Products",pg:"products"},
+              ]},
+              {h:"Services", links:[
+                {label:"Web Development",pg:"services"},
+                {label:"App Development",pg:"services"},
+                {label:"AI Agents",pg:"services"},
+                {label:"E-Commerce",pg:"services"},
+                {label:"WhatsApp Marketing",pg:"services"},
+                {label:"IT Support & AMC",pg:"services"},
+              ]},
+              {h:"Company", links:[
+                {label:"About Us",pg:"about"},
+                {label:"Our Work",pg:"work"},
+                {label:"Blog",pg:"blog"},
+                {label:"Pricing",pg:"pricing"},
+                {label:"Contact",pg:"contact"},
+              ]},
+              {h:"Contact", links:[
+                {label:"hello@orbnix.in",href:"mailto:hello@orbnix.in"},
+                {label:"WhatsApp Us",href:"https://wa.me/919079881416",ext:true},
+                {label:"Book a Free Call",pg:"contact"},
+                {label:"India · 100% Remote",plain:true},
+              ]},
+            ].map(({h,links})=>(
               <div key={h}>
                 <h5 style={{fontSize:".72rem",fontWeight:700,textTransform:"uppercase",letterSpacing:".1em",color:"rgba(255,255,255,.35)",marginBottom:"1rem"}}>{h}</h5>
-                {links.map(l=>{
-                  const pageMap={"About Us":"about","Our Work":"work","Blog":"blog","Pricing":"pricing","Contact":"contact"};
-                  const isPage = pageMap[l];
-                  const isEmail = l.includes("@");
-                  const isWA = l.includes("WhatsApp");
-                  const isCall = l.includes("Call");
-                  return (
-                    <a key={l}
-                      href={isEmail?"mailto:hello@orbnix.in":isWA?"https://wa.me/919079881416":undefined}
-                      target={isWA?"_blank":undefined}
-                      rel={isWA?"noopener noreferrer":undefined}
-                      onClick={isPage?(e=>{e.preventDefault();setPage(isPage);}):undefined}
-                      style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",cursor:"pointer",textDecoration:"none"}}
-                      onMouseEnter={e=>e.target.style.color="#fff"}
-                      onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}
-                    >{l}</a>
-                  );
-                })}
+                {links.map(({label,pg,href,ext,plain})=>(
+                  <a key={label}
+                    href={href||(pg?`/${pg}`:undefined)}
+                    target={ext?"_blank":undefined}
+                    rel={ext?"noopener noreferrer":undefined}
+                    onClick={pg?(e=>{e.preventDefault();setPage(pg);}):undefined}
+                    style={{display:"block",fontSize:".84rem",color:plain?"rgba(255,255,255,.25)":"rgba(255,255,255,.55)",marginBottom:".55rem",cursor:plain?"default":"pointer",textDecoration:"none",pointerEvents:plain?"none":"auto"}}
+                    onMouseEnter={plain?undefined:e=>e.target.style.color="#fff"}
+                    onMouseLeave={plain?undefined:e=>e.target.style.color="rgba(255,255,255,.55)"}
+                  >{label}</a>
+                ))}
               </div>
-            ))}
+            ))}            
           </div>
           <div style={{borderTop:"1px solid rgba(255,255,255,.08)",paddingTop:"1.75rem",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"1rem"}}>
             <p style={{fontSize:".78rem",color:"rgba(255,255,255,.35)"}}>© 2025 Orbnix. All rights reserved. · Best Web Development Agency in India · IT Company India · 100% Remote-Friendly</p>
@@ -5514,7 +5534,7 @@ function CityPage({ city, slug, state }) {
     <main style={{paddingTop:"4.5rem",minHeight:"100vh",background:"#fff",fontFamily:S.body}}>
 
       {/* ── HERO ── */}
-      <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#7c3aed 100%)",padding:"5rem 1.5rem 5rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
+      <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#7c3aed 100%)",padding:"clamp(3rem,8vw,5rem) clamp(1rem,4vw,1.5rem) clamp(3rem,8vw,5rem)",textAlign:"center",position:"relative",overflow:"hidden"}}>
         {/* Glow blobs */}
         <div style={{position:"absolute",top:-80,right:-80,width:400,height:400,background:"rgba(124,58,237,.15)",borderRadius:"50%",filter:"blur(60px)"}}/>
         <div style={{position:"absolute",bottom:-60,left:-60,width:300,height:300,background:"rgba(37,99,235,.2)",borderRadius:"50%",filter:"blur(50px)"}}/>
@@ -5612,14 +5632,14 @@ function CityPage({ city, slug, state }) {
       </section>
 
       {/* ── SCHOOL ERP PRODUCT SECTION ── */}
-      <section style={{padding:"4rem 1.5rem",background:"linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)",position:"relative",overflow:"hidden"}}>
+      <section style={{padding:"clamp(2.5rem,6vw,4rem) clamp(1rem,4vw,1.5rem)",background:"linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)",position:"relative",overflow:"hidden"}}>
         <div style={{position:"absolute",top:-80,right:-80,width:350,height:350,background:"radial-gradient(circle,rgba(37,99,235,.2) 0%,transparent 70%)",pointerEvents:"none"}}/>
         <div style={{maxWidth:1100,margin:"0 auto",position:"relative"}}>
           <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(37,99,235,.2)",border:"1px solid rgba(37,99,235,.4)",borderRadius:20,padding:"5px 14px",marginBottom:20}}>
             <span style={{width:7,height:7,background:"#22c55e",borderRadius:"50%",display:"inline-block"}}/>
             <span style={{color:"#93c5fd",fontSize:".75rem",fontWeight:700,letterSpacing:".06em"}}>🏫 FEATURED PRODUCT — SCHOOL ERP</span>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3rem",alignItems:"center"}}>
+          <div className="city-erp-grid" style={{display:"grid",gridTemplateColumns:"clamp(280px,50%,1fr) 1fr",gap:"clamp(1.5rem,4vw,3rem)",alignItems:"center"}}>
             <div>
               <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.6rem,3.5vw,2.5rem)",fontWeight:900,color:"#fff",lineHeight:1.1,marginBottom:16}}>
                 School ERP for<br/>
@@ -5628,7 +5648,7 @@ function CityPage({ city, slug, state }) {
               <p style={{color:"rgba(255,255,255,.65)",lineHeight:1.75,marginBottom:24,fontSize:".95rem"}}>
                 Orbnix School ERP is a complete AI-enabled school management system — covering students, attendance, fees, exams, transport, library and parent communication. Built specifically for Indian schools.
               </p>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:28}}>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(180px,1fr))",gap:10,marginBottom:28}}>
                 {[
                   ["👥","Student Profiles & History"],
                   ["✅","Attendance + SMS Alerts"],
@@ -5656,7 +5676,7 @@ function CityPage({ city, slug, state }) {
                 <span style={{color:"rgba(255,255,255,.3)",fontSize:".7rem",marginLeft:6}}>erp.school.in — Dashboard</span>
               </div>
               <div style={{display:"flex",minHeight:320}}>
-                <div style={{width:140,background:"#1a2744",borderRight:"1px solid rgba(255,255,255,.05)",padding:"12px 0",flexShrink:0}}>
+                <div className="city-erp-sidebar" style={{width:140,background:"#1a2744",borderRight:"1px solid rgba(255,255,255,.05)",padding:"12px 0",flexShrink:0}}>
                   {[["👥","Students"],["✅","Attendance"],["💰","Fees"],["📝","Exams"],["🚌","Transport"],["👨‍💼","Staff"],["📢","Notices"],["✨","AI Studio"]].map(([ic,lb],i)=>(
                     <div key={lb} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 12px",background:i===0?"rgba(37,99,235,.2)":"transparent"}}>
                       <span style={{fontSize:".78rem"}}>{ic}</span>
@@ -5667,7 +5687,7 @@ function CityPage({ city, slug, state }) {
                 <div style={{flex:1,padding:14}}>
                   <div style={{color:"rgba(255,255,255,.35)",fontSize:".65rem",marginBottom:4}}>Academic Year 2025–26</div>
                   <div style={{color:"#fff",fontWeight:800,fontSize:".95rem",marginBottom:12}}>🎓 School Dashboard</div>
-                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:10}}>
+                  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(80px,1fr))",gap:8,marginBottom:10}}>
                     {[["👥","1,240","Students","#2563EB"],["✅","94%","Attendance","#10b981"],["💰","23","Defaulters","#f59e0b"],["👨‍💼","86","Staff","#7c3aed"]].map(([ic,val,lb,col])=>(
                       <div key={lb} style={{background:"rgba(255,255,255,.05)",borderRadius:8,padding:10,border:"1px solid rgba(255,255,255,.06)"}}>
                         <div style={{fontSize:".75rem",marginBottom:4}}>{ic}</div>
@@ -5968,7 +5988,7 @@ function Products({ setPage }) {
               </div>
 
               {/* KPI Cards */}
-              <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:20}}>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:12,marginBottom:20}}>
                 {[
                   {label:"Total Students",val:"1,240",change:"+2%",up:true,icon:"👥",color:"#2563EB"},
                   {label:"Today's Attendance",val:"94.2%",change:"↑ Good",up:true,icon:"✅",color:"#10b981"},
@@ -6318,7 +6338,7 @@ function AppInner() {
     return "home";
   };
   const getPathFromPage = (p) => {
-    const staticMap = { home: "/", products:"/products", about: "/about", work: "/work", blog: "/blog", services: "/services", pricing: "/pricing", contact: "/contact" };
+     const staticMap = { "/": "home", products: "/products", about: "/about", work: "/work", blog: "/blog", services: "/services", pricing: "/pricing", contact: "/contact" };
     if (staticMap[p]) return staticMap[p];
     if (p.startsWith("city-")) return "/cities/" + p.replace("city-","");
     return "/";
