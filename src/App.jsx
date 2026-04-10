@@ -5412,7 +5412,7 @@ const INDIA_LOCATIONS = [
 // ─── CITY LANDING PAGE ────────────────────────────────────────────────────────
 // ─── PRODUCT TABS SECTION (used in every CityPage) ───────────────────────────
 function ProductTabsSection({ setPage, city }) {
-  const [tab, setTab] = React.useState("erp");
+  const [tab, setTab] = useState("erp");
   return (
     <section style={{padding:"3.5rem 1.5rem",background:"#0F172A",position:"relative",overflow:"hidden"}}>
       <div style={{position:"absolute",top:-80,right:-80,width:350,height:350,background:"radial-gradient(circle,rgba(37,99,235,.18) 0%,transparent 70%)",pointerEvents:"none"}}/>
@@ -5583,7 +5583,7 @@ function ProductTabsSection({ setPage, city }) {
 }
 
 
-function CityPage({ city, slug, state }) {
+function CityPage({ city, slug, state, setPage }) {
   useEffect(() => {
     document.title = `Web Development Company in ${city} — Orbnix | Websites, Apps & AI Near You`;
     let desc = document.querySelector('meta[name="description"]');
@@ -6509,9 +6509,9 @@ function AppInner() {
       {page.startsWith("city-") && (() => {
         const slug = page.replace("city-","");
         const loc = INDIA_LOCATIONS.find(([s]) => s === slug);
-        return loc ? <CityPage city={loc[1]} slug={loc[0]} state={loc[2]} /> : null;
+        return loc ? <CityPage city={loc[1]} slug={loc[0]} state={loc[2]} setPage={setPage} /> : null;
       })()}
-      {false && <CityPage city="Mumbai" slug="mumbai" />}
+      {false && <CityPage city="Mumbai" slug="mumbai" setPage={setPage} />}
       {false && <CityPage city="Bangalore" slug="bangalore" />}
       {false && <CityPage city="Hyderabad" slug="hyderabad" />}
       {false && <CityPage city="Chennai" slug="chennai" />}
