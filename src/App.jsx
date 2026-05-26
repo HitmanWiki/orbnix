@@ -2171,7 +2171,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
           <div>
             <span style={{display:"inline-flex",alignItems:"center",gap:".5rem",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.85rem,3vw,2.5rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.75rem"}}>Let's Build <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Something Great</span></h2>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 93588 12928"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:13,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -2462,13 +2462,13 @@ function ContactForm() {
                 from_name:"Orbnix",
                 to:form.email,
                 replyto:"hello@orbnix.in",
-                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 90798 81416\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
+                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 93588 12928\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
               })
             });
             setSent(true);
           }
-          else{alert("Something went wrong. Please WhatsApp us at +91 90798 81416");}
-        }catch(e){alert("Network error. Please WhatsApp us at +91 90798 81416");}
+          else{alert("Something went wrong. Please WhatsApp us at +91 93588 12928");}
+        }catch(e){alert("Network error. Please WhatsApp us at +91 93588 12928");}
       }} style={{width:"100%",padding:".95rem",background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:11,fontFamily:"'Manrope',sans-serif",fontSize:".92rem",fontWeight:700,cursor:"pointer",boxShadow:"0 4px 16px rgba(37,99,235,.3)"}}>
         Send Message — It's Free →
       </button>
@@ -2595,7 +2595,7 @@ Choosing on price alone. A ₹8,000 website that doesn't rank on Google, doesn't
 
 Choose a partner who challenges your brief, not one who agrees with everything. If every idea you propose is "great" — they're not thinking.
 
-Book a free call with Orbnix or WhatsApp us at +91 90798 81416. We work 100% remotely with clients across India.`},
+Book a free call with Orbnix or WhatsApp us at +91 93588 12928. We work 100% remotely with clients across India.`},
     { id:2,
       title:"How Much Does a Website Cost in India? (2025 Honest Breakdown)",
       cat:"Pricing",
@@ -2698,7 +2698,7 @@ You probably should if:
 - You're paying staff to answer the same questions repeatedly
 - You need 24/7 availability but can't afford round-the-clock staff
 
-Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 90798 81416.`},
+Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 93588 12928.`},
     { id:4,
       title:"Mobile App Development Cost in India 2025 — Flutter vs React Native",
       cat:"Mobile Apps",
@@ -2876,7 +2876,7 @@ Orbnix e-commerce packages:
 
 All packages include: Payment gateway integration, mobile-optimised design, basic SEO, WhatsApp order notifications, and 30 days of post-launch support.
 
-Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 93588 12928.`},
     { id:7,
       title:"Why 70% of Indian Startups Choose the Wrong IT Agency (And How to Avoid It)",
       cat:"Business",
@@ -3026,7 +3026,7 @@ Cost is roughly equal. The difference is in developer availability: Flutter deve
 
 What Orbnix uses: We default to Flutter for all new mobile projects, with React Native when specifically requested or when code sharing with web is a priority. All our mobile apps support iOS 13+ and Android 6+.
 
-Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 90798 81416 for a free scope assessment.`},
+Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 93588 12928 for a free scope assessment.`},
     { id:10,
       title:"Google Core Web Vitals — Why Your Indian Business Website Is Failing (And How to Fix It)",
       cat:"Web Development",
@@ -3147,7 +3147,7 @@ Full WhatsApp Business API setup + CRM integration: ₹25,000 one-time
 Monthly broadcast management + automation: ₹8,000/month
 AI-powered WhatsApp bot (answers queries + qualifies leads): from ₹40,000
 
-Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 90798 81416.`},
+Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 93588 12928.`},
     { id:12,
       title:"No-Code vs Custom Development — What's Right for Your Indian Startup in 2025?",
       cat:"Web Development",
@@ -3238,7 +3238,7 @@ Typical outcomes for Mumbai clients:
 
 Our Mumbai-specific experience: We've delivered websites and apps for clients in South Mumbai, Bandra, Andheri, Powai, BKC, and Navi Mumbai.
 
-Ready to build with us? WhatsApp +91 90798 81416 or email hello@orbnix.in. Quote delivered in 24 hours.`},
+Ready to build with us? WhatsApp +91 93588 12928 or email hello@orbnix.in. Quote delivered in 24 hours.`},
     { id:14,
       title:"Best Web Development Company in Bengaluru — What Startups Actually Need in 2025",
       cat:"Web Development",
@@ -3276,7 +3276,7 @@ Our services are especially popular with Bengaluru-based:
 - D2C brands scaling beyond ₹1Cr/month
 - B2B SaaS companies building their first public-facing product
 
-Book a free discovery call: hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Book a free discovery call: hello@orbnix.in or WhatsApp +91 93588 12928.`},
     { id:15,
       title:"Web Development Costs in Delhi & NCR — Complete Guide for Businesses (2025)",
       cat:"Web Development",
@@ -3319,7 +3319,7 @@ Our Delhi NCR client results:
 - Logistics company: 45% reduction in phone inquiries after self-service portal launch
 - Export business: International credibility improved, 3 new UK clients in first 60 days
 
-Get your free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get your free quote: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:7,
       title:"Best Website for Clinics and Hospitals in India 2025 — Complete Guide",
@@ -3369,7 +3369,7 @@ We have built websites for clinics across India — from solo practitioners in T
 
 All our clinic websites include: 100% mobile responsive, WhatsApp booking integration, Google Business Profile setup, local SEO, and 30-day post-launch support.
 
-Free consultation: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Free consultation: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:8,
       title:"School and College Website Design in India — What Parents Actually Look For",
@@ -3414,7 +3414,7 @@ With fee payment, results portal, parent login: ₹80,000–1,50,000
 
 Orbnix builds school websites across India with online admissions, results display, fee structure pages, and Google-optimized SEO so parents in your city find you first.
 
-Get a free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a free quote: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:9,
       title:"Hotel Website That Reduces OTA Commission — Direct Booking Guide for Indian Hotels",
@@ -3459,7 +3459,7 @@ Resorts and destination properties: Full experience — rooms, dining, activitie
 
 Our hospitality client Royal Haveli in Jaipur moved 35% of bookings to direct in 4 months, saving ₹18 lakhs annually in OTA commissions.
 
-Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 90798 81416`},
+Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:10,
       title:"Website for CA Firms and Chartered Accountants in India — Complete 2025 Guide",
@@ -3509,7 +3509,7 @@ Basic CA firm website (8-12 pages): ₹20,000–30,000
 With lead capture, WhatsApp integration, tax calendar: ₹30,000–45,000
 With client portal for document sharing: ₹50,000–80,000
 
-Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:11,
       title:"Portfolio Website for Architects and Interior Designers in India — 2025 Guide",
@@ -3591,7 +3591,7 @@ We have helped Indian manufacturers rank for their specific product keywords and
 
 Investment: ₹30,000–60,000 depending on product range and complexity. Always includes export SEO setup, Google-indexed product pages, and multi-currency enquiry handling.
 
-Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:13,
       title:"Websites for Car Dealers, Pharmacies, Logistics & More — All Industries India 2025",
@@ -3632,7 +3632,7 @@ Donation portal with Razorpay/UPI integration, project impact showcase, FCRA/80G
 
 For any business category not listed here — we have likely already built something similar. Start with a free consultation and we will show you examples from your industry.
 
-Contact: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Contact: hello@orbnix.in · WhatsApp +91 93588 12928`},
   ];
   // Article schema — hook must be unconditional (Rules of Hooks)
   const activePost = active !== null ? posts.find(p=>p.id===active) : null;
@@ -3834,7 +3834,7 @@ function Contact() {
           <div>
             <span style={{display:"inline-flex",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,3.5vw,2.75rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.5rem"}}>Best Web Design & Development Company in India — <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Let's Build</span></h1>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 93588 12928"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -4188,8 +4188,8 @@ const SEO_META = {
     desc: "School ERP with AI, attendance, fees, exams, transport & more. Built for Indian schools."
   },
   contact: {
-    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 90798 81416",
-    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 90798 81416 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
+    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 93588 12928",
+    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 93588 12928 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
     keywords: "contact web developer India, hire web developer India, get website quote India, free website consultation India, web development inquiry India, WhatsApp web developer India, hire React developer India, outsource web development India"
   }
 };
@@ -4417,7 +4417,7 @@ const BOT_FLOWS = {
   human: {
     msg: "The Orbnix team typically replies within 2 hours ⚡\n\nBest ways to reach us:",
     opts: [
-      { label:"💬 WhatsApp +91 90798 81416", next:"wa" },
+      { label:"💬 WhatsApp +91 93588 12928", next:"wa" },
       { label:"✉️ Email hello@orbnix.in", next:"email" },
       { label:"📋 Fill contact form", next:"form" },
     ],
