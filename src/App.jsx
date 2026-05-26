@@ -2374,7 +2374,7 @@ function FaqAccordion() {
         <div style={{fontWeight:700,color:C.t,marginBottom:".3rem",fontSize:".9rem"}}>Still have questions?</div>
         <div style={{color:C.t3,fontSize:".82rem",marginBottom:".85rem"}}>WhatsApp us or book a free 30-min call — no sales pressure, just honest answers.</div>
         <div style={{display:"flex",gap:".75rem",justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
+          <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
           <a href="mailto:hello@orbnix.in" style={{background:C.blueLL,color:C.blue,padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>✉️ Email Us</a>
         </div>
       </div>
@@ -4256,7 +4256,7 @@ function SeoHead({ page, persona = "default" }) {
       "logo": "https://www.orbnix.in/logo.png",
       "image": "https://www.orbnix.in/og-cover.png",
       "email": "hello@orbnix.in",
-      "telephone": "+919079881416",
+      "telephone": "+919358812928",
       "areaServed": ["IN","US","GB","AE","AU"], "serviceArea": [{"@type":"City","name":"Jaipur"},{"@type":"City","name":"Delhi"},{"@type":"City","name":"Mumbai"},{"@type":"City","name":"Bangalore"},{"@type":"City","name":"Hyderabad"},{"@type":"City","name":"Chennai"},{"@type":"City","name":"Pune"},{"@type":"City","name":"Ahmedabad"},{"@type":"City","name":"Kolkata"},{"@type":"City","name":"Surat"}],
       "currenciesAccepted": "INR, USD",
       "paymentAccepted": "UPI, Bank Transfer, Razorpay, PayPal, Stripe",
@@ -4452,7 +4452,7 @@ const BOT_FLOWS = {
       { label:"🔙 Back to start", next:"start" },
     ],
   },
-  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919079881416\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
+  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919358812928\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
   email: { msg: "Drop us a line at:\nhello@orbnix.in\n\nWe reply within 2 hours during business hours (10am–7pm IST).", opts:[{label:"🔙 Back",next:"start"}] },
   form: { msg: "Fill out our contact form on the Contact page for a detailed inquiry — we'll get back within 24 hours with a proper quote.", opts:[{label:"🔙 Back",next:"start"}] },
 };
@@ -5677,7 +5677,7 @@ function CityPage({ city, slug, state, setPage }) {
           </p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.4)"}}>Get Free Consultation →</a>
-            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
+            <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
           </div>
           {/* Stats row */}
           <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"2rem",marginTop:"3.5rem"}}>
@@ -5842,7 +5842,7 @@ function CityPage({ city, slug, state, setPage }) {
           <p style={{color:"rgba(255,255,255,.7)",marginBottom:"2.5rem",fontSize:"1.05rem",maxWidth:500,margin:"0 auto 2.5rem"}}>Free consultation. Fixed pricing. Delivery in 7–14 days. Reply guaranteed within 24 hours.</p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1.05rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.35)"}}>Start Your Project →</a>
-            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
+            <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
           </div>
           <div style={{marginTop:"2.5rem",display:"flex",justifyContent:"center",gap:"2rem",flexWrap:"wrap"}}>
             {["✓ No advance payment pressure","✓ Full code ownership","✓ 30-day free support","✓ Pan-India delivery"].map(t => (
@@ -6414,7 +6414,7 @@ function SiteFooter({ setPage }) {
               <h5 style={{fontSize:".72rem",fontWeight:700,textTransform:"uppercase",letterSpacing:".1em",color:"rgba(255,255,255,.35)",marginBottom:".75rem"}}>Contact</h5>
               <a href="mailto:hello@orbnix.in" style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",textDecoration:"none"}}
                 onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>hello@orbnix.in</a>
-              <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer"
                 style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",textDecoration:"none"}}
                 onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>WhatsApp Us</a>
               <a onClick={e=>{e.preventDefault();setPage("contact");}} href="/contact"
