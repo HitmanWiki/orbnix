@@ -3,12 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
+   "scripts": {
     "dev": "vite",
-    "build": "vite build && react-snap",
+    "build": "vite build",
+    "snap": "react-snap",
+    "postbuild": "cp -r dist/* build/ || xcopy dist build /E /I",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vercel-build": "vite build && react-snap"
+    "vercel-build": "vite build && npm run postbuild && react-snap"
   },
   "reactSnap": {
     "include": [
@@ -818,26 +820,19 @@
       "/cities/leh",
       "/cities/kargil"
     ],
-    "exclude": [
-      "**/index.html",
-      "**/404.html"
-    ],
-    "puppeteerArgs": [
+   "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu"
+      "--disable-dev-shm-usage"
     ],
     "timeout": 60000,
+    "skipThirdPartyRequests": true,
     "minify": {
       "html": true,
       "css": true,
       "js": true
     },
-    "inlineCss": false,
     "httpResponseCode": 200,
-    "skipThirdPartyRequests": false,
-    "cacheAjaxRequests": true,
     "waitForSelector": "#root"
   },
   "dependencies": {
