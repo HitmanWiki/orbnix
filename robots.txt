@@ -1,4 +1,38 @@
+# Allow all major search engines
 User-agent: *
 Allow: /
+Allow: /cities/
+Allow: /blog/
+Allow: /products/
+Allow: /services/
+Allow: /pricing/
+Allow: /contact/
+Allow: /about/
+Allow: /work/
 
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Sitemap location
 Sitemap: https://orbnix.in/sitemap.xml
+
+# Crawl delay to prevent server overload
+Crawl-delay: 1
+
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /cities/
+Allow: /blog/
+Crawl-delay: 0.5
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+Allow: /cities/
+Allow: /blog/
+Crawl-delay: 1

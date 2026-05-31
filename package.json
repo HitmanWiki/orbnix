@@ -8,9 +8,11 @@
     "build": "vite build",
     "copy-build": "node copy-build.js",
     "prerender": "node prerender.js",
+    "generate-sitemap": "node generate-sitemap.js",
+    "generate-robots": "node generate-robots.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vercel-build": "vite build && npm run copy-build && npm run prerender"
+    "vercel-build": "vite build && npm run generate-sitemap && npm run generate-robots && npm run copy-build && npm run prerender"
   },
   "dependencies": {
     "lucide-react": "^0.546.0",

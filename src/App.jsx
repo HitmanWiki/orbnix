@@ -5936,16 +5936,85 @@ function ProductTabsSection({ setPage, city }) {
 
 
 function CityPage({ city, slug, state, setPage }) {
-  useEffect(() => {
-    document.title = `Web Development Company in ${city} — Orbnix | Websites, Apps & AI Near You`;
-    let desc = document.querySelector('meta[name="description"]');
-    if (!desc) { desc = document.createElement('meta'); desc.name = 'description'; document.head.appendChild(desc); }
-    desc.content = `Orbnix is a top-rated web development company and software product company serving businesses and institutions in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores. 7–14 day delivery. Starting ₹25,000. Free consultation in 24 hrs.`;
-    let canon = document.querySelector('link[rel="canonical"]');
-    if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
-    canon.href = `https://www.orbnix.in/cities/${slug}`;
-  }, [city, slug, state]);
-
+  // Add this useEffect at the beginning of CityPage component
+useEffect(() => {
+  // Dynamic title for each city
+  document.title = `Best Web Development Company in ${city} | Orbnix - Websites, Apps & AI`;
+  
+  // Dynamic meta description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.setAttribute('content', `Orbnix is the leading web development company in ${city}, ${state}. We build professional websites, mobile apps, AI chatbots and e-commerce stores. Starting ₹25,000. 100% code ownership. Free consultation. Call +91-90798-81416.`);
+  }
+  
+  // Dynamic meta keywords
+  let metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (!metaKeywords) {
+    metaKeywords = document.createElement('meta');
+    metaKeywords.setAttribute('name', 'keywords');
+    document.head.appendChild(metaKeywords);
+  }
+  metaKeywords.setAttribute('content', `web development company ${city}, website design ${city}, web developer near me, IT company ${city}, best web development company in ${city}, affordable website design ${city}, website development services ${city}, app development ${city}, SEO services ${city}, e-commerce website ${city}, React developer ${city}, mobile app development ${city}`);
+  
+  // Canonical URL
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', `https://www.orbnix.in/cities/${slug}`);
+  
+  // Geo tags
+  if (state === 'Rajasthan') {
+    let geoRegion = document.querySelector('meta[name="geo.region"]');
+    if (!geoRegion) {
+      geoRegion = document.createElement('meta');
+      geoRegion.setAttribute('name', 'geo.region');
+      document.head.appendChild(geoRegion);
+    }
+    geoRegion.setAttribute('content', 'IN-RJ');
+  }
+}, [city, state, slug]);
+useEffect(() => {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": `Orbnix - Web Development Company in ${city}`,
+    "description": `Professional web development services in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores.`,
+    "url": `https://www.orbnix.in/cities/${slug}`,
+    "logo": "https://www.orbnix.in/logo.png",
+    "image": "https://www.orbnix.in/og-cover.png",
+    "priceRange": "₹₹",
+    "telephone": "+91-90798-81416",
+    "email": "hello@orbnix.in",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": city,
+      "addressRegion": state,
+      "addressCountry": "IN"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": city
+    },
+    "openingHours": "Mon-Sat 10:00-19:00",
+    "sameAs": [
+      "https://www.instagram.com/orbnix.in",
+      "https://www.facebook.com/orbnix.in",
+      "https://x.com/orbnix_in"
+    ]
+  };
+  
+  let script = document.querySelector('#city-local-ld');
+  if (!script) {
+    script = document.createElement('script');
+    script.id = 'city-local-ld';
+    script.type = 'application/ld+json';
+    document.head.appendChild(script);
+  }
+  script.textContent = JSON.stringify(localBusinessSchema);
+}, [city, state, slug]);
   const SERVICES = [
     { icon: "🌐", title: "Website Design & Development", desc: `Custom, mobile-first websites for businesses in ${city}. React, Next.js, WordPress. SEO-ready from day one.`, price: "From ₹25,000" },
     { icon: "📱", title: "Mobile App Development", desc: `Flutter & React Native apps for Android and iOS. Built for ${city} businesses expanding digitally.`, price: "From ₹60,000" },
