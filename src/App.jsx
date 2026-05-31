@@ -2171,7 +2171,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
           <div>
             <span style={{display:"inline-flex",alignItems:"center",gap:".5rem",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.85rem,3vw,2.5rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.75rem"}}>Let's Build <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Something Great</span></h2>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 93588 12928"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:13,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -2374,7 +2374,7 @@ function FaqAccordion() {
         <div style={{fontWeight:700,color:C.t,marginBottom:".3rem",fontSize:".9rem"}}>Still have questions?</div>
         <div style={{color:C.t3,fontSize:".82rem",marginBottom:".85rem"}}>WhatsApp us or book a free 30-min call — no sales pressure, just honest answers.</div>
         <div style={{display:"flex",gap:".75rem",justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
+          <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
           <a href="mailto:hello@orbnix.in" style={{background:C.blueLL,color:C.blue,padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>✉️ Email Us</a>
         </div>
       </div>
@@ -2462,13 +2462,13 @@ function ContactForm() {
                 from_name:"Orbnix",
                 to:form.email,
                 replyto:"hello@orbnix.in",
-                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 90798 81416\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
+                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 93588 12928\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
               })
             });
             setSent(true);
           }
-          else{alert("Something went wrong. Please WhatsApp us at +91 90798 81416");}
-        }catch(e){alert("Network error. Please WhatsApp us at +91 90798 81416");}
+          else{alert("Something went wrong. Please WhatsApp us at +91 93588 12928");}
+        }catch(e){alert("Network error. Please WhatsApp us at +91 93588 12928");}
       }} style={{width:"100%",padding:".95rem",background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:11,fontFamily:"'Manrope',sans-serif",fontSize:".92rem",fontWeight:700,cursor:"pointer",boxShadow:"0 4px 16px rgba(37,99,235,.3)"}}>
         Send Message — It's Free →
       </button>
@@ -2595,7 +2595,7 @@ Choosing on price alone. A ₹8,000 website that doesn't rank on Google, doesn't
 
 Choose a partner who challenges your brief, not one who agrees with everything. If every idea you propose is "great" — they're not thinking.
 
-Book a free call with Orbnix or WhatsApp us at +91 90798 81416. We work 100% remotely with clients across India.`},
+Book a free call with Orbnix or WhatsApp us at +91 93588 12928. We work 100% remotely with clients across India.`},
     { id:2,
       title:"How Much Does a Website Cost in India? (2025 Honest Breakdown)",
       cat:"Pricing",
@@ -2698,7 +2698,7 @@ You probably should if:
 - You're paying staff to answer the same questions repeatedly
 - You need 24/7 availability but can't afford round-the-clock staff
 
-Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 90798 81416.`},
+Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 93588 12928.`},
     { id:4,
       title:"Mobile App Development Cost in India 2025 — Flutter vs React Native",
       cat:"Mobile Apps",
@@ -2876,7 +2876,7 @@ Orbnix e-commerce packages:
 
 All packages include: Payment gateway integration, mobile-optimised design, basic SEO, WhatsApp order notifications, and 30 days of post-launch support.
 
-Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 93588 12928.`},
     { id:7,
       title:"Why 70% of Indian Startups Choose the Wrong IT Agency (And How to Avoid It)",
       cat:"Business",
@@ -3026,7 +3026,7 @@ Cost is roughly equal. The difference is in developer availability: Flutter deve
 
 What Orbnix uses: We default to Flutter for all new mobile projects, with React Native when specifically requested or when code sharing with web is a priority. All our mobile apps support iOS 13+ and Android 6+.
 
-Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 90798 81416 for a free scope assessment.`},
+Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 93588 12928 for a free scope assessment.`},
     { id:10,
       title:"Google Core Web Vitals — Why Your Indian Business Website Is Failing (And How to Fix It)",
       cat:"Web Development",
@@ -3147,7 +3147,7 @@ Full WhatsApp Business API setup + CRM integration: ₹25,000 one-time
 Monthly broadcast management + automation: ₹8,000/month
 AI-powered WhatsApp bot (answers queries + qualifies leads): from ₹40,000
 
-Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 90798 81416.`},
+Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 93588 12928.`},
     { id:12,
       title:"No-Code vs Custom Development — What's Right for Your Indian Startup in 2025?",
       cat:"Web Development",
@@ -3238,7 +3238,7 @@ Typical outcomes for Mumbai clients:
 
 Our Mumbai-specific experience: We've delivered websites and apps for clients in South Mumbai, Bandra, Andheri, Powai, BKC, and Navi Mumbai.
 
-Ready to build with us? WhatsApp +91 90798 81416 or email hello@orbnix.in. Quote delivered in 24 hours.`},
+Ready to build with us? WhatsApp +91 93588 12928 or email hello@orbnix.in. Quote delivered in 24 hours.`},
     { id:14,
       title:"Best Web Development Company in Bengaluru — What Startups Actually Need in 2025",
       cat:"Web Development",
@@ -3276,7 +3276,7 @@ Our services are especially popular with Bengaluru-based:
 - D2C brands scaling beyond ₹1Cr/month
 - B2B SaaS companies building their first public-facing product
 
-Book a free discovery call: hello@orbnix.in or WhatsApp +91 90798 81416.`},
+Book a free discovery call: hello@orbnix.in or WhatsApp +91 93588 12928.`},
     { id:15,
       title:"Web Development Costs in Delhi & NCR — Complete Guide for Businesses (2025)",
       cat:"Web Development",
@@ -3319,7 +3319,7 @@ Our Delhi NCR client results:
 - Logistics company: 45% reduction in phone inquiries after self-service portal launch
 - Export business: International credibility improved, 3 new UK clients in first 60 days
 
-Get your free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get your free quote: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:7,
       title:"Best Website for Clinics and Hospitals in India 2025 — Complete Guide",
@@ -3369,7 +3369,7 @@ We have built websites for clinics across India — from solo practitioners in T
 
 All our clinic websites include: 100% mobile responsive, WhatsApp booking integration, Google Business Profile setup, local SEO, and 30-day post-launch support.
 
-Free consultation: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Free consultation: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:8,
       title:"School and College Website Design in India — What Parents Actually Look For",
@@ -3414,7 +3414,7 @@ With fee payment, results portal, parent login: ₹80,000–1,50,000
 
 Orbnix builds school websites across India with online admissions, results display, fee structure pages, and Google-optimized SEO so parents in your city find you first.
 
-Get a free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a free quote: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:9,
       title:"Hotel Website That Reduces OTA Commission — Direct Booking Guide for Indian Hotels",
@@ -3459,7 +3459,7 @@ Resorts and destination properties: Full experience — rooms, dining, activitie
 
 Our hospitality client Royal Haveli in Jaipur moved 35% of bookings to direct in 4 months, saving ₹18 lakhs annually in OTA commissions.
 
-Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 90798 81416`},
+Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:10,
       title:"Website for CA Firms and Chartered Accountants in India — Complete 2025 Guide",
@@ -3509,7 +3509,7 @@ Basic CA firm website (8-12 pages): ₹20,000–30,000
 With lead capture, WhatsApp integration, tax calendar: ₹30,000–45,000
 With client portal for document sharing: ₹50,000–80,000
 
-Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:11,
       title:"Portfolio Website for Architects and Interior Designers in India — 2025 Guide",
@@ -3591,7 +3591,7 @@ We have helped Indian manufacturers rank for their specific product keywords and
 
 Investment: ₹30,000–60,000 depending on product range and complexity. Always includes export SEO setup, Google-indexed product pages, and multi-currency enquiry handling.
 
-Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 93588 12928`},
 
     { id:13,
       title:"Websites for Car Dealers, Pharmacies, Logistics & More — All Industries India 2025",
@@ -3632,7 +3632,245 @@ Donation portal with Razorpay/UPI integration, project impact showcase, FCRA/80G
 
 For any business category not listed here — we have likely already built something similar. Start with a free consultation and we will show you examples from your industry.
 
-Contact: hello@orbnix.in · WhatsApp +91 90798 81416`},
+Contact: hello@orbnix.in · WhatsApp +91 93588 12928`},
+
+
+// Add this to the posts array in Blog component (around line where other posts are defined)
+
+{
+  id: 16,
+  title: "Best School ERP in India 2026 — Complete Guide for CBSE & ICSE Schools",
+  cat: "EdTech",
+  metaDesc: "Looking for the best school ERP in India? Orbnix School ERP offers AI-enabled management for CBSE, ICSE and state board schools. 16+ modules — attendance, fees, exams, transport, parent app. 7-day setup. Free demo.",
+  time: "9 min",
+  date: "Mar 20, 2026",
+  emoji: "🏫",
+  body: `If you run a school — CBSE, ICSE, or State Board — you already know the chaos. Paper attendance registers that get lost. Fee collection that takes three staff members a full week. Exam results that require manual calculation, re-checking, and still have errors. Parent complaints on WhatsApp that you can't track. Transport routes that change every month. And on top of it all, you're expected to manage Google reviews, update the school website, and communicate with hundreds of parents.
+
+The solution is a School ERP — but not all ERPs are built the same. Most are clunky, expensive, and designed for corporate workflows, not Indian schools. After evaluating 12+ ERPs for our clients, we built our own: Orbnix School ERP. Here's why it's the best school ERP in India for 2026 — and how to choose the right one for your school.
+
+What Makes a School ERP the "Best" for Indian Schools?
+
+After deploying Orbnix School ERP to 15+ schools across India (CBSE, ICSE, and State Board), we've learned what actually matters.
+
+1. Student Lifecycle Management
+From admission enquiry to alumni records, your ERP should track every student across their entire journey. This includes enquiry follow-up, application form, fee receipt, admission confirmation, enrollment number generation, class allocation, roll number assignment, student ID card printing, promotion to next class, transfer certificate generation, and alumni records.
+
+Most ERPs stop at enrollment. The best ones track the full lifecycle.
+
+2. Attendance That Actually Works
+Indian schools need multiple attendance workflows: morning assembly attendance, period-wise attendance for senior classes, sports attendance, hostel attendance, transport attendance. And parents want instant notifications when their child is marked absent.
+
+The best ERPs offer: biometric or RFID integration, staff marking via mobile app, bulk absent marking, automated SMS/WhatsApp to parents for unexplained absence, and monthly attendance reports for fee calculation (many schools reduce fees for attendance below 75%).
+
+3. Fee Management Built for Indian Payment Habits
+Indian parents pay fees in installments, via multiple modes (cash, cheque, UPI, NEFT, card), and frequently miss deadlines. The best ERP handles: installment-based fee structures (quarterly, half-yearly, annual), multiple payment gateways (Razorpay, PhonePe, Paytm, UPI QR, cash/cheque recording), automated late fee calculation, defaulter list generation, parent payment reminders via WhatsApp and SMS, receipt generation with GST breakup, and reconciliation reports for accounts.
+
+4. Examination Management That Saves Weeks of Work
+Setting question papers, printing OMR sheets, collecting answer sheets, assigning examiners, calculating marks, generating report cards, printing TC — this process takes 2-3 weeks manually. A good ERP automates: online exam scheduling with room allocation, examiner assignment, marks entry via teacher app, automatic grade calculation (percentage, CGPA, grading scale), report card generation in 5 formats, student-wise result analysis, parent result notification, and backlog reporting.
+
+5. Parent Communication — WhatsApp + SMS + Email
+Parents don't open emails in India. They do open WhatsApp. The best ERP integrates WhatsApp Business API to send: daily absent alerts, fee due reminders, exam schedule notifications, holiday announcements, circulars and notices, event invitations, progress reports, transport delay alerts, and emergency broadcast messages.
+
+6. Transport Management — Real GPS Tracking
+If your school runs a bus fleet, this is a non-negotiable feature. The ERP should provide: route and stop management, student-to-bus assignment, RFID bus boarding tracking, live GPS tracking via parent app, driver and conductor login, bus attendance, fuel and maintenance logs, parent notifications for bus delay/arrival, and route optimisation suggestions.
+
+7. Library Management
+Book cataloguing, issue-return tracking, fine calculation, overdue reminders to parents, purchase suggestions, and annual stock verification reports.
+
+8. Human Resource & Payroll
+Staff leave management, attendance tracking, salary slips generation, PF/ESI compliance reports, recruitment tracking, and performance appraisal records.
+
+9. Hostel Management
+Room allocation, mess billing, visitor logs, leave tracking, inventory management, and parent access to hostel-specific information.
+
+10. AI-Powered Insights — The Game Changer
+The best ERPs in 2026 include AI features: predictive analytics for student performance (identify at-risk students before exams), automated report card generation, question paper generation from question banks, circular/notice drafting, attendance pattern analysis, fee default prediction, and parent sentiment analysis from communication logs.
+
+Why Orbnix School ERP is the Best School ERP in India for 2026
+
+We've built Orbnix School ERP after implementing ERPs for 15+ schools across India. Our ERP includes all 16+ modules mentioned above plus:
+
+- 7-day implementation guarantee — we onboard your data and train your staff within one week
+- Dedicated account manager — you're not talking to a support ticket system
+- WhatsApp-based training — your teachers learn without leaving WhatsApp
+- 99.9% uptime SLA — hosted on India-based servers (AWS Mumbai)
+- DPDP Act compliant — built for India's new data privacy laws
+- Affordable pricing — from ₹25,000/setup + ₹8,000/month (scales with student count)
+
+How to Choose the Best School ERP for Your School
+
+Step 1: List your non-negotiable modules
+Don't pay for 40 modules if you only need 12. Focus on: student info, attendance, fees, exams, communication.
+
+Step 2: Check mobile apps for teachers and parents
+Your teachers will not open a laptop to mark attendance. If the ERP doesn't have a teacher mobile app, it's unusable.
+
+Step 3: Verify WhatsApp integration — not SMS
+SMS costs money per message and has low open rates. WhatsApp has 98% open rates in India. The best ERPs include WhatsApp Business API integration.
+
+Step 4: Ask about implementation time
+"3-6 months" is a red flag. The best ERPs implement in 2-4 weeks.
+
+Step 5: Request a live demo — not a sales deck
+Watch them create a fee structure. Mark attendance for a class. Generate a report card. If any step looks painful, move on.
+
+Step 6: Check references from schools your size
+An ERP that works for a 200-student school may fail for a 2,000-student school. Ask for references that match your scale.
+
+Orbnix School ERP — Free Demo Available
+
+We offer a free 30-minute live demo for school owners and principals. You'll see every module in action — attendance, fees, exams, transport, parent app. No sales pitch, just honest answers.
+
+Request a free demo: hello@orbnix.in or WhatsApp +91 93588 12928
+
+Also available: School website integration, custom branding, and one-time data migration from your existing system. Serving CBSE, ICSE, IB, and State Board schools across India — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Jaipur, Ahmedabad, Kolkata.`
+},
+{
+  id: 17,
+  title: "How to Build a Restaurant Website in India — Step-by-Step Guide with Pricing 2026",
+  cat: "Web Development",
+  metaDesc: "Complete guide to building a restaurant website in India 2026. Digital menu, table booking, online ordering, Zomato/Swiggy integration. Prices from ₹25,000. Step-by-step checklist included.",
+  time: "8 min",
+  date: "Mar 18, 2026",
+  emoji: "🍽️",
+  body: `You own a restaurant in India. You're on Zomato. You're on Swiggy. You have an Instagram page with 2,000 followers. And yet — customers still call you to check if you're open, what's on the menu, whether you have a table available for 6 people tonight, and can you do a birthday cake? Your phone rings 40 times a day. Your staff spends 2 hours on the phone answering the same questions over and over.
+
+A restaurant website solves all of this. It answers questions automatically, takes table bookings online, displays your menu with prices and photos, integrates with Zomato and Swiggy for orders, and saves your staff 10+ hours every week.
+
+Here's exactly how to build a restaurant website in India — step by step — including costs, features, and the checklist most restaurant owners miss.
+
+Why Your Restaurant Needs a Website — Not Just Zomato & Instagram
+
+Indian restaurants make two mistakes: they rely entirely on food delivery aggregators, and they think Instagram is their website.
+
+The Zomato/Swiggy problem: They charge 18–25% commission on every order. They own the customer relationship — you never get the customer's email or phone number. They control your menu display. They can delist you without warning. They change their policies every quarter. Your profit margin on Zomato orders is 3-5% after commissions and discounts.
+
+The Instagram problem: No booking system. No menu PDF that stays updated. No Google ranking. No SEO for "best restaurant [your locality]" searches.
+
+A proper website: You control everything. You own 100% of the customer data. You pay ZERO commission on direct orders. You rank on Google. You build a brand, not just a listing.
+
+Step 1: Define Your Restaurant Website Requirements — The Must-Haves
+
+Based on building 20+ restaurant websites across India, here's the checklist every restaurant website needs:
+
+A. Digital Menu (Non-negotiable)
+PDF menus are for 2015. Your website needs an interactive digital menu with: dish name, description, price, vegetarian/non-vegetarian/vegan/gluten-free icons, spice level indicator, allergens information (nuts, dairy, gluten — mandatory for serious restaurants), high-quality dish photos (invest in professional food photography), category filters (Starters, Mains, Desserts, Drinks, Thali), search functionality, and "Chef's Special" or "Most Popular" badges.
+
+B. Online Table Booking System
+Your phone stops ringing. Customers book tables directly: party size (2,4,6,8+), date and time picker (availability visible), special requests (birthday, anniversary, dietary restrictions, preferred seating), instant confirmation via WhatsApp/SMS, table management dashboard for restaurant staff (view all bookings for today, mark guests seated/no-show), automated reminder 2 hours before booking (reduces no-shows by 40-60%), and Google Calendar sync for managers.
+
+C. Online Ordering — Direct (ZERO Commission)
+This is the most valuable feature. Customers order directly from your website: menu browsing with real-time availability, cart and checkout (minimum order value configurable), payment via UPI, card, netbanking (Razorpay integration), delivery address collection (pincode validation), estimated delivery time shown upfront, order confirmation via WhatsApp/SMS, live order tracking (preparing → ready → out for delivery → delivered), kitchen display system integration (optional), and order history for returning customers.
+
+D. Zomato & Swiggy Integration — Not Replacement
+Link your existing aggregator listings with "Order on Zomato" and "Order on Swiggy" buttons. Display your rating and review count from both platforms (social proof). Don't hide your aggregator presence — use it to build trust while driving customers toward direct ordering.
+
+E. Location & Contact Information
+Google Maps integration (embed a live map with directions), complete address with landmark, contact phone number with click-to-call (mobile users), WhatsApp click-to-chat link, opening hours for each day of the week (with special hours for festivals/holidays), and holiday closures displayed prominently.
+
+F. Photo Gallery
+Restaurant interior and exterior shots, dish photography (high-res, professionally shot), event photos (birthdays, anniversaries, corporate parties), chef and team photos, and 360° virtual tour (optional but powerful for premium restaurants).
+
+G. Google Reviews Integration
+Widget displaying your latest Google reviews. "As seen on Google" badge. Average rating displayed prominently (★★★★★ 4.8/5 from 1,200+ reviews). Links to leave a review directly from your website.
+
+H. SEO for "[City] Restaurant" Keywords
+If someone searches "best Italian restaurant Jaipur" or "rooftop café Delhi" — your website should be on page 1. This requires: location keywords in page titles, meta descriptions, headings, alt text for images, Google Business Profile linked to your website, schema markup for restaurants (menu, opening hours, reviews), blog content about your cuisine/city, and backlinks from local directories.
+
+I. Mobile-First Design — 100% Non-Negotiable
+85% of restaurant website traffic in India comes from mobile phones. If your website doesn't work perfectly on a ₹10,000 Android phone on a 4G connection — you're losing customers before they even see your menu. Your website must load in under 2.5 seconds on mobile, have touch-friendly buttons (minimum 44x44px), readable font sizes without zooming, simplified checkout flow (no typing address — use pincode lookup), and click-to-call and click-to-WA buttons everywhere.
+
+J. WhatsApp Integration
+A floating WhatsApp button on every page. Pre-filled message: "Hi, I'd like to make a reservation for [date] at [time] for [number] guests" or "Hi, I'd like to order [dish name] for delivery". Staff notification when a customer messages. Quick replies for common questions. This alone reduces phone calls by 60%.
+
+Step 2: Choose Your Technology
+
+Three options for restaurant websites in India:
+
+Option 1: Zomato Book + Basic Site (Rental Model)
+Cost: ₹5,000–15,000/year
+What you get: A single page with your address, phone number, and a Zomato booking widget
+Pros: Cheap. Zomato handles booking infrastructure. No technical maintenance.
+Cons: No direct orders (Zomato takes 18-25% commission). No menu control. No SEO. No brand identity. You don't own the website.
+Bottom line: Not recommended unless you're a very small roadside eatery.
+
+Option 2: WordPress + WooCommerce + Booking Plugin
+Cost: ₹20,000–40,000 one-time + ₹5,000–10,000/year hosting + ₹5,000–15,000/plugin updates
+What you get: Full-featured website you control. Digital menu, online ordering, table booking via plugin.
+Pros: You own everything. Unlimited customisation. Low ongoing costs. Large plugin ecosystem.
+Cons: You or your developer must manage updates. Security requires attention. Speed depends on hosting.
+Bottom line: Best for most restaurants — balances cost and control.
+
+Option 3: Custom React/Next.js Website
+Cost: ₹50,000–1,50,000 one-time + ₹1,000–3,000/month hosting
+What you get: Ultra-fast, fully custom restaurant website. Digital menu, direct ordering, table booking, analytics dashboard.
+Pros: Blazing fast (100/100 Google PageSpeed). 100% custom design. No plugin update headaches. Scales to thousands of orders.
+Cons: Higher upfront cost. Requires developer for changes (though we include a CMS for menu updates).
+Bottom line: Best for premium restaurants, multiple locations, or high-volume delivery.
+
+Step 3: Realistic Budget Breakdown for a Restaurant Website in India
+
+Basic package (5 pages, digital menu, contact form, WhatsApp button): ₹15,000–25,000
+With online table booking system: Add ₹10,000–15,000
+With online ordering (direct, zero commission): Add ₹20,000–35,000
+With Zomato/Swiggy API integration: Add ₹5,000–10,000
+With photo gallery + Google Reviews widget: Add ₹5,000
+With SEO + Google Business Profile setup: Add ₹5,000–8,000
+
+Orbnix Restaurant Website Package: ₹35,000
+Includes digital menu, table booking system, direct ordering (Razorpay), WhatsApp integration, photo gallery, Google Reviews widget, mobile-first design, on-page SEO, 30 days support, and full source code ownership.
+
+Step 4: Build Your Restaurant Website — The Checklist
+
+Phase 1 — Setup (Week 1):
+☐ Register domain ([yourrestaurantname].com)
+☐ Set up hosting (WordPress hosting or Vercel)
+☐ Design homepage with hero banner (your best dish photo, tagline, CTA buttons)
+☐ Create About page (your story, chef background, philosophy, awards)
+☐ Build Digital Menu page (categories, dishes, prices, dietary icons)
+☐ Install Table Booking plugin/system
+☐ Set up Online Ordering system
+☐ Integrate Razorpay for payments
+☐ Add WhatsApp click-to-chat button
+
+Phase 2 — Content (Week 2):
+☐ Upload all menu items with descriptions, prices, photos
+☐ Add restaurant interior and dish photos (professional quality)
+☐ Write page titles, meta descriptions for SEO
+☐ Set up Google Business Profile (ensure address, hours, website link correct)
+☐ Embed Google Maps with directions
+☐ Display Google Reviews widget
+
+Phase 3 — Testing & Launch (Week 2-3):
+☐ Test table booking flow — book a table yourself
+☐ Test online ordering flow — place a test order, check payment works, check WhatsApp notification received
+☐ Test on 5 different Android phones + 2 iPhones
+☐ Run Google PageSpeed Insights — target 90+ on mobile
+☐ Check all links, buttons, contact forms
+
+Step 5: What to Expect After Launch
+
+First 30 days: Submit your website to Google Search Console. Share on Instagram with "Link in bio". Add website link to your WhatsApp Business profile. Print QR code on your menu, receipts, and table tent cards. Collect emails for newsletter. Monitor Google Analytics daily.
+
+Days 30–90: Organic traffic starts building. Direct orders begin (0% commission). Table booking no-shows drop by 40% (automated reminders). Google ranks you for "[city] [cuisine] restaurant". Phone calls reduce by 50-60%. Staff saves 10+ hours/week.
+
+Days 90–180: Direct orders exceed 20% of total orders. Commission saved pays for the website every 3-4 months. Your restaurant appears in Google's "near me" searches. Reviews increase because you're asking happy customers directly. Customers start finding you before Zomato.
+
+Common Mistakes to Avoid
+
+Mistake 1: No mobile menu. 85% of traffic is mobile. If your menu is a PDF, customers will leave. Mistake 2: Slow loading. Every 1-second delay reduces conversions by 20%. Mistake 3: No clear phone number/WhatsApp. Put it in the header — visible on every page. Mistake 4: No price transparency. Customers will assume you're expensive and click away. Display prices clearly. Mistake 5: Weak photography. Food sells with eyes. Bad photos make good food look average. Invest ₹5,000–15,000 in professional food photography.
+
+Why Choose Orbnix for Your Restaurant Website
+
+We've built restaurant websites across India — from fine dining in Mumbai to cafes in Jaipur to delivery kitchens in Delhi. Every restaurant website we build includes: digital menu, table booking system, online ordering (Razorpay), WhatsApp integration, Google Reviews widget, mobile-first design, SEO setup, and 30 days of free support.
+
+Pricing starts at ₹35,000. Delivery in 10–14 days. 100% code ownership. No hidden fees.
+
+Get a free quote for your restaurant website: hello@orbnix.in or WhatsApp +91 93588 12928
+
+Also available: Zomato menu sync, QR code table ordering, loyalty programme integration, and monthly maintenance packages starting ₹3,500/month.`
+}
   ];
   // Article schema — hook must be unconditional (Rules of Hooks)
   const activePost = active !== null ? posts.find(p=>p.id===active) : null;
@@ -3834,7 +4072,7 @@ function Contact() {
           <div>
             <span style={{display:"inline-flex",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,3.5vw,2.75rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.5rem"}}>Best Web Design & Development Company in India — <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Let's Build</span></h1>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 93588 12928"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -4202,8 +4440,8 @@ const SEO_META = {
     desc: "School ERP with AI, attendance, fees, exams, transport & more. Built for Indian schools."
   },
   contact: {
-    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 90798 81416",
-    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 90798 81416 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
+    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 93588 12928",
+    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 93588 12928 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
     keywords: "contact web developer India, hire web developer India, get website quote India, free website consultation India, web development inquiry India, WhatsApp web developer India, hire React developer India, outsource web development India"
   }
 };
@@ -4270,7 +4508,7 @@ function SeoHead({ page, persona = "default" }) {
       "logo": "https://www.orbnix.in/logo.png",
       "image": "https://www.orbnix.in/og-cover.png",
       "email": "hello@orbnix.in",
-      "telephone": "+919079881416",
+      "telephone": "+919358812928",
       "areaServed": ["IN","US","GB","AE","AU"], "serviceArea": [{"@type":"City","name":"Jaipur"},{"@type":"City","name":"Delhi"},{"@type":"City","name":"Mumbai"},{"@type":"City","name":"Bangalore"},{"@type":"City","name":"Hyderabad"},{"@type":"City","name":"Chennai"},{"@type":"City","name":"Pune"},{"@type":"City","name":"Ahmedabad"},{"@type":"City","name":"Kolkata"},{"@type":"City","name":"Surat"}],
       "currenciesAccepted": "INR, USD",
       "paymentAccepted": "UPI, Bank Transfer, Razorpay, PayPal, Stripe",
@@ -4431,7 +4669,7 @@ const BOT_FLOWS = {
   human: {
     msg: "The Orbnix team typically replies within 2 hours ⚡\n\nBest ways to reach us:",
     opts: [
-      { label:"💬 WhatsApp +91 90798 81416", next:"wa" },
+      { label:"💬 WhatsApp +91 93588 12928", next:"wa" },
       { label:"✉️ Email hello@orbnix.in", next:"email" },
       { label:"📋 Fill contact form", next:"form" },
     ],
@@ -4466,7 +4704,7 @@ const BOT_FLOWS = {
       { label:"🔙 Back to start", next:"start" },
     ],
   },
-  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919079881416\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
+  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919358812928\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
   email: { msg: "Drop us a line at:\nhello@orbnix.in\n\nWe reply within 2 hours during business hours (10am–7pm IST).", opts:[{label:"🔙 Back",next:"start"}] },
   form: { msg: "Fill out our contact form on the Contact page for a detailed inquiry — we'll get back within 24 hours with a proper quote.", opts:[{label:"🔙 Back",next:"start"}] },
 };
@@ -5791,7 +6029,7 @@ function CityPage({ city, slug, state, setPage }) {
           </p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.4)"}}>Get Free Consultation →</a>
-            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
+            <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
           </div>
           {/* Stats row */}
           <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"2rem",marginTop:"3.5rem"}}>
@@ -5956,7 +6194,7 @@ function CityPage({ city, slug, state, setPage }) {
           <p style={{color:"rgba(255,255,255,.7)",marginBottom:"2.5rem",fontSize:"1.05rem",maxWidth:500,margin:"0 auto 2.5rem"}}>Free consultation. Fixed pricing. Delivery in 7–14 days. Reply guaranteed within 24 hours.</p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1.05rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.35)"}}>Start Your Project →</a>
-            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
+            <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
           </div>
           <div style={{marginTop:"2.5rem",display:"flex",justifyContent:"center",gap:"2rem",flexWrap:"wrap"}}>
             {["✓ No advance payment pressure","✓ Full code ownership","✓ 30-day free support","✓ Pan-India delivery"].map(t => (
@@ -6554,7 +6792,7 @@ function SiteFooter({ setPage }) {
               <h5 style={{fontSize:".72rem",fontWeight:700,textTransform:"uppercase",letterSpacing:".1em",color:"rgba(255,255,255,.35)",marginBottom:".75rem"}}>Contact</h5>
               <a href="mailto:hello@orbnix.in" style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",textDecoration:"none"}}
                 onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>hello@orbnix.in</a>
-              <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer"
                 style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",textDecoration:"none"}}
                 onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>WhatsApp Us</a>
               <a onClick={e=>{e.preventDefault();setPage("contact");}} href="/contact"
