@@ -13,6 +13,16 @@
     "vercel-build": "vite build && npm run copy-build && react-snap"
   },
   "reactSnap": {
+    "source": "build",
+    "destination": "build",
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--no-zygote",
+      "--single-process"
+    ],
     "include": [
       "/",
       "/about",
@@ -820,12 +830,7 @@
       "/cities/leh",
       "/cities/kargil"
     ],
-   "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage"
-    ],
-    "timeout": 60000,
+    "timeout": 120000,
     "skipThirdPartyRequests": true,
     "minify": {
       "html": true,
@@ -853,6 +858,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "puppeteer": "^22.0.0",
     "react-snap": "^1.23.0",
     "tailwindcss": "^4.1.14",
     "typescript": "~5.8.2",
