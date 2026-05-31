@@ -2171,7 +2171,7 @@ function Home({ setPage, openDemo, persona = "default", heroCopy, trackAction })
           <div>
             <span style={{display:"inline-flex",alignItems:"center",gap:".5rem",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.85rem,3vw,2.5rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.75rem"}}>Let's Build <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Something Great</span></h2>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 93588 12928"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Location","India · 100% Remote-Friendly"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:13,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -2374,7 +2374,7 @@ function FaqAccordion() {
         <div style={{fontWeight:700,color:C.t,marginBottom:".3rem",fontSize:".9rem"}}>Still have questions?</div>
         <div style={{color:C.t3,fontSize:".82rem",marginBottom:".85rem"}}>WhatsApp us or book a free 30-min call — no sales pressure, just honest answers.</div>
         <div style={{display:"flex",gap:".75rem",justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
+          <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"#25D366",color:"#fff",padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>💬 WhatsApp Us</a>
           <a href="mailto:hello@orbnix.in" style={{background:C.blueLL,color:C.blue,padding:".55rem 1.2rem",borderRadius:9,fontFamily:"'Manrope',sans-serif",fontWeight:700,fontSize:".83rem",textDecoration:"none"}}>✉️ Email Us</a>
         </div>
       </div>
@@ -2462,13 +2462,13 @@ function ContactForm() {
                 from_name:"Orbnix",
                 to:form.email,
                 replyto:"hello@orbnix.in",
-                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 93588 12928\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
+                message:`Hi ${form.name.split(" ")[0]},\n\nThank you for reaching out to Orbnix!\n\nWe've received your enquiry for: ${form.service}\nBudget: ${form.budget||"To be discussed"}\nTimeline: ${form.timeline||"To be discussed"}\n\nOur team will review your requirements and get back to you within 24 hours.\n\nIn the meantime, feel free to WhatsApp us directly:\n+91 90798 81416\n\nBest regards,\nTeam Orbnix\nhello@orbnix.in | orbnix.in`,
               })
             });
             setSent(true);
           }
-          else{alert("Something went wrong. Please WhatsApp us at +91 93588 12928");}
-        }catch(e){alert("Network error. Please WhatsApp us at +91 93588 12928");}
+          else{alert("Something went wrong. Please WhatsApp us at +91 90798 81416");}
+        }catch(e){alert("Network error. Please WhatsApp us at +91 90798 81416");}
       }} style={{width:"100%",padding:".95rem",background:"linear-gradient(135deg,#2563EB,#7C3AED)",color:"#fff",border:"none",borderRadius:11,fontFamily:"'Manrope',sans-serif",fontSize:".92rem",fontWeight:700,cursor:"pointer",boxShadow:"0 4px 16px rgba(37,99,235,.3)"}}>
         Send Message — It's Free →
       </button>
@@ -2595,7 +2595,7 @@ Choosing on price alone. A ₹8,000 website that doesn't rank on Google, doesn't
 
 Choose a partner who challenges your brief, not one who agrees with everything. If every idea you propose is "great" — they're not thinking.
 
-Book a free call with Orbnix or WhatsApp us at +91 93588 12928. We work 100% remotely with clients across India.`},
+Book a free call with Orbnix or WhatsApp us at +91 90798 81416. We work 100% remotely with clients across India.`},
     { id:2,
       title:"How Much Does a Website Cost in India? (2025 Honest Breakdown)",
       cat:"Pricing",
@@ -2698,7 +2698,7 @@ You probably should if:
 - You're paying staff to answer the same questions repeatedly
 - You need 24/7 availability but can't afford round-the-clock staff
 
-Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 93588 12928.`},
+Want to explore if an AI agent makes sense for your business? We offer a free 30-min consultation. WhatsApp +91 90798 81416.`},
     { id:4,
       title:"Mobile App Development Cost in India 2025 — Flutter vs React Native",
       cat:"Mobile Apps",
@@ -2876,7 +2876,7 @@ Orbnix e-commerce packages:
 
 All packages include: Payment gateway integration, mobile-optimised design, basic SEO, WhatsApp order notifications, and 30 days of post-launch support.
 
-Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 93588 12928.`},
+Get a free quote for your online store at hello@orbnix.in or WhatsApp +91 90798 81416.`},
     { id:7,
       title:"Why 70% of Indian Startups Choose the Wrong IT Agency (And How to Avoid It)",
       cat:"Business",
@@ -3026,7 +3026,7 @@ Cost is roughly equal. The difference is in developer availability: Flutter deve
 
 What Orbnix uses: We default to Flutter for all new mobile projects, with React Native when specifically requested or when code sharing with web is a priority. All our mobile apps support iOS 13+ and Android 6+.
 
-Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 93588 12928 for a free scope assessment.`},
+Ready to build your app? We deliver Flutter apps starting at ₹80,000. WhatsApp +91 90798 81416 for a free scope assessment.`},
     { id:10,
       title:"Google Core Web Vitals — Why Your Indian Business Website Is Failing (And How to Fix It)",
       cat:"Web Development",
@@ -3147,7 +3147,7 @@ Full WhatsApp Business API setup + CRM integration: ₹25,000 one-time
 Monthly broadcast management + automation: ₹8,000/month
 AI-powered WhatsApp bot (answers queries + qualifies leads): from ₹40,000
 
-Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 93588 12928.`},
+Ready to turn WhatsApp into your best sales channel? WhatsApp us (obviously) at +91 90798 81416.`},
     { id:12,
       title:"No-Code vs Custom Development — What's Right for Your Indian Startup in 2025?",
       cat:"Web Development",
@@ -3238,7 +3238,7 @@ Typical outcomes for Mumbai clients:
 
 Our Mumbai-specific experience: We've delivered websites and apps for clients in South Mumbai, Bandra, Andheri, Powai, BKC, and Navi Mumbai.
 
-Ready to build with us? WhatsApp +91 93588 12928 or email hello@orbnix.in. Quote delivered in 24 hours.`},
+Ready to build with us? WhatsApp +91 90798 81416 or email hello@orbnix.in. Quote delivered in 24 hours.`},
     { id:14,
       title:"Best Web Development Company in Bengaluru — What Startups Actually Need in 2025",
       cat:"Web Development",
@@ -3276,7 +3276,7 @@ Our services are especially popular with Bengaluru-based:
 - D2C brands scaling beyond ₹1Cr/month
 - B2B SaaS companies building their first public-facing product
 
-Book a free discovery call: hello@orbnix.in or WhatsApp +91 93588 12928.`},
+Book a free discovery call: hello@orbnix.in or WhatsApp +91 90798 81416.`},
     { id:15,
       title:"Web Development Costs in Delhi & NCR — Complete Guide for Businesses (2025)",
       cat:"Web Development",
@@ -3319,7 +3319,7 @@ Our Delhi NCR client results:
 - Logistics company: 45% reduction in phone inquiries after self-service portal launch
 - Export business: International credibility improved, 3 new UK clients in first 60 days
 
-Get your free quote: hello@orbnix.in · WhatsApp +91 93588 12928`},
+Get your free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
 
     { id:7,
       title:"Best Website for Clinics and Hospitals in India 2025 — Complete Guide",
@@ -3369,7 +3369,7 @@ We have built websites for clinics across India — from solo practitioners in T
 
 All our clinic websites include: 100% mobile responsive, WhatsApp booking integration, Google Business Profile setup, local SEO, and 30-day post-launch support.
 
-Free consultation: hello@orbnix.in · WhatsApp +91 93588 12928`},
+Free consultation: hello@orbnix.in · WhatsApp +91 90798 81416`},
 
     { id:8,
       title:"School and College Website Design in India — What Parents Actually Look For",
@@ -3414,7 +3414,7 @@ With fee payment, results portal, parent login: ₹80,000–1,50,000
 
 Orbnix builds school websites across India with online admissions, results display, fee structure pages, and Google-optimized SEO so parents in your city find you first.
 
-Get a free quote: hello@orbnix.in · WhatsApp +91 93588 12928`},
+Get a free quote: hello@orbnix.in · WhatsApp +91 90798 81416`},
 
     { id:9,
       title:"Hotel Website That Reduces OTA Commission — Direct Booking Guide for Indian Hotels",
@@ -3459,7 +3459,7 @@ Resorts and destination properties: Full experience — rooms, dining, activitie
 
 Our hospitality client Royal Haveli in Jaipur moved 35% of bookings to direct in 4 months, saving ₹18 lakhs annually in OTA commissions.
 
-Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 93588 12928`},
+Ready to start saving on commissions? hello@orbnix.in · WhatsApp +91 90798 81416`},
 
     { id:10,
       title:"Website for CA Firms and Chartered Accountants in India — Complete 2025 Guide",
@@ -3509,7 +3509,7 @@ Basic CA firm website (8-12 pages): ₹20,000–30,000
 With lead capture, WhatsApp integration, tax calendar: ₹30,000–45,000
 With client portal for document sharing: ₹50,000–80,000
 
-Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 93588 12928`},
+Get a quote for your CA firm: hello@orbnix.in · WhatsApp +91 90798 81416`},
 
     { id:11,
       title:"Portfolio Website for Architects and Interior Designers in India — 2025 Guide",
@@ -3591,7 +3591,7 @@ We have helped Indian manufacturers rank for their specific product keywords and
 
 Investment: ₹30,000–60,000 depending on product range and complexity. Always includes export SEO setup, Google-indexed product pages, and multi-currency enquiry handling.
 
-Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 93588 12928`},
+Talk to us about your manufacturing business: hello@orbnix.in · WhatsApp +91 90798 81416`},
 
     { id:13,
       title:"Websites for Car Dealers, Pharmacies, Logistics & More — All Industries India 2025",
@@ -3632,7 +3632,7 @@ Donation portal with Razorpay/UPI integration, project impact showcase, FCRA/80G
 
 For any business category not listed here — we have likely already built something similar. Start with a free consultation and we will show you examples from your industry.
 
-Contact: hello@orbnix.in · WhatsApp +91 93588 12928`},
+Contact: hello@orbnix.in · WhatsApp +91 90798 81416`},
   ];
   // Article schema — hook must be unconditional (Rules of Hooks)
   const activePost = active !== null ? posts.find(p=>p.id===active) : null;
@@ -3834,7 +3834,7 @@ function Contact() {
           <div>
             <span style={{display:"inline-flex",background:C.violetLL,color:C.violet,fontFamily:"'JetBrains Mono',monospace",fontSize:".7rem",fontWeight:500,letterSpacing:".14em",textTransform:"uppercase",padding:".3rem .9rem",borderRadius:99,marginBottom:"1rem"}}>Get In Touch</span>
             <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,3.5vw,2.75rem)",fontWeight:800,letterSpacing:"-.03em",color:C.t,marginBottom:"1.5rem"}}>Best Web Design & Development Company in India — <span style={{background:"linear-gradient(135deg,#2563EB,#7C3AED)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Let's Build</span></h1>
-            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 93588 12928"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
+            {[["✉️",C.blueLL,"Email","hello@orbnix.in"],["📱",C.greenLL,"WhatsApp","+91 90798 81416"],["📍",C.orangeLL,"Office","India · 100% Remote-Friendly"],["⏱️",C.violetLL,"Response","Within 24 hours"]].map(([icon,bg,label,val])=>(
               <div key={label} className="contact-info-item">
                 <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>{icon}</div>
                 <div>
@@ -4173,6 +4173,20 @@ const SEO_META = {
     og: "Orbnix School ERP — AI-Enabled School Management System",
     desc: "Complete AI-enabled school management — 16+ modules, 7-day setup."
   },
+  "product-clinic": {
+    title: "ClinicPortal — Patient Management Software for Indian Clinics | Orbnix",
+    description: "ClinicPortal — digital prescriptions, WhatsApp follow-ups, patient app, review boost and analytics for small clinics in India.",
+    keywords: "clinic management software India, patient management system, digital prescription India, WhatsApp clinic reminders",
+    og: "ClinicPortal — Patient Management for Indian Clinics",
+    desc: "Digital prescriptions, WhatsApp follow-ups, patient app and analytics for Indian clinics."
+  },
+  "product-frugano": {
+    title: "Frugano — Kirana & Grocery Management Platform for Indian Vendors | Orbnix",
+    description: "Frugano — inventory, WhatsApp orders, digital billing, khata and daily accounts for kirana shops and fruit vegetable vendors in India.",
+    keywords: "kirana management software, grocery software India, vegetable vendor app, kirana shop app India, billing software kirana",
+    og: "Frugano — Kirana & Grocery Platform for Indian Vendors",
+    desc: "Inventory, WhatsApp orders, billing and khata for kirana shops and vendors in India."
+  },
   "product-ozbiz": {
     title: "OzBiz Directory — Indian Business Listing Platform for Australia | Orbnix",
     description: "OzBiz connects Indian-owned businesses across Australia with the Indian diaspora. Find restaurants, doctors, lawyers, temples and 20+ categories.",
@@ -4188,8 +4202,8 @@ const SEO_META = {
     desc: "School ERP with AI, attendance, fees, exams, transport & more. Built for Indian schools."
   },
   contact: {
-    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 93588 12928",
-    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 93588 12928 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
+    title: "Contact Orbnix — Get a Free Website Quote India | WhatsApp +91 90798 81416",
+    description: "Get a free quote for your website, app, or AI project. WhatsApp us at +91 90798 81416 or email hello@orbnix.in. We respond within 24 hours. Serving clients across India and internationally.",
     keywords: "contact web developer India, hire web developer India, get website quote India, free website consultation India, web development inquiry India, WhatsApp web developer India, hire React developer India, outsource web development India"
   }
 };
@@ -4256,7 +4270,7 @@ function SeoHead({ page, persona = "default" }) {
       "logo": "https://www.orbnix.in/logo.png",
       "image": "https://www.orbnix.in/og-cover.png",
       "email": "hello@orbnix.in",
-      "telephone": "+919358812928",
+      "telephone": "+919079881416",
       "areaServed": ["IN","US","GB","AE","AU"], "serviceArea": [{"@type":"City","name":"Jaipur"},{"@type":"City","name":"Delhi"},{"@type":"City","name":"Mumbai"},{"@type":"City","name":"Bangalore"},{"@type":"City","name":"Hyderabad"},{"@type":"City","name":"Chennai"},{"@type":"City","name":"Pune"},{"@type":"City","name":"Ahmedabad"},{"@type":"City","name":"Kolkata"},{"@type":"City","name":"Surat"}],
       "currenciesAccepted": "INR, USD",
       "paymentAccepted": "UPI, Bank Transfer, Razorpay, PayPal, Stripe",
@@ -4417,7 +4431,7 @@ const BOT_FLOWS = {
   human: {
     msg: "The Orbnix team typically replies within 2 hours ⚡\n\nBest ways to reach us:",
     opts: [
-      { label:"💬 WhatsApp +91 93588 12928", next:"wa" },
+      { label:"💬 WhatsApp +91 90798 81416", next:"wa" },
       { label:"✉️ Email hello@orbnix.in", next:"email" },
       { label:"📋 Fill contact form", next:"form" },
     ],
@@ -4452,7 +4466,7 @@ const BOT_FLOWS = {
       { label:"🔙 Back to start", next:"start" },
     ],
   },
-  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919358812928\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
+  wa: { msg: "Open WhatsApp now 👉\nhttps://wa.me/919079881416\n\nSay hi and describe your project — we reply fast!", opts:[{label:"🔙 Back",next:"start"}] },
   email: { msg: "Drop us a line at:\nhello@orbnix.in\n\nWe reply within 2 hours during business hours (10am–7pm IST).", opts:[{label:"🔙 Back",next:"start"}] },
   form: { msg: "Fill out our contact form on the Contact page for a detailed inquiry — we'll get back within 24 hours with a proper quote.", opts:[{label:"🔙 Back",next:"start"}] },
 };
@@ -5434,7 +5448,7 @@ function ProductTabsSection({ setPage, city }) {
 
         {/* Tab buttons */}
         <div style={{display:"flex",gap:8,marginBottom:24,flexWrap:"wrap"}}>
-          {[["erp","🏫","School ERP"],["ozbiz","🌏","OzBiz Directory"]].map(([key,ic,lb])=>(
+          {[["erp","🏫","School ERP"],["ozbiz","🌏","OzBiz"],["clinic","🏥","ClinicPortal"],["frugano","🛒","Frugano"]].map(([key,ic,lb])=>(
             <button key={key} onClick={()=>setTab(key)}
               style={{display:"flex",alignItems:"center",gap:7,padding:"9px 18px",borderRadius:10,fontWeight:700,fontSize:".85rem",cursor:"pointer",border:"none",
                 background:tab===key?"#2563EB":"rgba(255,255,255,.07)",
@@ -5577,6 +5591,106 @@ function ProductTabsSection({ setPage, city }) {
           </div>
         )}
 
+        {tab === "clinic" && (
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"2rem",alignItems:"center"}}>
+            <div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.2}}>ClinicPortal<br/><span style={{color:"#38bdf8"}}>For Clinics in {city}</span></div>
+              <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:18,fontSize:".88rem"}}>Digital prescriptions, WhatsApp follow-ups, Google review boost, patient app and analytics — built for small clinics in India.</p>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:20}}>
+                {[["👥","Patients"],["💊","Digital Rx"],["⏰","WA Alerts"],["⭐","Reviews"],["📱","Patient App"],["💳","Billing"],["📅","Appointments"],["📊","Analytics"]].map(([ic,lb])=>(
+                  <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.08)"}}>
+                    <span style={{fontSize:".85rem"}}>{ic}</span><span style={{color:"rgba(255,255,255,.75)",fontSize:".76rem",fontWeight:500}}>{lb}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+                <div onClick={()=>setPage("product-clinic")} style={{background:"#0891b2",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:700,fontSize:".85rem",cursor:"pointer",boxShadow:"0 4px 16px rgba(8,145,178,.35)"}}>View ClinicPortal →</div>
+                <a href="https://clinic-sigma-seven.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:600,fontSize:".85rem",textDecoration:"none",border:"1.5px solid rgba(255,255,255,.18)"}}>Visit Live Site</a>
+              </div>
+            </div>
+            <div style={{background:"#0c4a6e",borderRadius:14,overflow:"hidden",border:"1.5px solid rgba(6,182,212,.2)",boxShadow:"0 16px 48px rgba(0,0,0,.4)"}}>
+              <div style={{background:"#075985",padding:"7px 12px",display:"flex",alignItems:"center",gap:5,borderBottom:"1px solid rgba(6,182,212,.15)"}}>
+                {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:9,height:9,borderRadius:"50%",background:c}}/>)}
+                <span style={{color:"rgba(255,255,255,.3)",fontSize:".65rem",marginLeft:6}}>clinicportal.in</span>
+              </div>
+              <div style={{padding:14,background:"#f8fafc"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+                  <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".88rem",color:"#0f172a"}}>🏥 Clinic Dashboard</div>
+                  <div style={{background:"#0891b2",borderRadius:6,padding:"3px 9px",color:"#fff",fontSize:".65rem",fontWeight:700}}>+ New Patient</div>
+                </div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7,marginBottom:9}}>
+                  {[["👥","48","Today","#0891b2"],["⭐","4.8","Rating","#d97706"],["💊","36","Prescriptions","#059669"],["⏰","12","Reminders","#7c3aed"]].map(([ic,val,lb,col])=>(
+                    <div key={lb} style={{background:"#fff",borderRadius:7,padding:9,border:"1px solid #e2e8f0"}}>
+                      <div style={{fontSize:".7rem",marginBottom:2}}>{ic}</div>
+                      <div style={{fontWeight:900,color:col,fontSize:".95rem",lineHeight:1}}>{val}</div>
+                      <div style={{color:"#94a3b8",fontSize:".58rem"}}>{lb}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{background:"#fff",borderRadius:7,padding:9,border:"1px solid #e2e8f0"}}>
+                  <div style={{color:"#0f172a",fontSize:".7rem",fontWeight:700,marginBottom:5}}>Auto Follow-ups Sent</div>
+                  {[["WhatsApp","Priya — BP meds","#25d366"],["Review","Rahul — Google ⭐","#f59e0b"],["SMS","Anita — revisit","#0891b2"]].map(([t,m,col])=>(
+                    <div key={m} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
+                      <div style={{width:18,height:18,borderRadius:4,background:`${col}22`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:".55rem",color:col,fontWeight:700,flexShrink:0}}>✓</div>
+                      <div style={{fontSize:".65rem",color:"#475569"}}><b style={{color:"#0f172a"}}>{t}:</b> {m}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {tab === "frugano" && (
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"2rem",alignItems:"center"}}>
+            <div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.2}}>Frugano<br/><span style={{color:"#4ade80"}}>For Kirana Shops in {city}</span></div>
+              <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:18,fontSize:".88rem"}}>Inventory, WhatsApp orders, digital billing, khata management and daily accounts — for kirana shops and fruit & vegetable vendors.</p>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:20}}>
+                {[["📦","Inventory"],["💬","WA Orders"],["🧾","Billing"],["👥","Customers"],["💰","Khata"],["🚚","Delivery"],["📊","Reports"],["📈","Analytics"]].map(([ic,lb])=>(
+                  <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.08)"}}>
+                    <span style={{fontSize:".85rem"}}>{ic}</span><span style={{color:"rgba(255,255,255,.75)",fontSize:".76rem",fontWeight:500}}>{lb}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+                <div onClick={()=>setPage("product-frugano")} style={{background:"#16a34a",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:700,fontSize:".85rem",cursor:"pointer",boxShadow:"0 4px 16px rgba(22,163,74,.35)"}}>View Frugano →</div>
+                <a href="https://frugano-frontend.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:600,fontSize:".85rem",textDecoration:"none",border:"1.5px solid rgba(255,255,255,.18)"}}>Visit Live Site</a>
+              </div>
+            </div>
+            <div style={{background:"#14532d",borderRadius:14,overflow:"hidden",border:"1.5px solid rgba(34,197,94,.2)",boxShadow:"0 16px 48px rgba(0,0,0,.4)"}}>
+              <div style={{background:"#166534",padding:"7px 12px",display:"flex",alignItems:"center",gap:5,borderBottom:"1px solid rgba(34,197,94,.15)"}}>
+                {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:9,height:9,borderRadius:"50%",background:c}}/>)}
+                <span style={{color:"rgba(255,255,255,.3)",fontSize:".65rem",marginLeft:6}}>frugano.in</span>
+              </div>
+              <div style={{padding:14,background:"#f0fdf4"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+                  <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".88rem",color:"#0f172a"}}>🛒 Sharma Kirana</div>
+                  <div style={{background:"#16a34a",borderRadius:6,padding:"3px 9px",color:"#fff",fontSize:".65rem",fontWeight:700}}>+ New Bill</div>
+                </div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7,marginBottom:9}}>
+                  {[["💰","₹4,820","Sales","#16a34a"],["💬","12","WA Orders","#25d366"],["📦","18","Low Stock","#d97706"],["💳","₹2,100","Khata","#dc2626"]].map(([ic,val,lb,col])=>(
+                    <div key={lb} style={{background:"#fff",borderRadius:7,padding:9,border:"1px solid #dcfce7"}}>
+                      <div style={{fontSize:".7rem",marginBottom:2}}>{ic}</div>
+                      <div style={{fontWeight:900,color:col,fontSize:".95rem",lineHeight:1}}>{val}</div>
+                      <div style={{color:"#94a3b8",fontSize:".58rem"}}>{lb}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{background:"#fff",borderRadius:7,padding:9,border:"1px solid #dcfce7"}}>
+                  <div style={{color:"#0f172a",fontSize:".7rem",fontWeight:700,marginBottom:5}}>Today's Orders</div>
+                  {[["Raj Kumar","Tomato 2kg, Onion","₹180"],["Sunita Devi","Milk 2L, Bread","₹95"],["Amit Shah","Mixed Veg 3kg","₹240"]].map(([n,items,amt])=>(
+                    <div key={n} style={{display:"flex",justifyContent:"space-between",padding:"4px 0",borderBottom:"1px solid #f0fdf4"}}>
+                      <div><div style={{fontSize:".7rem",fontWeight:600,color:"#0f172a"}}>{n}</div><div style={{fontSize:".6rem",color:"#64748b"}}>{items}</div></div>
+                      <div style={{fontSize:".7rem",fontWeight:700,color:"#16a34a"}}>{amt}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </section>
   );
@@ -5677,7 +5791,7 @@ function CityPage({ city, slug, state, setPage }) {
           </p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.4)"}}>Get Free Consultation →</a>
-            <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
+            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
           </div>
           {/* Stats row */}
           <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"2rem",marginTop:"3.5rem"}}>
@@ -5842,7 +5956,7 @@ function CityPage({ city, slug, state, setPage }) {
           <p style={{color:"rgba(255,255,255,.7)",marginBottom:"2.5rem",fontSize:"1.05rem",maxWidth:500,margin:"0 auto 2.5rem"}}>Free consultation. Fixed pricing. Delivery in 7–14 days. Reply guaranteed within 24 hours.</p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1.05rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.35)"}}>Start Your Project →</a>
-            <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
+            <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>
           </div>
           <div style={{marginTop:"2.5rem",display:"flex",justifyContent:"center",gap:"2rem",flexWrap:"wrap"}}>
             {["✓ No advance payment pressure","✓ Full code ownership","✓ 30-day free support","✓ Pan-India delivery"].map(t => (
@@ -6251,6 +6365,32 @@ function Products({ setPage }) {
       cta:"Explore School ERP →",
     },
     {
+      id:"clinic",
+      icon:"🏥",
+      name:"ClinicPortal",
+      tagline:"Patient Management for Indian Clinics",
+      desc:"Digital prescriptions, automated WhatsApp follow-ups, Google review boost, patient app and analytics. Built for small clinics in India.",
+      stats:[["100+","Clinics"],["14 Days","Free Trial"],["WhatsApp","Follow-ups"],["Patient","App"]],
+      color:"#0891b2",
+      bg:"#e0f2fe",
+      border:"#bae6fd",
+      tag:"🟢 Live",
+      cta:"Explore ClinicPortal →",
+    },
+    {
+      id:"frugano",
+      icon:"🛒",
+      name:"Frugano",
+      tagline:"Kirana & Grocery Platform for Indian Vendors",
+      desc:"Inventory, WhatsApp orders, digital billing, khata management and daily accounts for kirana shops and fruit & vegetable vendors.",
+      stats:[["WhatsApp","Orders"],["Digital","Billing"],["Khata","Mgmt"],["Daily","Accounts"]],
+      color:"#16a34a",
+      bg:"#dcfce7",
+      border:"#bbf7d0",
+      tag:"🟢 Live",
+      cta:"Explore Frugano →",
+    },
+    {
       id:"ozbiz",
       icon:"🌏",
       name:"OzBiz Directory",
@@ -6267,7 +6407,6 @@ function Products({ setPage }) {
 
   const coming=[
     {icon:"🏨",name:"Hotel PMS",desc:"Property management for hotels, resorts & homestays.",tag:"Q3 2026"},
-    {icon:"🏥",name:"Clinic ERP",desc:"Patient management, appointments, billing & prescriptions.",tag:"Q4 2026"},
     {icon:"🏋️",name:"Gym & Fitness",desc:"Member management, attendance, diet plans & billing.",tag:"2027"},
   ];
 
@@ -6364,7 +6503,8 @@ function SiteFooter({ setPage }) {
             {[
               {label:"School ERP",      pg:"product-school-erp"},
               {label:"OzBiz Directory", pg:"product-ozbiz"},
-              {label:"Hotel PMS",       pg:"products"},
+              {label:"ClinicPortal",    pg:"product-clinic"},
+              {label:"Frugano",         pg:"product-frugano"},
               {label:"View All",        pg:"products"},
             ].map(({label,pg})=>(
               <a key={label} onClick={e=>{e.preventDefault();setPage(pg);}} href={`/${pg}`}
@@ -6414,7 +6554,7 @@ function SiteFooter({ setPage }) {
               <h5 style={{fontSize:".72rem",fontWeight:700,textTransform:"uppercase",letterSpacing:".1em",color:"rgba(255,255,255,.35)",marginBottom:".75rem"}}>Contact</h5>
               <a href="mailto:hello@orbnix.in" style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",textDecoration:"none"}}
                 onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>hello@orbnix.in</a>
-              <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/919079881416" target="_blank" rel="noopener noreferrer"
                 style={{display:"block",fontSize:".84rem",color:"rgba(255,255,255,.55)",marginBottom:".55rem",textDecoration:"none"}}
                 onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>WhatsApp Us</a>
               <a onClick={e=>{e.preventDefault();setPage("contact");}} href="/contact"
@@ -6437,12 +6577,184 @@ function SiteFooter({ setPage }) {
 }
 
 
+// ─── CLINIC PORTAL PAGE ───────────────────────────────────────────────────────
+function ProductClinic({ setPage }) {
+  useEffect(()=>{
+    document.title="ClinicPortal — Patient Management for Indian Clinics | Orbnix";
+    const sm=(n,v,p=false)=>{const s=p?`meta[property="${n}"]`:`meta[name="${n}"]`;let e=document.querySelector(s);if(!e){e=document.createElement("meta");p?e.setAttribute("property",n):e.setAttribute("name",n);document.head.appendChild(e);}e.setAttribute("content",v);};
+    sm("description","ClinicPortal — digital prescriptions, WhatsApp follow-ups, patient app, review boost and analytics for small clinics in India.");
+    sm("og:title","ClinicPortal — Patient Management for Indian Clinics",true);
+    let c=document.querySelector('link[rel="canonical"]');if(!c){c=document.createElement("link");c.setAttribute("rel","canonical");document.head.appendChild(c);}c.setAttribute("href","https://www.orbnix.in/products/clinic");
+  },[]);
+  const feats=[
+    {icon:"👥",t:"Patient Management",d:"Full patient profiles, visit history, medical records. Search in seconds."},
+    {icon:"💊",t:"Digital Prescriptions",d:"Create, store and share prescriptions digitally. Patients never lose them."},
+    {icon:"⏰",t:"Auto WhatsApp Follow-ups",d:"Automatic reminders for medicines, revisits and checkups via WhatsApp & SMS."},
+    {icon:"⭐",t:"Google Review Boost",d:"Auto-request reviews from satisfied patients after every visit."},
+    {icon:"📱",t:"Patient App",d:"Patients get their own app for prescriptions, reminders and history."},
+    {icon:"📊",t:"Clinic Analytics",d:"Track patient retention, visit frequency, reviews and performance."},
+    {icon:"💳",t:"Billing & Receipts",d:"Generate bills, collect payments, send digital receipts instantly."},
+    {icon:"📅",t:"Appointment Booking",d:"Online booking with automated confirmation and reminders."},
+  ];
+  return (
+    <div style={{width:"100%",paddingTop:68,minHeight:"100vh",background:C.bg2}}>
+      <div style={{background:"#fff",borderBottom:`1px solid ${C.border}`,padding:"10px 4%"}}>
+        <div style={{maxWidth:1200,margin:"0 auto",display:"flex",gap:8,alignItems:"center",fontSize:".82rem"}}>
+          <span onClick={()=>setPage("home")} style={{color:"#0891b2",cursor:"pointer"}}>Home</span><span style={{color:C.t4,margin:"0 4px"}}>›</span>
+          <span onClick={()=>setPage("products")} style={{color:"#0891b2",cursor:"pointer"}}>Products</span><span style={{color:C.t4,margin:"0 4px"}}>›</span>
+          <span style={{color:C.t3}}>ClinicPortal</span>
+        </div>
+      </div>
+      <section style={{background:"linear-gradient(135deg,#0c4a6e,#0369a1,#0c4a6e)",padding:"64px 4% 72px",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-100,right:-100,width:500,height:500,background:"radial-gradient(circle,rgba(6,182,212,.2) 0%,transparent 70%)"}}/>
+        <div style={{maxWidth:1200,margin:"0 auto",position:"relative",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"3rem",alignItems:"center"}}>
+          <div>
+            <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(6,182,212,.2)",border:"1px solid rgba(6,182,212,.4)",borderRadius:20,padding:"5px 14px",marginBottom:20}}>
+              <span style={{width:8,height:8,background:"#22c55e",borderRadius:"50%",display:"inline-block"}}/>
+              <span style={{color:"#67e8f9",fontSize:".78rem",fontWeight:700}}>🏥 LIVE — CLINICPORTAL</span>
+            </div>
+            <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,4vw,3rem)",fontWeight:900,color:"#fff",lineHeight:1.1,marginBottom:16}}>ClinicPortal<br/><span style={{background:"linear-gradient(90deg,#67e8f9,#38bdf8)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Built for Indian Clinics.</span></h1>
+            <p style={{color:"rgba(255,255,255,.65)",fontSize:"1rem",lineHeight:1.75,marginBottom:28}}>Complete patient management — digital prescriptions, automated WhatsApp follow-ups, Google review boost, patient app and clinic analytics.</p>
+            <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+              <a href="https://clinic-sigma-seven.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"#0891b2",color:"#fff",padding:"12px 28px",borderRadius:10,fontWeight:700,fontSize:".92rem",textDecoration:"none",boxShadow:"0 8px 24px rgba(8,145,178,.4)"}}>Visit ClinicPortal →</a>
+              <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"12px 28px",borderRadius:10,fontWeight:600,fontSize:".92rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.2)"}}>Book Demo</div>
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+            {[["100+","Clinics Using"],["14 Days","Free Trial"],["WhatsApp","Auto Follow-up"],["Patient","Mobile App"]].map(([n,l])=>(
+              <div key={l} style={{background:"rgba(255,255,255,.07)",borderRadius:14,padding:"18px 14px",border:"1px solid rgba(255,255,255,.1)",textAlign:"center"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.5rem",fontWeight:900,color:"#38bdf8",lineHeight:1}}>{n}</div>
+                <div style={{color:"rgba(255,255,255,.5)",fontSize:".75rem",marginTop:4}}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section style={{padding:"48px 4%",maxWidth:1200,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:900,color:C.t,marginBottom:8}}>Everything Your Clinic Needs</h2>
+        <p style={{color:C.t3,marginBottom:28}}>Built for small clinics in India. Not generic hospital software.</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:14,marginBottom:40}}>
+          {feats.map(({icon,t,d})=>(
+            <div key={t} style={{background:"#fff",borderRadius:14,padding:18,border:"1.5px solid #e0f2fe",boxShadow:"0 2px 8px rgba(8,145,178,.06)"}}>
+              <div style={{width:40,height:40,borderRadius:11,background:"#e0f2fe",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem",marginBottom:10}}>{icon}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".92rem",color:C.t,marginBottom:5}}>{t}</div>
+              <div style={{color:C.t3,fontSize:".8rem",lineHeight:1.55}}>{d}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{background:"linear-gradient(135deg,#0c4a6e,#0369a1)",borderRadius:18,padding:"40px 32px",textAlign:"center"}}>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#fff",marginBottom:10}}>Start Your 14-Day Free Trial</h3>
+          <p style={{color:"rgba(255,255,255,.6)",maxWidth:420,margin:"0 auto 22px",lineHeight:1.7,fontSize:".9rem"}}>No credit card required. 100+ clinics already using ClinicPortal.</p>
+          <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
+            <a href="https://clinic-sigma-seven.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"#0891b2",color:"#fff",padding:"11px 26px",borderRadius:10,fontWeight:700,fontSize:".9rem",textDecoration:"none"}}>Start Free Trial →</a>
+            <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"11px 26px",borderRadius:10,fontWeight:600,fontSize:".9rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.2)"}}>Book a Demo</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ─── FRUGANO PRODUCT PAGE ─────────────────────────────────────────────────────
+function ProductFrugano({ setPage }) {
+  useEffect(()=>{
+    document.title="Frugano — Kirana & Grocery Management for Indian Vendors | Orbnix";
+    const sm=(n,v,p=false)=>{const s=p?`meta[property="${n}"]`:`meta[name="${n}"]`;let e=document.querySelector(s);if(!e){e=document.createElement("meta");p?e.setAttribute("property",n):e.setAttribute("name",n);document.head.appendChild(e);}e.setAttribute("content",v);};
+    sm("description","Frugano — inventory, WhatsApp orders, digital billing, khata and daily accounts for kirana shops and fruit vegetable vendors in India.");
+    sm("og:title","Frugano — Kirana & Grocery Platform for Indian Vendors",true);
+    let c=document.querySelector('link[rel="canonical"]');if(!c){c=document.createElement("link");c.setAttribute("rel","canonical");document.head.appendChild(c);}c.setAttribute("href","https://www.orbnix.in/products/frugano");
+  },[]);
+  const feats=[
+    {icon:"📦",t:"Inventory Management",d:"Track stock, set low-stock alerts, manage fresh produce daily."},
+    {icon:"💬",t:"WhatsApp Orders",d:"Customers order on WhatsApp. Auto-confirmed and tracked."},
+    {icon:"🧾",t:"Digital Billing",d:"Generate bills in seconds. PDF receipts sent on WhatsApp."},
+    {icon:"👥",t:"Customer Management",d:"Track regulars, credit accounts and purchase history."},
+    {icon:"📊",t:"Daily Accounts",d:"Daily income, expenses and profit. Simple and clear."},
+    {icon:"🚚",t:"Delivery Tracking",d:"Home delivery orders with live status updates to customers."},
+    {icon:"💰",t:"Khata / Credit",d:"Maintain customer credit and send payment reminders."},
+    {icon:"📈",t:"Sales Reports",d:"Weekly and monthly sales reports to grow your business."},
+  ];
+  return (
+    <div style={{width:"100%",paddingTop:68,minHeight:"100vh",background:C.bg2}}>
+      <div style={{background:"#fff",borderBottom:`1px solid ${C.border}`,padding:"10px 4%"}}>
+        <div style={{maxWidth:1200,margin:"0 auto",display:"flex",gap:8,alignItems:"center",fontSize:".82rem"}}>
+          <span onClick={()=>setPage("home")} style={{color:"#16a34a",cursor:"pointer"}}>Home</span><span style={{color:C.t4,margin:"0 4px"}}>›</span>
+          <span onClick={()=>setPage("products")} style={{color:"#16a34a",cursor:"pointer"}}>Products</span><span style={{color:C.t4,margin:"0 4px"}}>›</span>
+          <span style={{color:C.t3}}>Frugano</span>
+        </div>
+      </div>
+      <section style={{background:"linear-gradient(135deg,#14532d,#15803d,#14532d)",padding:"64px 4% 72px",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-100,right:-100,width:500,height:500,background:"radial-gradient(circle,rgba(34,197,94,.2) 0%,transparent 70%)"}}/>
+        <div style={{maxWidth:1200,margin:"0 auto",position:"relative",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"3rem",alignItems:"center"}}>
+          <div>
+            <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(34,197,94,.2)",border:"1px solid rgba(34,197,94,.4)",borderRadius:20,padding:"5px 14px",marginBottom:20}}>
+              <span style={{width:8,height:8,background:"#22c55e",borderRadius:"50%",display:"inline-block"}}/>
+              <span style={{color:"#86efac",fontSize:".78rem",fontWeight:700}}>🛒 LIVE — FRUGANO</span>
+            </div>
+            <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(2rem,4vw,3rem)",fontWeight:900,color:"#fff",lineHeight:1.1,marginBottom:16}}>Frugano<br/><span style={{background:"linear-gradient(90deg,#86efac,#4ade80)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Kirana Goes Digital.</span></h1>
+            <p style={{color:"rgba(255,255,255,.65)",fontSize:"1rem",lineHeight:1.75,marginBottom:28}}>Complete digital platform for kirana shops and fruit & vegetable vendors. Inventory, WhatsApp orders, billing, khata and daily accounts — all in one place.</p>
+            <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+              <a href="https://frugano-frontend.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"#16a34a",color:"#fff",padding:"12px 28px",borderRadius:10,fontWeight:700,fontSize:".92rem",textDecoration:"none",boxShadow:"0 8px 24px rgba(22,163,74,.4)"}}>Visit Frugano →</a>
+              <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"12px 28px",borderRadius:10,fontWeight:600,fontSize:".92rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.2)"}}>Get a Demo</div>
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+            {[["WhatsApp","Orders"],["Digital","Billing"],["Khata","Management"],["Daily","Accounts"]].map(([n,l])=>(
+              <div key={l} style={{background:"rgba(255,255,255,.07)",borderRadius:14,padding:"18px 14px",border:"1px solid rgba(255,255,255,.1)",textAlign:"center"}}>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.3rem",fontWeight:900,color:"#4ade80",lineHeight:1}}>{n}</div>
+                <div style={{color:"rgba(255,255,255,.5)",fontSize:".75rem",marginTop:4}}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section style={{padding:"48px 4%",maxWidth:1200,margin:"0 auto"}}>
+        <h2 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:900,color:C.t,marginBottom:8}}>Everything a Vendor Needs</h2>
+        <p style={{color:C.t3,marginBottom:28}}>No tech knowledge needed. Start in minutes.</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:14,marginBottom:40}}>
+          {feats.map(({icon,t,d})=>(
+            <div key={t} style={{background:"#fff",borderRadius:14,padding:18,border:"1.5px solid #dcfce7",boxShadow:"0 2px 8px rgba(22,163,74,.06)"}}>
+              <div style={{width:40,height:40,borderRadius:11,background:"#dcfce7",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem",marginBottom:10}}>{icon}</div>
+              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".92rem",color:C.t,marginBottom:5}}>{t}</div>
+              <div style={{color:C.t3,fontSize:".8rem",lineHeight:1.55}}>{d}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{background:"linear-gradient(135deg,#14532d,#15803d)",borderRadius:18,padding:"40px 32px",textAlign:"center"}}>
+          <h3 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"1.6rem",fontWeight:900,color:"#fff",marginBottom:10}}>Take Your Kirana Online Today</h3>
+          <p style={{color:"rgba(255,255,255,.6)",maxWidth:420,margin:"0 auto 22px",lineHeight:1.7,fontSize:".9rem"}}>Simple setup. No technical knowledge needed.</p>
+          <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
+            <a href="https://frugano-frontend.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"#16a34a",color:"#fff",padding:"11px 26px",borderRadius:10,fontWeight:700,fontSize:".9rem",textDecoration:"none"}}>Visit Frugano →</a>
+            <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"11px 26px",borderRadius:10,fontWeight:600,fontSize:".9rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.2)"}}>Get a Demo</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function AppInner() {
   const navigate = useNavigate();
   const location = useLocation();
+  
   const getPageFromPath = (pathname) => {
-    const staticMap = { "/": "home", "/products": "products", "/products/school-erp": "product-school-erp", "/products/ozbiz": "product-ozbiz", "/about": "about", "/work": "work", "/blog": "blog", "/services": "services", "/pricing": "pricing", "/contact": "contact" };
+    const staticMap = { 
+      "/": "home", 
+      "/products": "products", 
+      "/products/school-erp": "product-school-erp", 
+      "/products/ozbiz": "product-ozbiz", 
+      "/products/clinic": "product-clinic", 
+      "/products/frugano": "product-frugano", 
+      "/about": "about", 
+      "/work": "work", 
+      "/blog": "blog", 
+      "/services": "services", 
+      "/pricing": "pricing", 
+      "/contact": "contact" 
+    };
+    
     if (staticMap[pathname]) return staticMap[pathname];
+    
     const cityMatch = pathname.match(/^\/cities\/(.+)$/);
     if (cityMatch) {
       const slug = cityMatch[1];
@@ -6451,21 +6763,30 @@ function AppInner() {
     }
     return "home";
   };
-  const getPathFromPage = (p) => {
-    const staticMap = { home: "/", 
-    about: "/about", 
-    work: "/work", 
-    blog: "/blog", 
-    services: "/services", 
-    pricing: "/pricing", 
-    contact: "/contact",
-    products: "/products",
-    "product-school-erp": "/products/school-erp",
-    "product-ozbiz": "/products/ozbiz" };
-    if (staticMap[p]) return staticMap[p];
-    if (p.startsWith("city-")) return "/cities/" + p.replace("city-","");
+  
+  const getPathFromPage = (page) => {
+    const staticMap = { 
+      home: "/", 
+      about: "/about", 
+      products: "/products", 
+      "product-school-erp": "/products/school-erp",
+      "product-ozbiz": "/products/ozbiz", 
+      "product-clinic": "/products/clinic", 
+      "product-frugano": "/products/frugano", 
+      work: "/work", 
+      blog: "/blog", 
+      services: "/services", 
+      pricing: "/pricing", 
+      contact: "/contact" 
+    };
+    
+    if (staticMap[page]) return staticMap[page];
+    
+    if (page.startsWith("city-")) return "/cities/" + page.replace("city-", "");
+    
     return "/";
   };
+
 
   const page = getPageFromPath(location.pathname);
   const setPage = (p) => navigate(getPathFromPage(p));
@@ -6502,6 +6823,10 @@ function AppInner() {
       {page === "products"         && <Products        setPage={setPage} />}
       {page === "product-school-erp" && <ProductSchoolERP setPage={setPage} />}
       {page === "product-ozbiz"      && <ProductOzBiz     setPage={setPage} />}
+      {page === "product-clinic"    && <ProductClinic    setPage={setPage} />}
+      {page === "product-frugano"   && <ProductFrugano   setPage={setPage} />}
+      {page === "product-clinic"    && <ProductClinic    setPage={setPage} />}
+      {page === "product-frugano"   && <ProductFrugano   setPage={setPage} />}
       {page === "services" && <Services setPage={setPage} />}
       {page === "pricing"  && <Pricing  setPage={setPage} />}
       {page === "contact"  && <Contact />}

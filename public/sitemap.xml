@@ -3,7 +3,19 @@
   <url><loc>https://www.orbnix.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.orbnix.in/products</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.orbnix.in/products/school-erp</loc><changefreq>weekly</changefreq><priority>0.92</priority></url>
-  <url><loc>https://www.orbnix.in/products/ozbiz</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.orbnix.in/products/ozbiz</loc>
+  </url>
+  <url>
+    <loc>https://www.orbnix.in/products/clinic</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.orbnix.in/products/frugano</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority<changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.orbnix.in/services</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.orbnix.in/blog</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.orbnix.in/work</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
