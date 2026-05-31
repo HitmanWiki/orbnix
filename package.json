@@ -3,14 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-   "scripts": {
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "copy-build": "node copy-build.js",
     "snap": "react-snap",
-    "postbuild": "cp -r dist/* build/ || xcopy dist build /E /I",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vercel-build": "vite build && npm run postbuild && react-snap"
+    "vercel-build": "vite build && npm run copy-build && react-snap"
   },
   "reactSnap": {
     "include": [

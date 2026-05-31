@@ -16,10 +16,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['lucide-react', 'motion'],
         },
       },
     },
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     hmr: process.env.DISABLE_HMR !== 'true',
