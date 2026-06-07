@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run generate-sitemap && npm run generate-robots && vite build",
-    "postbuild": "npm run copy-build && npm run prerender",
+    "postbuild": "npm run copy-build",
+    "prerender-all": "npm run copy-build && npm run prerender",
     "copy-build": "node copy-build.js",
     "prerender": "node prerender.js",
     "generate-sitemap": "node generate-sitemap.js",
