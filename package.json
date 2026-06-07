@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-sitemap && npm run generate-robots && vite build && npm run prerender",
-    "prerender": "node prerender.js",
+    "build": "npm run generate-sitemap && npm run generate-robots && vite build",
     "generate-sitemap": "node generate-sitemap.js",
     "generate-robots": "node generate-robots.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vercel-build": "npm run generate-sitemap && npm run generate-robots && vite build && npm run prerender",
+    "vercel-build": "npm run generate-sitemap && npm run generate-robots && vite build",
     "sitemap-only": "node generate-sitemap.js",
     "robots-only": "node generate-robots.js"
   },

@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -11,7 +10,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'build',  // ← CHANGE THIS from 'dist' to 'build'
+    outDir: 'dist',  // Can be dist or build - Vercel will use outputDirectory
     emptyOutDir: true,
     rollupOptions: {
       output: {
