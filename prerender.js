@@ -1,3 +1,4 @@
+// prerender.js
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -5,8 +6,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Import your city data (create this file)
-// For now, let's read from sitemap.xml or define directly
+// ==================== YOUR COMPLETE CITY DATA ====================
+// Directly use INDIA_LOCATIONS - generate all city slugs from it
 const INDIA_LOCATIONS = [
   ["anantapur","Anantapur","Andhra Pradesh"],
   ["chittoor","Chittoor","Andhra Pradesh"],
@@ -782,53 +783,77 @@ const INDIA_LOCATIONS = [
   ["leh","Leh","Ladakh"],
   ["kargil","Kargil","Ladakh"],
 ];
+// Extract all city slugs from INDIA_LOCATIONS
+const allCitySlugs = INDIA_LOCATIONS.map(city => city[0]);
 
-// Alternative: Read cities from sitemap.xml (dynamic)
-const readCitiesFromSitemap = () => {
-  const sitemapPath = resolve(__dirname, 'public', 'sitemap.xml');
-  if (existsSync(sitemapPath)) {
-    const content = readFileSync(sitemapPath, 'utf-8');
-    const matches = content.match(/\/cities\/([a-z-]+)/g);
-    if (matches) {
-      return [...new Set(matches.map(m => m.replace('/cities/', '')))];
-    }
-  }
-  return [];
-};
+console.log(`📍 Found ${allCitySlugs.length} cities from INDIA_LOCATIONS`);
 
-// Use sitemap to get all cities (recommended)
-const citySlugs = readCitiesFromSitemap();
-console.log(`📍 Found ${citySlugs.length} cities from sitemap`);
-
+// ==================== STATIC ROUTES ====================
 const staticRoutes = [
-  '/', '/about', '/work', '/blog', '/services', '/pricing', '/contact',
-  '/products', '/products/school-erp', '/products/ozbiz', '/products/clinic', '/products/frugano'
+  '/',
+  '/about',
+  '/work',
+  '/blog',
+  '/services',
+  '/pricing',
+  '/contact',
+  '/products',
+  '/products/school-erp',
+  '/products/ozbiz',
+  '/products/clinic',
+  '/products/frugano',
 ];
 
+// ==================== BLOG ROUTES (1-17) ====================
 const blogRoutes = Array.from({ length: 17 }, (_, i) => `/blog/${i + 1}`);
-const cityRoutes = citySlugs.map(slug => `/cities/${slug}`);
+
+// ==================== CITY ROUTES ====================
+const cityRoutes = allCitySlugs.map(slug => `/cities/${slug}`);
+
+// ==================== COMBINE ALL ROUTES ====================
 const routes = [...staticRoutes, ...blogRoutes, ...cityRoutes];
 
 console.log(`📦 Pre-rendering ${routes.length} routes...`);
+console.log(`   📄 Static pages: ${staticRoutes.length}`);
+console.log(`   📝 Blog posts: ${blogRoutes.length}`);
+console.log(`   🏙️  City pages: ${cityRoutes.length}`);
 
+// ==================== READ INDEX.HTML ====================
 const buildDir = resolve(__dirname, 'build');
 const indexPath = resolve(buildDir, 'index.html');
 
 if (!existsSync(indexPath)) {
-  console.error('❌ Run `npm run build` first!');
+  console.error('❌ Build directory not found! Run `npm run build` first.');
+  console.error(`   Expected: ${indexPath}`);
   process.exit(1);
 }
 
 const indexHtml = readFileSync(indexPath, 'utf-8');
+console.log(`✅ Read index.html (${indexHtml.length} bytes)`);
 
+// ==================== CREATE STATIC FILES ====================
+let created = 0;
 routes.forEach(route => {
   const filePath = route === '/' 
     ? resolve(buildDir, 'index.html')
     : resolve(buildDir, `${route}/index.html`);
   
   const dirPath = dirname(filePath);
-  if (!existsSync(dirPath)) mkdirSync(dirPath, { recursive: true });
+  if (!existsSync(dirPath)) {
+    mkdirSync(dirPath, { recursive: true });
+  }
+  
   writeFileSync(filePath, indexHtml);
+  created++;
 });
 
-console.log(`✅ Pre-rendered ${routes.length} routes!`);
+console.log(`✅ Pre-rendered ${created} routes successfully!`);
+console.log(`💾 Output directory: ${buildDir}`);
+
+// Verify city directories exist
+const testCityPath = resolve(buildDir, 'cities', 'jaipur', 'index.html');
+if (existsSync(testCityPath)) {
+  console.log(`✅ Verified: /cities/jaipur/index.html exists`);
+} else {
+  console.log(`⚠️ Warning: /cities/jaipur/index.html not found`);
+}
