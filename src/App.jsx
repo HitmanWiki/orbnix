@@ -5936,85 +5936,285 @@ function ProductTabsSection({ setPage, city }) {
 
 
 function CityPage({ city, slug, state, setPage }) {
-  // Add this useEffect at the beginning of CityPage component
-useEffect(() => {
-  // Dynamic title for each city
-  document.title = `Best Web Development Company in ${city} | Orbnix - Websites, Apps & AI`;
   
-  // Dynamic meta description
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) {
-    metaDesc.setAttribute('content', `Orbnix is the leading web development company in ${city}, ${state}. We build professional websites, mobile apps, AI chatbots and e-commerce stores. Starting ₹25,000. 100% code ownership. Free consultation. Call +91-90798-81416.`);
-  }
+  // ==================== ENHANCED SEO EFFECTS ====================
   
-  // Dynamic meta keywords
-  let metaKeywords = document.querySelector('meta[name="keywords"]');
-  if (!metaKeywords) {
-    metaKeywords = document.createElement('meta');
-    metaKeywords.setAttribute('name', 'keywords');
-    document.head.appendChild(metaKeywords);
-  }
-  metaKeywords.setAttribute('content', `web development company ${city}, website design ${city}, web developer near me, IT company ${city}, best web development company in ${city}, affordable website design ${city}, website development services ${city}, app development ${city}, SEO services ${city}, e-commerce website ${city}, React developer ${city}, mobile app development ${city}`);
+  useEffect(() => {
+    // Dynamic title for each city (optimized for "near me" searches)
+    document.title = `Best Web Development Company in ${city} | Orbnix - Websites, Apps & AI Near Me`;
+    
+    // Dynamic meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', `Orbnix is the leading web development company in ${city}, ${state}. We build professional websites, mobile apps, AI chatbots and e-commerce stores near you. Starting ₹25,000. 100% code ownership. Free consultation. Call +91-93588-12928.`);
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.setAttribute('name', 'description');
+      newMeta.setAttribute('content', `Orbnix is the leading web development company in ${city}, ${state}. We build professional websites, mobile apps, AI chatbots and e-commerce stores near you. Starting ₹25,000. 100% code ownership. Free consultation. Call +91-93588-12928.`);
+      document.head.appendChild(newMeta);
+    }
+    
+    // Dynamic meta keywords with "near me" variations
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', `web development company ${city}, website design ${city}, web developer near me, IT company ${city}, best web development company in ${city}, affordable website design ${city}, website development services ${city}, app development ${city}, SEO services ${city}, e-commerce website ${city}, React developer ${city}, mobile app development ${city}, web development near me, website design near me, IT services near ${city}, digital agency ${city}`);
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `https://www.orbnix.in/cities/${slug}`);
+    
+    // Add hreflang for India
+    let hreflang = document.querySelector('link[rel="alternate"][hreflang="en-in"]');
+    if (!hreflang) {
+      hreflang = document.createElement('link');
+      hreflang.setAttribute('rel', 'alternate');
+      hreflang.setAttribute('hreflang', 'en-in');
+      hreflang.setAttribute('href', `https://www.orbnix.in/cities/${slug}`);
+      document.head.appendChild(hreflang);
+    }
+    
+  }, [city, state, slug]);
   
-  // Canonical URL
-  let canonical = document.querySelector('link[rel="canonical"]');
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    document.head.appendChild(canonical);
-  }
-  canonical.setAttribute('href', `https://www.orbnix.in/cities/${slug}`);
+  // ==================== ENHANCED SCHEMA MARKUP ====================
   
-  // Geo tags
-  if (state === 'Rajasthan') {
+  useEffect(() => {
+    const getCoordinates = () => {
+      const coordsMap = {
+        "Rajasthan": { lat: "26.9124", lng: "75.7873", region: "IN-RJ" },
+        "Maharashtra": { lat: "19.0760", lng: "72.8777", region: "IN-MH" },
+        "Delhi": { lat: "28.7041", lng: "77.1025", region: "IN-DL" },
+        "Karnataka": { lat: "12.9716", lng: "77.5946", region: "IN-KA" },
+        "Telangana": { lat: "17.3850", lng: "78.4867", region: "IN-TG" },
+        "Tamil Nadu": { lat: "13.0827", lng: "80.2707", region: "IN-TN" },
+        "Gujarat": { lat: "23.0225", lng: "72.5714", region: "IN-GJ" },
+        "West Bengal": { lat: "22.5726", lng: "88.3639", region: "IN-WB" },
+        "Uttar Pradesh": { lat: "26.8467", lng: "80.9462", region: "IN-UP" },
+        "Punjab": { lat: "30.7333", lng: "76.7794", region: "IN-PB" },
+        "Haryana": { lat: "29.0588", lng: "76.0856", region: "IN-HR" },
+        "Bihar": { lat: "25.5941", lng: "85.1376", region: "IN-BR" },
+        "Madhya Pradesh": { lat: "23.2599", lng: "77.4126", region: "IN-MP" },
+        "Kerala": { lat: "10.8505", lng: "76.2711", region: "IN-KL" },
+        "Andhra Pradesh": { lat: "16.5062", lng: "80.6480", region: "IN-AP" },
+        "Odisha": { lat: "20.2961", lng: "85.8245", region: "IN-OR" },
+        "Jharkhand": { lat: "23.6102", lng: "85.2799", region: "IN-JH" },
+        "Assam": { lat: "26.2006", lng: "92.9376", region: "IN-AS" },
+        "Chandigarh": { lat: "30.7333", lng: "76.7794", region: "IN-CH" },
+        "Himachal Pradesh": { lat: "31.1048", lng: "77.1734", region: "IN-HP" },
+        "Uttarakhand": { lat: "30.0668", lng: "79.0193", region: "IN-UK" },
+        "Goa": { lat: "15.2993", lng: "74.1240", region: "IN-GA" },
+        "Jammu & Kashmir": { lat: "33.7782", lng: "76.5762", region: "IN-JK" },
+      };
+      return coordsMap[state] || { lat: "20.5937", lng: "78.9629", region: "IN" };
+    };
+    
+    const coords = getCoordinates();
+    
+    const localBusinessSchema = {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": `Orbnix - Best Web Development Company in ${city}`,
+      "description": `Professional web development services in ${city}, ${state}. We build custom websites, mobile apps, AI chatbots and e-commerce stores for businesses in ${city}. Starting at ₹25,000. Free consultation.`,
+      "url": `https://www.orbnix.in/cities/${slug}`,
+      "logo": "https://www.orbnix.in/logo.png",
+      "image": "https://www.orbnix.in/og-cover.png",
+      "priceRange": "₹₹ (₹25,000 - ₹2,00,000+)",
+      "telephone": "+91-93588-12928",
+      "email": "hello@orbnix.in",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": city,
+        "addressRegion": state,
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": coords.lat,
+        "longitude": coords.lng
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": city
+      },
+      "hasMap": `https://maps.google.com/?q=${encodeURIComponent(city + ", " + state + ", India")}`,
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/orbnix.in",
+        "https://www.linkedin.com/company/orbnix",
+        "https://x.com/orbnix_in",
+        "https://www.facebook.com/OrbnixIndia"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "50+",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "paymentAccepted": "UPI, Bank Transfer, Razorpay, Credit Card, Net Banking",
+      "currenciesAccepted": "INR",
+      "serviceType": [
+        "Web Development",
+        "Mobile App Development",
+        "AI Chatbot Development",
+        "E-Commerce Development",
+        "SEO Services",
+        "UI/UX Design",
+        "ERP & CRM Solutions"
+      ],
+      "keywords": `web development ${city}, website design ${city}, web developer near me, IT company ${city}`
+    };
+    
+    let script = document.querySelector('#city-local-business-ld');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'city-local-business-ld';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(localBusinessSchema);
+    
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.orbnix.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cities",
+          "item": "https://www.orbnix.in/cities"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": city,
+          "item": `https://www.orbnix.in/cities/${slug}`
+        }
+      ]
+    };
+    
+    let breadScript = document.querySelector('#city-breadcrumb-ld');
+    if (!breadScript) {
+      breadScript = document.createElement('script');
+      breadScript.id = 'city-breadcrumb-ld';
+      breadScript.type = 'application/ld+json';
+      document.head.appendChild(breadScript);
+    }
+    breadScript.textContent = JSON.stringify(breadcrumbSchema);
+    
+  }, [city, state, slug]);
+  
+  // ==================== GEO META TAGS (ALL STATES) ====================
+  
+  useEffect(() => {
+    const getRegionCode = () => {
+      const regionMap = {
+        "Rajasthan": "IN-RJ", "Maharashtra": "IN-MH", "Delhi": "IN-DL",
+        "Karnataka": "IN-KA", "Telangana": "IN-TG", "Tamil Nadu": "IN-TN",
+        "Gujarat": "IN-GJ", "West Bengal": "IN-WB", "Uttar Pradesh": "IN-UP",
+        "Punjab": "IN-PB", "Haryana": "IN-HR", "Bihar": "IN-BR",
+        "Madhya Pradesh": "IN-MP", "Kerala": "IN-KL", "Andhra Pradesh": "IN-AP",
+        "Odisha": "IN-OR", "Jharkhand": "IN-JH", "Assam": "IN-AS",
+        "Chandigarh": "IN-CH", "Himachal Pradesh": "IN-HP", "Uttarakhand": "IN-UK",
+        "Goa": "IN-GA", "Jammu & Kashmir": "IN-JK"
+      };
+      return regionMap[state] || "IN";
+    };
+    
+    const getCoordinates = () => {
+      const coordMap = {
+        "Rajasthan": "26.9124,75.7873", "Maharashtra": "19.0760,72.8777",
+        "Delhi": "28.7041,77.1025", "Karnataka": "12.9716,77.5946",
+        "Telangana": "17.3850,78.4867", "Tamil Nadu": "13.0827,80.2707",
+        "Gujarat": "23.0225,72.5714", "West Bengal": "22.5726,88.3639",
+        "Uttar Pradesh": "26.8467,80.9462", "Punjab": "30.7333,76.7794",
+        "Haryana": "29.0588,76.0856", "Bihar": "25.5941,85.1376",
+        "Madhya Pradesh": "23.2599,77.4126", "Kerala": "10.8505,76.2711",
+        "Andhra Pradesh": "16.5062,80.6480", "Odisha": "20.2961,85.8245",
+        "Jharkhand": "23.6102,85.2799", "Assam": "26.2006,92.9376",
+        "Chandigarh": "30.7333,76.7794", "Himachal Pradesh": "31.1048,77.1734",
+        "Uttarakhand": "30.0668,79.0193", "Goa": "15.2993,74.1240",
+        "Jammu & Kashmir": "33.7782,76.5762"
+      };
+      return coordMap[state] || "20.5937,78.9629";
+    };
+    
+    const regionCode = getRegionCode();
+    const coords = getCoordinates();
+    
     let geoRegion = document.querySelector('meta[name="geo.region"]');
     if (!geoRegion) {
       geoRegion = document.createElement('meta');
       geoRegion.setAttribute('name', 'geo.region');
       document.head.appendChild(geoRegion);
     }
-    geoRegion.setAttribute('content', 'IN-RJ');
-  }
-}, [city, state, slug]);
-useEffect(() => {
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `Orbnix - Web Development Company in ${city}`,
-    "description": `Professional web development services in ${city}, ${state}. We build websites, mobile apps, AI chatbots and e-commerce stores.`,
-    "url": `https://www.orbnix.in/cities/${slug}`,
-    "logo": "https://www.orbnix.in/logo.png",
-    "image": "https://www.orbnix.in/og-cover.png",
-    "priceRange": "₹₹",
-    "telephone": "+91-90798-81416",
-    "email": "hello@orbnix.in",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": city,
-      "addressRegion": state,
-      "addressCountry": "IN"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": city
-    },
-    "openingHours": "Mon-Sat 10:00-19:00",
-    "sameAs": [
-      "https://www.instagram.com/orbnix.in",
-      "https://www.facebook.com/orbnix.in",
-      "https://x.com/orbnix_in"
-    ]
-  };
+    geoRegion.setAttribute('content', regionCode);
+    
+    let geoPlacename = document.querySelector('meta[name="geo.placename"]');
+    if (!geoPlacename) {
+      geoPlacename = document.createElement('meta');
+      geoPlacename.setAttribute('name', 'geo.placename');
+      document.head.appendChild(geoPlacename);
+    }
+    geoPlacename.setAttribute('content', city);
+    
+    let geoPosition = document.querySelector('meta[name="geo.position"]');
+    if (!geoPosition) {
+      geoPosition = document.createElement('meta');
+      geoPosition.setAttribute('name', 'geo.position');
+      document.head.appendChild(geoPosition);
+    }
+    geoPosition.setAttribute('content', coords);
+    
+    let icbm = document.querySelector('meta[name="ICBM"]');
+    if (!icbm) {
+      icbm = document.createElement('meta');
+      icbm.setAttribute('name', 'ICBM');
+      document.head.appendChild(icbm);
+    }
+    icbm.setAttribute('content', coords);
+    
+    let placeLocation = document.querySelector('meta[property="place:location:latitude"]');
+    if (!placeLocation) {
+      placeLocation = document.createElement('meta');
+      placeLocation.setAttribute('property', 'place:location:latitude');
+      document.head.appendChild(placeLocation);
+    }
+    placeLocation.setAttribute('content', coords.split(',')[0]);
+    
+    let placeLong = document.querySelector('meta[property="place:location:longitude"]');
+    if (!placeLong) {
+      placeLong = document.createElement('meta');
+      placeLong.setAttribute('property', 'place:location:longitude');
+      document.head.appendChild(placeLong);
+    }
+    placeLong.setAttribute('content', coords.split(',')[1]);
+    
+  }, [city, state]);
   
-  let script = document.querySelector('#city-local-ld');
-  if (!script) {
-    script = document.createElement('script');
-    script.id = 'city-local-ld';
-    script.type = 'application/ld+json';
-    document.head.appendChild(script);
-  }
-  script.textContent = JSON.stringify(localBusinessSchema);
-}, [city, state, slug]);
+  // ==================== COMPONENT DATA ====================
+  
   const SERVICES = [
     { icon: "🌐", title: "Website Design & Development", desc: `Custom, mobile-first websites for businesses in ${city}. React, Next.js, WordPress. SEO-ready from day one.`, price: "From ₹25,000" },
     { icon: "📱", title: "Mobile App Development", desc: `Flutter & React Native apps for Android and iOS. Built for ${city} businesses expanding digitally.`, price: "From ₹60,000" },
@@ -6077,30 +6277,35 @@ useEffect(() => {
     lightbg: "#f8fafc",
     border: "#e2e8f0",
   };
-
+  
+  const getNearbyCities = () => {
+    const sameState = INDIA_LOCATIONS.filter(([, name, st]) => st === state && name !== city);
+    return sameState.slice(0, 6).map(([slug, name]) => ({ slug, name }));
+  };
+  
+  // ==================== JSX RETURN ====================
+  
   return (
     <main style={{paddingTop:"4.5rem",minHeight:"100vh",background:"#fff",fontFamily:S.body}}>
 
-      {/* ── HERO ── */}
+      {/* HERO SECTION */}
       <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#7c3aed 100%)",padding:"clamp(3rem,8vw,5rem) clamp(1rem,4vw,1.5rem) clamp(3rem,8vw,5rem)",textAlign:"center",position:"relative",overflow:"hidden"}}>
-        {/* Glow blobs */}
         <div style={{position:"absolute",top:-80,right:-80,width:400,height:400,background:"rgba(124,58,237,.15)",borderRadius:"50%",filter:"blur(60px)"}}/>
-        <div style={{position:"absolute",bottom:-60,left:-60,width:300,height:300,background:"rgba(37,99,235,.2)",borderRadius:"50%",filter:"blur(50px)"}}/>
         <div style={{position:"relative",zIndex:1}}>
           <div style={{display:"inline-block",background:"rgba(251,191,36,.15)",border:"1.5px solid rgba(251,191,36,.4)",borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",color:"#fbbf24",marginBottom:"1.4rem",letterSpacing:".1em"}}>
-            WEB DEVELOPMENT COMPANY · {city.toUpperCase()} · {state.toUpperCase()}
+            ⭐ TOP-RATED WEB DEVELOPMENT COMPANY IN {city.toUpperCase()} · 4.9★ (50+ REVIEWS)
           </div>
           <h1 style={{fontFamily:S.font,fontSize:"clamp(2rem,5.5vw,3.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem",lineHeight:1.1,letterSpacing:"-.02em"}}>
-            Web Development<br/>Company Near You<br/><span style={{color:"#fbbf24"}}>in {city}</span>
+            Best Web Development<br/>Company Near You<br/><span style={{color:"#fbbf24"}}>in {city}</span>
           </h1>
           <p style={{color:"rgba(255,255,255,.8)",fontSize:"clamp(1rem,2vw,1.2rem)",maxWidth:640,margin:"0 auto 2.5rem",lineHeight:1.75}}>
-            Orbnix builds professional websites, mobile apps, AI chatbots and e-commerce stores for businesses in {city}, {state}. Fast delivery. Fair pricing. Full code ownership.
+            ⚡ 7-14 Day Delivery · 💰 50% Pay on Delivery · 🔓 Full Code Ownership<br/>
+            Trusted by businesses across {city}, {state}. Free consultation — no obligation.
           </p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.4)"}}>Get Free Consultation →</a>
             <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:".9rem 2.2rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1rem",border:"1.5px solid rgba(255,255,255,.25)"}}>💬 WhatsApp Us</a>
           </div>
-          {/* Stats row */}
           <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"2rem",marginTop:"3.5rem"}}>
             {STATS.map(s => (
               <div key={s.num} style={{textAlign:"center"}}>
@@ -6113,7 +6318,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── WHY ORBNIX ── */}
+      {/* WHY ORBNIX SECTION */}
       <section style={{padding:"5rem 1.5rem",maxWidth:1200,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
           <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>WHY ORBNIX</div>
@@ -6138,7 +6343,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── SERVICES ── */}
+      {/* SERVICES SECTION */}
       <section style={{background:S.lightbg,padding:"5rem 1.5rem"}}>
         <div style={{maxWidth:1200,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
@@ -6162,7 +6367,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── INDUSTRIES ── */}
+      {/* INDUSTRIES SECTION */}
       <section style={{padding:"5rem 1.5rem",maxWidth:1200,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:"3rem"}}>
           <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>INDUSTRIES</div>
@@ -6179,11 +6384,10 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── PRODUCTS SECTION — tabbed ── */}
+      {/* PRODUCT TABS SECTION */}
       <ProductTabsSection setPage={setPage} city={city} />
 
-
-      {/* ── HOW IT WORKS ── */}
+      {/* HOW IT WORKS SECTION */}
       <section style={{background:S.navy,padding:"5rem 1.5rem"}}>
         <div style={{maxWidth:1100,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
@@ -6192,7 +6396,7 @@ useEffect(() => {
             <p style={{color:"rgba(255,255,255,.6)",fontSize:"1.05rem"}}>From first WhatsApp to live website — here's exactly what happens.</p>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"1.5rem"}}>
-            {PROCESS.map((p, i) => (
+            {PROCESS.map((p) => (
               <div key={p.step} style={{background:"rgba(255,255,255,.06)",borderRadius:18,padding:"2rem 1.5rem",border:"1.5px solid rgba(255,255,255,.1)",position:"relative"}}>
                 <div style={{fontFamily:S.mono,fontSize:"2.5rem",fontWeight:900,color:"rgba(255,255,255,.08)",position:"absolute",top:"1rem",right:"1.25rem"}}>{p.step}</div>
                 <div style={{fontSize:"2rem",marginBottom:"1rem"}}>{p.icon}</div>
@@ -6204,7 +6408,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── PRICING SNAPSHOT ── */}
+      {/* PRICING SNAPSHOT SECTION */}
       <section style={{padding:"5rem 1.5rem",maxWidth:1100,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
           <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>PRICING</div>
@@ -6234,7 +6438,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* FAQ SECTION */}
       <section style={{background:S.lightbg,padding:"5rem 1.5rem"}}>
         <div style={{maxWidth:780,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:"3rem"}}>
@@ -6255,12 +6459,41 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ── FINAL CTA ── */}
+      {/* NEARBY CITIES SECTION */}
+      {getNearbyCities().length > 0 && (
+        <section style={{padding:"3rem 1.5rem",maxWidth:1200,margin:"0 auto"}}>
+          <div style={{textAlign:"center",marginBottom:"2rem"}}>
+            <div style={{display:"inline-block",background:"#eff6ff",color:S.blue,borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>SERVING ACROSS {state}</div>
+            <h2 style={{fontFamily:S.font,fontSize:"clamp(1.4rem,3vw,1.8rem)",fontWeight:800,color:S.navy,marginBottom:".5rem"}}>
+              Also Serving Near <span style={{color:S.orange}}>{city}</span>
+            </h2>
+            <p style={{color:S.gray,fontSize:".9rem"}}>We're a remote-first agency serving businesses across {state} and all of India.</p>
+          </div>
+          <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:".75rem"}}>
+            {getNearbyCities().map(nearby => (
+              <a 
+                key={nearby.slug} 
+                href={`/cities/${nearby.slug}`}
+                onClick={(e) => { e.preventDefault(); setPage(`city-${nearby.slug}`); }}
+                style={{background:"#fff",border:`1.5px solid ${S.border}`,borderRadius:99,padding:".6rem 1.25rem",fontSize:".85rem",fontWeight:600,color:S.navy,textDecoration:"none",cursor:"pointer",transition:"all .2s"}}
+                onMouseEnter={e=>{e.currentTarget.style.borderColor=S.orange;e.currentTarget.style.background="#fff7ed";e.currentTarget.style.transform="translateY(-2px)";}}
+                onMouseLeave={e=>{e.currentTarget.style.borderColor=S.border;e.currentTarget.style.background="#fff";e.currentTarget.style.transform="none";}}
+              >
+                📍 {nearby.name}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* FINAL CTA SECTION */}
       <section style={{background:"linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%)",padding:"5rem 1.5rem",textAlign:"center",position:"relative",overflow:"hidden"}}>
-        <div style={{position:"absolute",top:-100,right:-100,width:400,height:400,background:"rgba(124,58,237,.15)",borderRadius:"50%",filter:"blur(60px)"}}/>
+        <div style={{position:"absolute",top:-100,right:-100,width:400,height:400,background:"radial-gradient(circle,rgba(124,58,237,.15),transparent 70%)",filter:"blur(60px)"}}/>
         <div style={{position:"relative",zIndex:1}}>
           <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:"#fff",marginBottom:"1rem"}}>Ready to grow your {city} business online?</h2>
-          <p style={{color:"rgba(255,255,255,.7)",marginBottom:"2.5rem",fontSize:"1.05rem",maxWidth:500,margin:"0 auto 2.5rem"}}>Free consultation. Fixed pricing. Delivery in 7–14 days. Reply guaranteed within 24 hours.</p>
+          <p style={{color:"rgba(255,255,255,.7)",marginBottom:"2.5rem",fontSize:"1.05rem",maxWidth:500,margin:"0 auto 2.5rem"}}>
+            Free consultation. Fixed pricing. Delivery in 7–14 days. Reply guaranteed within 24 hours.
+          </p>
           <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="/contact" style={{background:S.orange,color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:800,textDecoration:"none",fontSize:"1.05rem",fontFamily:S.font,boxShadow:"0 4px 24px rgba(249,115,22,.35)"}}>Start Your Project →</a>
             <a href="https://wa.me/919358812928" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.1)",color:"#fff",padding:"1rem 2.5rem",borderRadius:14,fontWeight:700,textDecoration:"none",fontSize:"1.05rem",border:"1.5px solid rgba(255,255,255,.2)"}}>💬 WhatsApp Now</a>

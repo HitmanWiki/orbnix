@@ -5,14 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run generate-sitemap && npm run generate-robots && vite build",
+    "postbuild": "npm run copy-build && npm run prerender",
     "copy-build": "node copy-build.js",
     "prerender": "node prerender.js",
     "generate-sitemap": "node generate-sitemap.js",
     "generate-robots": "node generate-robots.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vercel-build": "vite build && npm run generate-sitemap && npm run generate-robots && npm run copy-build && npm run prerender"
+    "vercel-build": "npm run generate-sitemap && npm run generate-robots && vite build && npm run copy-build && npm run prerender",
+    "sitemap-only": "node generate-sitemap.js",
+    "robots-only": "node generate-robots.js"
   },
   "dependencies": {
     "lucide-react": "^0.546.0",

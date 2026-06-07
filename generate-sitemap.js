@@ -1,12 +1,14 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+// generate-sitemap.js
+import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Import your city data (create this file)
-// For now, let's read from sitemap.xml or define directly
+// ==================== YOUR COMPLETE INDIA_LOCATIONS DATA ====================
+// (Copy all your INDIA_LOCATIONS from App.jsx - all 700+ cities)
+
 const INDIA_LOCATIONS = [
   ["anantapur","Anantapur","Andhra Pradesh"],
   ["chittoor","Chittoor","Andhra Pradesh"],
@@ -783,52 +785,80 @@ const INDIA_LOCATIONS = [
   ["kargil","Kargil","Ladakh"],
 ];
 
-// Alternative: Read cities from sitemap.xml (dynamic)
-const readCitiesFromSitemap = () => {
-  const sitemapPath = resolve(__dirname, 'public', 'sitemap.xml');
-  if (existsSync(sitemapPath)) {
-    const content = readFileSync(sitemapPath, 'utf-8');
-    const matches = content.match(/\/cities\/([a-z-]+)/g);
-    if (matches) {
-      return [...new Set(matches.map(m => m.replace('/cities/', '')))];
-    }
-  }
-  return [];
-};
-
-// Use sitemap to get all cities (recommended)
-const citySlugs = readCitiesFromSitemap();
-console.log(`📍 Found ${citySlugs.length} cities from sitemap`);
-
-const staticRoutes = [
-  '/', '/about', '/work', '/blog', '/services', '/pricing', '/contact',
-  '/products', '/products/school-erp', '/products/ozbiz', '/products/clinic', '/products/frugano'
+// ==================== STATIC PAGES ====================
+const staticPages = [
+  { loc: '/', priority: '1.00', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/products', priority: '0.95', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/products/school-erp', priority: '0.92', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/products/ozbiz', priority: '0.92', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/products/clinic', priority: '0.92', changefreq: 'weekly', lastmod: '2026-05-31' },
+  { loc: '/products/frugano', priority: '0.92', changefreq: 'weekly', lastmod: '2026-05-31' },
+  { loc: '/services', priority: '0.90', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/blog', priority: '0.90', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/work', priority: '0.80', changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/pricing', priority: '0.80', changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/about', priority: '0.70', changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+  { loc: '/contact', priority: '0.70', changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
 ];
 
-const blogRoutes = Array.from({ length: 17 }, (_, i) => `/blog/${i + 1}`);
-const cityRoutes = citySlugs.map(slug => `/cities/${slug}`);
-const routes = [...staticRoutes, ...blogRoutes, ...cityRoutes];
-
-console.log(`📦 Pre-rendering ${routes.length} routes...`);
-
-const buildDir = resolve(__dirname, 'build');
-const indexPath = resolve(buildDir, 'index.html');
-
-if (!existsSync(indexPath)) {
-  console.error('❌ Run `npm run build` first!');
-  process.exit(1);
+// ==================== BLOG POSTS (1-17) ====================
+const blogPosts = [];
+for (let i = 1; i <= 17; i++) {
+  blogPosts.push({
+    loc: `/blog/${i}`,
+    priority: '0.85',
+    changefreq: 'weekly',
+    lastmod: '2026-05-31'
+  });
 }
 
-const indexHtml = readFileSync(indexPath, 'utf-8');
+// ==================== CITY PAGES ====================
+const cityPages = INDIA_LOCATIONS.map(([slug, name]) => ({
+  loc: `/cities/${slug}`,
+  priority: '0.80',
+  changefreq: 'monthly',
+  lastmod: new Date().toISOString().split('T')[0]
+}));
 
-routes.forEach(route => {
-  const filePath = route === '/' 
-    ? resolve(buildDir, 'index.html')
-    : resolve(buildDir, `${route}/index.html`);
+// ==================== GENERATE SITEMAP ====================
+const generateSitemap = () => {
+  const allUrls = [...staticPages, ...blogPosts, ...cityPages];
   
-  const dirPath = dirname(filePath);
-  if (!existsSync(dirPath)) mkdirSync(dirPath, { recursive: true });
-  writeFileSync(filePath, indexHtml);
-});
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n';
+  xml += '  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"\n';
+  xml += '  xmlns:xhtml="http://www.w3.org/1999/xhtml"\n';
+  xml += '  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"\n';
+  xml += '  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
+  
+  allUrls.forEach(url => {
+    xml += `  <url>\n`;
+    xml += `    <loc>https://www.orbnix.in${url.loc}</loc>\n`;
+    xml += `    <lastmod>${url.lastmod}</lastmod>\n`;
+    xml += `    <changefreq>${url.changefreq}</changefreq>\n`;
+    xml += `    <priority>${url.priority}</priority>\n`;
+    xml += `  </url>\n`;
+  });
+  
+  xml += '</urlset>';
+  
+  // Ensure public directory exists
+  const publicDir = resolve(__dirname, 'public');
+  if (!existsSync(publicDir)) {
+    mkdirSync(publicDir, { recursive: true });
+  }
+  
+  // Write sitemap.xml to public folder
+  const sitemapPath = resolve(publicDir, 'sitemap.xml');
+  writeFileSync(sitemapPath, xml);
+  
+  console.log(`✅ Sitemap generated successfully!`);
+  console.log(`   📍 Total URLs: ${allUrls.length}`);
+  console.log(`   📄 Static pages: ${staticPages.length}`);
+  console.log(`   📝 Blog posts: ${blogPosts.length}`);
+  console.log(`   🏙️  City pages: ${cityPages.length}`);
+  console.log(`   💾 Saved to: ${sitemapPath}`);
+};
 
-console.log(`✅ Pre-rendered ${routes.length} routes!`);
+// ==================== RUN ====================
+generateSitemap();
