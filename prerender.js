@@ -1,13 +1,13 @@
 // prerender.js
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// ==================== YOUR COMPLETE CITY DATA ====================
-// Directly use INDIA_LOCATIONS - generate all city slugs from it
+// ==================== ADD YOUR INDIA_LOCATIONS HERE ====================
+// Paste your complete INDIA_LOCATIONS array here (all 773 cities)
 const INDIA_LOCATIONS = [
   ["anantapur","Anantapur","Andhra Pradesh"],
   ["chittoor","Chittoor","Andhra Pradesh"],
@@ -783,10 +783,20 @@ const INDIA_LOCATIONS = [
   ["leh","Leh","Ladakh"],
   ["kargil","Kargil","Ladakh"],
 ];
-// Extract all city slugs from INDIA_LOCATIONS
-const allCitySlugs = INDIA_LOCATIONS.map(city => city[0]);
 
-console.log(`📍 Found ${allCitySlugs.length} cities from INDIA_LOCATIONS`);
+// ==================== BLOG POSTS ====================
+// Define all blog post slugs (1-17)
+const BLOG_SLUGS = [
+  '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+  '11', '12', '13', '14', '15', '16', '17'
+];
+
+// ==================== EXTRACT ALL SLUGS ====================
+const allCitySlugs = INDIA_LOCATIONS.map(city => city[0]);
+const allBlogSlugs = BLOG_SLUGS;
+
+console.log(`📍 Found ${allCitySlugs.length} cities`);
+console.log(`📝 Found ${allBlogSlugs.length} blog posts`);
 
 // ==================== STATIC ROUTES ====================
 const staticRoutes = [
@@ -804,8 +814,8 @@ const staticRoutes = [
   '/products/frugano',
 ];
 
-// ==================== BLOG ROUTES (1-17) ====================
-const blogRoutes = Array.from({ length: 17 }, (_, i) => `/blog/${i + 1}`);
+// ==================== BLOG ROUTES ====================
+const blogRoutes = allBlogSlugs.map(slug => `/blog/${slug}`);
 
 // ==================== CITY ROUTES ====================
 const cityRoutes = allCitySlugs.map(slug => `/cities/${slug}`);
@@ -813,7 +823,7 @@ const cityRoutes = allCitySlugs.map(slug => `/cities/${slug}`);
 // ==================== COMBINE ALL ROUTES ====================
 const routes = [...staticRoutes, ...blogRoutes, ...cityRoutes];
 
-console.log(`📦 Pre-rendering ${routes.length} routes...`);
+console.log(`📦 Pre-rendering ${routes.length} total routes...`);
 console.log(`   📄 Static pages: ${staticRoutes.length}`);
 console.log(`   📝 Blog posts: ${blogRoutes.length}`);
 console.log(`   🏙️  City pages: ${cityRoutes.length}`);
@@ -821,6 +831,9 @@ console.log(`   🏙️  City pages: ${cityRoutes.length}`);
 // ==================== READ INDEX.HTML ====================
 const buildDir = resolve(__dirname, 'build');
 const indexPath = resolve(buildDir, 'index.html');
+
+console.log(`📁 Build directory: ${buildDir}`);
+console.log(`📁 Index path: ${indexPath}`);
 
 if (!existsSync(indexPath)) {
   console.error('❌ Build directory not found! Run `npm run build` first.');
@@ -833,27 +846,89 @@ console.log(`✅ Read index.html (${indexHtml.length} bytes)`);
 
 // ==================== CREATE STATIC FILES ====================
 let created = 0;
+let failed = 0;
+
 routes.forEach(route => {
   const filePath = route === '/' 
     ? resolve(buildDir, 'index.html')
     : resolve(buildDir, `${route}/index.html`);
   
   const dirPath = dirname(filePath);
+  
   if (!existsSync(dirPath)) {
     mkdirSync(dirPath, { recursive: true });
   }
   
-  writeFileSync(filePath, indexHtml);
-  created++;
+  try {
+    writeFileSync(filePath, indexHtml);
+    created++;
+    
+    // Log first few pages for debugging
+    if (created <= 10) {
+      console.log(`   ✅ Created: ${route}`);
+    }
+  } catch (err) {
+    failed++;
+    console.error(`   ❌ Failed: ${route} - ${err.message}`);
+  }
 });
 
 console.log(`✅ Pre-rendered ${created} routes successfully!`);
-console.log(`💾 Output directory: ${buildDir}`);
+if (failed > 0) console.log(`⚠️ Failed: ${failed} routes`);
 
-// Verify city directories exist
-const testCityPath = resolve(buildDir, 'cities', 'jaipur', 'index.html');
-if (existsSync(testCityPath)) {
-  console.log(`✅ Verified: /cities/jaipur/index.html exists`);
-} else {
-  console.log(`⚠️ Warning: /cities/jaipur/index.html not found`);
+// ==================== VERIFY FILES EXIST ====================
+
+// Verify static pages
+const staticChecks = ['/about', '/work', '/blog', '/services', '/pricing', '/contact'];
+console.log(`\n📋 Verifying static pages:`);
+staticChecks.forEach(route => {
+  const filePath = resolve(buildDir, `${route}/index.html`);
+  if (existsSync(filePath)) {
+    console.log(`   ✅ ${route}`);
+  } else {
+    console.log(`   ❌ ${route} - NOT FOUND`);
+  }
+});
+
+// Verify blog pages
+console.log(`\n📋 Verifying blog pages:`);
+const sampleBlogs = ['/blog/1', '/blog/5', '/blog/10', '/blog/17'];
+sampleBlogs.forEach(route => {
+  const filePath = resolve(buildDir, `${route}/index.html`);
+  if (existsSync(filePath)) {
+    console.log(`   ✅ ${route}`);
+  } else {
+    console.log(`   ❌ ${route} - NOT FOUND`);
+  }
+});
+
+// Verify city pages
+console.log(`\n📋 Verifying city pages:`);
+const sampleCities = ['/cities/jaipur', '/cities/mumbai', '/cities/delhi', '/cities/bangalore', '/cities/chennai'];
+sampleCities.forEach(route => {
+  const filePath = resolve(buildDir, `${route}/index.html`);
+  if (existsSync(filePath)) {
+    console.log(`   ✅ ${route}`);
+  } else {
+    console.log(`   ❌ ${route} - NOT FOUND`);
+  }
+});
+
+// ==================== SUMMARY ====================
+console.log(`\n🎉 Pre-rendering complete!`);
+console.log(`   Total routes: ${routes.length}`);
+console.log(`   Successfully created: ${created}`);
+console.log(`   Output directory: ${buildDir}`);
+
+// List all directories in build
+if (existsSync(buildDir)) {
+  const contents = readdirSync(buildDir);
+  console.log(`\n📁 Build directory contents: ${contents.slice(0, 15).join(', ')}${contents.length > 15 ? '...' : ''}`);
+  
+  if (contents.includes('cities')) {
+    const citiesDir = resolve(buildDir, 'cities');
+    const cities = readdirSync(citiesDir);
+    console.log(`🏙️  Cities directory contains ${cities.length} city folders`);
+    console.log(`   Sample: ${cities.slice(0, 10).join(', ')}...`);
+  }
 }
