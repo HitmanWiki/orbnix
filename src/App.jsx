@@ -6402,11 +6402,13 @@ function CityPage({ city, slug, state, setPage }) {
       {/* HOW IT WORKS SECTION */}
       <section style={{background:S.navy,padding:"5rem 1.5rem"}}>
         <div style={{maxWidth:1100,margin:"0 auto"}}>
-          <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
-            <div style={{display:"inline-block",background:"rgba(255,255,255,.1)",color:"rgba(255,255,255,.7)",borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>PROCESS</div>
-            <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:"#fff",marginBottom:".75rem"}}>How It Works</h2>
-            <p style={{color:"rgba(255,255,255,.6)",fontSize:"1.05rem"}}>From first WhatsApp to live website — here's exactly what happens.</p>
-          </div>
+    <div style={{textAlign:"center",marginBottom:"3.5rem"}}>
+      <div style={{display:"inline-block",background:"rgba(255,255,255,.1)",color:"rgba(255,255,255,.7)",borderRadius:20,padding:".35rem 1.1rem",fontFamily:S.mono,fontSize:".72rem",fontWeight:700,marginBottom:"1rem",letterSpacing:".08em"}}>PROCESS</div>
+      <h2 style={{fontFamily:S.font,fontSize:"clamp(1.8rem,4vw,2.8rem)",fontWeight:900,color:"#fff",marginBottom:".75rem"}}>
+        How We Build Websites for <span style={{color:S.orange}}>{city}</span> Businesses
+      </h2>
+      <p style={{color:"rgba(255,255,255,.6)",fontSize:"1.05rem"}}>From first WhatsApp to live website — here's exactly how we help businesses in {city} go digital.</p>
+    </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"1.5rem"}}>
             {PROCESS.map((p) => (
               <div key={p.step} style={{background:"rgba(255,255,255,.06)",borderRadius:18,padding:"2rem 1.5rem",border:"1.5px solid rgba(255,255,255,.1)",position:"relative"}}>
