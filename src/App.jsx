@@ -5665,6 +5665,7 @@ const INDIA_LOCATIONS = [
 // ─── PRODUCT TABS SECTION (used in every CityPage) ───────────────────────────
 function ProductTabsSection({ setPage, city }) {
   const [tab, setTab] = useState("erp");
+  
   return (
     <section style={{padding:"3.5rem 1.5rem",background:"#0F172A",position:"relative",overflow:"hidden"}}>
       <div style={{position:"absolute",top:-80,right:-80,width:350,height:350,background:"radial-gradient(circle,rgba(37,99,235,.18) 0%,transparent 70%)",pointerEvents:"none"}}/>
@@ -5684,7 +5685,7 @@ function ProductTabsSection({ setPage, city }) {
           <div onClick={()=>setPage("products")} style={{color:"#60a5fa",fontWeight:700,fontSize:".85rem",cursor:"pointer",whiteSpace:"nowrap"}}>View All Products →</div>
         </div>
 
-        {/* Tab buttons */}
+        {/* Tab buttons - responsive wrap */}
         <div style={{display:"flex",gap:8,marginBottom:24,flexWrap:"wrap"}}>
           {[["erp","🏫","School ERP"],["ozbiz","🌏","OzBiz"],["clinic","🏥","ClinicPortal"],["frugano","🛒","Frugano"]].map(([key,ic,lb])=>(
             <button key={key} onClick={()=>setTab(key)}
@@ -5697,61 +5698,68 @@ function ProductTabsSection({ setPage, city }) {
           ))}
         </div>
 
-        {/* Tab content */}
+        {/* ==================== SCHOOL ERP TAB ==================== */}
         {tab === "erp" && (
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"2.5rem",alignItems:"center"}}>
-            <div>
-              <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.3rem,2.5vw,1.7rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.15}}>
-                School ERP for<br/><span style={{color:"#60a5fa"}}>Schools in {city}</span>
-              </div>
-              <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:20,fontSize:".9rem"}}>
-                AI-enabled school management — students, attendance, fees, exams, transport, library and parent communication. Built for Indian schools, CBSE/ICSE/State Board.
-              </p>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:22}}>
-                {[["👥","Student Profiles"],["✅","Attendance + SMS"],["💰","Fee Collection"],["📝","Exams & Results"],["🚌","Transport & GPS"],["✨","AI Studio"],["👨‍👩‍👧","Parent App"],["🌐","Website CMS"]].map(([ic,lb])=>(
-                  <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.07)"}}>
-                    <span style={{fontSize:".85rem"}}>{ic}</span>
-                    <span style={{color:"rgba(255,255,255,.75)",fontSize:".76rem",fontWeight:500}}>{lb}</span>
-                  </div>
-                ))}
-              </div>
-              <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
-                <div onClick={()=>setPage("product-school-erp")} style={{background:"#2563EB",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:700,fontSize:".85rem",cursor:"pointer",boxShadow:"0 5px 18px rgba(37,99,235,.35)"}}>View School ERP →</div>
-                <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:600,fontSize:".85rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.18)"}}>Book Free Demo</div>
-              </div>
-            </div>
-            {/* Mini dashboard */}
-            <div style={{background:"#0a1628",borderRadius:14,overflow:"hidden",border:"1.5px solid rgba(255,255,255,.08)",boxShadow:"0 16px 48px rgba(0,0,0,.4)"}}>
-              <div style={{background:"#1e293b",padding:"7px 12px",display:"flex",alignItems:"center",gap:5,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
-                {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:9,height:9,borderRadius:"50%",background:c}}/>)}
-                <span style={{color:"rgba(255,255,255,.28)",fontSize:".65rem",marginLeft:6}}>erp.school.in</span>
-              </div>
-              <div style={{display:"flex",minHeight:280}}>
-                <div style={{width:120,background:"#1a2744",borderRight:"1px solid rgba(255,255,255,.05)",padding:"10px 0"}}>
-                  {[["👥","Students"],["✅","Attendance"],["💰","Fees"],["📝","Exams"],["🚌","Transport"],["✨","AI Studio"]].map(([ic,lb],i)=>(
-                    <div key={lb} style={{display:"flex",alignItems:"center",gap:6,padding:"6px 10px",background:i===0?"rgba(37,99,235,.2)":"transparent"}}>
-                      <span style={{fontSize:".72rem"}}>{ic}</span>
-                      <span style={{color:i===0?"#60a5fa":"rgba(255,255,255,.45)",fontSize:".68rem"}}>{lb}</span>
+          <div style={{display:"flex",flexDirection:"column",gap:"2rem"}}>
+            {/* Content row - switches to column on mobile */}
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",gap:"2rem",alignItems:"center"}}>
+              {/* Left side - text content */}
+              <div>
+                <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.3rem,2.5vw,1.7rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.15}}>
+                  School ERP for<br/><span style={{color:"#60a5fa"}}>Schools in {city}</span>
+                </div>
+                <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:20,fontSize:".9rem"}}>
+                  AI-enabled school management — students, attendance, fees, exams, transport, library and parent communication. Built for Indian schools, CBSE/ICSE/State Board.
+                </p>
+                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:8,marginBottom:22}}>
+                  {[["👥","Student Profiles"],["✅","Attendance + SMS"],["💰","Fee Collection"],["📝","Exams & Results"],["🚌","Transport & GPS"],["✨","AI Studio"],["👨‍👩‍👧","Parent App"],["🌐","Website CMS"]].map(([ic,lb])=>(
+                    <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.07)"}}>
+                      <span style={{fontSize:".85rem"}}>{ic}</span>
+                      <span style={{color:"rgba(255,255,255,.75)",fontSize:".76rem",fontWeight:500}}>{lb}</span>
                     </div>
                   ))}
                 </div>
-                <div style={{flex:1,padding:12}}>
-                  <div style={{color:"#fff",fontWeight:800,fontSize:".88rem",marginBottom:10}}>🎓 Dashboard</div>
-                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7,marginBottom:10}}>
-                    {[["👥","1,240","Students","#2563EB"],["✅","94%","Attendance","#10b981"],["💰","23","Defaulters","#f59e0b"],["👨‍💼","86","Staff","#7c3aed"]].map(([ic,val,lb,col])=>(
-                      <div key={lb} style={{background:"rgba(255,255,255,.05)",borderRadius:7,padding:9,border:"1px solid rgba(255,255,255,.06)"}}>
-                        <div style={{fontSize:".7rem",marginBottom:3}}>{ic}</div>
-                        <div style={{fontWeight:900,color:"#fff",fontSize:".95rem",lineHeight:1}}>{val}</div>
-                        <div style={{color:"rgba(255,255,255,.35)",fontSize:".58rem"}}>{lb}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{background:"rgba(255,255,255,.04)",borderRadius:8,padding:9,border:"1px solid rgba(255,255,255,.06)"}}>
-                    <div style={{color:"rgba(255,255,255,.4)",fontSize:".62rem",marginBottom:5}}>Quick Actions</div>
-                    <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
-                      {["✅ Attendance","💰 Collect Fee","📢 Notice","📝 Exam"].map(a=>(
-                        <div key={a} style={{background:"rgba(37,99,235,.22)",borderRadius:5,padding:"3px 7px",color:"#60a5fa",fontSize:".58rem",fontWeight:600}}>{a}</div>
+                <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+                  <div onClick={()=>setPage("product-school-erp")} style={{background:"#2563EB",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:700,fontSize:".85rem",cursor:"pointer",boxShadow:"0 5px 18px rgba(37,99,235,.35)"}}>View School ERP →</div>
+                  <div onClick={()=>setPage("contact")} style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:600,fontSize:".85rem",cursor:"pointer",border:"1.5px solid rgba(255,255,255,.18)"}}>Book Free Demo</div>
+                </div>
+              </div>
+              
+              {/* Right side - dashboard preview */}
+              <div style={{background:"#0a1628",borderRadius:14,overflow:"hidden",border:"1.5px solid rgba(255,255,255,.08)",boxShadow:"0 16px 48px rgba(0,0,0,.4)"}}>
+                <div style={{background:"#1e293b",padding:"7px 12px",display:"flex",alignItems:"center",gap:5,borderBottom:"1px solid rgba(255,255,255,.06)"}}>
+                  {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:9,height:9,borderRadius:"50%",background:c}}/>)}
+                  <span style={{color:"rgba(255,255,255,.28)",fontSize:".65rem",marginLeft:6}}>erp.school.in</span>
+                </div>
+                <div style={{display:"flex",flexDirection:"column",minHeight:280}}>
+                  <div style={{display:"flex",flexWrap:"wrap",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                    <div style={{flex:1,minWidth:100,padding:"10px 0"}}>
+                      {[["👥","Students"],["✅","Attendance"],["💰","Fees"],["📝","Exams"],["🚌","Transport"],["✨","AI Studio"]].map(([ic,lb],i)=>(
+                        <div key={lb} style={{display:"flex",alignItems:"center",gap:6,padding:"6px 10px",background:i===0?"rgba(37,99,235,.2)":"transparent"}}>
+                          <span style={{fontSize:".72rem"}}>{ic}</span>
+                          <span style={{color:i===0?"#60a5fa":"rgba(255,255,255,.45)",fontSize:".68rem"}}>{lb}</span>
+                        </div>
                       ))}
+                    </div>
+                    <div style={{flex:2,padding:12}}>
+                      <div style={{color:"#fff",fontWeight:800,fontSize:".88rem",marginBottom:10}}>🎓 Dashboard</div>
+                      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(100px, 1fr))",gap:7,marginBottom:10}}>
+                        {[["👥","1,240","Students","#2563EB"],["✅","94%","Attendance","#10b981"],["💰","23","Defaulters","#f59e0b"],["👨‍💼","86","Staff","#7c3aed"]].map(([ic,val,lb,col])=>(
+                          <div key={lb} style={{background:"rgba(255,255,255,.05)",borderRadius:7,padding:9,border:"1px solid rgba(255,255,255,.06)"}}>
+                            <div style={{fontSize:".7rem",marginBottom:3}}>{ic}</div>
+                            <div style={{fontWeight:900,color:"#fff",fontSize:".95rem",lineHeight:1}}>{val}</div>
+                            <div style={{color:"rgba(255,255,255,.35)",fontSize:".58rem"}}>{lb}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{background:"rgba(255,255,255,.04)",borderRadius:8,padding:9,border:"1px solid rgba(255,255,255,.06)"}}>
+                        <div style={{color:"rgba(255,255,255,.4)",fontSize:".62rem",marginBottom:5}}>Quick Actions</div>
+                        <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+                          {["✅ Attendance","💰 Collect Fee","📢 Notice","📝 Exam"].map(a=>(
+                            <div key={a} style={{background:"rgba(37,99,235,.22)",borderRadius:5,padding:"3px 7px",color:"#60a5fa",fontSize:".58rem",fontWeight:600}}>{a}</div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -5760,8 +5768,9 @@ function ProductTabsSection({ setPage, city }) {
           </div>
         )}
 
+        {/* ==================== OZBIZ TAB ==================== */}
         {tab === "ozbiz" && (
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"2.5rem",alignItems:"center"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",gap:"2rem",alignItems:"center"}}>
             <div>
               <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.3rem,2.5vw,1.7rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.15}}>
                 OzBiz Directory<br/><span style={{color:"#fb923c"}}>India Meets Australia 🌏</span>
@@ -5769,7 +5778,7 @@ function ProductTabsSection({ setPage, city }) {
               <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:20,fontSize:".9rem"}}>
                 A business listing platform for Indian-owned businesses across Australia. Find restaurants, doctors, lawyers, temples, grocery stores and 20+ categories in every major Australian city.
               </p>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:22}}>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:8,marginBottom:22}}>
                 {[["🔍","Smart Search"],["📋","Easy Listing"],["⭐","Ratings & Reviews"],["🗂️","20+ Categories"],["📍","All Major Cities"],["🤝","Community First"],["📸","Rich Profiles"],["💬","Direct Contact"]].map(([ic,lb])=>(
                   <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.07)"}}>
                     <span style={{fontSize:".85rem"}}>{ic}</span>
@@ -5782,7 +5791,8 @@ function ProductTabsSection({ setPage, city }) {
                 <a href="https://ozbiz-frontend.vercel.app" target="_blank" rel="noopener noreferrer" style={{background:"rgba(255,255,255,.08)",color:"#fff",padding:"10px 22px",borderRadius:9,fontWeight:600,fontSize:".85rem",textDecoration:"none",border:"1.5px solid rgba(255,255,255,.18)"}}>Visit Live Site</a>
               </div>
             </div>
-            {/* OzBiz preview */}
+            
+            {/* OzBiz preview - consistent with other cards */}
             <div style={{background:"#fffbf7",borderRadius:14,overflow:"hidden",border:"1.5px solid #fed7aa",boxShadow:"0 16px 48px rgba(249,115,22,.12)"}}>
               <div style={{background:"#fff3e8",padding:"7px 12px",display:"flex",alignItems:"center",gap:5,borderBottom:"1px solid #fed7aa"}}>
                 {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{width:9,height:9,borderRadius:"50%",background:c}}/>)}
@@ -5811,7 +5821,7 @@ function ProductTabsSection({ setPage, city }) {
                 </div>
                 <div style={{padding:"10px 12px"}}>
                   <div style={{fontWeight:800,fontSize:".78rem",color:"#1c1917",marginBottom:7}}>Featured in Sydney</div>
-                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7}}>
+                  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:7}}>
                     {[["Bombay Bites","Restaurant","🍛","4.8"],["India Bazaar","Grocery","🛒","4.6"],["Dr. Priya Shah","Doctor","👨‍⚕️","4.9"],["Sharma & Co.","Legal","⚖️","4.7"]].map(([n,c,e,r])=>(
                       <div key={n} style={{background:"#fff",borderRadius:8,border:"1px solid #f5f5f4",overflow:"hidden"}}>
                         <div style={{background:"#fff7ed",height:36,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem"}}>{e}</div>
@@ -5829,12 +5839,13 @@ function ProductTabsSection({ setPage, city }) {
           </div>
         )}
 
+        {/* ==================== CLINIC TAB ==================== */}
         {tab === "clinic" && (
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"2rem",alignItems:"center"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",gap:"2rem",alignItems:"center"}}>
             <div>
               <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.2}}>ClinicPortal<br/><span style={{color:"#38bdf8"}}>For Clinics in {city}</span></div>
               <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:18,fontSize:".88rem"}}>Digital prescriptions, WhatsApp follow-ups, Google review boost, patient app and analytics — built for small clinics in India.</p>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:20}}>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(100px, 1fr))",gap:8,marginBottom:20}}>
                 {[["👥","Patients"],["💊","Digital Rx"],["⏰","WA Alerts"],["⭐","Reviews"],["📱","Patient App"],["💳","Billing"],["📅","Appointments"],["📊","Analytics"]].map(([ic,lb])=>(
                   <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.08)"}}>
                     <span style={{fontSize:".85rem"}}>{ic}</span><span style={{color:"rgba(255,255,255,.75)",fontSize:".76rem",fontWeight:500}}>{lb}</span>
@@ -5856,7 +5867,7 @@ function ProductTabsSection({ setPage, city }) {
                   <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".88rem",color:"#0f172a"}}>🏥 Clinic Dashboard</div>
                   <div style={{background:"#0891b2",borderRadius:6,padding:"3px 9px",color:"#fff",fontSize:".65rem",fontWeight:700}}>+ New Patient</div>
                 </div>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7,marginBottom:9}}>
+                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(100px, 1fr))",gap:7,marginBottom:9}}>
                   {[["👥","48","Today","#0891b2"],["⭐","4.8","Rating","#d97706"],["💊","36","Prescriptions","#059669"],["⏰","12","Reminders","#7c3aed"]].map(([ic,val,lb,col])=>(
                     <div key={lb} style={{background:"#fff",borderRadius:7,padding:9,border:"1px solid #e2e8f0"}}>
                       <div style={{fontSize:".7rem",marginBottom:2}}>{ic}</div>
@@ -5879,12 +5890,13 @@ function ProductTabsSection({ setPage, city }) {
           </div>
         )}
 
+        {/* ==================== FRUGANO TAB ==================== */}
         {tab === "frugano" && (
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"2rem",alignItems:"center"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",gap:"2rem",alignItems:"center"}}>
             <div>
               <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:900,color:"#fff",marginBottom:12,lineHeight:1.2}}>Frugano<br/><span style={{color:"#4ade80"}}>For Kirana Shops in {city}</span></div>
               <p style={{color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:18,fontSize:".88rem"}}>Inventory, WhatsApp orders, digital billing, khata management and daily accounts — for kirana shops and fruit & vegetable vendors.</p>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:20}}>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(100px, 1fr))",gap:8,marginBottom:20}}>
                 {[["📦","Inventory"],["💬","WA Orders"],["🧾","Billing"],["👥","Customers"],["💰","Khata"],["🚚","Delivery"],["📊","Reports"],["📈","Analytics"]].map(([ic,lb])=>(
                   <div key={lb} style={{display:"flex",alignItems:"center",gap:7,background:"rgba(255,255,255,.06)",borderRadius:8,padding:"7px 10px",border:"1px solid rgba(255,255,255,.08)"}}>
                     <span style={{fontSize:".85rem"}}>{ic}</span><span style={{color:"rgba(255,255,255,.75)",fontSize:".76rem",fontWeight:500}}>{lb}</span>
@@ -5906,7 +5918,7 @@ function ProductTabsSection({ setPage, city }) {
                   <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:".88rem",color:"#0f172a"}}>🛒 Sharma Kirana</div>
                   <div style={{background:"#16a34a",borderRadius:6,padding:"3px 9px",color:"#fff",fontSize:".65rem",fontWeight:700}}>+ New Bill</div>
                 </div>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7,marginBottom:9}}>
+                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(100px, 1fr))",gap:7,marginBottom:9}}>
                   {[["💰","₹4,820","Sales","#16a34a"],["💬","12","WA Orders","#25d366"],["📦","18","Low Stock","#d97706"],["💳","₹2,100","Khata","#dc2626"]].map(([ic,val,lb,col])=>(
                     <div key={lb} style={{background:"#fff",borderRadius:7,padding:9,border:"1px solid #dcfce7"}}>
                       <div style={{fontSize:".7rem",marginBottom:2}}>{ic}</div>
