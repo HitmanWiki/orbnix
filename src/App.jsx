@@ -3873,28 +3873,88 @@ Also available: Zomato menu sync, QR code table ordering, loyalty programme inte
 }
   ];
   // Article schema — hook must be unconditional (Rules of Hooks)
-  const activePost = active !== null ? posts.find(p=>p.id===active) : null;
-  useEffect(()=>{
-    if (!activePost) return;
-    let ld=document.querySelector('#orbnix-article-ld');
-    if(!ld){ld=document.createElement('script');ld.id='orbnix-article-ld';ld.type='application/ld+json';document.head.appendChild(ld);}
-    ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":activePost.title,"description":activePost.metaDesc,"author":{"@type":"Organization","name":"Orbnix","url":"https://orbnix.in"},"publisher":{"@type":"Organization","name":"Orbnix","logo":{"@type":"ImageObject","url":"https://www.orbnix.in/logo.png"}},"datePublished":activePost.date,"dateModified":activePost.date,"mainEntityOfPage":{"@type":"WebPage","@id":`https://orbnix.in/blog/${activePost.id}`}});
-    return()=>{const el=document.querySelector('#orbnix-article-ld');if(el)el.remove();};
-  },[active]);
-  if (active !== null) {
-    const post = activePost;
-    const related = posts.filter(p=>p.id!==active&&p.cat===post.cat).slice(0,3);
-    return (
-      <div style={{width:"100%",paddingTop:68,minHeight:"100vh",background:"#fff"}}>
-        <div style={{maxWidth:760,margin:"0 auto",padding:"50px 1.5rem"}}>
-          {/* Breadcrumb */}
-          <nav style={{fontSize:".75rem",color:C.t4,marginBottom:"1.5rem",display:"flex",alignItems:"center",gap:".4rem",flexWrap:"wrap"}}>
-            <button onClick={()=>setPage("home")} style={{background:"none",border:"none",color:C.t4,cursor:"pointer",fontFamily:"'Manrope',sans-serif",fontSize:".75rem",padding:0}}>Home</button>
-            <span>›</span>
-            <button onClick={()=>setActive(null)} style={{background:"none",border:"none",color:C.t4,cursor:"pointer",fontFamily:"'Manrope',sans-serif",fontSize:".75rem",padding:0}}>Blog</button>
-            <span>›</span>
-            <span style={{color:C.t3}}>{post.cat}</span>
-          </nav>
+const activePost = active !== null ? posts.find(p=>p.id===active) : null;
+
+useEffect(() => {
+  if (!activePost) return;
+  
+  // 1. Add Article Schema
+  let ld = document.querySelector('#orbnix-article-ld');
+  if (!ld) {
+    ld = document.createElement('script');
+    ld.id = 'orbnix-article-ld';
+    ld.type = 'application/ld+json';
+    document.head.appendChild(ld);
+  }
+  ld.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": activePost.title,
+    "description": activePost.metaDesc,
+    "author": { "@type": "Organization", "name": "Orbnix", "url": "https://orbnix.in" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Orbnix",
+      "logo": { "@type": "ImageObject", "url": "https://www.orbnix.in/logo.png" }
+    },
+    "datePublished": activePost.date,
+    "dateModified": activePost.date,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `https://orbnix.in/blog/${activePost.id}` }
+  });
+  
+  // 2. ADD META DESCRIPTION TAG
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.setAttribute('name', 'description');
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.setAttribute('content', activePost.metaDesc);
+  
+  // 3. ADD OPEN GRAPH DESCRIPTION (for better social sharing)
+  let ogDesc = document.querySelector('meta[property="og:description"]');
+  if (!ogDesc) {
+    ogDesc = document.createElement('meta');
+    ogDesc.setAttribute('property', 'og:description');
+    document.head.appendChild(ogDesc);
+  }
+  ogDesc.setAttribute('content', activePost.metaDesc);
+  
+  // 4. UPDATE PAGE TITLE
+  document.title = `${activePost.title} | Orbnix Blog`;
+  
+  // Cleanup when leaving blog post
+  return () => {
+    const el = document.querySelector('#orbnix-article-ld');
+    if (el) el.remove();
+    
+    // Reset meta description to default (optional but recommended)
+    const defaultDesc = document.querySelector('meta[name="description"]');
+    if (defaultDesc) {
+      defaultDesc.setAttribute('content', 'Orbnix is the leading web development company in India. We build professional websites, mobile apps, AI chatbots and e-commerce stores. Starting ₹25,000. 100% code ownership.');
+    }
+    
+    // Reset title
+    document.title = 'Orbnix — Web Development Company India | Websites, Apps & AI Across India';
+  };
+}, [active, activePost]);
+
+if (active !== null) {
+  const post = activePost;
+  const related = posts.filter(p => p.id !== active && p.cat === post.cat).slice(0, 3);
+  return (
+    <div style={{width:"100%",paddingTop:68,minHeight:"100vh",background:"#fff"}}>
+      <div style={{maxWidth:760,margin:"0 auto",padding:"50px 1.5rem"}}>
+        {/* Breadcrumb */}
+        <nav style={{fontSize:".75rem",color:C.t4,marginBottom:"1.5rem",display:"flex",alignItems:"center",gap:".4rem",flexWrap:"wrap"}}>
+          <button onClick={()=>setPage("home")} style={{background:"none",border:"none",color:C.t4,cursor:"pointer",fontFamily:"'Manrope',sans-serif",fontSize:".75rem",padding:0}}>Home</button>
+          <span>›</span>
+          <button onClick={()=>setActive(null)} style={{background:"none",border:"none",color:C.t4,cursor:"pointer",fontFamily:"'Manrope',sans-serif",fontSize:".75rem",padding:0}}>Blog</button>
+          <span>›</span>
+          <span style={{color:C.t3}}>{post.cat}</span>
+        </nav>
+        
+       
           <button onClick={()=>setActive(null)} style={{display:"flex",alignItems:"center",gap:".4rem",background:"transparent",border:"none",color:C.t3,fontWeight:600,cursor:"pointer",fontFamily:"'Manrope',sans-serif",fontSize:".875rem",marginBottom:"1.75rem"}}>← Back to Blog</button>
           <div style={{background:C.blueLL,borderRadius:8,padding:".85rem 1rem",marginBottom:"1.5rem",borderLeft:`3px solid ${C.blue}`}}>
             <div style={{fontSize:".72rem",fontWeight:600,color:C.blue,fontFamily:"'JetBrains Mono',monospace",marginBottom:".25rem"}}>META DESCRIPTION (SEO)</div>
