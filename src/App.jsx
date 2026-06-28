@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, Component } from "react";
 import { BrowserRouter, useNavigate, useLocation } from "react-router-dom";
-
+import ClinicBlogPage from './components/blogs/ClinicBlogPage';
 // ─── FONTS & GLOBAL STYLES ──────────────────────────────────────────────────
 const GlobalStyles = () => (
   <style>{`
@@ -7369,6 +7369,12 @@ function AppInner() {
     
     if (staticMap[pathname]) return staticMap[pathname];
     
+    // ✅ ADD THIS: Clinic Blog Route
+    const clinicBlogMatch = pathname.match(/^\/blog\/clinic-website-([a-z-]+)$/);
+    if (clinicBlogMatch) {
+      return `clinic-blog-${clinicBlogMatch[1]}`;
+    }
+    
     const cityMatch = pathname.match(/^\/cities\/(.+)$/);
     if (cityMatch) {
       const slug = cityMatch[1];
@@ -7396,11 +7402,16 @@ function AppInner() {
     
     if (staticMap[page]) return staticMap[page];
     
+    // ✅ ADD THIS: Clinic Blog Route
+    if (page.startsWith("clinic-blog-")) {
+      const slug = page.replace("clinic-blog-", "");
+      return `/blog/clinic-website-${slug}`;
+    }
+    
     if (page.startsWith("city-")) return "/cities/" + page.replace("city-", "");
     
     return "/";
   };
-
 
   const page = getPageFromPath(location.pathname);
   const setPage = (p) => navigate(getPathFromPage(p));
@@ -7425,7 +7436,6 @@ function AppInner() {
       <Nav page={page} setPage={setPage} />
       <SocialSidebar />
 
-      {/* Persona indicator — subtle, top-right, dismissible */}
       {persona !== "default" && profile && (
         <PersonaBar persona={persona} personaInfo={personaInfo} profile={profile} setPage={setPage} />
       )}
@@ -7434,29 +7444,31 @@ function AppInner() {
       {page === "about"    && <About    setPage={setPage} />}
       {page === "work"     && <Work     setPage={setPage} openDemo={openDemo} />}
       {page === "blog"     && <Blog     setPage={setPage} onCatClick={handleBlogClick} />}
-      {page === "products"         && <Products        setPage={setPage} />}
+      {page === "products" && <Products setPage={setPage} />}
       {page === "product-school-erp" && <ProductSchoolERP setPage={setPage} />}
       {page === "product-ozbiz"      && <ProductOzBiz     setPage={setPage} />}
-      {page === "product-clinic"    && <ProductClinic    setPage={setPage} />}
-      {page === "product-frugano"   && <ProductFrugano   setPage={setPage} />}
-      {page === "product-clinic"    && <ProductClinic    setPage={setPage} />}
-      {page === "product-frugano"   && <ProductFrugano   setPage={setPage} />}
+      {page === "product-clinic"     && <ProductClinic    setPage={setPage} />}
+      {page === "product-frugano"    && <ProductFrugano   setPage={setPage} />}
       {page === "services" && <Services setPage={setPage} />}
       {page === "pricing"  && <Pricing  setPage={setPage} />}
       {page === "contact"  && <Contact />}
+      
+      {/* ✅ ADD THIS: Clinic Blog Route - INSIDE the return */}
+      {page.startsWith("clinic-blog-") && (() => {
+        const slug = page.replace("clinic-blog-", "");
+        const cityData = INDIA_LOCATIONS.find(([s]) => s === slug);
+        if (cityData) {
+          return <ClinicBlogPage citySlug={slug} cityName={cityData[1]} stateName={cityData[2]} />;
+        }
+        return null;
+      })()}
       
       {page.startsWith("city-") && (() => {
         const slug = page.replace("city-","");
         const loc = INDIA_LOCATIONS.find(([s]) => s === slug);
         return loc ? <CityPage city={loc[1]} slug={loc[0]} state={loc[2]} setPage={setPage} /> : null;
       })()}
-      {false && <CityPage city="Mumbai" slug="mumbai" setPage={setPage} />}
-      {false && <CityPage city="Bangalore" slug="bangalore" />}
-      {false && <CityPage city="Hyderabad" slug="hyderabad" />}
-      {false && <CityPage city="Chennai" slug="chennai" />}
-      {false && <CityPage city="Pune" slug="pune" />}
-      {false && <CityPage city="Ahmedabad" slug="ahmedabad" />}
-      {false && <CityPage city="Kolkata" slug="kolkata" />}
+      
       <DemoModal demo={demo} onClose={() => setDemo(null)} />
       <Chatbot setPage={setPage} />
       <SiteFooter setPage={setPage} />
