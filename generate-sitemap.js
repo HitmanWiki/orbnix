@@ -1,4 +1,3 @@
-// generate-sitemap.js
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -812,6 +811,14 @@ for (let i = 1; i <= 17; i++) {
   });
 }
 
+// ==================== 🆕 CLINIC BLOG PAGES (per city) ====================
+const clinicBlogPages = INDIA_LOCATIONS.map(([slug, name]) => ({
+  loc: `/blog/clinic-website-${slug}`,
+  priority: '0.82',
+  changefreq: 'monthly',
+  lastmod: new Date().toISOString().split('T')[0]
+}));
+
 // ==================== CITY PAGES ====================
 const cityPages = INDIA_LOCATIONS.map(([slug, name]) => ({
   loc: `/cities/${slug}`,
@@ -822,7 +829,8 @@ const cityPages = INDIA_LOCATIONS.map(([slug, name]) => ({
 
 // ==================== GENERATE SITEMAP ====================
 const generateSitemap = () => {
-  const allUrls = [...staticPages, ...blogPosts, ...cityPages];
+  // ✅ Combine all URLs including clinic blogs
+  const allUrls = [...staticPages, ...blogPosts, ...clinicBlogPages, ...cityPages];
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n';
@@ -856,6 +864,7 @@ const generateSitemap = () => {
   console.log(`   📍 Total URLs: ${allUrls.length}`);
   console.log(`   📄 Static pages: ${staticPages.length}`);
   console.log(`   📝 Blog posts: ${blogPosts.length}`);
+  console.log(`   🏥 Clinic blog pages: ${clinicBlogPages.length}`);
   console.log(`   🏙️  City pages: ${cityPages.length}`);
   console.log(`   💾 Saved to: ${sitemapPath}`);
 };
